@@ -1,0 +1,8 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1783475013
+editor_err.txt::TextFile::-1::1783475013::0::1::::<><><>0<>0<><>::
+editor_out.txt::TextFile::-1::1783475016::0::1::::<><><>0<>0<><>::
+test_runner.gd::GDScript::2666975341072899036::1783474674::0::1::::<>SceneTree<><>0<>0<><>::
+::res://tests/::1783474679
+base_test.gd::GDScript::1983571538606605745::1783474669::0::1::::BaseTest<>RefCounted<><>0<>0<><>::
+test_example.gd::GDScript::5082743087466794165::1783474679::0::1::::<>BaseTest<><>0<>0<><>::
