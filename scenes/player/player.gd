@@ -40,7 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("command_freeze"):
 		FamilyManager.broadcast_freeze(global_position)
 	elif event.is_action_pressed("interact"):
-		_try_interact_push()
+		_try_interact()
 
 
 func _physics_process(delta: float) -> void:
@@ -85,46 +85,38 @@ func _physics_process(delta: float) -> void:
 		if _path_history.size() > 500:
 			_path_history.pop_back()
 
-## Attempts to find and command the nearest Adult companion to push the adjacent box.
-func _try_interact_push() -> void:
-	var box := _find_nearest_box()
-	if box:
-		var adult = FamilyManager.get_nearest_adult(global_position)
-		if adult:
-			# Determine push direction relative to player's position
-			var push_dir := 1.0
-			if global_position.x > box.global_position.x:
-				push_dir = -1.0
+## Attempts to find and command the nearest matching companion to interact with the adjacent object.
+func _try_interact() -> void:
+	var target := _find_nearest_interactable()
+	if target:
+		var actor = FamilyManager.get_nearest_member_of_class(target.required_class, global_position)
+		if actor:
+			# Determine interaction direction relative to player's position
+			var interact_dir := 1.0
+			if global_position.x > target.global_position.x:
+				interact_dir = -1.0
 			
-			# Send directed command to Adult subclass
-			adult.call("command_push_box", box, push_dir)
-			print("[Player] Commanded Adult to push box %s in direction %0.1f" % [box.name, push_dir])
+			# Send directed command to companion
+			actor.interact_with(target, interact_dir)
+			print("[Player] Commanded %s to interact with %s in direction %0.1f" % [actor.name, target.name, interact_dir])
 		else:
-			print("[Player] No Adult companion nearby to push!")
+			print("[Player] No companion of class %s nearby to interact!" % target.required_class)
 	else:
-		print("[Player] No pushable box nearby!")
+		print("[Player] No interactable object nearby!")
 
-## Scans child nodes within 2.5m horizontally for a RigidBody3D pushable block.
-func _find_nearest_box() -> RigidBody3D:
-	var nearest_box: RigidBody3D = null
+## Scans for an Interactable component area within 2.5m.
+func _find_nearest_interactable() -> Interactable:
+	var nearest: Interactable = null
 	var min_dist: float = 2.5
 	
-	var tree := get_tree()
-	if not tree:
-		return null
-		
-	var root := tree.current_scene
-	if not root:
-		return null
-		
-	for child in root.get_children():
-		if child is RigidBody3D:
-			var dist := global_position.distance_to(child.global_position)
+	for node in get_tree().get_nodes_in_group("interactables"):
+		if node is Interactable:
+			var dist := global_position.distance_to(node.global_position)
 			if dist < min_dist:
 				min_dist = dist
-				nearest_box = child
+				nearest = node
 				
-	return nearest_box
+	return nearest
 
 
 

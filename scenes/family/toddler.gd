@@ -103,3 +103,7 @@ func _start_wandering() -> void:
 func _chirp() -> void:
 	FamilyManager.emit_toddler_chirp(global_position, chirp_sound_radius)
 	_reset_chirp_timer()
+
+## Declares to the manager that this class is a Toddler.
+func is_toddler_class() -> bool:
+	return true

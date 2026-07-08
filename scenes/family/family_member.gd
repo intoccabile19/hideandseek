@@ -1,8 +1,8 @@
 class_name FamilyMember
 extends CharacterBody3D
 
-## States mapping to Follow, Freeze, Hidden, Wandering, and Pushing modes.
-enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING }
+## States mapping to Follow, Freeze, Hidden, Wandering, Pushing, and Interacting modes.
+enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING }
 
 @export_group("Escort Settings")
 ## The horizontal movement speed of this family member.
@@ -23,6 +23,11 @@ var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 
 # Cache state of floor status from the previous physics tick.
 var _was_on_floor_last_frame: bool = true
 
+# Interaction variables
+var _interact_target: Node = null
+var _interact_dir: float = 0.0
+var _interact_align_move_dir: float = 0.0
+
 func _ready() -> void:
 	# Register self with the manager.
 	FamilyManager.register_member(self)
@@ -34,6 +39,10 @@ func _exit_tree() -> void:
 	FamilyManager.unregister_member(self)
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.INTERACTING:
+		_process_interacting(delta)
+		return
+
 	# Apply gravity.
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
@@ -98,8 +107,9 @@ func _physics_process(delta: float) -> void:
 						is_pushable_wall = true
 						break
 				
-				# Adults push the box horizontally; other subclasses (like Toddlers) jump over it.
-				if not is_pushable_wall or not (self is Adult):
+				# Adults only skip jumping over the box if actively pushing/interacting
+				var skip_jump := is_pushable_wall and (self is Adult) and (current_state == State.PUSHING or current_state == State.INTERACTING)
+				if not skip_jump:
 					# Scan upwards to determine exact obstacle height
 					var obstacle_height: float = 0.0
 					for step in range(1, 15):
@@ -189,12 +199,26 @@ func _physics_process(delta: float) -> void:
 	# Save for comparison in next frame.
 	_was_on_floor_last_frame = is_currently_on_floor
 
-	# Calculate Z-depth shifting to step back when player passes by.
+	# Calculate Z-depth shifting to step back when player or other companions pass by.
 	var target_z: float = 0.0
 	if FamilyManager.player:
 		var dist_x: float = abs(FamilyManager.player.global_position.x - global_position.x)
 		if dist_x < 1.2:
 			target_z = -0.6 # Step into the background
+			
+	# If we are close to other companions, one steps forward and one steps back.
+	for member in FamilyManager.active_members:
+		if member != self and is_instance_valid(member):
+			var dist_x: float = abs(member.global_position.x - global_position.x)
+			if dist_x < 0.8:
+				var my_idx := FamilyManager.get_follow_index(self)
+				var other_idx := FamilyManager.get_follow_index(member)
+				if my_idx != -1 and other_idx != -1:
+					if my_idx > other_idx:
+						target_z = -0.6 # Step back
+					else:
+						target_z = 0.6  # Step forward
+					break
 
 	# Smoothly lerp Z-axis to execute the visual step-back.
 	global_position.z = lerp(global_position.z, target_z, delta * 12.0)
@@ -203,9 +227,116 @@ func _on_command_broadcast(new_state_int: int) -> void:
 	current_state = new_state_int as State
 	if current_state == State.FREEZE:
 		print("[Family Member %s] State transitioned to: FREEZE" % name)
+		_interact_target = null
 	elif current_state == State.FOLLOW:
 		print("[Family Member %s] State transitioned to: FOLLOW" % name)
+		_interact_target = null
 
 ## Returns true if this subclass is of type Adult.
 func is_adult_class() -> bool:
 	return false
+
+## Returns true if this subclass is of type Toddler.
+func is_toddler_class() -> bool:
+	return false
+
+## Returns true if this subclass is of type Elder.
+func is_elder_class() -> bool:
+	return false
+
+## Directs this companion to walk to and interact with a target.
+func interact_with(target: Node, direction: float) -> void:
+	if is_instance_valid(target):
+		_interact_target = target
+		_interact_dir = direction
+		_interact_align_move_dir = 0.0
+		current_state = State.INTERACTING
+		print("[Family Member %s] Ordered to interact with %s in direction %0.1f" % [name, target.name, direction])
+
+func _process_interacting(delta: float) -> void:
+	if not is_instance_valid(_interact_target):
+		current_state = State.FOLLOW
+		return
+		
+	var space_state := get_world_3d().direct_space_state
+	
+	# Calculate target X (offset based on interaction direction)
+	var target_x: float = _interact_target.global_position.x - _interact_dir * _interact_target.interaction_offset_x
+	var to_target_x: float = target_x - global_position.x
+	var dist_x: float = abs(to_target_x)
+	
+	# General vertical alignment: feet level with target y position (within 1.0m)
+	var vertically_aligned: bool = abs(global_position.y - _interact_target.global_position.y) < 1.0
+	
+	var on_floor: bool = is_on_floor() or get_meta("test_mode", false)
+	
+	# Only update horizontal moving direction if we are grounded on the actual floor level.
+	var move_dir: float = 0.0
+	if on_floor and vertically_aligned:
+		move_dir = sign(to_target_x)
+		_interact_align_move_dir = move_dir
+	else:
+		# If we are in the air or on top, lock our direction!
+		if _interact_align_move_dir == 0.0:
+			_interact_align_move_dir = sign(to_target_x)
+		move_dir = _interact_align_move_dir
+		
+	# Check if we touch the interaction area from the correct side
+	var correct_side := false
+	if _interact_dir == 1.0 and global_position.x < _interact_target.global_position.x:
+		correct_side = true
+	elif _interact_dir == -1.0 and global_position.x > _interact_target.global_position.x:
+		correct_side = true
+		
+	# In test mode we bypass the real physics server overlaps check
+	var is_overlapping := false
+	if is_instance_valid(_interact_target):
+		is_overlapping = _interact_target.overlaps_body(self) or get_meta("test_mode", false)
+		
+	var touching_target: bool = is_overlapping and correct_side and vertically_aligned
+	
+	if touching_target:
+		velocity.x = 0.0
+		_execute_interaction()
+	elif dist_x > 0.2 or not vertically_aligned:
+		velocity.x = move_dir * speed
+	else:
+		velocity.x = 0.0
+		if on_floor and vertically_aligned:
+			_execute_interaction()
+			
+	# Apply gravity.
+	if not on_floor:
+		velocity.y -= _gravity * delta
+		
+	# Jump check (jump for wall obstacle or gaps)
+	var should_jump := false
+	if is_on_wall() and on_floor and not touching_target:
+		should_jump = true
+	elif move_dir != 0.0 and on_floor:
+		var origin := global_position + Vector3(move_dir * 0.5, 0.1, 0.0)
+		var end := origin + Vector3(0.0, -1.5, 0.0)
+		var query := PhysicsRayQueryParameters3D.create(origin, end, 1)
+		var result := space_state.intersect_ray(query)
+		if result.is_empty():
+			should_jump = true
+			
+	if should_jump:
+		velocity.y = jump_velocity
+		
+	velocity.z = 0.0
+	var is_currently_on_floor := is_on_floor()
+	move_and_slide()
+	_was_on_floor_last_frame = is_currently_on_floor
+	global_position.z = 0.0
+
+func _execute_interaction() -> void:
+	velocity.x = 0.0
+	var target = _interact_target
+	if is_instance_valid(target):
+		target.execute_interaction(self)
+		
+	# Only return to follow if executing didn't transition us to a custom state (e.g. PUSHING)
+	if current_state == State.INTERACTING:
+		current_state = State.FOLLOW
+		_interact_target = null

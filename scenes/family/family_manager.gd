@@ -91,17 +91,34 @@ func emit_toddler_chirp(origin: Vector3, radius: float) -> void:
 	toddler_chirped.emit(origin, radius)
 	print("[Whisper Network] Toddler Chirp! Sound emitted at %s. Radius: %0.1f units" % [str(origin), radius])
 
-## Returns the nearest active Adult companion to a given position.
-func get_nearest_adult(pos: Vector3) -> Node3D:
-	var nearest_adult: Node3D = null
+## Returns the nearest active companion matching the required class to a given position.
+func get_nearest_member_of_class(req_class: String, pos: Vector3) -> Node3D:
+	var nearest_member: Node3D = null
 	var min_dist: float = 99999.0
 	
 	for member in active_members:
-		if is_instance_valid(member) and member.has_method("is_adult_class") and member.call("is_adult_class"):
+		if not is_instance_valid(member):
+			continue
+			
+		var matches := false
+		if req_class == "Any":
+			matches = true
+		elif req_class == "Adult" and member.has_method("is_adult_class") and member.call("is_adult_class"):
+			matches = true
+		elif req_class == "Toddler" and member.has_method("is_toddler_class") and member.call("is_toddler_class"):
+			matches = true
+		elif req_class == "Elder" and member.has_method("is_elder_class") and member.call("is_elder_class"):
+			matches = true
+			
+		if matches:
 			var dist: float = pos.distance_to(member.global_position)
 			if dist < min_dist:
 				min_dist = dist
-				nearest_adult = member
+				nearest_member = member
 				
-	return nearest_adult
+	return nearest_member
+
+## Returns the nearest active Adult companion to a given position (wrapper for backward compatibility).
+func get_nearest_adult(pos: Vector3) -> Node3D:
+	return get_nearest_member_of_class("Adult", pos)
 

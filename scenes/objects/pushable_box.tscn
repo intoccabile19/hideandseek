@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6dw5s1v8q5r8"]
+[gd_scene load_steps=5 format=3 uid="uid://b6dw5s1v8q5r8"]
+
+[ext_resource type="Script" path="res://scenes/objects/pushable_box_interactable.gd" id="2_interact"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
 size = Vector3(1.2, 1.2, 1.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1"]
 size = Vector3(1.2, 1.2, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2"]
+size = Vector3(2.0, 1.4, 1.4)
 
 [node name="PushableBox" type="RigidBody3D"]
 axis_lock_linear_z = true
@@ -19,3 +24,9 @@ shape = SubResource("BoxShape3D_1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1")
+
+[node name="InteractableArea" type="Area3D" parent="."]
+script = ExtResource("2_interact")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_2")

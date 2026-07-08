@@ -5,3 +5,5 @@ res://tests/test_family.gd
 res://scenes/levels/level_test.tscn
 res://scenes/family/adult.gd
 res://tests/test_classes.gd
+res://scenes/family/elder.gd
+res://scenes/family/toddler.gd
