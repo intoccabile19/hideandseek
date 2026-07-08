@@ -5,8 +5,12 @@ Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host "Godot 4.6.3 Project Verification Suite" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
 
-# Running Unit Tests via test_runner.gd
-Write-Host "Running Headless Test Runner..." -ForegroundColor Yellow
+# 1. Update Project Cache & Compile Scripts
+Write-Host "Updating Godot project cache and assets..." -ForegroundColor Yellow
+$importProcess = Start-Process -FilePath $GodotPath -ArgumentList "--headless", "--editor", "--quit", "--path", "." -NoNewWindow -PassThru -Wait
+
+# 2. Running Unit Tests via test_runner.gd
+Write-Host "`nRunning Headless Test Runner..." -ForegroundColor Yellow
 
 $OutFile = "test_out.log"
 $ErrFile = "test_err.log"

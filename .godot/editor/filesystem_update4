@@ -1,1 +1,5 @@
 res://scenes/player/player.gd
+res://scenes/family/family_manager.gd
+res://scenes/family/family_member.gd
+res://tests/test_family.gd
+res://scenes/levels/level_test.tscn
