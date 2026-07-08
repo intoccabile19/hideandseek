@@ -6,6 +6,10 @@ signal command_broadcast(new_state: int)
 ## Emitted when a command propagates sound, detailing origin, size, and classification.
 signal sound_emitted(origin: Vector3, radius: float, is_shout: bool)
 
+## Emitted when a toddler chirps, detailing origin and sound radius.
+signal toddler_chirped(origin: Vector3, radius: float)
+
+
 ## Distance threshold beyond which commands require shouting.
 const WHISPER_LIMIT_DISTANCE: float = 6.0
 
@@ -81,3 +85,23 @@ func _calculate_sound_propagation(player_pos: Vector3) -> Dictionary:
 		print("[Whisper Network] Whisper. Sound radius: %f units" % radius)
 		
 	return {"radius": radius, "is_shout": is_shout}
+
+## Triggers a toddler chirp sound circle event.
+func emit_toddler_chirp(origin: Vector3, radius: float) -> void:
+	toddler_chirped.emit(origin, radius)
+	print("[Whisper Network] Toddler Chirp! Sound emitted at %s. Radius: %0.1f units" % [str(origin), radius])
+
+## Returns the nearest active Adult companion to a given position.
+func get_nearest_adult(pos: Vector3) -> Node3D:
+	var nearest_adult: Node3D = null
+	var min_dist: float = 99999.0
+	
+	for member in active_members:
+		if is_instance_valid(member) and member.has_method("is_adult_class") and member.call("is_adult_class"):
+			var dist: float = pos.distance_to(member.global_position)
+			if dist < min_dist:
+				min_dist = dist
+				nearest_adult = member
+				
+	return nearest_adult
+

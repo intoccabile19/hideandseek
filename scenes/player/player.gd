@@ -8,6 +8,9 @@ extends CharacterBody3D
 ## Velocity applied upwards when the player jumps.
 @export var jump_velocity: float = 6.0
 
+## Force applied continuously when pushing RigidBody3D obstacles.
+@export var push_force: float = 600.0
+
 # Fetch default gravity from project settings to sync with standard physics behavior.
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
 
@@ -36,6 +39,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		FamilyManager.broadcast_follow(global_position)
 	elif event.is_action_pressed("command_freeze"):
 		FamilyManager.broadcast_freeze(global_position)
+	elif event.is_action_pressed("interact"):
+		_try_interact_push()
+
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not grounded.
@@ -78,5 +84,47 @@ func _physics_process(delta: float) -> void:
 		_path_history.push_front({"position": global_position, "is_on_floor": is_on_floor()})
 		if _path_history.size() > 500:
 			_path_history.pop_back()
+
+## Attempts to find and command the nearest Adult companion to push the adjacent box.
+func _try_interact_push() -> void:
+	var box := _find_nearest_box()
+	if box:
+		var adult = FamilyManager.get_nearest_adult(global_position)
+		if adult:
+			# Determine push direction relative to player's position
+			var push_dir := 1.0
+			if global_position.x > box.global_position.x:
+				push_dir = -1.0
+			
+			# Send directed command to Adult subclass
+			adult.call("command_push_box", box, push_dir)
+			print("[Player] Commanded Adult to push box %s in direction %0.1f" % [box.name, push_dir])
+		else:
+			print("[Player] No Adult companion nearby to push!")
+	else:
+		print("[Player] No pushable box nearby!")
+
+## Scans child nodes within 2.5m horizontally for a RigidBody3D pushable block.
+func _find_nearest_box() -> RigidBody3D:
+	var nearest_box: RigidBody3D = null
+	var min_dist: float = 2.5
+	
+	var tree := get_tree()
+	if not tree:
+		return null
+		
+	var root := tree.current_scene
+	if not root:
+		return null
+		
+	for child in root.get_children():
+		if child is RigidBody3D:
+			var dist := global_position.distance_to(child.global_position)
+			if dist < min_dist:
+				min_dist = dist
+				nearest_box = child
+				
+	return nearest_box
+
 
 

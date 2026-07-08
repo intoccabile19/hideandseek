@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c7t8r2m8ey8a2"]
+
+[ext_resource type="PackedScene" path="res://scenes/family/family_member.tscn" id="1_m"]
+[ext_resource type="Script" path="res://scenes/family/toddler.gd" id="2_s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_toddler"]
+radius = 0.2
+height = 0.7
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_toddler"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.7
+
+[node name="Toddler" instance=ExtResource("1_m")]
+script = ExtResource("2_s")
+speed = 4.5
+spacing_steps = 10
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("CapsuleShape3D_toddler")
+
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("CylinderMesh_toddler")

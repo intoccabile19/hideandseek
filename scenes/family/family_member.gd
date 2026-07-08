@@ -1,8 +1,8 @@
 class_name FamilyMember
 extends CharacterBody3D
 
-## States mapping to Follow, Freeze, and Hidden modes.
-enum State { FOLLOW, FREEZE, HIDING }
+## States mapping to Follow, Freeze, Hidden, Wandering, and Pushing modes.
+enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING }
 
 @export_group("Escort Settings")
 ## The horizontal movement speed of this family member.
@@ -73,40 +73,104 @@ func _physics_process(delta: float) -> void:
 
 			# Determine if the character needs to jump.
 			var should_jump: bool = false
+			var custom_jump_vel: float = jump_velocity
+			var landing_x: float = global_position.x
+			var space_state := get_world_3d().direct_space_state
 			
 			# 1. Climbing jumps: Target is on a higher, grounded platform.
 			if to_target.y > 0.5 and target_grounded and is_on_floor() and dist_x < 2.0:
 				should_jump = true
+				# Calculate required height-based velocity
+				var req_height: float = to_target.y + 0.1
+				custom_jump_vel = sqrt(2.0 * _gravity * req_height)
+				# Calculate landing spot
+				var time_in_air := 2.0 * custom_jump_vel / _gravity
+				landing_x = global_position.x + move_dir * speed * time_in_air
+
 			# 2. Obstacle jumps: Ran into a wall or step.
-			elif is_on_wall() and is_on_floor():
-				should_jump = true
+			elif is_on_wall() and is_on_floor() and move_dir != 0.0:
+				# Check if the wall is a pushable box.
+				var is_pushable_wall: bool = false
+				for i in get_slide_collision_count():
+					var collision := get_slide_collision(i)
+					var collider := collision.get_collider()
+					if collider is RigidBody3D:
+						is_pushable_wall = true
+						break
+				
+				# Adults push the box horizontally; other subclasses (like Toddlers) jump over it.
+				if not is_pushable_wall or not (self is Adult):
+					# Scan upwards to determine exact obstacle height
+					var obstacle_height: float = 0.0
+					for step in range(1, 15):
+						var y_offset: float = step * 0.15
+						var origin := global_position + Vector3(0.0, y_offset, 0.0)
+						var end := origin + Vector3(move_dir * 0.8, 0.0, 0.0)
+						var query := PhysicsRayQueryParameters3D.create(origin, end, 1)
+						var result := space_state.intersect_ray(query)
+						if result.is_empty():
+							obstacle_height = y_offset
+							break
+					
+					if obstacle_height > 0.0 and obstacle_height < 2.2:
+						should_jump = true
+						# Exact velocity to clear height
+						custom_jump_vel = sqrt(2.0 * _gravity * (obstacle_height + 0.1))
+						var time_in_air := 2.0 * custom_jump_vel / _gravity
+						landing_x = global_position.x + move_dir * speed * time_in_air
+
 			# 3. Gap jumps (Raycast): Look ahead to detect gap before walking off ledge.
 			elif move_dir != 0.0 and is_on_floor():
-				var space_state := get_world_3d().direct_space_state
 				var origin := global_position + Vector3(move_dir * 0.5, 0.1, 0.0)
-				var end := origin + Vector3(0.0, -1.5, 0.0) # Check 1.5 units down
-				var query := PhysicsRayQueryParameters3D.create(origin, end, 1) # Mask 1 (World)
+				var end := origin + Vector3(0.0, -1.5, 0.0)
+				var query := PhysicsRayQueryParameters3D.create(origin, end, 1)
 				var result := space_state.intersect_ray(query)
 				if result.is_empty() and dist_x > 0.5:
-					should_jump = true
+					# Scan forward to find the other side of the gap
+					var gap_width: float = 0.0
+					for step in range(1, 15):
+						var check_offset := 0.5 + step * 0.4
+						var gap_origin := global_position + Vector3(move_dir * check_offset, 0.5, 0.0)
+						var gap_end := gap_origin + Vector3(0.0, -2.0, 0.0)
+						var gap_query := PhysicsRayQueryParameters3D.create(gap_origin, gap_end, 1)
+						var gap_result := space_state.intersect_ray(gap_query)
+						if not gap_result.is_empty():
+							gap_width = check_offset
+							break
+					
+					if gap_width > 0.0:
+						# Required time to clear the width plus landing buffer
+						var clear_dist := gap_width + 0.3
+						var req_time := clear_dist / speed
+						var req_vel := (_gravity * req_time) / 2.0
+						
+						# Check if we can physically make the jump
+						if req_vel <= jump_velocity:
+							should_jump = true
+							custom_jump_vel = req_vel
+							landing_x = global_position.x + move_dir * clear_dist
+			
 			# 4. Gap jumps (Fallback): Just walked off a ledge while moving horizontally.
 			elif not is_on_floor() and _was_on_floor_last_frame and velocity.x != 0.0:
 				should_jump = true
-				
+				# Use fallback default jump
+				custom_jump_vel = jump_velocity
+				var time_in_air := 2.0 * custom_jump_vel / _gravity
+				landing_x = global_position.x + move_dir * speed * time_in_air
+
+			# Perform landing safety check if a jump was requested
 			if should_jump:
-				# Calculate context-aware jump velocity dynamically.
-				var custom_jump_vel: float = jump_velocity
+				var land_origin := Vector3(landing_x, 1.0, 0.0)
+				var land_end := land_origin + Vector3(0.0, -3.0, 0.0)
+				var land_query := PhysicsRayQueryParameters3D.create(land_origin, land_end, 1)
+				var land_result := space_state.intersect_ray(land_query)
 				
-				if to_target.y > 0.5 and target_grounded:
-					# Climbing: height-based physics formula: v = sqrt(2 * g * h)
-					var req_height: float = to_target.y + 0.1 # Very tight 0.1 unit safety clearance
-					custom_jump_vel = sqrt(2.0 * _gravity * req_height)
-				elif to_target.y <= 0.5 and dist_x > 0.5:
-					# Crossing a gap: distance-based physics formula: v = (g * t) / 2
-					var req_time: float = dist_x / speed
-					custom_jump_vel = (_gravity * req_time) / 2.0 + 0.2 # Tight 0.2 unit velocity safety buffer
+				# If there is no floor at the projected landing spot, cancel the jump!
+				if land_result.is_empty():
+					should_jump = false
+					velocity.x = 0.0 # Stop at the edge
 					
-				# Clamp between a small hop (2.0) and the max jump capacity (jump_velocity).
+			if should_jump:
 				velocity.y = clamp(custom_jump_vel, 2.0, jump_velocity)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, speed)
@@ -137,5 +201,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_command_broadcast(new_state_int: int) -> void:
 	current_state = new_state_int as State
-	var state_name: String = "FOLLOW" if current_state == State.FOLLOW else "FREEZE"
-	print("[Family Member %s] State transitioned to: %s" % [name, state_name])
+	if current_state == State.FREEZE:
+		print("[Family Member %s] State transitioned to: FREEZE" % name)
+	elif current_state == State.FOLLOW:
+		print("[Family Member %s] State transitioned to: FOLLOW" % name)
+
+## Returns true if this subclass is of type Adult.
+func is_adult_class() -> bool:
+	return false

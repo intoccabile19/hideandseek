@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cx6gwh8s72q5e"]
+
+[ext_resource type="PackedScene" path="res://scenes/family/family_member.tscn" id="1_m"]
+[ext_resource type="Script" path="res://scenes/family/adult.gd" id="2_a"]
+
+[node name="Adult" instance=ExtResource("1_m")]
+script = ExtResource("2_a")
