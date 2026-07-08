@@ -4,6 +4,9 @@ extends SceneTree
 const TESTS_DIR = "res://tests/"
 
 func _init() -> void:
+	call_deferred("_run_tests")
+
+func _run_tests() -> void:
 	print("=========================================")
 	print("Starting Godot Headless Test Runner...")
 	print("=========================================")
