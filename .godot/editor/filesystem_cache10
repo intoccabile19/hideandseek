@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1783501425
+::res://::1783555152
 check_err.txt::TextFile::-1::1783475027::0::1::::<><><>0<>0<><>::
 check_out.txt::TextFile::-1::1783475027::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::1368033987265038885::1783493222::1783493261::1::::<><><>0<>0<>b0c21f8386f5811e9ff8f21867588191<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -12,7 +12,7 @@ phase_1_walkthrough.md::TextFile::-1::1783493255::0::1::::<><><>0<>0<><>::
 phase_2_implementation_plan.md::TextFile::-1::1783493471::0::1::::<><><>0<>0<><>::
 phase_2_walkthrough.md::TextFile::-1::1783493973::0::1::::<><><>0<>0<><>::
 phase_3_1_implementation_plan.md::TextFile::-1::1783500801::0::1::::<><><>0<>0<><>::
-phase_3_1_walkthrough.md::TextFile::-1::1783501435::0::1::::<><><>0<>0<><>::
+phase_3_1_walkthrough.md::TextFile::-1::1783554792::0::1::::<><><>0<>0<><>::
 phase_3_implementation_plan.md::TextFile::-1::1783495577::0::1::::<><><>0<>0<><>::
 phase_3_walkthrough.md::TextFile::-1::1783497778::0::1::::<><><>0<>0<><>::
 ::res://scenes/::1783495813
@@ -27,11 +27,14 @@ family_member.tscn::PackedScene::4969227317987366538::1783494464::0::1::::<><><>
 toddler.gd::GDScript::6947453407220064489::1783501089::0::1::::Toddler<>FamilyMember<><>0<>0<><>::
 toddler.tscn::PackedScene::7060142998561853375::1783496275::0::1::::<><><>0<>0<><>::res://scenes/family/family_member.tscn<>res://scenes/family/toddler.gd
 ::res://scenes/levels/::1783495447
-level_test.tscn::PackedScene::7278764975470582199::1783496450::0::1::::<><><>0<>0<><>::res://scenes/player/player.tscn<>res://scenes/family/toddler.tscn<>res://scenes/family/elder.tscn<>res://scenes/family/adult.tscn<>res://scenes/objects/pushable_box.tscn
-::res://scenes/objects/::1783501246
+level_test.tscn::PackedScene::7278764975470582199::1783555265::0::1::::<><><>0<>0<><>::res://scenes/player/player.tscn<>res://scenes/family/toddler.tscn<>res://scenes/family/elder.tscn<>res://scenes/family/adult.tscn<>res://scenes/objects/pushable_box.tscn<>res://scenes/objects/bridge_gate.gd<>res://scenes/objects/terminal_interactable.gd<>res://scenes/objects/retracting_obstacle.gd
+::res://scenes/objects/::1783555087
+bridge_gate.gd::GDScript::6581204350277222322::1783554974::0::1::::BridgeGate<>StaticBody3D<><>0<>0<><>::
 interactable.gd::GDScript::8407306489680200336::1783501144::0::1::::Interactable<>Area3D<><>0<>0<><>::
 pushable_box.tscn::PackedScene::4569858303976417931::1783501178::0::1::::<><><>0<>0<><>::res://scenes/objects/pushable_box_interactable.gd
 pushable_box_interactable.gd::GDScript::8589982150463235641::1783501172::0::1::::PushableBoxInteractable<>Interactable<><>0<>0<><>::
+retracting_obstacle.gd::GDScript::3566945366607936013::1783554965::0::1::::RetractingObstacle<>StaticBody3D<><>0<>0<><>::
+terminal_interactable.gd::GDScript::1829050943389380086::1783555253::0::1::::TerminalInteractable<>Interactable<><>0<>0<><>::
 ::res://scenes/player/::1783493129
 player.gd::GDScript::771937782945634985::1783501157::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
 player.tscn::PackedScene::6954173119773776171::1783494458::0::1::::<><><>0<>0<><>::res://scenes/player/player.gd
@@ -40,5 +43,5 @@ base_test.gd::GDScript::1983571538606605745::1783474669::0::1::::BaseTest<>RefCo
 test_classes.gd::GDScript::5982073626830988608::1783497377::0::1::::<>BaseTest<><>0<>0<><>::
 test_example.gd::GDScript::5082743087466794165::1783474679::0::1::::<>BaseTest<><>0<>0<><>::
 test_family.gd::GDScript::3858761458090390132::1783494253::0::1::::<>BaseTest<><>0<>0<><>::
-test_interaction.gd::GDScript::3405147448826209072::1783501271::0::1::::<>BaseTest<><>0<>0<><>::
+test_interaction.gd::GDScript::3405147448826209072::1783555272::0::1::::<>BaseTest<><>0<>0<><>::
 test_player.gd::GDScript::2736038406924431570::1783492990::0::1::::<>BaseTest<><>0<>0<><>::

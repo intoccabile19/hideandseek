@@ -113,3 +113,54 @@ func test_family_member_interacts_upon_arrival() -> void:
 		tree.root.remove_child(dummy)
 	toddler.free()
 	dummy.free()
+
+func test_terminal_interaction_mechanics() -> void:
+	# Instantiate a Terminal, BridgeGate, and Obstacle
+	var terminal = TerminalInteractable.new()
+	var bridge = BridgeGate.new()
+	
+	# We create a RetractingObstacle
+	var obstacle = RetractingObstacle.new()
+	var col = CollisionShape3D.new()
+	col.name = "CollisionShape3D"
+	obstacle.add_child(col)
+	obstacle.name = "ObstacleBox1"
+	obstacle.active_y = 0.0
+	obstacle.inactive_y = -5.0
+	
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree:
+		tree.root.add_child(terminal)
+		tree.root.add_child(bridge)
+		tree.root.add_child(obstacle)
+		
+	# Wire Nodepaths
+	terminal.target_bridge = terminal.get_path_to(bridge)
+	terminal.target_obstacle_1 = terminal.get_path_to(obstacle)
+	
+	# Verify initial state
+	assert_false(bridge.is_active, "Bridge should start inactive")
+	assert_eq(obstacle.global_position.y, 0.0, "Obstacle should start at Y=0.0")
+	
+	# Trigger interaction
+	terminal.execute_interaction(terminal)
+	
+	# Process ticks to let elements raise/lower gradually
+	for i in range(120):
+		bridge._physics_process(0.1)
+		obstacle._physics_process(0.1)
+	
+	# Verify final state
+	assert_true(bridge.is_active, "Bridge should activate")
+	assert_true(is_equal_approx(bridge.global_position.y, bridge.active_y), "Bridge should move to active y")
+	assert_true(is_equal_approx(obstacle.global_position.y, -5.0), "Obstacle should be lowered to Y=-5.0")
+	assert_true(col.disabled, "Obstacle collision shape should be disabled")
+	
+	# Clean up
+	if tree:
+		tree.root.remove_child(terminal)
+		tree.root.remove_child(bridge)
+		tree.root.remove_child(obstacle)
+	terminal.free()
+	bridge.free()
+	obstacle.free()
