@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://1cag4j65agc1" path="res://scenes/objects/terminal_interactable.gd" id="7_ti"]
 [ext_resource type="Script" uid="uid://bq24cl28cbl70" path="res://scenes/objects/retracting_obstacle.gd" id="8_ro"]
 [ext_resource type="Script" uid="uid://dwgsgv05uy0wo" path="res://scenes/objects/cover_zone.gd" id="9_cz"]
+[ext_resource type="PackedScene" uid="uid://c6dw5s1v8q5sa" path="res://scenes/seeker/seeker.tscn" id="10_sk"]
+[ext_resource type="Script" uid="uid://4gaiq2kmtfad" path="res://scenes/objects/searchable_object.gd" id="11_so"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 
@@ -73,6 +75,8 @@ size = Vector3(3, 2, 0.8)
 [sub_resource type="BoxMesh" id="BoxMesh_czmedium"]
 size = Vector3(3, 2, 0.1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_so"]
+
 [node name="LevelTest" type="Node3D" unique_id=1135564103]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=936815321]
@@ -91,6 +95,24 @@ shape = SubResource("BoxShape3D_floor")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor1" unique_id=45599698]
 mesh = SubResource("BoxMesh_floor")
 
+[node name="Wall1" type="StaticBody3D" parent="." unique_id=1278449672]
+transform = Transform3D(0.39999998, 0, 0, 0, 4.232001, 0, 0, 0, 0.16002709, -17, 1.5, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1" unique_id=164715087]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1" unique_id=1881944705]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="Wall2" type="StaticBody3D" parent="." unique_id=611190160]
+transform = Transform3D(0.39999998, 0, 0, 0, 4.232001, 0, 0, 0, 0.16002709, 1, 1.5, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2" unique_id=491780568]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2" unique_id=802786973]
+mesh = SubResource("BoxMesh_floor")
+
 [node name="Floor2" type="StaticBody3D" parent="." unique_id=867022931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.6002715, 14, -0.5, 0)
 
@@ -98,6 +120,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.6002715, 14, -0.5, 0)
 shape = SubResource("BoxShape3D_floor")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2" unique_id=1305179042]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="Floor3" type="StaticBody3D" parent="." unique_id=1159872852]
+transform = Transform3D(5.399759, 0, 0, 0, 1, 0, 0, 0, 15.235502, 3.1769657, -11.862648, -27.584305)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3" unique_id=1477149533]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3" unique_id=433739370]
 mesh = SubResource("BoxMesh_floor")
 
 [node name="ObstacleBox1" type="StaticBody3D" parent="." unique_id=1950113598]
@@ -181,6 +212,17 @@ shape = SubResource("BoxShape3D_czsmall")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneSmall" unique_id=1663926074]
 mesh = SubResource("BoxMesh_czsmall")
 
+[node name="CoverZoneSmall2" type="Area3D" parent="." unique_id=2066997775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.142481, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Small"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneSmall2" unique_id=1426488404]
+shape = SubResource("BoxShape3D_czsmall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneSmall2" unique_id=1161960513]
+mesh = SubResource("BoxMesh_czsmall")
+
 [node name="CoverZoneLarge" type="Area3D" parent="." unique_id=1879633858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -2.6295931)
 script = ExtResource("9_cz")
@@ -191,6 +233,18 @@ capacity = 2
 shape = SubResource("BoxShape3D_czlarge")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneLarge" unique_id=537371752]
+mesh = SubResource("BoxMesh_czlarge")
+
+[node name="CoverZoneLarge2" type="Area3D" parent="." unique_id=1061688794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.05123, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Large"
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneLarge2" unique_id=334245916]
+shape = SubResource("BoxShape3D_czlarge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneLarge2" unique_id=1694661430]
 mesh = SubResource("BoxMesh_czlarge")
 
 [node name="CoverZoneMedium" type="Area3D" parent="." unique_id=746064004]
@@ -216,8 +270,35 @@ curiosity_cooldown = 5.0
 chirp_sound_radius = 3.5
 
 [node name="Elder" parent="." unique_id=1060242429 instance=ExtResource("3_e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.11039, 0, 0)
 
 [node name="Adult" parent="." unique_id=103471209 instance=ExtResource("4_a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 0)
 push_speed = 1.8
+
+[node name="SearchableBox1" type="Node3D" parent="." unique_id=720168298]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -8.5, -33)
+script = ExtResource("11_so")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SearchableBox1" unique_id=1307012418]
+mesh = SubResource("BoxMesh_so")
+
+[node name="SearchableBox2" type="Node3D" parent="." unique_id=2016948252]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2, -8.5, -12)
+script = ExtResource("11_so")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SearchableBox2" unique_id=857203746]
+mesh = SubResource("BoxMesh_so")
+
+[node name="SearchableBox3" type="Node3D" parent="." unique_id=14919256]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9, -8.5, -25)
+script = ExtResource("11_so")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SearchableBox3" unique_id=1492364825]
+mesh = SubResource("BoxMesh_so")
+
+[node name="Seeker" parent="." unique_id=1822781423 instance=ExtResource("10_sk")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.783384, -11, -33.94818)

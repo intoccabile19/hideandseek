@@ -8,9 +8,8 @@ var assigned_actors: Array[Node3D] = []
 
 func _ready() -> void:
 	add_to_group("cover_zones")
-	# Isolate from Layer 1 physical collisions/pushing, but detect Layer 1 actors
 	collision_layer = 8
-	collision_mask = 1
+	collision_mask = 3 # Detect Layer 1 (Companions) and Layer 2 (Player)
 
 func has_space_for(actor_size: String) -> bool:
 	if assigned_actors.size() >= capacity:

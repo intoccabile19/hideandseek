@@ -20,6 +20,10 @@ var _path_history: Array = []
 # Tracks the direction of movement to trigger dynamic queue ordering.
 var _last_dir_sign: float = 0.0
 
+var is_hidden: bool = false
+var _assigned_cover: CoverZone = null
+var _cover_target_x: float = 0.0
+
 func _ready() -> void:
 	# Register player with family manager autoload.
 	FamilyManager.register_player(self)
@@ -28,6 +32,7 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	# Clean up player registration.
+	_release_cover()
 	FamilyManager.unregister_player()
 
 ## Returns the array of recent historical coordinates.
@@ -37,40 +42,61 @@ func get_path_history() -> Array:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("command_follow"):
 		FamilyManager.broadcast_follow(global_position)
+		_release_cover()
 	elif event.is_action_pressed("command_freeze"):
 		FamilyManager.broadcast_freeze(global_position)
+	elif event.is_action_pressed("hide_action"):
+		if _assigned_cover:
+			_release_cover()
+		else:
+			_try_hide_in_current_cover()
 	elif event.is_action_pressed("interact"):
 		_try_interact()
-
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not grounded.
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
 
-	# Handle jump action.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-
-	# Get the left/right input axis.
+	# Read input signals
 	var input_axis: float = Input.get_axis("move_left", "move_right")
-	
-	# Restrict motion to the X-axis for 2.5D movement.
-	var direction: Vector3 = Vector3(input_axis, 0.0, 0.0).normalized()
-	
-	if direction != Vector3.ZERO:
-		velocity.x = direction.x * speed
+	var jump_pressed := Input.is_action_just_pressed("jump")
+
+	# Cancel cover state if player attempts manual movement override
+	if (input_axis != 0.0 or jump_pressed) and _assigned_cover:
+		_release_cover()
+
+	# Process movement controls
+	if _assigned_cover:
+		# Lock player in place horizontally while hiding
+		velocity.x = 0.0
+		velocity.z = 0.0
+		move_and_slide()
+		
+		# Step back to cover Z depth
+		var target_z := _assigned_cover.global_position.z
+		global_position.z = lerp(global_position.z, target_z, delta * 12.0)
+		if abs(global_position.z - target_z) < 0.01:
+			global_position.z = target_z
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, speed)
+		# Manual navigation controls
+		if jump_pressed and is_on_floor():
+			velocity.y = jump_velocity
 
-	# Lock Z velocity to prevent depth movement.
-	velocity.z = 0.0
+		var direction := Vector3(input_axis, 0.0, 0.0).normalized()
+		if direction != Vector3.ZERO:
+			velocity.x = direction.x * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, speed)
 
-	# Call Godot's built-in physics solver.
-	move_and_slide()
+		velocity.z = 0.0
+		move_and_slide()
 
-	# Lock Z position strictly to 0.0 to prevent drifting over time.
-	global_position.z = 0.0
+		# Standard Z-axis depth lock
+		var target_z: float = 0.0
+		global_position.z = lerp(global_position.z, target_z, delta * 12.0)
+		if abs(global_position.z - target_z) < 0.01:
+			global_position.z = target_z
 
 	# Sort queue dynamically if direction has changed to avoid scrambling.
 	var current_dir_sign: float = sign(velocity.x)
@@ -79,11 +105,47 @@ func _physics_process(delta: float) -> void:
 		FamilyManager.update_queue_order()
 
 	# Record position in history if player moves past minimum threshold.
-	# We record a point every 0.08 units of distance to maintain high path resolution during jumps.
 	if _path_history.is_empty() or global_position.distance_to(_path_history[0]["position"]) > 0.08:
 		_path_history.push_front({"position": global_position, "is_on_floor": is_on_floor()})
 		if _path_history.size() > 500:
 			_path_history.pop_back()
+
+## Checks if there is a cover zone behind/overlapping the player and steps into it if present
+func _try_hide_in_current_cover() -> void:
+	var cover := _find_overlapping_cover()
+	if cover:
+		_assigned_cover = cover
+		_cover_target_x = global_position.x
+		is_hidden = true
+		print("[Player] Stepped back into cover at X: %0.2f" % _cover_target_x)
+	else:
+		print("[Player] No cover zone detected behind the player to hide!")
+
+## Releases the player from their assigned cover slot
+func _release_cover() -> void:
+	if _assigned_cover:
+		_assigned_cover.release_actor(self)
+		_assigned_cover = null
+	is_hidden = false
+
+## Scans for an overlapping CoverZone
+func _find_overlapping_cover() -> CoverZone:
+	var zones: Array = get_tree().get_nodes_in_group("cover_zones")
+	for zone in zones:
+		if zone is CoverZone:
+			# Calculate the horizontal half-width of the cover zone's collision shape
+			var half_width: float = 1.5 # Default fallback
+			var col_shape := zone.get_node_or_null("CollisionShape3D") as CollisionShape3D
+			if col_shape and col_shape.shape is BoxShape3D:
+				half_width = col_shape.shape.size.x * 0.5
+				
+			# Check if the player's horizontal X position is within the cover bounds
+			var dist_x: float = abs(zone.global_position.x - global_position.x)
+			if dist_x <= half_width:
+				# Player (Medium size) can hide in Medium or Large cover zones regardless of companion capacity
+				if zone.zone_size == "Medium" or zone.zone_size == "Large":
+					return zone
+	return null
 
 ## Attempts to find and command the nearest matching companion to interact with the adjacent object.
 func _try_interact() -> void:
@@ -117,6 +179,3 @@ func _find_nearest_interactable() -> Interactable:
 				nearest = node
 				
 	return nearest
-
-
-

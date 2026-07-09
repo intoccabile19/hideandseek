@@ -36,8 +36,9 @@ func test_player_z_axis_lock() -> void:
 	# Set Z to some value to test if it forces it to 0 in physics process
 	player.global_position.z = 5.0
 	
-	# Manually run one physics step
-	player._physics_process(0.016)
+	# Manually run physics steps to allow Z lerp to converge to 0.0
+	for i in range(30):
+		player._physics_process(0.016)
 	
 	assert_eq(player.global_position.z, 0.0, "Player Z position must be locked to 0.0")
 	assert_eq(player.velocity.z, 0.0, "Player Z velocity must be locked to 0.0")

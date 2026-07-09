@@ -41,6 +41,8 @@ func _ready() -> void:
 	FamilyManager.register_member(self)
 	# Listen to player commands.
 	FamilyManager.command_broadcast.connect(_on_command_broadcast)
+	# Start in cover at game startup
+	_on_command_broadcast(State.FREEZE)
 
 func _exit_tree() -> void:
 	# Unregister on removal.
@@ -291,32 +293,14 @@ func _on_command_broadcast(new_state_int: int) -> void:
 		# Standalone / test fallback cover search (if coordinator didn't already assign one)
 		if not _assigned_cover:
 			var best_zone: CoverZone = null
-			var min_score: int = 99999
 			var min_dist: float = 99999.0
 			var my_size: String = get_size_class()
 			
 			var zones: Array = get_tree().get_nodes_in_group("cover_zones")
 			for zone in zones:
 				if zone is CoverZone and zone.has_space_for(my_size):
-					var score := 0
-					if my_size == "Small":
-						if zone.zone_size == "Small":
-							score = 0
-						elif zone.zone_size == "Medium":
-							score = 1
-						else:
-							score = 2
-					elif my_size == "Medium":
-						if zone.zone_size == "Medium":
-							score = 0
-						else:
-							score = 1
-					else:
-						score = 0
-					
 					var dist: float = abs(zone.global_position.x - global_position.x)
-					if score < min_score or (score == min_score and dist < min_dist):
-						min_score = score
+					if dist < min_dist:
 						min_dist = dist
 						best_zone = zone
 			

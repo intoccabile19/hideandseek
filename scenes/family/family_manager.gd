@@ -6,6 +6,9 @@ signal command_broadcast(new_state: int)
 ## Emitted when a command propagates sound, detailing origin, size, and classification.
 signal sound_emitted(origin: Vector3, radius: float, is_shout: bool)
 
+## Emitted when a companion or player is captured by the Seeker.
+signal game_over
+
 ## Emitted when a toddler chirps, detailing origin and sound radius.
 signal toddler_chirped(origin: Vector3, radius: float)
 
