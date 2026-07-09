@@ -28,6 +28,14 @@ var _interact_target: Node = null
 var _interact_dir: float = 0.0
 var _interact_align_move_dir: float = 0.0
 
+# Cover variables
+var is_hidden: bool = false
+var _assigned_cover: CoverZone = null
+var _cover_target_x: float = 0.0
+
+func get_size_class() -> String:
+	return "Medium"
+
 func _ready() -> void:
 	# Register self with the manager.
 	FamilyManager.register_member(self)
@@ -53,7 +61,10 @@ func _physics_process(delta: float) -> void:
 		var follow_index: int = FamilyManager.get_follow_index(self)
 		
 		if follow_index != -1:
-			var target_idx: int = (follow_index + 1) * spacing_steps
+			# Cumulative spacing steps to prevent crowding/overlapping in follow line
+			var target_idx: int = 0
+			for i in range(follow_index + 1):
+				target_idx += FamilyManager.active_members[i].spacing_steps
 			var target_pos: Vector3 = p.global_position
 			var target_grounded: bool = true
 			
@@ -136,37 +147,46 @@ func _physics_process(delta: float) -> void:
 				var query := PhysicsRayQueryParameters3D.create(origin, end, 1)
 				var result := space_state.intersect_ray(query)
 				if result.is_empty() and dist_x > 0.5:
-					# Scan forward to find the other side of the gap
-					var gap_width: float = 0.0
-					for step in range(1, 15):
-						var check_offset := 0.5 + step * 0.4
-						var gap_origin := global_position + Vector3(move_dir * check_offset, 0.5, 0.0)
-						var gap_end := gap_origin + Vector3(0.0, -2.0, 0.0)
-						var gap_query := PhysicsRayQueryParameters3D.create(gap_origin, gap_end, 1)
-						var gap_result := space_state.intersect_ray(gap_query)
-						if not gap_result.is_empty():
-							gap_width = check_offset
-							break
-					
-					if gap_width > 0.0:
-						# Required time to clear the width plus landing buffer
-						var clear_dist := gap_width + 0.3
-						var req_time := clear_dist / speed
-						var req_vel := (_gravity * req_time) / 2.0
+					if jump_velocity <= 0.0:
+						# Cannot jump (Elder). Stop at the edge.
+						velocity.x = 0.0
+						should_jump = false
+					else:
+						# Scan forward to find the other side of the gap
+						var gap_width: float = 0.0
+						for step in range(1, 15):
+							var check_offset := 0.5 + step * 0.4
+							var gap_origin := global_position + Vector3(move_dir * check_offset, 0.5, 0.0)
+							var gap_end := gap_origin + Vector3(0.0, -2.0, 0.0)
+							var gap_query := PhysicsRayQueryParameters3D.create(gap_origin, gap_end, 1)
+							var gap_result := space_state.intersect_ray(gap_query)
+							if not gap_result.is_empty():
+								gap_width = check_offset
+								break
 						
-						# Check if we can physically make the jump
-						if req_vel <= jump_velocity:
-							should_jump = true
-							custom_jump_vel = req_vel
-							landing_x = global_position.x + move_dir * clear_dist
+						if gap_width > 0.0:
+							# Required time to clear the width plus landing buffer
+							var clear_dist := gap_width + 0.3
+							var req_time := clear_dist / speed
+							var req_vel := (_gravity * req_time) / 2.0
+							
+							# Check if we can physically make the jump
+							if req_vel <= jump_velocity:
+								should_jump = true
+								custom_jump_vel = req_vel
+								landing_x = global_position.x + move_dir * clear_dist
 			
 			# 4. Gap jumps (Fallback): Just walked off a ledge while moving horizontally.
 			elif not is_on_floor() and _was_on_floor_last_frame and velocity.x != 0.0:
-				should_jump = true
-				# Use fallback default jump
-				custom_jump_vel = jump_velocity
-				var time_in_air := 2.0 * custom_jump_vel / _gravity
-				landing_x = global_position.x + move_dir * speed * time_in_air
+				# Verify if this is a real drop (no floor within 1.2m below our center)
+				var down_query := PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3(0.0, -1.2, 0.0), 1)
+				var down_result := space_state.intersect_ray(down_query)
+				if down_result.is_empty():
+					should_jump = true
+					# Use fallback default jump
+					custom_jump_vel = jump_velocity
+					var time_in_air := 2.0 * custom_jump_vel / _gravity
+					landing_x = global_position.x + move_dir * speed * time_in_air
 
 			# Perform landing safety check if a jump was requested
 			if should_jump:
@@ -184,8 +204,38 @@ func _physics_process(delta: float) -> void:
 				velocity.y = clamp(custom_jump_vel, 2.0, jump_velocity)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, speed)
+	elif current_state == State.HIDING:
+		if _assigned_cover:
+			_cover_target_x = _assigned_cover.get_slot_x(self)
+		var to_target_x: float = _cover_target_x - global_position.x
+		var dist_x: float = abs(to_target_x)
+		var move_dir: float = 0.0
+		
+		if dist_x > 0.15:
+			move_dir = sign(to_target_x)
+			velocity.x = move_dir * speed
+			is_hidden = false
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, speed)
+			is_hidden = true
+			
+		# Handle obstacles and steps during navigation to cover
+		var should_jump: bool = false
+		if is_on_wall() and is_on_floor() and move_dir != 0.0:
+			var is_pushable_wall: bool = false
+			for i in get_slide_collision_count():
+				var collision: KinematicCollision3D = get_slide_collision(i)
+				var collider: Object = collision.get_collider()
+				if collider is RigidBody3D:
+					is_pushable_wall = true
+					break
+			if not is_pushable_wall:
+				should_jump = true
+				
+		if should_jump:
+			velocity.y = jump_velocity
 	else:
-		# Decay velocity to a halt when commanded to freeze/hide.
+		# Decay velocity to a halt when commanded to freeze.
 		velocity.x = move_toward(velocity.x, 0.0, speed)
 
 	# Lock depth movement.
@@ -199,26 +249,35 @@ func _physics_process(delta: float) -> void:
 	# Save for comparison in next frame.
 	_was_on_floor_last_frame = is_currently_on_floor
 
-	# Calculate Z-depth shifting to step back when player or other companions pass by.
+	# Calculate Z-depth shifting to step back when player or other companions pass by, or match cover zone Z depth.
 	var target_z: float = 0.0
-	if FamilyManager.player:
-		var dist_x: float = abs(FamilyManager.player.global_position.x - global_position.x)
-		if dist_x < 1.2:
-			target_z = -0.6 # Step into the background
-			
-	# If we are close to other companions, one steps forward and one steps back.
-	for member in FamilyManager.active_members:
-		if member != self and is_instance_valid(member):
-			var dist_x: float = abs(member.global_position.x - global_position.x)
-			if dist_x < 0.8:
-				var my_idx := FamilyManager.get_follow_index(self)
-				var other_idx := FamilyManager.get_follow_index(member)
-				if my_idx != -1 and other_idx != -1:
-					if my_idx > other_idx:
-						target_z = -0.6 # Step back
-					else:
-						target_z = 0.6  # Step forward
-					break
+	
+	if current_state == State.HIDING and _assigned_cover:
+		# Stay on the main walkway (Z = 0.0) until we are close to our target slot X!
+		var dist_x: float = abs(_cover_target_x - global_position.x)
+		if dist_x <= 0.3 or is_hidden:
+			target_z = _assigned_cover.global_position.z
+		else:
+			target_z = 0.0
+	else:
+		if FamilyManager.player:
+			var dist_x: float = abs(FamilyManager.player.global_position.x - global_position.x)
+			if dist_x < 1.2:
+				target_z = -0.6 # Step into the background
+				
+		# If we are close to other companions, one steps forward and one steps back.
+		for member in FamilyManager.active_members:
+			if member != self and is_instance_valid(member):
+				var dist_x: float = abs(member.global_position.x - global_position.x)
+				if dist_x < 0.8:
+					var my_idx := FamilyManager.get_follow_index(self)
+					var other_idx := FamilyManager.get_follow_index(member)
+					if my_idx != -1 and other_idx != -1:
+						if my_idx > other_idx:
+							target_z = -0.6 # Step back
+						else:
+							target_z = 0.6  # Step forward
+						break
 
 	# Smoothly lerp Z-axis to execute the visual step-back.
 	global_position.z = lerp(global_position.z, target_z, delta * 12.0)
@@ -228,9 +287,57 @@ func _on_command_broadcast(new_state_int: int) -> void:
 	if current_state == State.FREEZE:
 		print("[Family Member %s] State transitioned to: FREEZE" % name)
 		_interact_target = null
+		
+		# Standalone / test fallback cover search (if coordinator didn't already assign one)
+		if not _assigned_cover:
+			var best_zone: CoverZone = null
+			var min_score: int = 99999
+			var min_dist: float = 99999.0
+			var my_size: String = get_size_class()
+			
+			var zones: Array = get_tree().get_nodes_in_group("cover_zones")
+			for zone in zones:
+				if zone is CoverZone and zone.has_space_for(my_size):
+					var score := 0
+					if my_size == "Small":
+						if zone.zone_size == "Small":
+							score = 0
+						elif zone.zone_size == "Medium":
+							score = 1
+						else:
+							score = 2
+					elif my_size == "Medium":
+						if zone.zone_size == "Medium":
+							score = 0
+						else:
+							score = 1
+					else:
+						score = 0
+					
+					var dist: float = abs(zone.global_position.x - global_position.x)
+					if score < min_score or (score == min_score and dist < min_dist):
+						min_score = score
+						min_dist = dist
+						best_zone = zone
+			
+			if best_zone:
+				_assigned_cover = best_zone
+				_cover_target_x = best_zone.assign_actor(self)
+		
+		if _assigned_cover:
+			current_state = State.HIDING
+			print("[Family Member %s] Heading to cover at X: %0.2f" % [name, _cover_target_x])
+			
 	elif current_state == State.FOLLOW:
 		print("[Family Member %s] State transitioned to: FOLLOW" % name)
 		_interact_target = null
+		release_cover()
+
+func release_cover() -> void:
+	if _assigned_cover:
+		_assigned_cover.release_actor(self)
+		_assigned_cover = null
+	is_hidden = false
 
 ## Returns true if this subclass is of type Adult.
 func is_adult_class() -> bool:

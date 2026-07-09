@@ -15,11 +15,21 @@ Write-Host "`nRunning Headless Test Runner..." -ForegroundColor Yellow
 $OutFile = "test_out.log"
 $ErrFile = "test_err.log"
 
-$testProcess = Start-Process -FilePath $GodotPath -ArgumentList "--headless", "--path", ".", "-s", "test_runner.gd" -NoNewWindow -PassThru -Wait -RedirectStandardOutput $OutFile -RedirectStandardError $ErrFile
+$testProcess = Start-Process -FilePath $GodotPath -ArgumentList "--headless", "--path", ".", "-s", "test_runner.gd" -NoNewWindow -PassThru -RedirectStandardOutput $OutFile -RedirectStandardError $ErrFile
+
+try {
+	$testProcess | Wait-Process -Timeout 5 -ErrorAction Stop
+} catch {
+	Write-Host "`n[ERROR] Test runner hung and timed out after 5 seconds! Terminating..." -ForegroundColor Red
+	Stop-Process -Id $testProcess.Id -Force
+	Exit 1
+}
+
+Start-Sleep -Milliseconds 100
 
 if (Test-Path $OutFile) {
 	Get-Content $OutFile
-	Remove-Item $OutFile
+	Remove-Item $OutFile -Force -ErrorAction SilentlyContinue
 }
 if (Test-Path $ErrFile) {
 	$errContent = Get-Content $ErrFile
@@ -27,7 +37,7 @@ if (Test-Path $ErrFile) {
 		Write-Host "`n[stderr output]:" -ForegroundColor DarkRed
 		Write-Host $errContent -ForegroundColor Red
 	}
-	Remove-Item $ErrFile
+	Remove-Item $ErrFile -Force -ErrorAction SilentlyContinue
 }
 
 if ($testProcess.ExitCode -ne 0) {

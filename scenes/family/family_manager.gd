@@ -65,7 +65,52 @@ func broadcast_freeze(player_pos: Vector3) -> void:
 	update_queue_order()
 	var sound_info: Dictionary = _calculate_sound_propagation(player_pos)
 	sound_emitted.emit(player_pos, sound_info.radius, sound_info.is_shout)
+	
+	# Centralized coordinated cover assignment
+	assign_hiding_covers()
+	
 	command_broadcast.emit(1) # State.FREEZE
+
+## Coordinated matchmaking algorithm to allocate best closest cover zones for everyone
+func assign_hiding_covers() -> void:
+	# Release existing cover assignments first
+	for member in active_members:
+		if is_instance_valid(member) and member.has_method("release_cover"):
+			member.call("release_cover")
+			
+	var zones: Array[Node] = Engine.get_main_loop().get_nodes_in_group("cover_zones")
+	var members_needing_cover: Array[FamilyMember] = []
+	for member: FamilyMember in active_members:
+		if is_instance_valid(member) and member.is_inside_tree():
+			members_needing_cover.append(member)
+			
+	# Sort by size restrictiveness (Large first, then Medium, then Small)
+	members_needing_cover.sort_custom(
+		func(a, b):
+			var size_rank: Dictionary = {"Large": 3, "Medium": 2, "Small": 1}
+			var a_rank: int = size_rank.get(a.get_size_class(), 0)
+			var b_rank: int = size_rank.get(b.get_size_class(), 0)
+			return a_rank > b_rank
+	)
+	
+	# Coordinated assignment
+	for member: FamilyMember in members_needing_cover:
+		var best_zone: CoverZone = null
+		var min_dist: float = 99999.0
+		var my_size: String = member.get_size_class()
+		
+		for zone in zones:
+			if zone is CoverZone and zone.has_space_for(my_size):
+				var dist: float = abs(zone.global_position.x - member.global_position.x)
+				if dist < min_dist:
+					min_dist = dist
+					best_zone = zone
+					
+		if best_zone:
+			member._assigned_cover = best_zone
+			member._cover_target_x = best_zone.assign_actor(member)
+			member.is_hidden = false
+			print("[FamilyManager] Central assignment: %s to %s at X: %0.2f" % [member.name, best_zone.name, member._cover_target_x])
 
 func _calculate_sound_propagation(player_pos: Vector3) -> Dictionary:
 	var max_dist: float = 0.0

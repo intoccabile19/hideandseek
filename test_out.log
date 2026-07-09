@@ -1,0 +1,56 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+=========================================
+Starting Godot Headless Test Runner...
+=========================================
+
+Running suite: test_classes.gd
+[Toddler Toddler] Wandering off to X: 3.8
+  [PASS] test_toddler_properties_and_curiosity
+  [PASS] test_elder_properties
+  [PASS] test_adult_properties
+
+Running suite: test_cover.gd
+  [PASS] test_cover_zone_compatibility
+  [PASS] test_cover_capacity_exhaustion
+[Family Member @CharacterBody3D@3] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@3] Heading to cover at X: 5.00
+[Family Member @CharacterBody3D@3] State transitioned to: FOLLOW
+  [PASS] test_cover_navigation_flow
+
+Running suite: test_example.gd
+  [PASS] test_example_math
+
+Running suite: test_family.gd
+  [PASS] test_family_member_lifecycle_registration
+[Whisper Network] Whisper. Sound radius: 2.000000 units
+[Family Member FamilyMember] State transitioned to: FOLLOW
+[Whisper Network] Whisper. Sound radius: 2.000000 units
+[Family Member FamilyMember] State transitioned to: FREEZE
+  [PASS] test_command_broadcast_updates_state
+[Whisper Network] Whisper. Sound radius: 2.000000 units
+[Whisper Network] SHOUT! Sound radius: 15.000000 units (Farthest member is 10.0 units away)
+  [PASS] test_whisper_sound_propagation
+  [PASS] test_dynamic_queue_sorting
+
+Running suite: test_interaction.gd
+  [PASS] test_family_manager_class_filtering
+  [PASS] test_interactable_registration
+[Family Member Toddler] Ordered to interact with @Area3D@8 in direction 1.0
+  [PASS] test_family_member_interacts_upon_arrival
+[Terminal] Terminal activated by actor: @Area3D@9
+[BridgeGate] Bridge raising initiated...
+[RetractingObstacle] Retraction initiated...
+  [PASS] test_terminal_interaction_mechanics
+
+Running suite: test_player.gd
+  [PASS] test_player_scene_loads
+  [PASS] test_player_instantiation_and_properties
+  [PASS] test_player_z_axis_lock
+
+=========================================
+Test Summary:
+Passed: 18
+Failed: 0
+=========================================
+All tests completed successfully!

@@ -12,7 +12,10 @@ func _ready() -> void:
 	super._ready()
 	# Override base defaults for the adult subclass
 	speed = 3.8
-	spacing_steps = 15
+	spacing_steps = 12
+
+func get_size_class() -> String:
+	return "Large"
 
 ## Declares to the manager that this class is an Adult.
 func is_adult_class() -> bool:
@@ -66,21 +69,17 @@ func _physics_process(delta: float) -> void:
 			_stop_pushing()
 			return
 			
-		# B. Wall blocked by static world element
-		if is_on_wall() and is_on_floor():
-			var blocked_by_real_wall := false
-			for i in get_slide_collision_count():
-				var collision := get_slide_collision(i)
-				var collider := collision.get_collider()
-				# Ignore the box we are pushing and other characters
-				if collider != _push_target_box and not (collider is CharacterBody3D):
-					blocked_by_real_wall = true
-					break
-			
-			if blocked_by_real_wall:
-				print("[Adult %s] Aborting push: Blocked by real wall" % name)
-				_stop_pushing()
-				return
+		# B. Box blocked by static world element ahead of it
+		var box_origin := _push_target_box.global_position
+		# Box size.x is 1.2, so half-width is 0.6. Cast slightly in front (0.7m)
+		var box_end := box_origin + Vector3(_push_dir * 0.7, 0.0, 0.0)
+		var box_query := PhysicsRayQueryParameters3D.create(box_origin, box_end, 1)
+		box_query.exclude = [self.get_rid(), _push_target_box.get_rid()]
+		var box_result := space_state.intersect_ray(box_query)
+		if not box_result.is_empty():
+			print("[Adult %s] Aborting push: Box blocked by wall ahead" % name)
+			_stop_pushing()
+			return
 	else:
 		# Standard follower movement (includes base INTERACTING state processing!)
 		super._physics_process(delta)

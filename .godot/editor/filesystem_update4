@@ -1,2 +1,9 @@
 res://scenes/objects/bridge_gate.gd
 res://scenes/objects/terminal_interactable.gd
+res://scenes/family/adult.gd
+res://scenes/family/elder.gd
+res://scenes/family/family_member.gd
+res://scenes/family/toddler.gd
+res://scenes/objects/cover_zone.gd
+res://scenes/levels/level_test.tscn
+res://scenes/family/family_manager.gd

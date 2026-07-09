@@ -15,16 +15,22 @@ func _ready() -> void:
 	super._ready()
 	# Override base defaults for the toddler subclass
 	speed = 4.5
-	spacing_steps = 10
+	spacing_steps = 8
 	_reset_curiosity_timer()
 	_reset_chirp_timer()
+
+func get_size_class() -> String:
+	return "Small"
 
 func _physics_process(delta: float) -> void:
 	# Handle curiosity timer when frozen/hiding.
 	if current_state == State.FREEZE or current_state == State.HIDING:
-		_curiosity_timer -= delta
-		if _curiosity_timer <= 0.0:
-			_start_wandering()
+		if current_state == State.HIDING and is_hidden:
+			_reset_curiosity_timer()
+		else:
+			_curiosity_timer -= delta
+			if _curiosity_timer <= 0.0:
+				_start_wandering()
 		# Run parent physics (just decelerate and stand).
 		super._physics_process(delta)
 		
