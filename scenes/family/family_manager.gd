@@ -25,6 +25,9 @@ const SHOUT_SOUND_RADIUS: float = 15.0
 ## Tracks active family members currently spawned in the scene.
 var active_members: Array[Node3D] = []
 
+signal target_changed(new_target: FamilyMember)
+var current_target_member: FamilyMember = null
+
 ## Reference to the player character in the scene.
 var player: Node3D = null
 
@@ -52,6 +55,15 @@ func update_queue_order() -> void:
 			return dist_a < dist_b
 	)
 
+func select_target_by_index(idx: int) -> void:
+	if idx == -1:
+		current_target_member = null
+	elif idx >= 0 and idx < active_members.size():
+		current_target_member = active_members[idx] as FamilyMember
+	else:
+		current_target_member = null
+	target_changed.emit(current_target_member)
+
 ## Returns the index of a family member within the escort line.
 func get_follow_index(member: Node3D) -> int:
 	return active_members.find(member)
@@ -61,6 +73,7 @@ func broadcast_follow(player_pos: Vector3) -> void:
 	update_queue_order()
 	var sound_info: Dictionary = _calculate_sound_propagation(player_pos)
 	sound_emitted.emit(player_pos, sound_info.radius, sound_info.is_shout)
+	spawn_soundwave(player_pos, sound_info.radius)
 	command_broadcast.emit(0) # State.FOLLOW
 
 ## Broadcasts freeze command (1) and registers sound circle origin.
@@ -68,6 +81,7 @@ func broadcast_freeze(player_pos: Vector3) -> void:
 	update_queue_order()
 	var sound_info: Dictionary = _calculate_sound_propagation(player_pos)
 	sound_emitted.emit(player_pos, sound_info.radius, sound_info.is_shout)
+	spawn_soundwave(player_pos, sound_info.radius)
 	
 	# Centralized coordinated cover assignment
 	assign_hiding_covers()
@@ -76,15 +90,25 @@ func broadcast_freeze(player_pos: Vector3) -> void:
 
 ## Coordinated matchmaking algorithm to allocate best closest cover zones for everyone
 func assign_hiding_covers() -> void:
-	# Release existing cover assignments first
+	# Release existing cover assignments only for those who are NOT already hiding/frozen
 	for member in active_members:
 		if is_instance_valid(member) and member.has_method("release_cover"):
+			if current_target_member != null and current_target_member != member:
+				continue
+			# FREEZE = 1, HIDING = 2
+			if (member.current_state == 1 or member.current_state == 2) and member.has_method("has_assigned_cover") and member.call("has_assigned_cover"):
+				continue
 			member.call("release_cover")
 			
 	var zones: Array[Node] = Engine.get_main_loop().get_nodes_in_group("cover_zones")
 	var members_needing_cover: Array[FamilyMember] = []
 	for member: FamilyMember in active_members:
 		if is_instance_valid(member) and member.is_inside_tree():
+			if current_target_member != null and current_target_member != member:
+				continue
+			# Skip if already hiding/frozen with a cover
+			if (member.current_state == 1 or member.current_state == 2) and member.has_method("has_assigned_cover") and member.call("has_assigned_cover"):
+				continue
 			members_needing_cover.append(member)
 			
 	# Sort by size restrictiveness (Large first, then Medium, then Small)
@@ -118,16 +142,20 @@ func assign_hiding_covers() -> void:
 func _calculate_sound_propagation(player_pos: Vector3) -> Dictionary:
 	var max_dist: float = 0.0
 	
-	for member in active_members:
-		if is_instance_valid(member):
-			var dist: float = player_pos.distance_to(member.global_position)
-			if dist > max_dist:
-				max_dist = dist
+	if current_target_member != null:
+		if is_instance_valid(current_target_member):
+			max_dist = player_pos.distance_to(current_target_member.global_position)
+	else:
+		for member in active_members:
+			if is_instance_valid(member):
+				var dist: float = player_pos.distance_to(member.global_position)
+				if dist > max_dist:
+					max_dist = dist
 				
 	var is_shout: bool = max_dist > WHISPER_LIMIT_DISTANCE
 	var radius: float = SHOUT_SOUND_RADIUS if is_shout else WHISPER_SOUND_RADIUS
 	
-	if is_shout and not active_members.is_empty():
+	if is_shout and (current_target_member != null or not active_members.is_empty()):
 		print("[Whisper Network] SHOUT! Sound radius: %f units (Farthest member is %0.1f units away)" % [radius, max_dist])
 	else:
 		print("[Whisper Network] Whisper. Sound radius: %f units" % radius)
@@ -170,3 +198,26 @@ func get_nearest_member_of_class(req_class: String, pos: Vector3) -> Node3D:
 func get_nearest_adult(pos: Vector3) -> Node3D:
 	return get_nearest_member_of_class("Adult", pos)
 
+## Returns the projected command loudness (radius and shout classification) based on the player's position.
+func get_projected_command_loudness() -> Dictionary:
+	if not is_instance_valid(player):
+		return {"radius": 15.0, "is_shout": true}
+	return _calculate_sound_propagation(player.global_position)
+
+## Spawns the 3D expanding soundwave ring visual.
+func spawn_soundwave(pos: Vector3, radius: float) -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	if not tree:
+		return
+	var scene: Node = tree.current_scene
+	if not scene:
+		return
+		
+	var wave := MeshInstance3D.new()
+	wave.global_position = pos + Vector3(0.0, 0.1, 0.0) # Slightly above floor to avoid z-fighting
+	
+	var script := load("res://scenes/player/soundwave_visual.gd")
+	wave.set_script(script)
+	wave.set("target_radius", radius)
+	
+	scene.add_child(wave)

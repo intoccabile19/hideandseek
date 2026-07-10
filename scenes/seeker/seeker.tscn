@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6dw5s1v8q5r9"]
+[gd_scene format=3 uid="uid://c6dw5s1v8q5sa"]
 
-[ext_resource type="Script" path="res://scenes/seeker/seeker.gd" id="1_seeker"]
+[ext_resource type="Script" uid="uid://bkrryq34lc1g3" path="res://scenes/seeker/seeker.gd" id="1_seeker"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
 radius = 0.4
@@ -10,31 +10,51 @@ height = 1.6
 radius = 0.4
 height = 1.6
 
-[node name="Seeker" type="CharacterBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_Vision"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.2, 0.8, 1, 0.05)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_Vision"]
+top_radius = 0.01
+bottom_radius = 0.75
+height = 1.8
+radial_segments = 16
+rings = 2
+
+[node name="Seeker" type="CharacterBody3D" unique_id=562472094]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("1_seeker")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1643490380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CapsuleShape3D_1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1660782620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("CapsuleMesh_1")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=261593430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.4)
 light_color = Color(1, 0.2, 0.2, 1)
 light_energy = 32.0
 spot_range = 35.0
 spot_angle = 35.0
 
-[node name="AlertLabel" type="Label3D" parent="."]
+[node name="VisionCone" type="MeshInstance3D" parent="SpotLight3D" unique_id=1959494213]
+transform = Transform3D(10, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, -0.984766, -5.7029305)
+material_override = SubResource("StandardMaterial3D_Vision")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_Vision")
+
+[node name="AlertLabel" type="Label3D" parent="." unique_id=1296027463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 billboard = 1
 double_sided = false
-text = ""
 font_size = 72
 outline_size = 16
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=2056057997]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, 0, 1.239321, -0.20874023)
+radius = 0.03955078
+height = 0.64990234

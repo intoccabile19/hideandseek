@@ -22,6 +22,7 @@ var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 
 
 # Cache state of floor status from the previous physics tick.
 var _was_on_floor_last_frame: bool = true
+var _is_climbing_step: bool = false
 
 # Interaction variables
 var _interact_target: Node = null
@@ -99,15 +100,20 @@ func _physics_process(delta: float) -> void:
 			var landing_x: float = global_position.x
 			var space_state := get_world_3d().direct_space_state
 			
+			_is_climbing_step = false
+			
 			# 1. Climbing jumps: Target is on a higher, grounded platform.
-			if to_target.y > 0.5 and target_grounded and is_on_floor() and dist_x < 2.0:
-				should_jump = true
-				# Calculate required height-based velocity
-				var req_height: float = to_target.y + 0.1
-				custom_jump_vel = sqrt(2.0 * _gravity * req_height)
-				# Calculate landing spot
-				var time_in_air := 2.0 * custom_jump_vel / _gravity
-				landing_x = global_position.x + move_dir * speed * time_in_air
+			if to_target.y > 0.1 and target_grounded and is_on_floor() and dist_x < 2.0:
+				var is_climbable := to_target.y <= 0.65
+				if jump_velocity > 0.0 or is_climbable:
+					should_jump = true
+					# Calculate required height-based velocity
+					var req_height: float = to_target.y + 0.1
+					custom_jump_vel = sqrt(2.0 * _gravity * req_height)
+					# Calculate landing spot
+					var time_in_air := 2.0 * custom_jump_vel / _gravity
+					landing_x = global_position.x + move_dir * speed * time_in_air
+					_is_climbing_step = is_climbable
 
 			# 2. Obstacle jumps: Ran into a wall or step.
 			elif is_on_wall() and is_on_floor() and move_dir != 0.0:
@@ -135,12 +141,14 @@ func _physics_process(delta: float) -> void:
 							obstacle_height = y_offset
 							break
 					
-					if obstacle_height > 0.0 and obstacle_height < 2.2:
+					var is_climbable := obstacle_height > 0.0 and obstacle_height <= 0.65
+					if obstacle_height > 0.0 and (jump_velocity > 0.0 or is_climbable):
 						should_jump = true
 						# Exact velocity to clear height
 						custom_jump_vel = sqrt(2.0 * _gravity * (obstacle_height + 0.1))
 						var time_in_air := 2.0 * custom_jump_vel / _gravity
 						landing_x = global_position.x + move_dir * speed * time_in_air
+						_is_climbing_step = is_climbable
 
 			# 3. Gap jumps (Raycast): Look ahead to detect gap before walking off ledge.
 			elif move_dir != 0.0 and is_on_floor():
@@ -203,7 +211,8 @@ func _physics_process(delta: float) -> void:
 					velocity.x = 0.0 # Stop at the edge
 					
 			if should_jump:
-				velocity.y = clamp(custom_jump_vel, 2.0, jump_velocity)
+				var limit: float = max(jump_velocity, 5.0) if _is_climbing_step else jump_velocity
+				velocity.y = clamp(custom_jump_vel, 2.0, limit)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, speed)
 	elif current_state == State.HIDING:
@@ -285,6 +294,10 @@ func _physics_process(delta: float) -> void:
 	global_position.z = lerp(global_position.z, target_z, delta * 12.0)
 
 func _on_command_broadcast(new_state_int: int) -> void:
+	if FamilyManager.current_target_member != null and FamilyManager.current_target_member != self:
+		return
+	if new_state_int == State.FREEZE and (current_state == State.HIDING or current_state == State.FREEZE) and _assigned_cover != null:
+		return # Ignore redundant freeze commands when already hiding/frozen with a cover
 	current_state = new_state_int as State
 	if current_state == State.FREEZE:
 		print("[Family Member %s] State transitioned to: FREEZE" % name)
@@ -322,6 +335,9 @@ func release_cover() -> void:
 		_assigned_cover.release_actor(self)
 		_assigned_cover = null
 	is_hidden = false
+
+func has_assigned_cover() -> bool:
+	return _assigned_cover != null
 
 ## Returns true if this subclass is of type Adult.
 func is_adult_class() -> bool:

@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scenes/objects/pushable_box_interactable.gd" id="2_interact"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
-size = Vector3(1.2, 1.2, 1.2)
+size = Vector3(1.2, 0.6, 1.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1"]
-size = Vector3(1.2, 1.2, 1.2)
+size = Vector3(1.2, 0.6, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2"]
-size = Vector3(2.0, 1.4, 1.4)
+size = Vector3(2.0, 0.8, 1.4)
 
 [node name="PushableBox" type="RigidBody3D"]
 axis_lock_linear_z = true

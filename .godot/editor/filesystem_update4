@@ -14,3 +14,8 @@ res://scenes/audio/sound_manager.gd
 res://scenes/ui/game_state_menu.gd
 res://tests/test_ui_audio.gd
 res://scenes/objects/retracting_obstacle.gd
+res://scenes/objects/escape_zone.gd
+res://scenes/ui/hud_overlay.gd
+res://tests/test_phase_6_5.gd
+res://scenes/seeker/seeker.tscn
+res://scenes/objects/pushable_box.tscn

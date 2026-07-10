@@ -54,6 +54,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			_try_hide_in_current_cover()
 	elif event.is_action_pressed("interact"):
 		_try_interact()
+	elif event.is_action_pressed("target_all"):
+		FamilyManager.select_target_by_index(-1)
+	elif event.is_action_pressed("target_member_1"):
+		FamilyManager.select_target_by_index(0)
+	elif event.is_action_pressed("target_member_2"):
+		FamilyManager.select_target_by_index(1)
+	elif event.is_action_pressed("target_member_3"):
+		FamilyManager.select_target_by_index(2)
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not grounded.

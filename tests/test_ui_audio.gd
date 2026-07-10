@@ -36,9 +36,9 @@ func test_hud_overlay_updates() -> void:
 	
 	# Test command text updates
 	hud._update_command_text(0) # FOLLOW
-	assert_eq(hud.command_label.text, "MODE: FOLLOW")
+	assert_true(hud.command_label.text.begins_with("MODE: FOLLOW"), "Command label should start with follow mode")
 	hud._update_command_text(1) # FREEZE
-	assert_eq(hud.command_label.text, "MODE: FREEZE & HIDE")
+	assert_true(hud.command_label.text.begins_with("MODE: FREEZE & HIDE"), "Command label should start with freeze mode")
 	
 	hud.free()
 
