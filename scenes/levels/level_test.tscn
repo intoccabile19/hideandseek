@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://dwgsgv05uy0wo" path="res://scenes/objects/cover_zone.gd" id="9_cz"]
 [ext_resource type="PackedScene" uid="uid://c6dw5s1v8q5sa" path="res://scenes/seeker/seeker.tscn" id="10_sk"]
 [ext_resource type="Script" uid="uid://4gaiq2kmtfad" path="res://scenes/objects/searchable_object.gd" id="11_so"]
+[ext_resource type="PackedScene" uid="uid://b00ye2t2s8s73" path="res://scenes/ui/hud_overlay.tscn" id="12_ho"]
+[ext_resource type="PackedScene" uid="uid://cx6gwh8s72q73" path="res://scenes/ui/game_state_menu.tscn" id="13_gm"]
+[ext_resource type="Script" path="res://scenes/objects/escape_zone.gd" id="14_ez"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 
@@ -76,6 +79,9 @@ size = Vector3(3, 2, 0.8)
 size = Vector3(3, 2, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_so"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_escape"]
+size = Vector3(3, 4, 4)
 
 [node name="LevelTest" type="Node3D" unique_id=1135564103]
 
@@ -302,3 +308,15 @@ mesh = SubResource("BoxMesh_so")
 
 [node name="Seeker" parent="." unique_id=1822781423 instance=ExtResource("10_sk")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.783384, -11, -33.94818)
+
+[node name="HUDOverlay" parent="." instance=ExtResource("12_ho")]
+
+[node name="GameStateMenu" parent="." instance=ExtResource("13_gm")]
+
+[node name="EscapeZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+script = ExtResource("14_ez")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_escape")

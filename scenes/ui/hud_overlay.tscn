@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://b00ye2t2s8s73"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud_overlay.gd" id="1_h"]
+
+[sub_resource type="Shader" id="Shader_crt"]
+code = "shader_type canvas_item;
+
+uniform float scanline_count = 350.0;
+uniform float crt_curve = 0.015;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	vec2 uv_curved = uv - 0.5;
+	uv_curved.x *= 1.0 + pow(abs(uv_curved.y) * crt_curve, 2.0);
+	uv_curved.y *= 1.0 + pow(abs(uv_curved.x) * crt_curve, 2.0);
+	uv = uv_curved + 0.5;
+	
+	if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+		COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+	} else {
+		vec4 color = texture(screen_texture, uv);
+		float scanline = sin(uv.y * scanline_count * 3.14159 * 2.0) * 0.035;
+		color.rgb -= vec3(scanline);
+		float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+		vignette = clamp(pow(16.0 * vignette, 0.2), 0.0, 1.0);
+		color.rgb *= vignette;
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crt"]
+shader = SubResource("Shader_crt")
+
+[node name="HUDOverlay" type="CanvasLayer"]
+script = ExtResource("1_h")
+
+[node name="HUDContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopPanel" type="PanelContainer" parent="HUDContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUDContainer/TopPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="WarningLabel" type="Label" parent="HUDContainer/TopPanel/VBox"]
+layout_mode = 2
+text = "SYSTEM STATUS: SECURE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetectionBar" type="ProgressBar" parent="HUDContainer/TopPanel/VBox"]
+custom_minimum_size = Vector2(300, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+show_percentage = false
+
+[node name="BottomPanel" type="PanelContainer" parent="HUDContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 240.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="CommandLabel" type="Label" parent="HUDContainer/BottomPanel"]
+layout_mode = 2
+text = "MODE: FOLLOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CRTShader" type="ColorRect" parent="HUDContainer"]
+material = SubResource("ShaderMaterial_crt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

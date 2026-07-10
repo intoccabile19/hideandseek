@@ -6,7 +6,7 @@ Starting Godot Headless Test Runner...
 
 Running suite: test_classes.gd
 [Family Member Toddler] State transitioned to: FREEZE
-[Toddler Toddler] Wandering off to X: -3.4
+[Toddler Toddler] Wandering off to X: 2.2
   [PASS] test_toddler_properties_and_curiosity
   [PASS] test_elder_properties
   [PASS] test_adult_properties
@@ -14,10 +14,10 @@ Running suite: test_classes.gd
 Running suite: test_cover.gd
   [PASS] test_cover_zone_compatibility
   [PASS] test_cover_capacity_exhaustion
-[Family Member @CharacterBody3D@3] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@3] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@3] Heading to cover at X: 5.00
-[Family Member @CharacterBody3D@3] State transitioned to: FOLLOW
+[Family Member @CharacterBody3D@4] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@4] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@4] Heading to cover at X: 5.00
+[Family Member @CharacterBody3D@4] State transitioned to: FOLLOW
   [PASS] test_cover_navigation_flow
 
 Running suite: test_example.gd
@@ -25,7 +25,7 @@ Running suite: test_example.gd
 
 Running suite: test_family.gd
 [Family Member FamilyMember] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@5] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@7] State transitioned to: FREEZE
   [PASS] test_family_member_lifecycle_registration
 [Family Member FamilyMember] State transitioned to: FREEZE
 [Whisper Network] Whisper. Sound radius: 2.000000 units
@@ -38,7 +38,7 @@ Running suite: test_family.gd
 [Whisper Network] SHOUT! Sound radius: 15.000000 units (Farthest member is 10.0 units away)
   [PASS] test_whisper_sound_propagation
 [Family Member FamilyMember] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@6] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@8] State transitioned to: FREEZE
   [PASS] test_dynamic_queue_sorting
 
 Running suite: test_interaction.gd
@@ -48,9 +48,9 @@ Running suite: test_interaction.gd
   [PASS] test_family_manager_class_filtering
   [PASS] test_interactable_registration
 [Family Member Toddler] State transitioned to: FREEZE
-[Family Member Toddler] Ordered to interact with @Area3D@8 in direction 1.0
+[Family Member Toddler] Ordered to interact with @Area3D@12 in direction 1.0
   [PASS] test_family_member_interacts_upon_arrival
-[Terminal] Terminal activated by actor: @Area3D@9
+[Terminal] Terminal activated by actor: @Area3D@13
 [BridgeGate] Bridge raising initiated...
 [RetractingObstacle] Retraction initiated...
   [PASS] test_terminal_interaction_mechanics
@@ -61,21 +61,28 @@ Running suite: test_player.gd
   [PASS] test_player_z_axis_lock
 
 Running suite: test_seeker.gd
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-12.98795, 0.0, -12.86348)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (11.30913, 0.0, -9.236539)
   [PASS] test_seeker_wander_flow
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (17.47242, 0.0, -10.09855)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (0.672132, 0.0, -11.00145)
 [Seeker Seeker] Giant heard noise at X: 4.00 on High Alert (0.60). Investigating opening...
   [PASS] test_seeker_hears_sound
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-19.79088, 0.0, -7.253375)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-3.449359, 0.0, -10.1788)
 [Seeker Seeker] Giant SPOTTED target: Player! Warning flash started...
   [PASS] test_seeker_spots_player
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (12.28382, 0.0, -9.239038)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (17.66926, 0.0, -14.01306)
 [Family Member Toddler] State transitioned to: FREEZE
   [PASS] test_seeker_ignores_hidden_actor
 
+Running suite: test_ui_audio.gd
+  [PASS] test_sound_manager_methods
+  [PASS] test_hud_overlay_updates
+  [PASS] test_game_state_menu_behavior
+[EscapeZone] Player escaped! Counted 0 survivors.
+  [PASS] test_escape_zone_victory_trigger
+
 =========================================
 Test Summary:
-Passed: 22
+Passed: 26
 Failed: 0
 =========================================
 All tests completed successfully!

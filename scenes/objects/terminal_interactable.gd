@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func execute_interaction(actor: Node3D) -> void:
 	print("[Terminal] Terminal activated by actor: %s" % actor.name)
+	SoundManager.play_interact(global_position)
 	
 	if target_bridge:
 		var bridge = get_node_or_null(target_bridge)

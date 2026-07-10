@@ -38,8 +38,11 @@ var _has_heard_anything: bool = false
 # Alert system variables
 var alert_level: float = 0.0
 var _faint_look_timer: float = 0.0
+var _footstep_accum: float = 0.0
+const FOOTSTEP_DIST: float = 3.5
 
 func _ready() -> void:
+	add_to_group("seeker")
 	# Subscribe to sound cues on the whisper network
 	FamilyManager.sound_emitted.connect(_on_sound_heard)
 	FamilyManager.toddler_chirped.connect(_on_toddler_chirped)
@@ -49,6 +52,11 @@ func _physics_process(delta: float) -> void:
 	# Decay alert level slowly when not chasing, searching, or suspicious
 	if current_state != State.CHASE and current_state != State.CAPTURE and current_state != State.SUSPICIOUS:
 		alert_level = max(0.0, alert_level - delta * 0.06)
+
+	var active_alert: float = alert_level
+	if current_state == State.CHASE or current_state == State.CAPTURE:
+		active_alert = 1.0
+	SoundManager.update_heartbeat(active_alert)
 
 	# Apply gravity if not on floor
 	if not is_on_floor():
@@ -84,6 +92,17 @@ func _physics_process(delta: float) -> void:
 
 	# Run physics movement
 	move_and_slide()
+
+	# Play footstep sounds as we walk
+	if is_on_floor() and velocity.length() > 0.1:
+		_footstep_accum += velocity.length() * delta
+		if _footstep_accum >= FOOTSTEP_DIST:
+			_footstep_accum = 0.0
+			var player_dist: float = 30.0
+			if is_instance_valid(FamilyManager.player):
+				player_dist = global_position.distance_to(FamilyManager.player.global_position)
+			var vol_db: float = clamp(lerp(0.0, -20.0, player_dist / 30.0), -24.0, 0.0)
+			SoundManager.play_footstep(global_position, vol_db)
 
 	# Lerp Z-axis based on state (in State.WANDER we lerp back to the target's background Z position)
 	var target_z := _target_pos.z if current_state == State.WANDER else peer_z

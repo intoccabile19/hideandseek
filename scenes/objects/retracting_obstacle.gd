@@ -24,4 +24,5 @@ func _physics_process(delta: float) -> void:
 
 func retract() -> void:
 	is_retracted = true
+	SoundManager.play_object_move(global_position)
 	print("[RetractingObstacle] Retraction initiated...")

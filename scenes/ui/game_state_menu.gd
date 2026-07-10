@@ -1,0 +1,73 @@
+extends CanvasLayer
+
+@onready var main_menu: Control = $MenuContainer/MainMenu
+@onready var game_over_screen: Control = $MenuContainer/GameOverScreen
+@onready var victory_screen: Control = $MenuContainer/VictoryScreen
+@onready var score_label: Label = $MenuContainer/VictoryScreen/VBox/ScoreLabel
+@onready var volume_slider: HSlider = $MenuContainer/MainMenu/VBox/VolumeSlider
+@onready var volume_label: Label = $MenuContainer/MainMenu/VBox/VolumeLabel
+
+func _ready() -> void:
+	add_to_group("game_state_menus")
+	# Enable processing during pause so menu buttons are clickable
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	if DisplayServer.get_name() != "headless":
+		show_main_menu()
+	else:
+		hide_all()
+	
+	# Listen to game over signal
+	FamilyManager.game_over.connect(show_game_over)
+	
+	# Connect buttons
+	$MenuContainer/MainMenu/VBox/StartButton.pressed.connect(_on_start_pressed)
+	$MenuContainer/MainMenu/VBox/QuitButton.pressed.connect(_on_quit_pressed)
+	$MenuContainer/GameOverScreen/VBox/RetryButton.pressed.connect(_on_retry_pressed)
+	$MenuContainer/VictoryScreen/VBox/RestartButton.pressed.connect(_on_retry_pressed)
+	
+	# Connect volume controls
+	if is_instance_valid(volume_slider):
+		volume_slider.value_changed.connect(_on_volume_changed)
+		_update_volume_label(volume_slider.value)
+
+func hide_all() -> void:
+	main_menu.visible = false
+	game_over_screen.visible = false
+	victory_screen.visible = false
+
+func show_main_menu() -> void:
+	hide_all()
+	main_menu.visible = true
+	get_tree().paused = true
+
+func show_game_over() -> void:
+	hide_all()
+	game_over_screen.visible = true
+	get_tree().paused = true
+
+func show_victory(saved_count: int) -> void:
+	hide_all()
+	victory_screen.visible = true
+	score_label.text = "FAMILY MEMBERS ESCAPED: %d" % saved_count
+	get_tree().paused = true
+
+func _on_start_pressed() -> void:
+	hide_all()
+	get_tree().paused = false
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+func _on_retry_pressed() -> void:
+	hide_all()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_volume_changed(value: float) -> void:
+	SoundManager.set_master_volume(value)
+	_update_volume_label(value)
+
+func _update_volume_label(value: float) -> void:
+	if is_instance_valid(volume_label):
+		volume_label.text = "VOLUME: %d%%" % int(value * 100.0)

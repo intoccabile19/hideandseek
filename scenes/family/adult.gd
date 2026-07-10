@@ -7,6 +7,7 @@ extends FamilyMember
 
 var _push_target_box: RigidBody3D = null
 var _push_dir: float = 0.0
+var _push_sound_timer: float = 0.0
 
 func _ready() -> void:
 	super._ready()
@@ -39,6 +40,12 @@ func _physics_process(delta: float) -> void:
 		var space_state := get_world_3d().direct_space_state
 		
 		# PUSHING PHASE: Push the box forward until unsafe
+		
+		# Play periodic scraping sounds while pushing
+		_push_sound_timer += delta
+		if _push_sound_timer >= 0.25:
+			_push_sound_timer = 0.0
+			SoundManager.play_scrape(global_position)
 		
 		# Apply gravity
 		if not is_on_floor():

@@ -37,4 +37,5 @@ func _physics_process(delta: float) -> void:
 
 func activate() -> void:
 	is_active = true
+	SoundManager.play_object_move(global_position)
 	print("[BridgeGate] Bridge raising initiated...")

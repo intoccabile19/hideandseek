@@ -10,6 +10,7 @@ extends FamilyMember
 var _curiosity_timer: float = 0.0
 var _chirp_timer: float = 0.0
 var _wander_target_x: float = 0.0
+var tension_label: Label3D = null
 
 func _ready() -> void:
 	super._ready()
@@ -18,11 +19,38 @@ func _ready() -> void:
 	spacing_steps = 8
 	_reset_curiosity_timer()
 	_reset_chirp_timer()
+	
+	# Programmatic floating tension indicator
+	tension_label = Label3D.new()
+	tension_label.billboard = 1 # Billboard enabled
+	tension_label.position = Vector3(0.0, 1.8, 0.0)
+	tension_label.pixel_size = 0.005
+	tension_label.font_size = 24
+	tension_label.outline_size = 6
+	add_child(tension_label)
 
 func get_size_class() -> String:
 	return "Small"
 
 func _physics_process(delta: float) -> void:
+	# Update floating tension indicator
+	if is_instance_valid(tension_label):
+		if current_state == State.FREEZE:
+			var pct: float = clamp((curiosity_cooldown - _curiosity_timer) / curiosity_cooldown, 0.0, 1.0)
+			var pct_int: int = int(pct * 100.0)
+			tension_label.text = "TENSION: %d%%" % pct_int
+			if pct < 0.5:
+				tension_label.modulate = Color(0.2, 0.8, 0.2)
+			elif pct < 0.8:
+				tension_label.modulate = Color(1.0, 0.8, 0.0)
+			else:
+				tension_label.modulate = Color(1.0, 0.0, 0.0)
+		elif current_state == State.WANDER:
+			tension_label.text = "WANDERING!"
+			tension_label.modulate = Color(1.0, 0.0, 0.0)
+		else:
+			tension_label.text = ""
+
 	# Handle curiosity timer when frozen/hiding.
 	if current_state == State.FREEZE or current_state == State.HIDING:
 		if current_state == State.HIDING and is_hidden:
@@ -108,6 +136,7 @@ func _start_wandering() -> void:
 
 func _chirp() -> void:
 	FamilyManager.emit_toddler_chirp(global_position, chirp_sound_radius)
+	SoundManager.play_chirp(global_position)
 	_reset_chirp_timer()
 
 ## Declares to the manager that this class is a Toddler.

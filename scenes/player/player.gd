@@ -42,9 +42,11 @@ func get_path_history() -> Array:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("command_follow"):
 		FamilyManager.broadcast_follow(global_position)
+		SoundManager.play_whistle()
 		_release_cover()
 	elif event.is_action_pressed("command_freeze"):
 		FamilyManager.broadcast_freeze(global_position)
+		SoundManager.play_whistle()
 	elif event.is_action_pressed("hide_action"):
 		if _assigned_cover:
 			_release_cover()

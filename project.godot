@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FamilyManager="*res://scenes/family/family_manager.gd"
+SoundManager="*res://scenes/audio/sound_manager.gd"
 
 [input]
 
