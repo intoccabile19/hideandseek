@@ -45,6 +45,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "START ESCORT"
 
+[node name="ContinueButton" type="Button" parent="MenuContainer/MainMenu/VBox"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CONTINUE MIGRATION"
+
 [node name="QuitButton" type="Button" parent="MenuContainer/MainMenu/VBox"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2

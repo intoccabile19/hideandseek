@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var score_label: Label = $MenuContainer/VictoryScreen/VBox/ScoreLabel
 @onready var volume_slider: HSlider = $MenuContainer/MainMenu/VBox/VolumeSlider
 @onready var volume_label: Label = $MenuContainer/MainMenu/VBox/VolumeLabel
+@onready var continue_button: Button = $MenuContainer/MainMenu/VBox/ContinueButton
 
 func _ready() -> void:
 	add_to_group("game_state_menus")
@@ -25,6 +26,10 @@ func _ready() -> void:
 	$MenuContainer/MainMenu/VBox/QuitButton.pressed.connect(_on_quit_pressed)
 	$MenuContainer/GameOverScreen/VBox/RetryButton.pressed.connect(_on_retry_pressed)
 	$MenuContainer/VictoryScreen/VBox/RestartButton.pressed.connect(_on_retry_pressed)
+	
+	if is_instance_valid(continue_button):
+		continue_button.pressed.connect(_on_continue_pressed)
+		continue_button.visible = SaveManager.has_save()
 	
 	# Connect volume controls
 	if is_instance_valid(volume_slider):
@@ -58,6 +63,13 @@ func _on_start_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_continue_pressed() -> void:
+	var level_path := SaveManager.load_level()
+	if level_path != "":
+		hide_all()
+		get_tree().paused = false
+		get_tree().change_scene_to_file(level_path)
 
 func _on_retry_pressed() -> void:
 	hide_all()

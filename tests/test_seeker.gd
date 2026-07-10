@@ -58,12 +58,19 @@ func test_seeker_spots_player() -> void:
 	FamilyManager.register_player(player)
 	
 	# Place seeker directly facing the player from background (looking towards +Z walkway)
-	seeker.global_position = Vector3(0.0, 0.0, -3.5)
-	seeker.mesh.rotation.y = PI
-	seeker.spotlight.rotation.y = PI
-	seeker.spotlight.rotation.x = deg_to_rad(-60.0)
+	seeker.global_position = Vector3(0.0, 0.0, -10.0)
+	seeker._gravity = 0.0
+	seeker.rotation.y = PI
+	seeker.spotlight.rotation.y = 0.0
+	seeker.spotlight.rotation.x = deg_to_rad(-65.0)
 	# Force sweep check
 	seeker._check_vision()
+	assert_true(seeker._spotted_target == player, "Player should be spotted by vision sweep")
+	
+	# Simulate physics process frames to accumulate alert level to max
+	for i in range(40):
+		seeker._physics_process(0.2)
+
 	
 	# Should transition to CHASE targeting the player
 	assert_true(seeker.current_state == Seeker.State.CHASE)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkrryq34lc1g3" path="res://scenes/seeker/seeker.gd" id="1_seeker"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
-radius = 0.4
+radius = 0.5673828
 height = 1.6
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]

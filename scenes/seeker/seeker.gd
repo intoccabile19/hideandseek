@@ -21,7 +21,7 @@ enum State {
 @export var vision_angle: float = 45.0 # Spotlight degrees
 @export var capture_time_limit: float = 2.0 # Warning window seconds before grab
 
-enum SeekerType { LAZY, NORMAL, AGGRESSIVE }
+enum SeekerType { LAZY, NORMAL, AGGRESSIVE, LAME }
 @export var seeker_type: SeekerType = SeekerType.NORMAL
 
 @export var alert_decay_rate: float = 0.06
@@ -37,6 +37,7 @@ var current_state: State = State.WANDER
 var _target_pos: Vector3 = Vector3.ZERO
 var _target_object: SearchableObject = null
 var _chase_target: Node3D = null
+var _spotted_target: Node3D = null
 var _last_seen_x: float = 0.0
 var _state_timer: float = 0.0
 var _chase_timer: float = 0.0
@@ -64,22 +65,29 @@ func _ready() -> void:
 			investigate_speed = 1.3
 			chase_speed = 2.5
 			alert_decay_rate = 0.15
-			search_wait_time = 1.0
+			search_wait_time = 3.5
 			alert_growth_multiplier = 0.5
 		SeekerType.NORMAL:
 			patrol_speed = 2.4
 			investigate_speed = 2.0
 			chase_speed = 3.4
 			alert_decay_rate = 0.06
-			search_wait_time = 1.8
+			search_wait_time = 4.5
 			alert_growth_multiplier = 1.0
 		SeekerType.AGGRESSIVE:
 			patrol_speed = 2.6
 			investigate_speed = 3.0
 			chase_speed = 4.5
 			alert_decay_rate = 0.03
-			search_wait_time = 2.5
+			search_wait_time = 5.5
 			alert_growth_multiplier = 1.5
+		SeekerType.LAME:
+			patrol_speed = 1.5
+			investigate_speed = 1.0
+			chase_speed = 1.0
+			alert_decay_rate = 1.0
+			search_wait_time = 1.0
+			alert_growth_multiplier = 0.0
 
 	# Subscribe to sound cues on the whisper network
 	FamilyManager.sound_emitted.connect(_on_sound_heard)
@@ -90,14 +98,52 @@ func _ready() -> void:
 		_vision_cone_mat = vision_cone.material_override as StandardMaterial3D
 
 func _physics_process(delta: float) -> void:
-	# Decay alert level slowly when not chasing, searching, or suspicious
-	if current_state != State.CHASE and current_state != State.CAPTURE and current_state != State.SUSPICIOUS:
-		alert_level = max(0.0, alert_level - delta * alert_decay_rate)
+	_check_vision()
+	
+	# Process gradual visual detection
+	if _spotted_target != null:
+		if current_state != State.CHASE and current_state != State.CAPTURE:
+			alert_level = min(alert_level + delta * alert_growth_multiplier * 0.15, 1.0)
+			_last_seen_x = _spotted_target.global_position.x
+			
+			# Look directly at the spotted target
+			var to_target := _spotted_target.global_position - global_position
+			var target_yaw := atan2(-to_target.x, -to_target.z)
+			rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+			spotlight.rotation.y = 0.0
+			
+			# Freeze movement while alert accumulates
+			velocity.x = 0.0
+			velocity.z = 0.0
+			
+			if alert_level >= 1.0:
+				_chase_target = _spotted_target
+				current_state = State.CHASE
+				_chase_timer = 0.0
+				_has_heard_anything = true
+				print("[Seeker %s] Giant SPOTTED target: %s! Warning flash started..." % [name, _chase_target.name])
+	else:
+		# Decay alert level slowly when not chasing, searching, or suspicious
+		if current_state != State.CHASE and current_state != State.CAPTURE and current_state != State.SUSPICIOUS:
+			var old_alert := alert_level
+			alert_level = max(0.0, alert_level - delta * alert_decay_rate)
+			
+			# If we had high alert and lost target, transition to SUSPICIOUS to search
+			if old_alert >= 0.4 and alert_level < 0.4:
+				_target_pos = Vector3(_last_seen_x, global_position.y, peer_z)
+				current_state = State.SUSPICIOUS
+				_state_timer = 0.0
+				_target_object = null
+				_faint_look_timer = 0.0
+				print("[Seeker %s] Target lost. Investigating last seen position X: %0.2f" % [name, _last_seen_x])
 
 	# Update vision cone color based on state
 	if is_instance_valid(_vision_cone_mat):
 		var target_color := Color(0.2, 0.8, 1.0, 0.04) # Normal blue
-		if current_state == State.CHASE or current_state == State.CAPTURE:
+		if seeker_type == SeekerType.LAME:
+			target_color = Color(0.3, 0.8, 0.3, 0.02) # Passive green
+			alert_level = 0.0
+		elif current_state == State.CHASE or current_state == State.CAPTURE:
 			target_color = Color(1.0, 0.1, 0.1, 0.12) # Alert red
 		elif current_state == State.SUSPICIOUS:
 			target_color = Color(1.0, 0.6, 0.1, 0.08) # Suspicious orange
@@ -119,7 +165,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 
 	# Process current state (freeze and look in place on Low Alert)
-	if _faint_look_timer > 0.0:
+	if _spotted_target != null:
+		# Gradually detecting: freeze velocity and do not run state movement
+		velocity.x = 0.0
+		velocity.z = 0.0
+	elif _faint_look_timer > 0.0:
 		_faint_look_timer -= delta
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -442,6 +492,9 @@ func _choose_next_wander() -> void:
 	print("[Seeker %s] Giant wandering in background (fallback) to 3D pos: %s" % [name, str(_target_pos)])
 
 func _check_vision() -> void:
+	_spotted_target = null
+	if seeker_type == SeekerType.LAME:
+		return
 	var space_state := get_world_3d().direct_space_state
 	var potential_targets: Array[Node3D] = []
 
@@ -481,16 +534,12 @@ func _check_vision() -> void:
 			query.exclude = exclude_list
 			var result: Dictionary = space_state.intersect_ray(query)
 			if result.is_empty():
-				# Spotted! Transition to CHASE state immediately (entering 2.0s warning window)
-				_chase_target = target
-				current_state = State.CHASE
-				_chase_timer = 0.0
-				_has_heard_anything = true
-				alert_level = 1.0 # Instant max alert upon visual sighting
-				print("[Seeker %s] Giant SPOTTED target: %s! Warning flash started..." % [name, target.name])
-				break
+				_spotted_target = target
+				return
 
 func _on_sound_heard(origin: Vector3, radius: float, is_shout: bool) -> void:
+	if seeker_type == SeekerType.LAME:
+		return
 	if current_state == State.CHASE or current_state == State.CAPTURE:
 		return
 	
