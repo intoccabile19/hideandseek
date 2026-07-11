@@ -12,6 +12,13 @@ var _chirp_timer: float = 0.0
 var _wander_target_x: float = 0.0
 var tension_label: Label3D = null
 
+# Phase 8 vent properties
+var _is_vent_crawling: bool = false
+var _vent_exit_node: Node3D = null
+var _vent_speed: float = 4.0
+var _saved_interact_target: Node3D = null
+var _saved_interact_dir: float = 0.0
+
 func _ready() -> void:
 	super._ready()
 	# Override base defaults for the toddler subclass
@@ -33,6 +40,37 @@ func get_size_class() -> String:
 	return "Small"
 
 func _physics_process(delta: float) -> void:
+	if _is_vent_crawling:
+		if is_instance_valid(_vent_exit_node):
+			global_position = global_position.move_toward(_vent_exit_node.global_position, _vent_speed * delta)
+			global_position.z = 0.0
+			if global_position.distance_to(_vent_exit_node.global_position) < 0.2:
+				global_position = _vent_exit_node.global_position
+				_is_vent_crawling = false
+				_vent_exit_node = null
+				
+				if is_instance_valid(_saved_interact_target):
+					var target := _saved_interact_target
+					var dir := _saved_interact_dir
+					_saved_interact_target = null
+					
+					if target.is_in_group("vents"):
+						is_hidden = true
+						current_state = State.FREEZE
+						print("[Toddler %s] Exited vent, stopping since destination target was a vent." % name)
+					else:
+						interact_with(target, dir)
+						print("[Toddler %s] Exited vent, resuming interaction with: %s" % [name, target.name])
+				else:
+					is_hidden = true
+					current_state = State.FREEZE
+					print("[Toddler %s] Exited vent crawlspace, remaining hidden and frozen" % name)
+		else:
+			_is_vent_crawling = false
+			is_hidden = true
+			current_state = State.FREEZE
+		return
+
 	# Update floating tension indicator
 	if is_instance_valid(tension_label):
 		if current_state == State.FREEZE:
@@ -113,7 +151,41 @@ func _physics_process(delta: float) -> void:
 		global_position.z = 0.0
 		
 	else:
-		# FOLLOW state: standard queue following handled by parent.
+		# Auto-Vent Routing for FOLLOW and INTERACTING states
+		var target_node: Node3D = null
+		if current_state == State.FOLLOW:
+			target_node = FamilyManager.player
+		elif current_state == State.INTERACTING:
+			target_node = _interact_target
+			
+		if is_instance_valid(target_node) and abs(target_node.global_position.y - global_position.y) > 2.0:
+			var vents := get_tree().get_nodes_in_group("vents")
+			var best_vent: Node3D = null
+			var min_dist: float = 99999.0
+			for vent in vents:
+				if vent is Node3D and abs(vent.global_position.y - global_position.y) < 1.5:
+					var dist := global_position.distance_to(vent.global_position)
+					if dist < min_dist:
+						min_dist = dist
+						best_vent = vent
+			if best_vent:
+				var to_vent_x := best_vent.global_position.x - global_position.x
+				if abs(to_vent_x) < 0.8:
+					# Trigger vent crawl
+					if best_vent.has_method("execute_interaction"):
+						if current_state == State.INTERACTING:
+							_saved_interact_target = _interact_target
+							_saved_interact_dir = _interact_dir
+						best_vent.call("execute_interaction", self)
+				else:
+					velocity.x = sign(to_vent_x) * speed
+					velocity.z = 0.0
+					if not is_on_floor():
+						velocity.y -= _gravity * delta
+					move_and_slide()
+					global_position.z = 0.0
+				return
+				
 		super._physics_process(delta)
 		_reset_curiosity_timer()
 
@@ -142,3 +214,12 @@ func _chirp() -> void:
 ## Declares to the manager that this class is a Toddler.
 func is_toddler_class() -> bool:
 	return true
+
+## Commanded to crawl through a vent pipeline
+func crawl_through_vent(entrance: Node3D, exit_node: Node3D) -> void:
+	_is_vent_crawling = true
+	_vent_exit_node = exit_node
+	current_state = State.FREEZE
+	is_hidden = true
+	global_position = entrance.global_position
+	print("[Toddler %s] Entered vent crawlspace at X: %0.2f" % [name, global_position.x])

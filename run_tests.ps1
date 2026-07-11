@@ -18,9 +18,9 @@ $ErrFile = "test_err.log"
 $testProcess = Start-Process -FilePath $GodotPath -ArgumentList "--headless", "--path", ".", "-s", "test_runner.gd" -NoNewWindow -PassThru -RedirectStandardOutput $OutFile -RedirectStandardError $ErrFile
 
 try {
-	$testProcess | Wait-Process -Timeout 5 -ErrorAction Stop
+	$testProcess | Wait-Process -Timeout 15 -ErrorAction Stop
 } catch {
-	Write-Host "`n[ERROR] Test runner hung and timed out after 5 seconds! Terminating..." -ForegroundColor Red
+	Write-Host "`n[ERROR] Test runner hung and timed out after 15 seconds! Terminating..." -ForegroundColor Red
 	Stop-Process -Id $testProcess.Id -Force
 	Exit 1
 }

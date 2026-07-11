@@ -30,6 +30,7 @@ var current_target_member: FamilyMember = null
 
 ## Reference to the player character in the scene.
 var player: Node3D = null
+var is_hacking: bool = false
 
 func register_player(p_player: Node3D) -> void:
 	player = p_player

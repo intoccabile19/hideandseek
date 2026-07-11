@@ -9,6 +9,12 @@ var _push_target_box: RigidBody3D = null
 var _push_dir: float = 0.0
 var _push_sound_timer: float = 0.0
 
+# Phase 8 bracing variables
+var _braced_gate: Node3D = null
+var _is_bracing: bool = false
+var _exiting_brace: bool = false
+var _exit_brace_target_x: float = 0.0
+
 func _ready() -> void:
 	super._ready()
 	# Override base defaults for the adult subclass
@@ -88,6 +94,37 @@ func _physics_process(delta: float) -> void:
 			_stop_pushing()
 			return
 	else:
+		if _exiting_brace:
+			velocity.z = 0.0
+			if not is_on_floor():
+				velocity.y -= _gravity * delta
+			
+			var to_target_x: float = _exit_brace_target_x - global_position.x
+			if abs(to_target_x) < 0.2:
+				velocity.x = 0.0
+				_exiting_brace = false
+				_is_bracing = false
+				if is_instance_valid(_braced_gate) and _braced_gate.has_method("set_gate_open"):
+					_braced_gate.call("set_gate_open", false)
+				_braced_gate = null
+				current_state = State.FOLLOW
+				print("[Adult %s] Exited brace, dropped gate closed." % name)
+			else:
+				velocity.x = sign(to_target_x) * speed
+				
+			move_and_slide()
+			global_position.z = 0.0
+			return
+			
+		if _is_bracing:
+			velocity.x = 0.0
+			velocity.z = 0.0
+			if not is_on_floor():
+				velocity.y -= _gravity * delta
+			move_and_slide()
+			global_position.z = 0.0
+			return
+			
 		# Standard follower movement (includes base INTERACTING state processing!)
 		super._physics_process(delta)
 
@@ -99,6 +136,63 @@ func _stop_pushing() -> void:
 
 func _on_command_broadcast(new_state_int: int) -> void:
 	super._on_command_broadcast(new_state_int)
+	
+	# Release any braced gate when rejoining queue (trigger exit walk-through only if player is on opposite side)
+	if _is_bracing and not _exiting_brace:
+		if is_instance_valid(_braced_gate):
+			var gate_x: float = _braced_gate.global_position.x
+			var adult_side: float = sign(global_position.x - gate_x)
+			var player_side: float = adult_side
+			if is_instance_valid(FamilyManager.player):
+				player_side = sign(FamilyManager.player.global_position.x - gate_x)
+			
+			if player_side != adult_side and player_side != 0.0 and adult_side != 0.0:
+				# Player is on opposite side, walk through the door to follow
+				_exit_brace_target_x = gate_x + player_side * 1.5
+				_exiting_brace = true
+				print("[Adult %s] Rejoining queue: Player on opposite side, walking through to X: %0.2f" % [name, _exit_brace_target_x])
+			else:
+				# Player on same side, just walk away directly
+				_is_bracing = false
+				if _braced_gate.has_method("set_gate_open"):
+					_braced_gate.call("set_gate_open", false)
+				_braced_gate = null
+				print("[Adult %s] Rejoining queue: Player on same side, released gate immediately." % name)
+		else:
+			_is_bracing = false
+		
 	# If player commanded us to follow/freeze, abort pushing
 	if current_state == State.FOLLOW or current_state == State.FREEZE:
 		_push_target_box = null
+
+## Commanded to brace a gate/shutter open
+func brace_gate(gate: Node3D) -> void:
+	_is_bracing = true
+	_braced_gate = gate
+	current_state = State.FREEZE
+	if gate.has_method("set_gate_open"):
+		gate.call("set_gate_open", true)
+	print("[Adult %s] Braced gate: %s open" % [name, gate.name])
+
+## Commanded to toss the Toddler onto a high platform
+func try_launch_toddler(launcher_point: Node3D) -> void:
+	var toddler: FamilyMember = FamilyManager.get_nearest_member_of_class("Toddler", global_position)
+	if toddler and global_position.distance_to(toddler.global_position) <= 4.0:
+		# Reposition toddler near hands
+		toddler.global_position.x = global_position.x
+		toddler.global_position.y = global_position.y + 1.2
+		toddler.global_position.z = 0.0
+		
+		# Trigger launch velocity arc in direction of target launcher point
+		var launch_dir: float = sign(launcher_point.global_position.x - global_position.x)
+		if launch_dir == 0.0:
+			launch_dir = 1.0
+			
+		toddler.current_state = State.LAUNCHED
+		toddler.velocity.y = 12.5
+		toddler.velocity.x = launch_dir * 4.0
+		toddler.velocity.z = 0.0
+		
+		print("[Adult %s] Tossed Toddler %s upwards (Y-vel=12.5, X-vel=%f)" % [name, toddler.name, launch_dir * 4.0])
+	else:
+		print("[Adult %s] Launch failed: Toddler not found within 4.0 meters" % name)

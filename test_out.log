@@ -6,7 +6,7 @@ Starting Godot Headless Test Runner...
 
 Running suite: test_classes.gd
 [Family Member Toddler] State transitioned to: FREEZE
-[Toddler Toddler] Wandering off to X: 2.7
+[Toddler Toddler] Wandering off to X: 3.5
   [PASS] test_toddler_properties_and_curiosity
   [PASS] test_elder_properties
   [PASS] test_adult_properties
@@ -38,7 +38,7 @@ Running suite: test_family.gd
 [Whisper Network] SHOUT! Sound radius: 15.000000 units (Farthest member is 10.0 units away)
   [PASS] test_whisper_sound_propagation
 [Family Member FamilyMember] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@8] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@9] State transitioned to: FREEZE
   [PASS] test_dynamic_queue_sorting
 
 Running suite: test_interaction.gd
@@ -48,31 +48,31 @@ Running suite: test_interaction.gd
   [PASS] test_family_manager_class_filtering
   [PASS] test_interactable_registration
 [Family Member Toddler] State transitioned to: FREEZE
-[Family Member Toddler] Ordered to interact with @Area3D@12 in direction 1.0
+[Family Member Toddler] Ordered to interact with @Area3D@13 in direction 1.0
   [PASS] test_family_member_interacts_upon_arrival
-[Terminal] Terminal activated by actor: @Area3D@13
+[Terminal] Terminal activated by actor: @Area3D@14
 [BridgeGate] Bridge raising initiated...
 [RetractingObstacle] Retraction initiated...
   [PASS] test_terminal_interaction_mechanics
 
 Running suite: test_phase_6_5.gd
   [PASS] test_targeting_controls_by_index
-[Family Member @CharacterBody3D@19] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@21] State transitioned to: FREEZE
 [Whisper Network] Whisper. Sound radius: 2.000000 units
 [Whisper Network] SHOUT! Sound radius: 15.000000 units (Farthest member is 10.0 units away)
   [PASS] test_sound_propagation_scaling
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (4.771159, 0.0, -12.89094)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-0.012408, 0.0, -6.51478)
   [PASS] test_seeker_role_initialization
-[Family Member @CharacterBody3D@22] State transitioned to: FREEZE
-[EscapeZone] @CharacterBody3D@21 entered escape zone. Total inside: 1
-[EscapeZone] Victory check: Waiting for @CharacterBody3D@22 to enter the escape zone.
-[EscapeZone] @CharacterBody3D@22 entered escape zone. Total inside: 2
+[Family Member @CharacterBody3D@25] State transitioned to: FREEZE
+[EscapeZone] @CharacterBody3D@23 entered escape zone. Total inside: 1
+[EscapeZone] Victory check: Waiting for @CharacterBody3D@25 to enter the escape zone.
+[EscapeZone] @CharacterBody3D@25 entered escape zone. Total inside: 2
 [EscapeZone] Escape complete! Victory triggered with 1 survivors.
   [PASS] test_escape_zone_multi_member_victory
 
 Running suite: test_phase_6_5_refinements.gd
-[Family Member @CharacterBody3D@24] State transitioned to: FREEZE
-[Family Member @CharacterBody3D@24] Heading to cover at X: 0.00
+[Family Member @CharacterBody3D@27] State transitioned to: FREEZE
+[Family Member @CharacterBody3D@27] Heading to cover at X: 0.00
 [Whisper Network] Whisper. Sound radius: 2.000000 units
 [Whisper Network] Whisper. Sound radius: 2.000000 units
   [PASS] test_redundant_hide_commands_ignored
@@ -84,8 +84,51 @@ Running suite: test_phase_7.gd
 [SaveManager] Game saved. Current level: res://scenes/levels/level_2_cargo_hold.tscn
 [EscapeZone] Level complete! Transitioning to: res://scenes/levels/level_2_cargo_hold.tscn
   [PASS] test_escape_zone_triggers_autosave
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (9.387375, 0.0, -14.27098)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-3.993055, 0.0, -13.67637)
   [PASS] test_lame_seeker_properties
+
+Running suite: test_phase_8.gd
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (0.931056, 0.0, -7.992374)
+  [PASS] test_focus_slows_time
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-4.858716, 0.0, -11.71881)
+[Player] Threw Pebble distraction in direction: -1.0
+  [PASS] test_pebble_throw_directional
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (10.21208, 0.0, -11.81975)
+  [PASS] test_player_ladder_climbing
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (10.78316, 0.0, -14.14419)
+[Adult Adult] Tossed Toddler Toddler upwards (Y-vel=12.5, X-vel=4.000000)
+  [PASS] test_adult_toddler_launch
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-13.24526, 0.0, -11.2878)
+[Elder] Console hack minigame started.
+[HackConsole @Area3D@45] Hack completed successfully!
+[Seeker Seeker] Giant robot put to sleep for 8.0 seconds.
+  [PASS] test_elder_hacking_sleep_overload
+[Family Member Adult] State transitioned to: FREEZE
+[Family Member Toddler] State transitioned to: FREEZE
+[Family Member Elder] State transitioned to: FREEZE
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (9.578255, 0.0, -7.572012)
+[PressurePlate ] Ignored toddler Toddler (too light!)
+[Test Infiltrator] After toddler, overlapping size: 0
+[PressurePlate ] Emitting plate_pressed(true)
+[Test Phase 8] _on_plate_pressed callback caught: true
+[Test Infiltrator] After adult, overlapping size: 1
+[Test Infiltrator] signal_triggered status: true
+  [PASS] test_toddler_weightless_infiltrator
 
 Running suite: test_player.gd
   [PASS] test_player_scene_loads
@@ -93,56 +136,15 @@ Running suite: test_player.gd
   [PASS] test_player_z_axis_lock
 
 Running suite: test_seeker.gd
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (14.71283, 0.0, -14.95298)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-15.61526, 0.0, -10.67665)
   [PASS] test_seeker_wander_flow
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (1.440195, 0.0, -6.886532)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-19.58891, 0.0, -14.3042)
 [Seeker Seeker] Giant heard noise at X: 4.00 on High Alert (0.60). Investigating opening...
   [PASS] test_seeker_hears_sound
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-13.7246, 0.0, -10.80471)
-MANUAL CHECK: angle = 32.2025934081826 forward = (0.0, -0.866025, 0.5) dir = (-0.0, -0.999261, -0.038433) spotted = <null>
-COORDINATES: player = (0.0, 0.0, 0.0) seeker = (0.0, 0.0, -3.5) spotlight = (0.0, 14.0, 0.5)
-[TEST_FRAME 0] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 1] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 2] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 3] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 4] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 5] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 6] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 7] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 8] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 9] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 10] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 11] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 12] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 13] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 14] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 15] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 16] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 17] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 18] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 19] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 20] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 21] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 22] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 23] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 24] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 25] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 26] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 27] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 28] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 29] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 30] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 31] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 32] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 33] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 34] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 35] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 36] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 37] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 38] alert = 0.0, spotted = <null>, state = 0
-[TEST_FRAME 39] alert = 0.0, spotted = <null>, state = 0
-  [FAIL] test_seeker_spots_player: Expected true, but got false. 
-[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-8.56957, 0.0, -8.311873)
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-0.062068, 0.0, -11.43977)
+[Seeker Seeker] Giant SPOTTED target: Player! Warning flash started...
+  [PASS] test_seeker_spots_player
+[Seeker Seeker] Giant wandering in background (fallback) to 3D pos: (-8.598102, 0.0, -14.82219)
 [Family Member Toddler] State transitioned to: FREEZE
   [PASS] test_seeker_ignores_hidden_actor
 
@@ -150,23 +152,21 @@ Running suite: test_ui_audio.gd
   [PASS] test_sound_manager_methods
   [PASS] test_hud_overlay_updates
   [PASS] test_game_state_menu_behavior
-[EscapeZone] @CharacterBody3D@36 entered escape zone. Total inside: 1
+[EscapeZone] @CharacterBody3D@64 entered escape zone. Total inside: 1
 [EscapeZone] Escape complete! Victory triggered with 0 survivors.
   [PASS] test_escape_zone_victory_trigger
 
 =========================================
 Test Summary:
-Passed: 34
-Failed: 1
+Passed: 41
+Failed: 0
 =========================================
-
-Failed Tests Details:
-  - test_seeker.gd -> test_seeker_spots_player: Expected true, but got false. 
+All tests completed successfully!
 [Family Member Toddler] State transitioned to: FREEZE
 [Family Member Toddler] Heading to cover at X: -14.14
 [Family Member Elder] State transitioned to: FREEZE
 [Family Member Elder] Heading to cover at X: -17.05
 [Family Member Adult] State transitioned to: FREEZE
 [Family Member Adult] Heading to cover at X: -15.65
-[Seeker Seeker] Heading to search background object: SearchableBox1 at 3D pos: (-5.0, -8.5, -33.0)
+[Seeker Seeker] Heading to search background object: SearchableBox2 at 3D pos: (2.0, -8.5, -12.0)
 [Whisper Network] SHOUT! Sound radius: 15.000000 units (Farthest member is 6.1 units away)

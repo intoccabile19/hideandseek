@@ -7,7 +7,8 @@ enum State {
 	SCANNING,
 	SUSPICIOUS,
 	CHASE,
-	CAPTURE
+	CAPTURE,
+	SLEEP
 }
 
 @export_group("Seeker Settings")
@@ -41,6 +42,7 @@ var _spotted_target: Node3D = null
 var _last_seen_x: float = 0.0
 var _state_timer: float = 0.0
 var _chase_timer: float = 0.0
+var _sleep_timer: float = 0.0
 var _gravity: float = 15.0
 var _has_heard_anything: bool = false
 
@@ -56,6 +58,7 @@ var _vision_cone_mat: StandardMaterial3D = null
 
 func _ready() -> void:
 	add_to_group("seeker")
+	add_to_group("seekers")
 	_target_pos = global_position
 	
 	# Apply archetype settings
@@ -98,6 +101,32 @@ func _ready() -> void:
 		_vision_cone_mat = vision_cone.material_override as StandardMaterial3D
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.SLEEP:
+		_sleep_timer -= delta
+		velocity = Vector3.ZERO
+		if not is_on_floor():
+			velocity.y -= _gravity * delta
+		move_and_slide()
+		
+		# Dim/purple vision cone albedo in sleep, tilt spotlight straight down
+		if is_instance_valid(spotlight):
+			spotlight.rotation.x = lerp(spotlight.rotation.x, deg_to_rad(-90.0), delta * 5.0)
+			spotlight.rotation.y = lerp(spotlight.rotation.y, 0.0, delta * 5.0)
+		if is_instance_valid(_vision_cone_mat):
+			_vision_cone_mat.albedo_color = _vision_cone_mat.albedo_color.lerp(Color(0.5, 0.0, 0.8, 0.01), delta * 2.0)
+			
+		if _sleep_timer <= 0.0:
+			# Wake up! Restore spotlight and vision cone
+			if is_instance_valid(spotlight):
+				spotlight.light_energy = 16.0
+				spotlight.light_color = Color(1.0, 1.0, 0.8)
+				spotlight.rotation.x = deg_to_rad(-65.0)
+				spotlight.rotation.y = 0.0
+			if is_instance_valid(_vision_cone_mat):
+				_vision_cone_mat.albedo_color = Color(1.0, 1.0, 1.0, 0.15)
+			_choose_next_wander()
+		return
+
 	_check_vision()
 	
 	# Process gradual visual detection
@@ -568,3 +597,19 @@ func _on_sound_heard(origin: Vector3, radius: float, is_shout: bool) -> void:
 
 func _on_toddler_chirped(origin: Vector3, radius: float) -> void:
 	_on_sound_heard(origin, radius, false)
+
+## Puts the Seeker robot to sleep/stuns them temporarily
+func put_to_sleep(duration: float) -> void:
+	current_state = State.SLEEP
+	_sleep_timer = duration
+	_spotted_target = null
+	_chase_target = null
+	velocity = Vector3.ZERO
+	alert_level = 0.0
+	
+	# Dim spotlight and change color to sleep purple, point straight down
+	if is_instance_valid(spotlight):
+		spotlight.light_energy = 2.0
+		spotlight.light_color = Color(0.5, 0.0, 0.8)
+		spotlight.rotation.x = deg_to_rad(-90.0)
+	print("[Seeker %s] Giant robot put to sleep for %0.1f seconds." % [name, duration])

@@ -18,32 +18,43 @@ ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:642)
    GDScript backtrace (most recent call first):
-       [0] before_each (res://tests/test_seeker.gd:28)
-       [1] _run_tests (res://test_runner.gd:70)
+       [0] _throw_pebble (res://scenes/player/player.gd:286)
+       [1] test_pebble_throw_directional (res://tests/test_phase_8.gd:68)
+       [2] _run_tests (res://test_runner.gd:73)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:642)
    GDScript backtrace (most recent call first):
-       [0] before_each (res://tests/test_seeker.gd:28)
-       [1] _run_tests (res://test_runner.gd:70)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:642)
-   GDScript backtrace (most recent call first):
-       [0] before_each (res://tests/test_seeker.gd:28)
-       [1] _run_tests (res://test_runner.gd:70)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:642)
-   GDScript backtrace (most recent call first):
-       [0] test_seeker_spots_player (res://tests/test_seeker.gd:56)
+       [0] test_adult_toddler_launch (res://tests/test_phase_8.gd:109)
        [1] _run_tests (res://test_runner.gd:73)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:642)
    GDScript backtrace (most recent call first):
-       [0] before_each (res://tests/test_seeker.gd:28)
+       [0] before_each (res://tests/test_seeker.gd:30)
        [1] _run_tests (res://test_runner.gd:70)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:642)
    GDScript backtrace (most recent call first):
-       [0] test_seeker_ignores_hidden_actor (res://tests/test_seeker.gd:88)
+       [0] before_each (res://tests/test_seeker.gd:30)
+       [1] _run_tests (res://test_runner.gd:70)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:642)
+   GDScript backtrace (most recent call first):
+       [0] before_each (res://tests/test_seeker.gd:30)
+       [1] _run_tests (res://test_runner.gd:70)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:642)
+   GDScript backtrace (most recent call first):
+       [0] test_seeker_spots_player (res://tests/test_seeker.gd:61)
+       [1] _run_tests (res://test_runner.gd:73)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:642)
+   GDScript backtrace (most recent call first):
+       [0] before_each (res://tests/test_seeker.gd:30)
+       [1] _run_tests (res://test_runner.gd:70)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:642)
+   GDScript backtrace (most recent call first):
+       [0] test_seeker_ignores_hidden_actor (res://tests/test_seeker.gd:87)
        [1] _run_tests (res://test_runner.gd:73)
 WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
    at: cleanup (core/object/object.cpp:2663)

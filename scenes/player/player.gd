@@ -24,11 +24,43 @@ var is_hidden: bool = false
 var _assigned_cover: CoverZone = null
 var _cover_target_x: float = 0.0
 
+# Phase 8 properties
+var _climbable_areas: Array[Area3D] = []
+var _is_climbing: bool = false
+var facing_direction: float = 1.0
+var _original_collision_mask: int = 1
+var _climbing_direction: float = 0.0
+var _climb_target_y: float = 0.0
+
 func _ready() -> void:
 	# Register player with family manager autoload.
 	FamilyManager.register_player(self)
+	_original_collision_mask = collision_mask
 	# Push initial position into path history.
 	_path_history.push_front({"position": global_position, "is_on_floor": is_on_floor()})
+
+	# Programmatic ladder/rope detector Area3D
+	var detector := Area3D.new()
+	detector.name = "ClimbDetector"
+	detector.collision_layer = 0
+	detector.collision_mask = 0xFFFFFFFF # Match all collision areas
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(0.6, 1.8, 0.6)
+	shape.shape = box
+	detector.add_child(shape)
+	add_child(detector)
+	
+	detector.area_entered.connect(func(area: Area3D):
+		if area.is_in_group("ladders") or area.is_in_group("ropes"):
+			_climbable_areas.append(area)
+	)
+	detector.area_exited.connect(func(area: Area3D):
+		if area in _climbable_areas:
+			_climbable_areas.erase(area)
+			if _climbable_areas.is_empty():
+				_set_climbing(false)
+	)
 
 func _exit_tree() -> void:
 	# Clean up player registration.
@@ -53,6 +85,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			_try_hide_in_current_cover()
 	elif event.is_action_pressed("interact"):
+		if FamilyManager.is_hacking:
+			return
 		_try_interact()
 	elif event.is_action_pressed("target_all"):
 		FamilyManager.select_target_by_index(-1)
@@ -62,18 +96,51 @@ func _unhandled_input(event: InputEvent) -> void:
 		FamilyManager.select_target_by_index(1)
 	elif event.is_action_pressed("target_member_3"):
 		FamilyManager.select_target_by_index(2)
+	elif event.is_action_pressed("throw_pebble"):
+		_throw_pebble()
 
 func _physics_process(delta: float) -> void:
-	# Apply gravity if not grounded.
-	if not is_on_floor():
-		velocity.y -= _gravity * delta
+	# Handle Slow-Mo Focus
+	if Input.is_action_pressed("focus_action"):
+		Engine.time_scale = 0.25
+	else:
+		Engine.time_scale = 1.0
 
 	# Read input signals
 	var input_axis: float = Input.get_axis("move_left", "move_right")
 	var jump_pressed := Input.is_action_just_pressed("jump")
+	var v_axis := Input.get_axis("move_up", "move_down")
+
+	# Track horizontal facing direction
+	if input_axis > 0.1:
+		facing_direction = 1.0
+	elif input_axis < -0.1:
+		facing_direction = -1.0
+
+	# Handle ladder entry criteria
+	if not _is_climbing:
+		if not _climbable_areas.is_empty():
+			var ladder := _climbable_areas[0]
+			var shape: BoxShape3D = ladder.get_node("CollisionShape3D").shape
+			var half_height := shape.size.y * ladder.scale.y * 0.5
+			var ladder_top_y := ladder.global_position.y + half_height
+			var ladder_bottom_y := ladder.global_position.y - half_height
+			
+			if Input.is_action_pressed("move_up") and global_position.y <= ladder.global_position.y + 0.1:
+				_climbing_direction = 1.0
+				_climb_target_y = ladder_top_y + 0.05
+				_set_climbing(true)
+			elif Input.is_action_pressed("move_down") and global_position.y >= ladder.global_position.y - 0.1:
+				_climbing_direction = -1.0
+				_climb_target_y = ladder_bottom_y - 0.2
+				_set_climbing(true)
+
+	# Apply gravity if not grounded or climbing.
+	if not is_on_floor() and not _is_climbing:
+		velocity.y -= _gravity * delta
 
 	# Cancel cover state if player attempts manual movement override
-	if (input_axis != 0.0 or jump_pressed) and _assigned_cover:
+	if (input_axis != 0.0 or jump_pressed or abs(v_axis) > 0.1) and _assigned_cover:
 		_release_cover()
 
 	# Process movement controls
@@ -88,6 +155,28 @@ func _physics_process(delta: float) -> void:
 		global_position.z = lerp(global_position.z, target_z, delta * 12.0)
 		if abs(global_position.z - target_z) < 0.01:
 			global_position.z = target_z
+	elif _is_climbing:
+		# Process climbing movement automatically to destination Y
+		global_position.y = move_toward(global_position.y, _climb_target_y, speed * 1.1 * delta)
+		
+		# Lock Z and X coordinate alignment with the ladder
+		if not _climbable_areas.is_empty():
+			var ladder := _climbable_areas[0]
+			global_position.x = ladder.global_position.x
+			global_position.z = ladder.global_position.z
+			
+		# Check arrival
+		if abs(global_position.y - _climb_target_y) < 0.15:
+			global_position.y = _climb_target_y
+			_set_climbing(false)
+			return
+			
+		# Allow jumping off mid-climb
+		if jump_pressed:
+			_set_climbing(false)
+			velocity.y = jump_velocity
+			velocity.x = input_axis * speed
+			return
 	else:
 		# Manual navigation controls
 		if jump_pressed and is_on_floor():
@@ -189,3 +278,38 @@ func _find_nearest_interactable() -> Interactable:
 				nearest = node
 				
 	return nearest
+
+## Instantiates and launches a pebble projectile in the current facing direction
+func _throw_pebble() -> void:
+	var pebble_script := load("res://scenes/objects/pebble.gd")
+	var pebble = pebble_script.new()
+	pebble.global_position = global_position + Vector3(facing_direction * 0.6, 1.2, 0.0)
+	Engine.get_main_loop().root.add_child(pebble)
+	
+	# Vector points slightly upwards to form a natural arc
+	var launch_vector := Vector3(facing_direction, 0.6, 0.0).normalized()
+	pebble.launch(launch_vector)
+	print("[Player] Threw Pebble distraction in direction: %0.1f" % facing_direction)
+
+func _set_climbing(climbing: bool) -> void:
+	if _is_climbing == climbing:
+		return
+	_is_climbing = climbing
+	if _is_climbing:
+		_release_cover()
+		# Disable Layer 1 collision so we can climb through platforms
+		collision_mask &= ~1
+	else:
+		# Restore original collision mask
+		collision_mask = _original_collision_mask
+		# Snap to floor if we climbed off the top of the ladder
+		var space_state := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(
+			global_position + Vector3(0.0, 0.5, 0.0),
+			global_position + Vector3(0.0, -1.5, 0.0),
+			1
+		)
+		var result := space_state.intersect_ray(query)
+		if not result.is_empty():
+			global_position.y = result.position.y + 0.05
+

@@ -14,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://b00ye2t2s8s73" path="res://scenes/ui/hud_overlay.tscn" id="12_ho"]
 [ext_resource type="PackedScene" uid="uid://cx6gwh8s72q73" path="res://scenes/ui/game_state_menu.tscn" id="13_gm"]
 [ext_resource type="Script" uid="uid://dnhaajbjccd0h" path="res://scenes/objects/escape_zone.gd" id="14_ez"]
+[ext_resource type="Script" uid="uid://diyaw05efiylm" path="res://scenes/objects/hack_console.gd" id="15_hc"]
+[ext_resource type="Script" uid="uid://cjxlegtj516vg" path="res://scenes/objects/ledge_launcher.gd" id="16_ll"]
+[ext_resource type="Script" uid="uid://77418ikqy2yq" path="res://scenes/objects/vent_entrance.gd" id="17_ve"]
+[ext_resource type="Script" uid="uid://18sckg1dk1ay" path="res://scenes/objects/pressure_plate.gd" id="18_pp"]
+[ext_resource type="Script" uid="uid://df3ot0elbgcui" path="res://scenes/objects/brace_gate.gd" id="19_bg"]
+[ext_resource type="Script" uid="uid://d1hm0u8dix23" path="res://scenes/objects/elevator.gd" id="20_el"]
+[ext_resource type="Script" uid="uid://c0x35gthy5cne" path="res://scenes/objects/elevator_button.gd" id="21_eb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 
@@ -79,6 +86,24 @@ size = Vector3(3, 2, 0.8)
 size = Vector3(3, 2, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_so"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floorupper"]
+size = Vector3(12, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_floorupper"]
+size = Vector3(12, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_elevator"]
+size = Vector3(3, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_elevator"]
+size = Vector3(3, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plate"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_plate"]
+size = Vector3(1.5, 0.1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_escape"]
 size = Vector3(10, 4, 4)
@@ -265,7 +290,7 @@ shape = SubResource("BoxShape3D_czmedium")
 mesh = SubResource("BoxMesh_czmedium")
 
 [node name="PushableBox" parent="." unique_id=882162219 instance=ExtResource("5_b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.151518, 0.6, 0)
 
 [node name="Player" parent="." unique_id=1294226849 instance=ExtResource("1_p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -308,11 +333,213 @@ mesh = SubResource("BoxMesh_so")
 
 [node name="Seeker" parent="." unique_id=1822781423 instance=ExtResource("10_sk")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.783384, -11, -33.94818)
-seeker_type = 0
+seeker_type = 3
 
 [node name="HUDOverlay" parent="." unique_id=2093858191 instance=ExtResource("12_ho")]
 
 [node name="GameStateMenu" parent="." unique_id=1815206217 instance=ExtResource("13_gm")]
+
+[node name="FloorUpper" type="StaticBody3D" parent="." unique_id=894678665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorUpper" unique_id=107648482]
+shape = SubResource("BoxShape3D_floorupper")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloorUpper" unique_id=2084726589]
+mesh = SubResource("BoxMesh_floorupper")
+
+[node name="TestLadder" type="Area3D" parent="." unique_id=1869358871 groups=["ladders"]]
+transform = Transform3D(1, 0, 0, 0, 2.75, 0, 0, 0, 1, -10, 2.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestLadder" unique_id=150937908]
+shape = SubResource("BoxShape3D_czsmall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestLadder" unique_id=1698474810]
+mesh = SubResource("BoxMesh_czsmall")
+
+[node name="Label" type="Label3D" parent="TestLadder" unique_id=1549419456]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "LADDER: Press Up/Down to Climb"
+font_size = 36
+
+[node name="TestHackConsole" type="Area3D" parent="." unique_id=2062495711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5, 0)
+script = ExtResource("15_hc")
+is_sleep_overload = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHackConsole" unique_id=465572962]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestHackConsole" unique_id=464390290]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestHackConsole" unique_id=2002280239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "ELDER HACK CONSOLE: Sleep Seeker"
+font_size = 36
+
+[node name="TestLedgeLauncher" type="Area3D" parent="." unique_id=130192118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
+script = ExtResource("16_ll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestLedgeLauncher" unique_id=1143426954]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestLedgeLauncher" unique_id=884086833]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestLedgeLauncher" unique_id=1999007290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "LAUNCHER: Adult tosses Toddler to vent"
+font_size = 36
+
+[node name="TestVentEntrance" type="Area3D" parent="." unique_id=48195622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
+script = ExtResource("17_ve")
+connected_exit_path = NodePath("../TestVentExit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestVentEntrance" unique_id=2008116032]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestVentEntrance" unique_id=2092226297]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestVentEntrance" unique_id=346814809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "VENT: Toddler crawls to upper level"
+font_size = 36
+
+[node name="TestVentExit" type="Node3D" parent="." unique_id=580560899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 0)
+
+[node name="TestVentEntranceTop" type="Area3D" parent="." unique_id=2067875373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 0)
+script = ExtResource("17_ve")
+connected_exit_path = NodePath("../TestVentExitBottom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestVentEntranceTop" unique_id=1091362330]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestVentEntranceTop" unique_id=1196842226]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestVentEntranceTop" unique_id=1348511938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "VENT: Toddler crawls to ground floor"
+font_size = 36
+
+[node name="TestVentExitBottom" type="Node3D" parent="." unique_id=1357490866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
+
+[node name="TestElevator" type="AnimatableBody3D" parent="." unique_id=319712789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.5718393, 0)
+script = ExtResource("20_el")
+travel_speed = 2.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestElevator" unique_id=1457267008]
+shape = SubResource("BoxShape3D_elevator")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestElevator" unique_id=62931761]
+mesh = SubResource("BoxMesh_elevator")
+
+[node name="TestElevatorButton" type="Area3D" parent="." unique_id=1666862135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5.5, 0)
+script = ExtResource("21_eb")
+elevator_path = NodePath("../TestElevator")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestElevatorButton" unique_id=107114379]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestElevatorButton" unique_id=1925363854]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestElevatorButton" unique_id=104695225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "BUTTON: Toggle Elevator up/down"
+font_size = 36
+
+[node name="TestPressurePlate" type="Area3D" parent="." unique_id=2048097348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.05, 0)
+script = ExtResource("18_pp")
+target_gate_path = NodePath("../TestPlateDoor")
+requires_heavy_weight = true
+invert_trigger = true
+linked_terminal_path = NodePath("../TestPlateTerminal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPressurePlate" unique_id=1767960564]
+shape = SubResource("BoxShape3D_plate")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestPressurePlate" unique_id=1782977742]
+mesh = SubResource("BoxMesh_plate")
+
+[node name="Label" type="Label3D" parent="TestPressurePlate" unique_id=1516809146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "HEAVY PLATE: Closes door at X = 5 when stepped on"
+font_size = 36
+
+[node name="TestPlateDoor" type="Area3D" parent="." unique_id=1126341873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+script = ExtResource("19_bg")
+wall_body_path = NodePath("../PlateDoorWall")
+
+[node name="PlateDoorWall" type="StaticBody3D" parent="." unique_id=1039946665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlateDoorWall" unique_id=1380564706]
+shape = SubResource("BoxShape3D_box1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlateDoorWall" unique_id=1736067568]
+mesh = SubResource("BoxMesh_box1")
+
+[node name="TestPlateTerminal" type="Area3D" parent="." unique_id=953516253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.566058, 0.5, 0)
+script = ExtResource("7_ti")
+target_plate = NodePath("../TestPressurePlate")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlateTerminal" unique_id=323314563]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlateTerminal" unique_id=290349586]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestPlateTerminal" unique_id=813789756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "TERMINAL: Toddler disables pressure plate from here"
+font_size = 36
+
+[node name="TestBraceGate" type="Area3D" parent="." unique_id=1768025892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.557871, 0.5, 0)
+script = ExtResource("19_bg")
+wall_body_path = NodePath("../BraceGateWall")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestBraceGate" unique_id=1327828983]
+shape = SubResource("SphereShape3D_terminal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestBraceGate" unique_id=924621883]
+mesh = SubResource("BoxMesh_terminal")
+
+[node name="Label" type="Label3D" parent="TestBraceGate" unique_id=713409840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+text = "BRACE GATE: Adult holds wall open"
+font_size = 36
+
+[node name="BraceGateWall" type="StaticBody3D" parent="." unique_id=70591643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.270689, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BraceGateWall" unique_id=1882335654]
+shape = SubResource("BoxShape3D_box1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BraceGateWall" unique_id=902801540]
+mesh = SubResource("BoxMesh_box1")
 
 [node name="EscapeZone" type="Area3D" parent="." unique_id=1572191180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)

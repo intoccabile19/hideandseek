@@ -2,7 +2,7 @@ class_name FamilyMember
 extends CharacterBody3D
 
 ## States mapping to Follow, Freeze, Hidden, Wandering, Pushing, and Interacting modes.
-enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING }
+enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING, LAUNCHED }
 
 @export_group("Escort Settings")
 ## The horizontal movement speed of this family member.
@@ -50,6 +50,16 @@ func _exit_tree() -> void:
 	FamilyManager.unregister_member(self)
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.LAUNCHED:
+		if not is_on_floor():
+			velocity.y -= _gravity * delta
+		else:
+			velocity = Vector3.ZERO
+			current_state = State.FOLLOW
+		move_and_slide()
+		global_position.z = 0.0
+		return
+
 	if current_state == State.INTERACTING:
 		_process_interacting(delta)
 		return
@@ -443,7 +453,7 @@ func _execute_interaction() -> void:
 	if is_instance_valid(target):
 		target.execute_interaction(self)
 		
-	# Only return to follow if executing didn't transition us to a custom state (e.g. PUSHING)
-	if current_state == State.INTERACTING:
+	# Only return to follow if executing didn't transition us to a custom state or redirect us
+	if current_state == State.INTERACTING and _interact_target == target:
 		current_state = State.FOLLOW
 		_interact_target = null
