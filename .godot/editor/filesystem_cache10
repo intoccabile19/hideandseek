@@ -5,12 +5,12 @@ check_out.log::TextFile::-1::1783744905::0::1::::<><><>0<>0<><>::
 check_out.txt::TextFile::-1::1783475027::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::1368033987265038885::1783493222::1783493261::1::::<><><>0<>0<>b0c21f8386f5811e9ff8f21867588191<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 run_out.log::TextFile::-1::1783750383::0::1::::<><><>0<>0<><>::
-test_err.log::TextFile::-1::1783750435::0::1::::<><><>0<>0<><>::
-test_out.log::TextFile::-1::1783750435::0::1::::<><><>0<>0<><>::
+test_err.log::TextFile::-1::1783854036::0::1::::<><><>0<>0<><>::
+test_out.log::TextFile::-1::1783854036::0::1::::<><><>0<>0<><>::
 test_run.log::TextFile::-1::1783667497::0::1::::<><><>0<>0<><>::
 test_runner.gd::GDScript::2666975341072899036::1783493022::0::1::::<>SceneTree<><>0<>0<><>::
 ::res://assets/::1783837135
-::res://assets/animations/::1783835521
+::res://assets/animations/::1783864185
 ::res://assets/animations/Family/::1783836732
 ::res://assets/animations/Family/interact/::1783851627
 Button Pushing.fbx::PackedScene::3701390031911197730::1783836748::1783836749::1::::<><><>0<>0<>1e7387399c0dfe0524729da80122f914<>res://.godot/imported/Button Pushing.fbx-d9811bb5209330665e62f42c0c2fa41f.scn::
@@ -51,9 +51,34 @@ Player Idle.fbx::PackedScene::4840997718432106771::1783835240::1783836725::1::::
 player_idle.tres::Animation::6112155974484998071::1783836725::0::1::::<><><>0<>0<><>::
 Standard Run.fbx::PackedScene::1006530782181043702::1783836763::1783837014::1::::<><><>0<>0<>a8f4c2ca2f49ad698169f1f90ae6dc19<>res://.godot/imported/Standard Run.fbx-07fc41739352dd0b5ea993c67e9eb385.scn::uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres
 standard_run.tres::Animation::2135725449788847307::1783837014::0::1::::<><><>0<>0<><>::
-::res://assets/characters/::1783851352
+::res://assets/animations/robots/::1783864709
+Cross Punch (1).fbx::PackedScene::1840637458715329804::1783864198::1783864467::1::::<><><>0<>0<>29a0b778ed35ae2c7715ec9e0788af48<>res://.godot/imported/Cross Punch (1).fbx-e1e94d5a7475b64f337c8b267b89607c.scn::uid://cle4pjxwfhqyu::::res://assets/animations/robots/robot_grab_2.tres
+Cross Punch.fbx::PackedScene::5796404172090431407::1783864198::1783864447::1::::<><><>0<>0<>ae1523d0965e7f9aebc93b69bd54fb3e<>res://.godot/imported/Cross Punch.fbx-331963fb24871dfae505b98a1ca34271.scn::uid://2n1agpnok1cx::::res://assets/animations/robots/robot_grab_1.tres
+frantic look.fbx::PackedScene::4789990817671718170::1783864198::1783864364::1::::<><><>0<>0<>a4c56b607ff5997eac3da2833b3f2250<>res://.godot/imported/frantic look.fbx-800b6be14e494a03b6364e42441ac523.scn::uid://dm0of4tn1sdc1::::res://assets/animations/robots/robot_alert_look.tres
+Kiss.fbx::PackedScene::845204936057412107::1783864198::1783864395::1::::<><><>0<>0<>0b81a86f2eb79688feed4ec440ddb197<>res://.godot/imported/Kiss.fbx-309fc52db4034fbdfa413325029c939e.scn::uid://e6r4iswtmhk4::::res://assets/animations/robots/robot_look_high.tres
+Look Around.fbx::PackedScene::2078881032782691982::1783864198::1783864582::1::::<><><>0<>0<>1e42eb058e5ed75520b55d44a5de594d<>res://.godot/imported/Look Around.fbx-907c588fe240b9367e285e3f51c7988a.scn::uid://cqcd3rtl2jb08::::res://assets/animations/robots/robot_look_1.tres
+Looking (1).fbx::PackedScene::2174897210070706547::1783864198::1783864199::1::::<><><>0<>0<>db8ed83f9ca8bf5630ee8c6a0fabc223<>res://.godot/imported/Looking (1).fbx-ec2432f25506717d0833d5cc0dc2ef0a.scn::
+Looking (2).fbx::PackedScene::2097703117184042080::1783864198::1783864560::1::::<><><>0<>0<>69b97076084a6726b31e068c9efc8758<>res://.godot/imported/Looking (2).fbx-04e99e008886019157efb0e6df91b0b5.scn::uid://cho87hkvsc6bc::::res://assets/animations/robots/robot_look_2.tres
+Looking.fbx::PackedScene::2649706622268607064::1783864198::1783864199::1::::<><><>0<>0<>10a1df2eba17e0f80297fc01b2b5e1cd<>res://.godot/imported/Looking.fbx-123f4b078330b69859e3756f2ed1610a.scn::
+robot_look_1.tres::Animation::5900224697094939151::1783864582::0::1::::<><><>0<>0<><>::
+robot_look_2.tres::Animation::5295125751665323248::1783864560::0::1::::<><><>0<>0<><>::
+robot_grab_2.tres::Animation::5554964247366806668::1783864467::0::1::::<><><>0<>0<><>::
+robot_grab_1.tres::Animation::1923514669763539027::1783864447::0::1::::<><><>0<>0<><>::
+robot_work_1.tres::Animation::3064281366915657109::1783864709::0::1::::<><><>0<>0<><>::
+robot_look_high.tres::Animation::345835510846984925::1783864395::0::1::::<><><>0<>0<><>::
+robot_alert_look.tres::Animation::8053998138609995514::1783864363::0::1::::<><><>0<>0<><>::
+robot_walk_2.tres::Animation::3475420951198040742::1783864283::0::1::::<><><>0<>0<><>::
+robot_walk_1.tres::Animation::2909776133988814315::1783864262::0::1::::<><><>0<>0<><>::
+robot_idle.tres::Animation::555718540137944176::1783864240::0::1::::<><><>0<>0<><>::
+Unarmed Walk Forward.fbx::PackedScene::6475225147556775937::1783864198::1783864262::1::::<><><>0<>0<>4e52a9c332ea3f2809861d98e752d0f9<>res://.godot/imported/Unarmed Walk Forward.fbx-b381b1d66db8ddbcf2f41bf594d33d0b.scn::uid://bhprt8ras2s8j::::res://assets/animations/robots/robot_walk_1.tres
+Walk.fbx::PackedScene::2232634701881912945::1783864198::1783864283::1::::<><><>0<>0<>bb22cf118fab205138d031e6f2f73372<>res://.godot/imported/Walk.fbx-5fde875c0a2ca081d1ede1ec2cafa6b5.scn::uid://bprrw7wa4vqwc::::res://assets/animations/robots/robot_walk_2.tres
+Wheelbarrow Idle.fbx::PackedScene::2270506532347116925::1783864198::1783864240::1::::<><><>0<>0<>c47b2255561d621d63a104ad1e116d1e<>res://.godot/imported/Wheelbarrow Idle.fbx-db42cce1ec2ebc172589634ae3d4f2dd.scn::uid://h6guri1skkii::::res://assets/animations/robots/robot_idle.tres
+Working On Device.fbx::PackedScene::7959460426291609264::1783864198::1783864423::1::::<><><>0<>0<>de64d1446a47fa90c4f787eb51be5357<>res://.godot/imported/Working On Device.fbx-14e551be229381b31b220a442e0b59dc.scn::uid://dt67ltuk2cu6p::::res://assets/animations/robots/robot_work_1.tres
+::res://assets/characters/::1783864709
+Characters.fbx::PackedScene::4897258985838362035::1783863392::1783863449::1::::<><><>0<>0<>378e20fe2f6900781847745aa5a9a2c2<>res://.godot/imported/Characters.fbx-5202209d0ab97dea55413d0026813019.scn::
 polygonDungeon_Characters.fbx::PackedScene::1769102035922809627::1783835234::1783851352::1::::<><><>0<>0<>d5f0fb9af8595856aa14e784fdbe94e9<>res://.godot/imported/polygonDungeon_Characters.fbx-c18eea461cc48f52f6ca48879b187bf3.scn::
-::res://assets/textures/::1783837636
+Robot.tscn::PackedScene::7366957920468193017::1783864847::0::1::::<><><>0<>0<><>::uid://cb1je03qys2yh::::res://assets/characters/Characters.fbx<>uid://bxtdgb1jpf4o::::res://assets/textures/PolygonScifi_01_A.png<>uid://cl68oihdmnkkb::::res://assets/textures/PolygonScifi_01_Emissive.png<>uid://c7r375ygnxnfj::::res://assets/animations/Family/interact/pulling_lever.tres<>uid://dlmi8w0ohr0ns::::res://assets/textures/PolygonSciFiCity_01_Normals.png<>uid://dm0of4tn1sdc1::::res://assets/animations/robots/robot_alert_look.tres<>uid://2n1agpnok1cx::::res://assets/animations/robots/robot_grab_1.tres<>uid://cvw5lpaaesvrp::::res://assets/textures/PolygonScifi_02_A.png<>uid://cle4pjxwfhqyu::::res://assets/animations/robots/robot_grab_2.tres<>uid://buq2t8v0r53rn::::res://assets/textures/PolygonScifi_02_Emissive.png<>uid://h6guri1skkii::::res://assets/animations/robots/robot_idle.tres<>uid://cqcd3rtl2jb08::::res://assets/animations/robots/robot_look_1.tres<>uid://cho87hkvsc6bc::::res://assets/animations/robots/robot_look_2.tres<>uid://e6r4iswtmhk4::::res://assets/animations/robots/robot_look_high.tres<>uid://bhprt8ras2s8j::::res://assets/animations/robots/robot_walk_1.tres<>uid://bprrw7wa4vqwc::::res://assets/animations/robots/robot_walk_2.tres<>uid://bjwmjb8hjqhcf::::res://assets/animations/robots/robot_work_1.tres<>uid://cjpiv7n526wlj::::res://assets/animations/Family/interact/sending_a_fax.tres<>uid://c2xswx1gdtae3::::res://assets/animations/Family/interact/standing_using_a_touchscreen.tres<>uid://x80pm5r4ggqb::::res://assets/animations/Family/interact/using_a_fax.tres
+::res://assets/textures/::1783864830
 Dungeons_Texture_01.png::CompressedTexture2D::1638660442007109992::1783837146::1783837160::1::::<><><>0<>0<>a5ec87bf9cfbcb4c818bb40a19a32c46<>res://.godot/imported/Dungeons_Texture_01.png-266465869bdcf16300883731b289705a.s3tc.ctex::
 Dungeons_Texture_01_A.png::CompressedTexture2D::6780648090692372698::1783837631::1783837636::1::::<><><>0<>0<>ac352706bd4bb038da51249120054a7a<>res://.godot/imported/Dungeons_Texture_01_A.png-4f6e2c800dfd4bd915cde7109c263db8.s3tc.ctex::
 Dungeons_Texture_01_B.png::CompressedTexture2D::4082124368921588788::1783837612::1783837620::1::::<><><>0<>0<>262657700de67419e35f03ae86d71ab7<>res://.godot/imported/Dungeons_Texture_01_B.png-b9aa92334ca2063cb7a3cc1f30b0f6ee.s3tc.ctex::
@@ -62,7 +87,14 @@ Dungeons_Texture_01_D.png::CompressedTexture2D::2322111762662110521::1783837612:
 Dungeons_Texture_02.png::CompressedTexture2D::8617006177877391866::1783837562::1783837567::1::::<><><>0<>0<>4f49e8e1759420348a2e9eb72d108790<>res://.godot/imported/Dungeons_Texture_02.png-97d22881f0f3c2d1e47f2f84871ca1d8.s3tc.ctex::
 Dungeons_Texture_03.png::CompressedTexture2D::5672602587347462777::1783837562::1783837572::1::::<><><>0<>0<>744088608239b664b6e54223218d2062<>res://.godot/imported/Dungeons_Texture_03.png-6d88c564bc9b963ce3a3fd9a8efb8910.s3tc.ctex::
 Dungeons_Texture_04.png::CompressedTexture2D::2319117742749161517::1783837562::1783837576::1::::<><><>0<>0<>a7a557f2f81b6f07b385c9ec5d2d6a0c<>res://.godot/imported/Dungeons_Texture_04.png-5e7504546795a5201cbcad8087867351.s3tc.ctex::
-::res://doco/::1783736713
+PolygonSciFiCity_01_Normals.png::CompressedTexture2D::7956657726067331368::1783864686::1783864739::1::::<><><>0<>0<>de057655a4c116a949f0ca1d678f0c1b<>res://.godot/imported/PolygonSciFiCity_01_Normals.png-f6e79384e4227e3c82b36af0d5329b6f.s3tc.ctex::
+PolygonScifi_01_A.png::CompressedTexture2D::118828830104534404::1783864672::1783864693::1::::<><><>0<>0<>bd66654dcdf4fabeb04906bb3c88047f<>res://.godot/imported/PolygonScifi_01_A.png-0f72f4c2aef7d20cc45a5c11f36aa8b9.s3tc.ctex::
+PolygonScifi_01_Emissive.png::CompressedTexture2D::5610943450809670469::1783864679::1783864724::1::::<><><>0<>0<>2f73cdadba58131612196d40bcd55c27<>res://.godot/imported/PolygonScifi_01_Emissive.png-246540e577f29fd4212c55763e93fc77.s3tc.ctex::
+PolygonScifi_02_A.png::CompressedTexture2D::6294065335746474869::1783864821::1783864834::1::::<><><>0<>0<>0b28b04f1ac23fabeeae2a13caf876f2<>res://.godot/imported/PolygonScifi_02_A.png-5e65346fd245a4b14fa1e72522a00385.s3tc.ctex::
+PolygonScifi_02_Emissive.png::CompressedTexture2D::3824902656278855583::1783864789::1783864845::1::::<><><>0<>0<>4b82ee10cb1cf55a3379ba59230ff532<>res://.godot/imported/PolygonScifi_02_Emissive.png-c61bc98ae71f54bedcfddff9a7485c69.s3tc.ctex::
+PolygonScifi_03_A.png::CompressedTexture2D::497850516382276146::1783864821::1783864891::1::::<><><>0<>0<>0a322e13c05013bf93c85b579db66f6d<>res://.godot/imported/PolygonScifi_03_A.png-1dfd9fd82a5b5c58c748079ccadf6874.s3tc.ctex::
+PolygonScifi_03_Emissive.png::CompressedTexture2D::2818216980632380257::1783864789::1783864791::1::::<><><>0<>0<>0ac8c15df0810950ed8f112e56679da4<>res://.godot/imported/PolygonScifi_03_Emissive.png-046bdc76662b3f37adeb9279e793a82c.ctex::
+::res://doco/::1783852528
 development_roadmap.md::TextFile::-1::1783493406::0::1::::<><><>0<>0<><>::
 game_design_document.md::TextFile::-1::1783475115::0::1::::<><><>0<>0<><>::
 phase_1_implementation_plan.md::TextFile::-1::1783475121::0::1::::<><><>0<>0<><>::
@@ -87,19 +119,21 @@ phase_7_implementation_plan.md::TextFile::-1::1783667891::0::1::::<><><>0<>0<><>
 phase_7_walkthrough.md::TextFile::-1::1783695684::0::1::::<><><>0<>0<><>::
 phase_8_implementation_plan.md::TextFile::-1::1783736422::0::1::::<><><>0<>0<><>::
 phase_8_walkthrough.md::TextFile::-1::1783743907::0::1::::<><><>0<>0<><>::
+phase_9_implementation_plan.md::TextFile::-1::1783852294::0::1::::<><><>0<>0<><>::
+phase_9_walkthrough.md::TextFile::-1::1783854041::0::1::::<><><>0<>0<><>::
 ::res://scenes/::1783645733
 ::res://scenes/audio/::1783645983
 sound_manager.gd::GDScript::2143929737997023232::1783650671::0::1::::<>Node<><>0<>0<><>::
-::res://scenes/family/::1783851878
-adult.gd::GDScript::5414355563182909160::1783750414::0::1::::Adult<>FamilyMember<><>0<>0<><>::
-adult.tscn::PackedScene::6451584490362984344::1783851768::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://cje0v6yfpqarw::::res://scenes/family/adult.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://dxpbhw3h3056k::::res://assets/animations/Family/locomotion/adult_idle.tres<>uid://cebw7qxxlkrwx::::res://assets/animations/Family/interact/push.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres
-elder.gd::GDScript::1778169851870813780::1783742601::0::1::::Elder<>FamilyMember<><>0<>0<><>::
-elder.tscn::PackedScene::4194217018231286985::1783851811::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://0lmgyrc11dgm::::res://scenes/family/elder.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://drymbliixbmpe::::res://assets/animations/Family/locomotion/old_man_crouch.tres<>uid://b7ny4k424jl1q::::res://assets/animations/Family/locomotion/old_man_idle.tres<>uid://x80pm5r4ggqb::::res://assets/animations/Family/interact/using_a_fax.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres
+::res://scenes/family/::1783853322
+adult.gd::GDScript::5414355563182909160::1783853749::0::1::::Adult<>FamilyMember<><>0<>0<><>::
+adult.tscn::PackedScene::6451584490362984344::1783853068::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://cje0v6yfpqarw::::res://scenes/family/adult.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://dxpbhw3h3056k::::res://assets/animations/Family/locomotion/adult_idle.tres<>uid://cebw7qxxlkrwx::::res://assets/animations/Family/interact/push.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres
+elder.gd::GDScript::1778169851870813780::1783852750::0::1::::Elder<>FamilyMember<><>0<>0<><>::
+elder.tscn::PackedScene::4194217018231286985::1783853302::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://0lmgyrc11dgm::::res://scenes/family/elder.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://drymbliixbmpe::::res://assets/animations/Family/locomotion/old_man_crouch.tres<>uid://btfxy88e7qt72::::res://assets/animations/Family/locomotion/old_man_walk.tres<>uid://b7ny4k424jl1q::::res://assets/animations/Family/locomotion/old_man_idle.tres<>uid://x80pm5r4ggqb::::res://assets/animations/Family/interact/using_a_fax.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres
 family_manager.gd::GDScript::5520594425763394177::1783741088::0::1::::<>Node<><>0<>0<><>::
-family_member.gd::GDScript::5460954806779251587::1783750139::0::1::::FamilyMember<>CharacterBody3D<><>0<>0<><>::
+family_member.gd::GDScript::5460954806779251587::1783853728::0::1::::FamilyMember<>CharacterBody3D<><>0<>0<><>::
 family_member.tscn::PackedScene::4969227317987366538::1783494464::0::1::::<><><>0<>0<><>::res://scenes/family/family_member.gd
-toddler.gd::GDScript::6947453407220064489::1783740502::0::1::::Toddler<>FamilyMember<><>0<>0<><>::
-toddler.tscn::PackedScene::7060142998561853375::1783851878::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://c58nsphu48us4::::res://scenes/family/toddler.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres<>uid://cvwivr0f05e2i::::res://assets/animations/Family/locomotion/kid_idle.tres<>uid://c7r375ygnxnfj::::res://assets/animations/Family/interact/pulling_lever.tres
+toddler.gd::GDScript::6947453407220064489::1783852762::0::1::::Toddler<>FamilyMember<><>0<>0<><>::
+toddler.tscn::PackedScene::7060142998561853375::1783853322::0::1::::<><><>0<>0<><>::uid://cc2eph12w8x8e::::res://scenes/family/family_member.tscn<>uid://c58nsphu48us4::::res://scenes/family/toddler.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres<>uid://cvwivr0f05e2i::::res://assets/animations/Family/locomotion/kid_idle.tres<>uid://c7r375ygnxnfj::::res://assets/animations/Family/interact/pulling_lever.tres
 ::res://scenes/levels/::1783746419
 level_1_tutorial.tscn::PackedScene::4830483436286592512::1783683131::0::1::::<><><>0<>0<><>::uid://c6cwhk31yvjex::::res://scenes/player/player.tscn<>uid://c7t8r2m8ey8a2::::res://scenes/family/toddler.tscn<>uid://b00ye2t2s8s62::::res://scenes/family/elder.tscn<>uid://cx6gwh8s72q5e::::res://scenes/family/adult.tscn<>uid://b6dw5s1v8q5r8::::res://scenes/objects/pushable_box.tscn<>uid://c008qec60ay0q::::res://scenes/objects/bridge_gate.gd<>uid://1cag4j65agc1::::res://scenes/objects/terminal_interactable.gd<>uid://bq24cl28cbl70::::res://scenes/objects/retracting_obstacle.gd<>uid://dwgsgv05uy0wo::::res://scenes/objects/cover_zone.gd<>uid://c6dw5s1v8q5sa::::res://scenes/seeker/seeker.tscn<>uid://4gaiq2kmtfad::::res://scenes/objects/searchable_object.gd<>uid://b00ye2t2s8s73::::res://scenes/ui/hud_overlay.tscn<>uid://cx6gwh8s72q73::::res://scenes/ui/game_state_menu.tscn<>uid://dnhaajbjccd0h::::res://scenes/objects/escape_zone.gd
 level_2_cargo_hold.tscn::PackedScene::4114945956217514999::1783683140::0::1::::<><><>0<>0<><>::
@@ -124,9 +158,9 @@ save_manager.gd::GDScript::606235659734709024::1783667947::0::1::::SaveManager<>
 searchable_object.gd::GDScript::2047877900933001327::1783569679::0::1::::SearchableObject<>Node3D<><>0<>0<><>::
 terminal_interactable.gd::GDScript::1829050943389380086::1783746275::0::1::::TerminalInteractable<>Interactable<><>0<>0<><>::
 vent_entrance.gd::GDScript::2313912054084404908::1783739449::0::1::::VentEntrance<>Interactable<><>0<>0<><>::
-::res://scenes/player/::1783851759
-player.gd::GDScript::771937782945634985::1783741113::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
-player.tscn::PackedScene::6954173119773776171::1783851759::0::1::::<><><>0<>0<><>::uid://k86x5dg3u2vt::::res://scenes/player/player.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://4dbashwx1dj::::res://assets/animations/Family/interact/player_climbing_ladder.tres<>uid://ctc1k0gia074v::::res://assets/animations/Family/locomotion/player_idle.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres<>uid://gtpcqp3a7r07::::res://assets/animations/Family/interact/player_cover_idle.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres
+::res://scenes/player/::1783852816
+player.gd::GDScript::771937782945634985::1783852956::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene::6954173119773776171::1783852816::0::1::::<><><>0<>0<><>::uid://k86x5dg3u2vt::::res://scenes/player/player.gd<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://4dbashwx1dj::::res://assets/animations/Family/interact/player_climbing_ladder.tres<>uid://ctc1k0gia074v::::res://assets/animations/Family/locomotion/player_idle.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres<>uid://gtpcqp3a7r07::::res://assets/animations/Family/interact/player_cover_idle.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres
 polygon_dungeon_characters.tscn::PackedScene::8273043131249213039::1783851484::0::1::::<><><>0<>0<><>::uid://0g7378p62hax::::res://assets/characters/polygonDungeon_Characters.fbx<>uid://xl1q61c7w4d5::::res://assets/textures/Dungeons_Texture_01.png<>uid://dxpbhw3h3056k::::res://assets/animations/Family/locomotion/adult_idle.tres<>uid://drymbliixbmpe::::res://assets/animations/Family/locomotion/old_man_crouch.tres<>uid://cebw7qxxlkrwx::::res://assets/animations/Family/interact/push.tres<>uid://bq5rwjktjq0da::::res://assets/animations/Family/locomotion/falling.tres<>uid://b7ny4k424jl1q::::res://assets/animations/Family/locomotion/old_man_idle.tres<>uid://4dbashwx1dj::::res://assets/animations/Family/interact/player_climbing_ladder.tres<>uid://x80pm5r4ggqb::::res://assets/animations/Family/interact/using_a_fax.tres<>uid://ctc1k0gia074v::::res://assets/animations/Family/locomotion/player_idle.tres<>uid://gtpcqp3a7r07::::res://assets/animations/Family/interact/player_cover_idle.tres<>uid://5otc6tbpbhct::::res://assets/animations/Family/locomotion/standard_run.tres<>uid://p5habdpfr577::::res://assets/animations/Family/locomotion/crouch_idle.tres<>uid://cvwivr0f05e2i::::res://assets/animations/Family/locomotion/kid_idle.tres<>uid://bcor58pln1yum::::res://assets/animations/Family/interact/pulling_lever.tres
 soundwave_visual.gd::GDScript::6901155059927669885::1783667419::0::1::::SoundwaveVisual<>MeshInstance3D<><>0<>0<><>::
 ::res://scenes/seeker/::1783669136

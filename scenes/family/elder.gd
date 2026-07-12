@@ -10,12 +10,25 @@ var _sweet_spot_min: float = 0.35
 var _sweet_spot_max: float = 0.65
 var _slider_pointer: ColorRect = null
 
+func _init() -> void:
+	anim_idle = "Elder/elder_idle"
+	anim_move = "Elder/elder_run"
+	anim_jump = "Elder/elder_jump"
+	anim_hide = ""
+	anim_interact_1 = "Elder/elder_hack"
+
 func _ready() -> void:
 	super._ready()
 	# Override base defaults for the elder subclass
 	speed = 2.0
 	spacing_steps = 16
 	jump_velocity = 0.0 # Disabled
+
+func _process_animations(delta: float) -> void:
+	if _hack_ui != null:
+		_play_anim(anim_interact_1)
+	else:
+		super._process_animations(delta)
 
 func get_size_class() -> String:
 	return "Medium"

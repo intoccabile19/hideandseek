@@ -211,6 +211,11 @@ _data = {
 script = ExtResource("2_s")
 curiosity_cooldown = 5.0
 chirp_sound_radius = 3.5
+anim_idle = "Toddler/kid_idle"
+anim_move = "Shared/standard_run"
+anim_jump = "Shared/falling"
+anim_hide = "Shared/crouch_idle"
+anim_interact_1 = "Shared/crouch_idle"
 speed = 4.5
 spacing_steps = 10
 

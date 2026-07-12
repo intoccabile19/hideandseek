@@ -1,6 +1,15 @@
 class_name Player
 extends CharacterBody3D
 
+@export_group("Animations")
+@export var anim_idle: String = "Player/player_idle"
+@export var anim_move: String = "Player/player_run"
+@export var anim_jump: String = "Player/player_jump"
+@export var anim_hide: String = ""
+@export var anim_interact_1: String = "Player/player_climb"
+@export var anim_interact_2: String = "Player/player_throw"
+@export var anim_interact_3: String = ""
+
 ## Speed of the player movement along the X axis.
 @export_group("Movement Settings")
 @export var speed: float = 5.0
@@ -10,6 +19,17 @@ extends CharacterBody3D
 
 ## Force applied continuously when pushing RigidBody3D obstacles.
 @export var push_force: float = 600.0
+
+var _throw_timer: float = 0.0
+
+func _play_anim(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		if anim_player.has_animation(anim_name):
+			if anim_player.current_animation != anim_name:
+				anim_player.play(anim_name)
 
 # Fetch default gravity from project settings to sync with standard physics behavior.
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
@@ -208,6 +228,27 @@ func _physics_process(delta: float) -> void:
 		_path_history.push_front({"position": global_position, "is_on_floor": is_on_floor()})
 		if _path_history.size() > 500:
 			_path_history.pop_back()
+			
+	# Process animation selection
+	if _throw_timer > 0.0:
+		_throw_timer -= delta
+		_play_anim(anim_interact_2)
+	elif _is_climbing:
+		_play_anim(anim_interact_1)
+	elif not is_on_floor():
+		_play_anim(anim_jump)
+	elif _assigned_cover:
+		_play_anim(anim_hide)
+	elif abs(velocity.x) > 0.1:
+		_play_anim(anim_move)
+	else:
+		_play_anim(anim_idle)
+
+	# Update visual rotation to match facing direction
+	var target_yaw := PI / 2.0 if facing_direction > 0.0 else -PI / 2.0
+	for child in get_children():
+		if child is Skeleton3D:
+			child.rotation.y = lerp_angle(child.rotation.y, target_yaw, delta * 12.0)
 
 ## Checks if there is a cover zone behind/overlapping the player and steps into it if present
 func _try_hide_in_current_cover() -> void:
@@ -281,6 +322,7 @@ func _find_nearest_interactable() -> Interactable:
 
 ## Instantiates and launches a pebble projectile in the current facing direction
 func _throw_pebble() -> void:
+	_throw_timer = 0.4
 	var pebble_script := load("res://scenes/objects/pebble.gd")
 	var pebble = pebble_script.new()
 	pebble.global_position = global_position + Vector3(facing_direction * 0.6, 1.2, 0.0)

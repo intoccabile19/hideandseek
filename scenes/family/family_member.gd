@@ -1,6 +1,24 @@
 class_name FamilyMember
 extends CharacterBody3D
 
+@export_group("Animations")
+@export var anim_idle: String = ""
+@export var anim_move: String = ""
+@export var anim_jump: String = ""
+@export var anim_hide: String = ""
+@export var anim_interact_1: String = ""
+@export var anim_interact_2: String = ""
+@export var anim_interact_3: String = ""
+
+func _play_anim(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		if anim_player.has_animation(anim_name):
+			if anim_player.current_animation != anim_name:
+				anim_player.play(anim_name)
+
 ## States mapping to Follow, Freeze, Hidden, Wandering, Pushing, and Interacting modes.
 enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING, LAUNCHED }
 
@@ -16,6 +34,8 @@ enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING, LAUNCHED }
 
 ## Current state of this member.
 var current_state: State = State.FREEZE
+
+var facing_direction: float = 1.0
 
 # Gravity settings synchronized with default project parameters.
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
@@ -302,6 +322,35 @@ func _physics_process(delta: float) -> void:
 
 	# Smoothly lerp Z-axis to execute the visual step-back.
 	global_position.z = lerp(global_position.z, target_z, delta * 12.0)
+	
+	if velocity.x > 0.1:
+		facing_direction = 1.0
+	elif velocity.x < -0.1:
+		facing_direction = -1.0
+		
+	# Update visual rotation to match facing direction
+	var target_yaw := PI / 2.0 if facing_direction > 0.0 else -PI / 2.0
+	for child in get_children():
+		if child is Skeleton3D:
+			child.rotation.y = lerp_angle(child.rotation.y, target_yaw, delta * 12.0)
+	
+	# Process animation selection (overridable by subclasses)
+	_process_animations(delta)
+
+func _process_animations(delta: float) -> void:
+	if is_hidden or current_state == State.FREEZE:
+		_play_anim(anim_hide)
+	elif not is_on_floor():
+		_play_anim(anim_jump)
+	elif current_state == State.INTERACTING:
+		if abs(velocity.x) > 0.1:
+			_play_anim(anim_move)
+		else:
+			_play_anim(anim_interact_1)
+	elif abs(velocity.x) > 0.1:
+		_play_anim(anim_move)
+	else:
+		_play_anim(anim_idle)
 
 func _on_command_broadcast(new_state_int: int) -> void:
 	if FamilyManager.current_target_member != null and FamilyManager.current_target_member != self:
@@ -446,6 +495,19 @@ func _process_interacting(delta: float) -> void:
 	move_and_slide()
 	_was_on_floor_last_frame = is_currently_on_floor
 	global_position.z = 0.0
+
+	if abs(velocity.x) > 0.1:
+		facing_direction = 1.0 if velocity.x > 0.0 else -1.0
+	else:
+		facing_direction = _interact_dir
+		
+	# Update visual rotation to match facing direction
+	var target_yaw := PI / 2.0 if facing_direction > 0.0 else -PI / 2.0
+	for child in get_children():
+		if child is Skeleton3D:
+			child.rotation.y = lerp_angle(child.rotation.y, target_yaw, delta * 12.0)
+			
+	_process_animations(delta)
 
 func _execute_interaction() -> void:
 	velocity.x = 0.0

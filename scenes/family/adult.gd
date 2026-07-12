@@ -14,12 +14,33 @@ var _braced_gate: Node3D = null
 var _is_bracing: bool = false
 var _exiting_brace: bool = false
 var _exit_brace_target_x: float = 0.0
+var _launch_timer: float = 0.0
+
+func _init() -> void:
+	anim_idle = "Adult/adult_idle"
+	anim_move = "Adult/adult_run"
+	anim_jump = "Adult/adult_jump"
+	anim_hide = ""
+	anim_interact_1 = "Adult/adult_brace"
+	anim_interact_2 = "Adult/adult_push"
+	anim_interact_3 = "Adult/adult_launch"
 
 func _ready() -> void:
 	super._ready()
 	# Override base defaults for the adult subclass
 	speed = 3.8
 	spacing_steps = 12
+
+func _process_animations(delta: float) -> void:
+	if _launch_timer > 0.0:
+		_launch_timer -= delta
+		_play_anim(anim_interact_3)
+	elif _is_bracing:
+		_play_anim(anim_interact_1)
+	elif current_state == State.PUSHING:
+		_play_anim(anim_interact_2)
+	else:
+		super._process_animations(delta)
 
 func get_size_class() -> String:
 	return "Large"
@@ -113,20 +134,37 @@ func _physics_process(delta: float) -> void:
 				velocity.x = sign(to_target_x) * speed
 				
 			move_and_slide()
+			_was_on_floor_last_frame = is_on_floor()
 			global_position.z = 0.0
-			return
-			
-		if _is_bracing:
+		elif _is_bracing:
 			velocity.x = 0.0
 			velocity.z = 0.0
 			if not is_on_floor():
 				velocity.y -= _gravity * delta
 			move_and_slide()
+			_was_on_floor_last_frame = is_on_floor()
 			global_position.z = 0.0
+		else:
+			# Standard follower movement (includes base INTERACTING state processing!)
+			super._physics_process(delta)
 			return
+
+	# Update visual orientation/animations for pushing/bracing states
+	if abs(velocity.x) > 0.1:
+		facing_direction = 1.0 if velocity.x > 0.0 else -1.0
+	elif current_state == State.PUSHING:
+		facing_direction = _push_dir
+	elif _is_bracing and is_instance_valid(_braced_gate):
+		facing_direction = sign(_braced_gate.global_position.x - global_position.x)
+		if facing_direction == 0.0:
+			facing_direction = 1.0
+
+	var target_yaw := PI / 2.0 if facing_direction > 0.0 else -PI / 2.0
+	for child in get_children():
+		if child is Skeleton3D:
+			child.rotation.y = lerp_angle(child.rotation.y, target_yaw, delta * 12.0)
 			
-		# Standard follower movement (includes base INTERACTING state processing!)
-		super._physics_process(delta)
+	_process_animations(delta)
 
 func _stop_pushing() -> void:
 	current_state = State.FOLLOW
@@ -192,6 +230,8 @@ func try_launch_toddler(launcher_point: Node3D) -> void:
 		toddler.velocity.y = 12.5
 		toddler.velocity.x = launch_dir * 4.0
 		toddler.velocity.z = 0.0
+		
+		_launch_timer = 0.5
 		
 		print("[Adult %s] Tossed Toddler %s upwards (Y-vel=12.5, X-vel=%f)" % [name, toddler.name, launch_dir * 4.0])
 	else:

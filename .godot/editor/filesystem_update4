@@ -1,1 +1,12 @@
 res://scenes/family/toddler.tscn
+res://scenes/family/adult.gd
+res://scenes/family/elder.gd
+res://scenes/family/family_member.gd
+res://scenes/family/toddler.gd
+res://scenes/player/player.gd
+res://scenes/player/player.tscn
+res://scenes/family/adult.tscn
+res://scenes/family/elder.tscn
+res://assets/animations/robots/robot_work_1.tres
+res://assets/characters/Robot.tscn
+res://scenes/seeker/seeker.tscn

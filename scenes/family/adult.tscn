@@ -233,6 +233,13 @@ _data = {
 [node name="Adult" unique_id=983665805 instance=ExtResource("1_m")]
 script = ExtResource("2_a")
 push_speed = 1.8
+anim_idle = "Adult/adult_idle"
+anim_move = "Shared/standard_run"
+anim_jump = "Shared/falling"
+anim_hide = "Shared/crouch_idle"
+anim_interact_1 = "Adult/push"
+anim_interact_2 = "Adult/push"
+anim_interact_3 = "Adult/push"
 
 [node name="MeshInstance3D" parent="." index="1"]
 visible = false
