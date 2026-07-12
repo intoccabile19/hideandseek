@@ -1,2 +1,6 @@
+Skeleton3D
+AnimationPlayer
+MeshInstance3D
+CharacterBody3D
 CSGCylinder3D
 CSGTorus3D
