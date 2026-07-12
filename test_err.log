@@ -56,3 +56,5 @@ ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    GDScript backtrace (most recent call first):
        [0] test_seeker_ignores_hidden_actor (res://tests/test_seeker.gd:87)
        [1] _run_tests (res://test_runner.gd:73)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

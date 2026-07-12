@@ -308,6 +308,18 @@ _data = {
 [node name="Seeker" type="CharacterBody3D" unique_id=562472094]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("1_seeker")
+anim_idle = "robots/robot_idle"
+anim_walk = "robots/robot_walk_1"
+anim_work_1 = "robots/robot_work_1"
+anim_work_2 = "robots/pulling_lever"
+anim_work_3 = "robots/sending_a_fax"
+anim_work_4 = "robots/standing_using_a_touchscreen"
+anim_work_5 = "robots/using_a_fax"
+anim_alert = "robots/robot_alert_look"
+anim_grab = "robots/robot_grab_1"
+anim_look_1 = "robots/robot_look_1"
+anim_look_2 = "robots/robot_look_2"
+anim_look_3 = "robots/robot_look_high"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1643490380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

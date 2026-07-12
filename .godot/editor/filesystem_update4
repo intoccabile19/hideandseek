@@ -10,3 +10,5 @@ res://scenes/family/elder.tscn
 res://assets/animations/robots/robot_work_1.tres
 res://assets/characters/Robot.tscn
 res://scenes/seeker/seeker.tscn
+res://scenes/seeker/seeker.gd
+res://scenes/levels/level_test.tscn

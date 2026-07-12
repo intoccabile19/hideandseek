@@ -297,15 +297,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="Toddler" parent="." unique_id=633738205 instance=ExtResource("2_t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 0)
-curiosity_cooldown = 5.0
-chirp_sound_radius = 3.5
 
 [node name="Elder" parent="." unique_id=1060242429 instance=ExtResource("3_e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.11039, 0, 0)
 
 [node name="Adult" parent="." unique_id=103471209 instance=ExtResource("4_a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 0)
-push_speed = 1.8
 
 [node name="SearchableBox1" type="Node3D" parent="." unique_id=720168298]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -8.5, -33)
@@ -333,7 +330,6 @@ mesh = SubResource("BoxMesh_so")
 
 [node name="Seeker" parent="." unique_id=1822781423 instance=ExtResource("10_sk")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.783384, -11, -33.94818)
-seeker_type = 3
 
 [node name="HUDOverlay" parent="." unique_id=2093858191 instance=ExtResource("12_ho")]
 
@@ -468,9 +464,9 @@ font_size = 36
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.05, 0)
 script = ExtResource("18_pp")
 target_gate_path = NodePath("../TestPlateDoor")
+linked_terminal_path = NodePath("../TestPlateTerminal")
 requires_heavy_weight = true
 invert_trigger = true
-linked_terminal_path = NodePath("../TestPlateTerminal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestPressurePlate" unique_id=1767960564]
 shape = SubResource("BoxShape3D_plate")

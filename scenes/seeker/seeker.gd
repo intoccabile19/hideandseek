@@ -8,11 +8,54 @@ enum State {
 	SUSPICIOUS,
 	CHASE,
 	CAPTURE,
-	SLEEP
+	SLEEP,
+	WORKING
 }
 
+@export_group("Animations")
+@export var anim_idle: String = "robot_idle"
+@export var anim_walk: String = "robot_walk_1"
+@export var anim_work_1: String = "robot_work_1"
+@export var anim_work_2: String = "pulling_lever"
+@export var anim_work_3: String = "sending_a_fax"
+@export var anim_work_4: String = "standing_using_a_touchscreen"
+@export var anim_work_5: String = "using_a_fax"
+@export var anim_alert: String = "robot_alert_look"
+@export var anim_grab: String = "robot_grab_1"
+@export var anim_look_1: String = "robot_look_1"
+@export var anim_look_2: String = "robot_look_2"
+@export var anim_look_3: String = "robot_look_high"
+
 @export_group("Seeker Settings")
+@export var terminals: Array[Node3D] = []
 @export var wander_range_x: Vector2 = Vector2(-15.0, 15.0)
+
+var _target_terminal: Node3D = null
+var _current_work_anim: String = ""
+var _work_duration: float = 0.0
+var _current_look_anim: String = ""
+var _last_look_change_time: float = 0.0
+var _alert_duration: float = 1.2
+
+func _select_random_look_anim() -> void:
+	var list: Array[String] = []
+	if not anim_look_1.is_empty(): list.append(anim_look_1)
+	if not anim_look_2.is_empty(): list.append(anim_look_2)
+	if not anim_look_3.is_empty(): list.append(anim_look_3)
+	
+	if not list.is_empty():
+		_current_look_anim = list.pick_random()
+	else:
+		_current_look_anim = "robot_look_1"
+
+func _play_anim(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		if anim_player.has_animation(anim_name):
+			if anim_player.current_animation != anim_name:
+				anim_player.play(anim_name)
 @export var wander_range_z: Vector2 = Vector2(-15.0, -6.0)
 @export var background_z: float = -12.0
 @export var peer_z: float = -6.0 # Safe distance from walkway walls to prevent physical collision jitter
@@ -100,6 +143,27 @@ func _ready() -> void:
 	if is_instance_valid(vision_cone):
 		_vision_cone_mat = vision_cone.material_override as StandardMaterial3D
 
+	# Disable the default mesh placeholder
+	if is_instance_valid(mesh):
+		mesh.visible = false
+		
+	# Select which robot visual model to show based on seeker_type
+	var robot_mesh = get_node_or_null("Skeleton3D/Character_Robot_01")
+	var cyborg_mesh = get_node_or_null("Skeleton3D/Character_CyborgNinja_01")
+	var android_mesh = get_node_or_null("Skeleton3D/Character_Android_Female_01")
+	
+	if is_instance_valid(robot_mesh): robot_mesh.visible = false
+	if is_instance_valid(cyborg_mesh): cyborg_mesh.visible = false
+	if is_instance_valid(android_mesh): android_mesh.visible = false
+	
+	match seeker_type:
+		SeekerType.LAME, SeekerType.LAZY:
+			if is_instance_valid(robot_mesh): robot_mesh.visible = true
+		SeekerType.NORMAL:
+			if is_instance_valid(android_mesh): android_mesh.visible = true
+		SeekerType.AGGRESSIVE:
+			if is_instance_valid(cyborg_mesh): cyborg_mesh.visible = true
+
 func _physics_process(delta: float) -> void:
 	if current_state == State.SLEEP:
 		_sleep_timer -= delta
@@ -148,6 +212,7 @@ func _physics_process(delta: float) -> void:
 			if alert_level >= 1.0:
 				_chase_target = _spotted_target
 				current_state = State.CHASE
+				_spotted_target = null
 				_chase_timer = 0.0
 				_has_heard_anything = true
 				print("[Seeker %s] Giant SPOTTED target: %s! Warning flash started..." % [name, _chase_target.name])
@@ -194,7 +259,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 
 	# Process current state (freeze and look in place on Low Alert)
-	if _spotted_target != null:
+	if _spotted_target != null and current_state != State.CHASE and current_state != State.CAPTURE:
 		# Gradually detecting: freeze velocity and do not run state movement
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -222,6 +287,8 @@ func _physics_process(delta: float) -> void:
 				_process_chase(delta)
 			State.CAPTURE:
 				_process_capture(delta)
+			State.WORKING:
+				_process_working(delta)
 
 	# Update Visual Alert Label Billboard
 	if is_instance_valid(alert_label):
@@ -236,6 +303,14 @@ func _physics_process(delta: float) -> void:
 
 	# Run physics movement
 	move_and_slide()
+
+	# Link spotlight / vision cone to the head bone of the active visual model
+	var skeleton: Skeleton3D = get_node_or_null("Skeleton3D") as Skeleton3D
+	if is_instance_valid(skeleton) and is_instance_valid(spotlight):
+		var head_bone_idx: int = skeleton.find_bone("Head")
+		if head_bone_idx != -1:
+			var head_trans: Transform3D = skeleton.global_transform * skeleton.get_bone_global_pose(head_bone_idx)
+			spotlight.global_position = head_trans.origin
 
 	# Play footstep sounds as we walk
 	if is_on_floor() and velocity.length() > 0.1:
@@ -252,6 +327,8 @@ func _physics_process(delta: float) -> void:
 	var target_z := _target_pos.z if current_state == State.WANDER else peer_z
 	if current_state == State.SEARCHING and _target_object:
 		target_z = _target_object.global_position.z
+	elif current_state == State.WORKING and _target_terminal:
+		target_z = _target_terminal.global_position.z
 	
 	# Match Z-axis speed to active state movement speed
 	var speed_z := patrol_speed
@@ -269,6 +346,8 @@ func _physics_process(delta: float) -> void:
 	# Check vision to detect intruders
 	if current_state != State.CHASE and current_state != State.CAPTURE:
 		_check_vision()
+
+	_process_animations(delta)
 
 func _process_wander(delta: float) -> void:
 	# Reset spotlight defaults
@@ -305,10 +384,15 @@ func _process_wander(delta: float) -> void:
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
-		# We reached the target opening/object
-		if _target_object:
+		# We reached the target opening/object/terminal
+		if _target_terminal:
+			current_state = State.WORKING
+			_state_timer = 0.0
+			_select_random_work_anim()
+		elif _target_object:
 			current_state = State.SEARCHING
 			_state_timer = 0.0
+			_select_random_work_anim()
 		else:
 			current_state = State.SCANNING
 			_state_timer = 0.0
@@ -337,12 +421,14 @@ func _process_searching(delta: float) -> void:
 	elif _state_timer < phase_2_end:
 		spotlight.rotation.y = sin(_state_timer * 6.0) * deg_to_rad(20.0)
 	# Phase 3: Lower object and return light
-	elif _state_timer < phase_3_end:
+	elif _state_timer < _work_duration:
 		if _state_timer - delta < phase_2_end and _target_object:
 			_target_object.lower(0.8)
 		spotlight.rotation.x = lerp(spotlight.rotation.x, deg_to_rad(-15.0), delta * 4.0)
 		spotlight.rotation.y = lerp(spotlight.rotation.y, 0.0, delta * 4.0)
 	else:
+		if _target_object:
+			_target_object.lower(0.8)
 		_target_object = null
 		current_state = State.SCANNING
 		_state_timer = 0.0
@@ -372,11 +458,31 @@ func _process_suspicious(delta: float) -> void:
 	spotlight.light_energy = 32.0
 	spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
 
-	# Start countdown timer as soon as he begins moving towards the wall
 	_state_timer += delta
+	
+	if _state_timer - delta <= 0.0:
+		_current_look_anim = ""
+		_last_look_change_time = 0.0
+		# Retrieve alert animation length to guarantee it completes fully
+		_alert_duration = 1.2 # default fallback
+		var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+		if is_instance_valid(anim_player) and anim_player.has_animation(anim_alert):
+			var anim = anim_player.get_animation(anim_alert)
+			if anim:
+				_alert_duration = anim.length
 
-	if dist > 0.4:
-		# Walk slowly towards the sound opening (progression alert)
+	# Phase 1: Alert animation playback
+	if _state_timer < _alert_duration:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		# Look directly at the sound target
+		var dir_to_target := (_target_pos - global_position).normalized()
+		var target_yaw := atan2(-dir_to_target.x, -dir_to_target.z)
+		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+		spotlight.rotation.y = 0.0
+		spotlight.rotation.x = deg_to_rad(-15.0)
+	# Phase 2: Walk slowly to the sound opening/wall
+	elif dist > 0.4:
 		velocity.x = sign(to_target) * investigate_speed
 		velocity.z = 0.0
 		var dir_to_target := (_target_pos - global_position).normalized()
@@ -386,6 +492,7 @@ func _process_suspicious(delta: float) -> void:
 		# Point spotlight forward and sweep it left/right locally
 		spotlight.rotation.y = sin(_state_timer * 5.0) * deg_to_rad(35.0)
 		spotlight.rotation.x = deg_to_rad(-20.0)
+	# Phase 3: At the wall, look animations randomly
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -394,6 +501,11 @@ func _process_suspicious(delta: float) -> void:
 		spotlight.rotation.y = sin(_state_timer * 5.0) * deg_to_rad(45.0)
 		spotlight.rotation.x = deg_to_rad(-20.0)
 		
+		# Change look animation randomly every 1.8 seconds
+		if _current_look_anim.is_empty() or _state_timer - _last_look_change_time > 1.8:
+			_select_random_look_anim()
+			_last_look_change_time = _state_timer
+
 	if _state_timer > (search_wait_time * 2.5):
 		spotlight.rotation.y = 0.0
 		_choose_next_wander()
@@ -481,11 +593,24 @@ func _process_capture(delta: float) -> void:
 	velocity = Vector3.ZERO
 	_state_timer += delta
 	
-	# Dramatic blinding flash grab effect (energy = 200, bright white/cyan light)
+	# Find grab animation length dynamically
+	var grab_len := 1.5 # default fallback
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player) and anim_player.has_animation(anim_grab):
+		var anim = anim_player.get_animation(anim_grab)
+		if anim:
+			grab_len = anim.length
+			
+	# Dramatic blinding flash grab effect (energy = 200, bright white/cyan light) in the first 0.4 seconds
 	if _state_timer < 0.4:
 		spotlight.light_color = Color(1.0, 1.0, 1.0, 1.0)
 		spotlight.light_energy = 200.0
 	else:
+		# Restore spotlight defaults
+		spotlight.light_energy = 32.0
+		spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
+		
+	if _state_timer >= grab_len:
 		print("[Seeker %s] Giant peer capture successful! Triggering Game Over." % name)
 		FamilyManager.game_over.emit()
 		set_physics_process(false)
@@ -500,16 +625,27 @@ func _choose_next_wander() -> void:
 	spotlight.light_energy = 32.0
 	spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
 	
-	var objects: Array[Node] = get_tree().get_nodes_in_group("searchable_objects")
-	
-	# Always prioritize background searchable objects to look like it is doing work
-	if not objects.is_empty():
-		var obj: SearchableObject = objects.pick_random() as SearchableObject
-		if is_instance_valid(obj):
-			_target_object = obj
-			_target_pos = obj.global_position
-			print("[Seeker %s] Heading to search background object: %s at 3D pos: %s" % [name, obj.name, str(_target_pos)])
-			return
+	# Combine searchable objects and terminals into a unified job pool
+	var pool: Array = []
+	for obj in get_tree().get_nodes_in_group("searchable_objects"):
+		pool.append({"type": "searchable", "node": obj})
+	for term in terminals:
+		if is_instance_valid(term):
+			pool.append({"type": "terminal", "node": term})
+			
+	if not pool.is_empty():
+		var selected = pool.pick_random()
+		if selected["type"] == "terminal":
+			_target_terminal = selected["node"]
+			_target_object = null
+			_target_pos = _target_terminal.global_position
+			print("[Seeker %s] Heading to work at terminal: %s at 3D pos: %s" % [name, _target_terminal.name, str(_target_pos)])
+		else:
+			_target_terminal = null
+			_target_object = selected["node"]
+			_target_pos = _target_object.global_position
+			print("[Seeker %s] Heading to search background object: %s at 3D pos: %s" % [name, _target_object.name, str(_target_pos)])
+		return
 
 	# Otherwise (fallback), choose a random 3D position in the background wander range
 	_target_pos = Vector3(
@@ -518,6 +654,7 @@ func _choose_next_wander() -> void:
 		randf_range(wander_range_z.x, wander_range_z.y)
 	)
 	_target_object = null
+	_target_terminal = null
 	print("[Seeker %s] Giant wandering in background (fallback) to 3D pos: %s" % [name, str(_target_pos)])
 
 func _check_vision() -> void:
@@ -613,3 +750,77 @@ func put_to_sleep(duration: float) -> void:
 		spotlight.light_color = Color(0.5, 0.0, 0.8)
 		spotlight.rotation.x = deg_to_rad(-90.0)
 	print("[Seeker %s] Giant robot put to sleep for %0.1f seconds." % [name, duration])
+
+func _process_working(delta: float) -> void:
+	velocity.x = 0.0
+	velocity.z = 0.0
+	_state_timer += delta
+
+	# Face the terminal
+	if is_instance_valid(_target_terminal):
+		var dir_to_term := (_target_terminal.global_position - global_position).normalized()
+		var target_yaw := atan2(-dir_to_term.x, -dir_to_term.z)
+		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+	spotlight.rotation.y = 0.0
+	spotlight.rotation.x = lerp(spotlight.rotation.x, deg_to_rad(-25.0), delta * 4.0)
+
+	# When the time runs out, finish working
+	if _state_timer >= _work_duration:
+		_target_terminal = null
+		current_state = State.SCANNING
+		_state_timer = 0.0
+
+func _select_random_work_anim() -> void:
+	var list: Array[String] = []
+	if not anim_work_1.is_empty(): list.append(anim_work_1)
+	if not anim_work_2.is_empty(): list.append(anim_work_2)
+	if not anim_work_3.is_empty(): list.append(anim_work_3)
+	if not anim_work_4.is_empty(): list.append(anim_work_4)
+	if not anim_work_5.is_empty(): list.append(anim_work_5)
+	
+	if not list.is_empty():
+		_current_work_anim = list.pick_random()
+	else:
+		_current_work_anim = "robot_work_1"
+		
+	# Retrieve animation length to guarantee it completes fully
+	_work_duration = search_wait_time * 1.5 # default fallback
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player) and anim_player.has_animation(_current_work_anim):
+		var anim = anim_player.get_animation(_current_work_anim)
+		if anim:
+			_work_duration = anim.length
+
+func _process_animations(delta: float) -> void:
+	if current_state == State.SLEEP:
+		_play_anim(anim_idle)
+	elif current_state == State.CAPTURE:
+		_play_anim(anim_grab)
+	elif current_state == State.WORKING:
+		_play_anim(_current_work_anim)
+	elif current_state == State.SEARCHING:
+		# Search site: randomly play one of the work animations
+		_play_anim(_current_work_anim)
+	elif current_state == State.SUSPICIOUS:
+		# Alert phase -> walk to wall -> random look animations at the wall
+		if _state_timer < _alert_duration:
+			_play_anim(anim_alert)
+		elif velocity.length() > 0.1:
+			_play_anim(anim_walk)
+		else:
+			_play_anim(_current_look_anim)
+	elif _spotted_target != null:
+		# Alert/detected but freezing
+		_play_anim(anim_alert)
+	elif current_state == State.CHASE:
+		# Chasing: play fast walk animation
+		if velocity.length() > 0.1:
+			_play_anim("robot_walk_2")
+		else:
+			_play_anim(anim_idle)
+	else:
+		# Normal patrol or wandering
+		if velocity.length() > 0.1:
+			_play_anim(anim_walk)
+		else:
+			_play_anim(anim_idle)
