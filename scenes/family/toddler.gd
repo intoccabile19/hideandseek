@@ -34,14 +34,6 @@ func _ready() -> void:
 	spacing_steps = 8
 	_reset_curiosity_timer()
 	_reset_chirp_timer()
-
-func _process_animations(delta: float) -> void:
-	if _is_vent_crawling:
-		_play_anim(anim_interact_1)
-	elif current_state == State.LAUNCHED:
-		_play_anim(anim_interact_2)
-	else:
-		super._process_animations(delta)
 	
 	# Programmatic floating tension indicator
 	tension_label = Label3D.new()
@@ -51,6 +43,14 @@ func _process_animations(delta: float) -> void:
 	tension_label.font_size = 24
 	tension_label.outline_size = 6
 	add_child(tension_label)
+
+func _process_animations(delta: float) -> void:
+	if _is_vent_crawling:
+		_play_anim(anim_interact_1)
+	elif current_state == State.LAUNCHED:
+		_play_anim(anim_interact_2)
+	else:
+		super._process_animations(delta)
 
 func get_size_class() -> String:
 	return "Small"

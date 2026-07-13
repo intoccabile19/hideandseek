@@ -1,15 +1,10 @@
-[gd_resource type="ArrayMesh" format=4 uid="uid://boaaan1hl5bs1"]
-
-[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_8wdoq"]
-[ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="2_mkrgf"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://d1ywsj6wm1u5e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s50cj"]
 resource_name = "SciFi"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
-albedo_texture = ExtResource("1_8wdoq")
 emission_enabled = true
-emission_texture = ExtResource("2_mkrgf")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iqcs0"]
 _surfaces = [{

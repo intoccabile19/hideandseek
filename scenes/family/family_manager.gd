@@ -222,3 +222,13 @@ func spawn_soundwave(pos: Vector3, radius: float) -> void:
 	wave.set("target_radius", radius)
 	
 	scene.add_child(wave)
+
+func _process(_delta: float) -> void:
+	# Fall Zone Game Over Check
+	if is_instance_valid(player) and player.global_position.y < -7.0:
+		print("[FamilyManager] Player fell into fall zone! Game Over.")
+		game_over.emit()
+	for member in active_members:
+		if is_instance_valid(member) and member.global_position.y < -7.0:
+			print("[FamilyManager] Companion %s fell into fall zone! Game Over." % member.name)
+			game_over.emit()

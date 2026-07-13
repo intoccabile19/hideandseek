@@ -15,3 +15,7 @@ res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Engine_Co
 res://scenes/seeker/seeker.tscn
 res://scenes/seeker/seeker.gd
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Crate_Wide_Lid_01.tscn
+res://scenes/family/family_manager.gd
+res://scenes/family/family_member.gd
+res://scenes/player/player.gd
+res://scenes/family/toddler.gd

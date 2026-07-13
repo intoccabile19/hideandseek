@@ -79,6 +79,7 @@ var _alert_duration: float = 1.2
 var _look_duration: float = 0.0
 var _look_timer: float = 0.0
 var _actual_velocity: Vector3 = Vector3.ZERO
+var speed_multiplier: float = 1.3
 
 func _select_random_look_anim() -> void:
 	var list: Array[String] = []
@@ -117,33 +118,37 @@ func _ready() -> void:
 	# Apply archetype settings
 	match seeker_type:
 		SeekerType.LAZY:
-			patrol_speed = 3.0
-			investigate_speed = 2.0
-			chase_speed = 3.5
+			patrol_speed = 2.2
+			investigate_speed = 1.3
+			chase_speed = 3.0
 			alert_decay_rate = 0.15
 			search_wait_time = 3.5
 			alert_growth_multiplier = 0.5
+			speed_multiplier = 1.3
 		SeekerType.NORMAL:
-			patrol_speed = 3.5
-			investigate_speed = 2.8
-			chase_speed = 4.8
+			patrol_speed = 2.5
+			investigate_speed = 2.0
+			chase_speed = 4.0
 			alert_decay_rate = 0.06
 			search_wait_time = 4.5
 			alert_growth_multiplier = 1.0
+			speed_multiplier = 1.3
 		SeekerType.AGGRESSIVE:
-			patrol_speed = 4.0
-			investigate_speed = 3.5
-			chase_speed = 5.8
+			patrol_speed = 3.0
+			investigate_speed = 2.8
+			chase_speed = 5.0
 			alert_decay_rate = 0.03
 			search_wait_time = 5.5
 			alert_growth_multiplier = 1.5
+			speed_multiplier = 1.3
 		SeekerType.LAME:
-			patrol_speed = 2.2
-			investigate_speed = 1.8
-			chase_speed = 2.2
+			patrol_speed = 1.5
+			investigate_speed = 0.0
+			chase_speed = 0.0
 			alert_decay_rate = 1.0
 			search_wait_time = 1.0
 			alert_growth_multiplier = 0.0
+			speed_multiplier = 1.0
 
 	# Subscribe to sound cues on the whisper network
 	FamilyManager.sound_emitted.connect(_on_sound_heard)
@@ -363,7 +368,7 @@ func _physics_process(delta: float) -> void:
 		speed_z = investigate_speed
 		
 	var prev_z := global_position.z
-	global_position.z = move_toward(global_position.z, target_z, delta * speed_z)
+	global_position.z = move_toward(global_position.z, target_z, delta * speed_z * speed_multiplier)
 
 	# Constrain rotation pitch/roll to remain upright
 	rotation.x = 0.0
@@ -402,8 +407,8 @@ func _process_wander(delta: float) -> void:
 
 	if dist_xz > 0.4:
 		var move_dir := dir_xz.normalized()
-		velocity.x = move_dir.x * patrol_speed
-		velocity.z = move_dir.z * patrol_speed
+		velocity.x = move_dir.x * patrol_speed * speed_multiplier
+		velocity.z = move_dir.z * patrol_speed * speed_multiplier
 		
 		# Rotate to face 3D walking direction (Godot forward is -Z)
 		var target_yaw := atan2(-velocity.x, -velocity.z)
@@ -517,7 +522,7 @@ func _process_suspicious(delta: float) -> void:
 		spotlight.rotation.x = deg_to_rad(-15.0)
 	# Phase 2: Walk slowly to the sound opening/wall
 	elif dist > 0.4:
-		velocity.x = sign(to_target) * investigate_speed
+		velocity.x = sign(to_target) * investigate_speed * speed_multiplier
 		velocity.z = 0.0
 		var dir_to_target := (_target_pos - global_position).normalized()
 		var target_yaw := atan2(-dir_to_target.x, -dir_to_target.z)
@@ -561,7 +566,7 @@ func _process_chase(delta: float) -> void:
 	spotlight.rotation.y = 0.0
 	
 	if dist_x > 0.4:
-		velocity.x = sign(to_target) * chase_speed
+		velocity.x = sign(to_target) * chase_speed * speed_multiplier
 		velocity.z = 0.0
 		
 		# Point light directly at chased target

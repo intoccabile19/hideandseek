@@ -48,6 +48,7 @@ var _is_climbing_step: bool = false
 var _interact_target: Node = null
 var _interact_dir: float = 0.0
 var _interact_align_move_dir: float = 0.0
+var _interact_anim_timer: float = 0.0
 
 # Cover variables
 var is_hidden: bool = false
@@ -338,17 +339,14 @@ func _physics_process(delta: float) -> void:
 	_process_animations(delta)
 
 func _process_animations(delta: float) -> void:
-	if is_hidden or current_state == State.FREEZE:
+	if abs(velocity.x) > 0.1:
+		_play_anim(anim_move)
+	elif is_hidden or current_state == State.FREEZE:
 		_play_anim(anim_hide)
 	elif not is_on_floor():
 		_play_anim(anim_jump)
 	elif current_state == State.INTERACTING:
-		if abs(velocity.x) > 0.1:
-			_play_anim(anim_move)
-		else:
-			_play_anim(anim_interact_1)
-	elif abs(velocity.x) > 0.1:
-		_play_anim(anim_move)
+		_play_anim(anim_interact_1)
 	else:
 		_play_anim(anim_idle)
 
@@ -413,15 +411,33 @@ func is_elder_class() -> bool:
 ## Directs this companion to walk to and interact with a target.
 func interact_with(target: Node, direction: float) -> void:
 	if is_instance_valid(target):
+		release_cover()
 		_interact_target = target
 		_interact_dir = direction
 		_interact_align_move_dir = 0.0
+		_interact_anim_timer = 0.0
 		current_state = State.INTERACTING
 		print("[Family Member %s] Ordered to interact with %s in direction %0.1f" % [name, target.name, direction])
 
 func _process_interacting(delta: float) -> void:
 	if not is_instance_valid(_interact_target):
 		current_state = State.FOLLOW
+		_interact_anim_timer = 0.0
+		return
+		
+	if _interact_anim_timer > 0.0:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		_interact_anim_timer -= delta
+		if _interact_anim_timer <= 0.0:
+			_finish_interaction()
+		else:
+			# Just run physics and play animation
+			var is_currently_on_floor := is_on_floor()
+			move_and_slide()
+			_was_on_floor_last_frame = is_currently_on_floor
+			global_position.z = 0.0
+			_play_anim(anim_interact_1)
 		return
 		
 	var space_state := get_world_3d().direct_space_state
@@ -511,6 +527,39 @@ func _process_interacting(delta: float) -> void:
 
 func _execute_interaction() -> void:
 	velocity.x = 0.0
+	# Query anim_interact_1 length
+	var anim_len := 0.0
+	if not is_toddler_class() and not is_adult_class(): # Toddler and Adult interact immediately without delays!
+		anim_len = 1.2 # default fallback
+		var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+		var anim_name := anim_interact_1
+		if is_instance_valid(anim_player) and anim_player.has_animation(anim_name):
+			var anim = anim_player.get_animation(anim_name)
+			if anim:
+				anim_len = anim.length
+				
+			if is_elder_class():
+				# Force the animation to take exactly 2.5 seconds by scaling playback speed
+				var target_duration := 2.5
+				if anim_len > 0.0:
+					anim_player.speed_scale = anim_len / target_duration
+				anim_len = target_duration
+			else:
+				if is_instance_valid(anim_player):
+					anim_player.speed_scale = 1.0
+			
+	if anim_len > 0.0:
+		_interact_anim_timer = anim_len
+		_play_anim(anim_interact_1)
+	else:
+		_interact_anim_timer = 0.0
+		_finish_interaction()
+
+func _finish_interaction() -> void:
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		anim_player.speed_scale = 1.0
+		
 	var target = _interact_target
 	if is_instance_valid(target):
 		target.execute_interaction(self)

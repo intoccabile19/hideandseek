@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= _gravity * delta
 
 	# Cancel cover state if player attempts manual movement override
-	if (input_axis != 0.0 or jump_pressed or abs(v_axis) > 0.1) and _assigned_cover:
+	if (input_axis != 0.0 or jump_pressed) and _assigned_cover:
 		_release_cover()
 
 	# Process movement controls
