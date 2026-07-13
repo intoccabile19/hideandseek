@@ -80,6 +80,19 @@ var _look_duration: float = 0.0
 var _look_timer: float = 0.0
 var _actual_velocity: Vector3 = Vector3.ZERO
 var speed_multiplier: float = 1.3
+var _assigned_look_spot: Node3D = null
+
+# Investigation sub-state tracking (Phase 14)
+var _suspicious_phase: int = 0       # 0=ALERT, 1=WALK_TO_SPOT, 2=LOOKING
+var _phase_timer: float = 0.0        # resets on each sub-phase transition
+var _look_spot_dwell_time: float = 0.0
+var _total_investigate_timer: float = 0.0
+var _spots_visited_count: int = 0
+var _switch_spot_chance: float = 0.35
+
+# Random curiosity wall-check during wander
+var _random_wall_check_timer: float = 0.0
+var _random_wall_check_interval: float = 0.0
 
 func _select_random_look_anim() -> void:
 	var list: Array[String] = []
@@ -150,13 +163,42 @@ func _ready() -> void:
 			alert_growth_multiplier = 0.0
 			speed_multiplier = 1.0
 
+	# Per-type: random wall-check interval and multi-spot switch probability
+	match seeker_type:
+		SeekerType.LAZY:
+			_random_wall_check_interval = 50.0
+			_switch_spot_chance = 0.15
+		SeekerType.NORMAL:
+			_random_wall_check_interval = 30.0
+			_switch_spot_chance = 0.35
+		SeekerType.AGGRESSIVE:
+			_random_wall_check_interval = 18.0
+			_switch_spot_chance = 0.60
+		SeekerType.LAME:
+			_random_wall_check_interval = 0.0
+			_switch_spot_chance = 0.0
+
+	if _random_wall_check_interval > 0.0:
+		_random_wall_check_timer = randf_range(0.5, 1.0) * _random_wall_check_interval
+
 	# Subscribe to sound cues on the whisper network
 	FamilyManager.sound_emitted.connect(_on_sound_heard)
 	FamilyManager.toddler_chirped.connect(_on_toddler_chirped)
 	_choose_next_wander()
 
 	if is_instance_valid(vision_cone):
-		_vision_cone_mat = vision_cone.material_override as StandardMaterial3D
+		vision_cone.visible = false
+
+	if is_instance_valid(spotlight):
+		spotlight.light_volumetric_fog_energy = 24.0
+		spotlight.shadow_enabled = true
+
+	# Programmatically configure WorldEnvironment volumetric fog
+	var world_env := get_tree().current_scene.get_node_or_null("WorldEnvironment") as WorldEnvironment
+	if is_instance_valid(world_env) and is_instance_valid(world_env.environment):
+		world_env.environment.volumetric_fog_enabled = true
+		world_env.environment.volumetric_fog_density = 0.05
+		world_env.environment.volumetric_fog_albedo = Color(0.12, 0.12, 0.12)
 
 	# Disable the default mesh placeholder
 	if is_instance_valid(mesh):
@@ -227,6 +269,7 @@ func _physics_process(delta: float) -> void:
 			if alert_level >= 1.0:
 				_chase_target = _spotted_target
 				current_state = State.CHASE
+				_assigned_look_spot = null
 				_spotted_target = null
 				_chase_timer = 0.0
 				_has_heard_anything = true
@@ -331,6 +374,15 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0.0
 			velocity.z = 0.0
 
+	# Velocity guard: zero out X/Z velocity in any state that isn't actively walking.
+	# This is the last line of defence against sliding during animations.
+	if current_state != State.CHASE and current_state != State.CAPTURE:
+		var is_walking_phase := (current_state == State.WANDER) or \
+				(current_state == State.SUSPICIOUS and _suspicious_phase == 1)
+		if not is_walking_phase:
+			velocity.x = 0.0
+			velocity.z = 0.0
+
 	# Run physics movement
 	move_and_slide()
 
@@ -353,20 +405,24 @@ func _physics_process(delta: float) -> void:
 			var vol_db: float = clamp(lerp(0.0, -20.0, player_dist / 30.0), -24.0, 0.0)
 			SoundManager.play_footstep(global_position, vol_db)
 
-	# Move Z-axis based on state (in State.WANDER we move back to the target's background Z position)
-	var target_z := _target_pos.z if current_state == State.WANDER else peer_z
-	if current_state == State.SEARCHING and _target_object:
-		target_z = _target_object.global_position.z
-	elif current_state == State.WORKING and _target_terminal:
-		target_z = _target_terminal.global_position.z
-	
-	# Match Z-axis speed to active state movement speed
+	# Z-axis movement: only apply when the Seeker is actively walking to a destination.
+	# Keeping Z frozen during alert/look/scan/work animations eliminates sliding.
+	var target_z := global_position.z  # default: hold current Z (no drift)
 	var speed_z := patrol_speed
-	if current_state == State.CHASE or current_state == State.CAPTURE:
+	if current_state == State.WANDER:
+		target_z = _target_pos.z
+	elif current_state == State.SUSPICIOUS and _suspicious_phase == 1:
+		# Walk-to-spot phase: slightly faster than normal patrol in both X and Z
+		target_z = _target_pos.z
+		speed_z = patrol_speed * 1.25
+	elif current_state == State.SEARCHING and is_instance_valid(_target_object):
+		target_z = _target_object.global_position.z
+	elif current_state == State.WORKING and is_instance_valid(_target_terminal):
+		target_z = _target_terminal.global_position.z
+	elif current_state == State.CHASE or current_state == State.CAPTURE:
+		target_z = peer_z
 		speed_z = chase_speed
-	elif current_state == State.SUSPICIOUS:
-		speed_z = investigate_speed
-		
+
 	var prev_z := global_position.z
 	global_position.z = move_toward(global_position.z, target_z, delta * speed_z * speed_multiplier)
 
@@ -384,6 +440,27 @@ func _physics_process(delta: float) -> void:
 	_process_animations(delta)
 
 func _process_wander(delta: float) -> void:
+	# Periodically do a casual curiosity wall check (type-dependent frequency)
+	if _random_wall_check_interval > 0.0:
+		_random_wall_check_timer -= delta
+		if _random_wall_check_timer <= 0.0:
+			_random_wall_check_timer = _random_wall_check_interval + randf_range(-5.0, 5.0)
+			var curiosity_spot := _find_closest_unoccupied_spot(global_position)
+			if is_instance_valid(curiosity_spot):
+				_assigned_look_spot = curiosity_spot
+				_target_pos = curiosity_spot.global_position
+				_target_terminal = null
+				_target_object = null
+				_suspicious_phase = 1  # skip alert anim — casual walk-and-peek
+				_phase_timer = 0.0
+				_total_investigate_timer = 0.0
+				_spots_visited_count = 0
+				current_state = State.SUSPICIOUS
+				_state_timer = 0.0
+				_faint_look_timer = 0.0
+				print("[Seeker %s] Curiosity wall check at: %s" % [name, curiosity_spot.name])
+				return
+
 	# Reset spotlight defaults
 	spotlight.light_energy = 32.0
 	spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
@@ -490,66 +567,117 @@ func _process_scanning(delta: float) -> void:
 		_choose_next_wander()
 
 func _process_suspicious(delta: float) -> void:
-	var to_target: float = _target_pos.x - global_position.x
-	var dist: float = abs(to_target)
-
 	# Reset spotlight defaults
 	spotlight.light_energy = 32.0
 	spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
 
 	_state_timer += delta
-	
-	if _state_timer - delta <= 0.0:
-		_current_look_anim = ""
-		_last_look_change_time = 0.0
-		# Retrieve alert animation length to guarantee it completes fully
-		_alert_duration = 1.2 # default fallback
-		var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
-		if is_instance_valid(anim_player) and anim_player.has_animation(anim_alert):
-			var anim = anim_player.get_animation(anim_alert)
-			if anim:
-				_alert_duration = anim.length
+	_phase_timer += delta
+	_total_investigate_timer += delta
 
-	# Phase 1: Alert animation playback
-	if _state_timer < _alert_duration:
-		velocity.x = 0.0
-		velocity.z = 0.0
-		# Look directly at the sound target
-		var dir_to_target := (_target_pos - global_position).normalized()
-		var target_yaw := atan2(-dir_to_target.x, -dir_to_target.z)
-		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+	# Hard cap: if investigating for too long across all spot visits, give up
+	if _total_investigate_timer > search_wait_time * 5.0:
 		spotlight.rotation.y = 0.0
-		spotlight.rotation.x = deg_to_rad(-15.0)
-	# Phase 2: Walk slowly to the sound opening/wall
-	elif dist > 0.4:
-		velocity.x = sign(to_target) * investigate_speed * speed_multiplier
-		velocity.z = 0.0
-		var dir_to_target := (_target_pos - global_position).normalized()
-		var target_yaw := atan2(-dir_to_target.x, -dir_to_target.z)
-		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
-		
-		# Point spotlight forward and sweep it left/right locally
-		spotlight.rotation.y = sin(_state_timer * 5.0) * deg_to_rad(35.0)
-		spotlight.rotation.x = deg_to_rad(-20.0)
-	# Phase 3: At the wall, look animations randomly
-	else:
-		velocity.x = 0.0
-		velocity.z = 0.0
-		# Peer through opening and perform intensive sweep at sound site
-		rotation.y = rotate_toward(rotation.y, PI, delta * 6.0)
-		spotlight.rotation.y = sin(_state_timer * 5.0) * deg_to_rad(45.0)
-		spotlight.rotation.x = deg_to_rad(-20.0)
-		
-		if _current_look_anim.is_empty():
-			_select_random_look_anim()
-		else:
-			_look_timer += delta
-			if _look_timer >= _look_duration:
-				if _state_timer > (search_wait_time * 2.5):
-					spotlight.rotation.y = 0.0
-					_choose_next_wander()
-				else:
+		_choose_next_wander()
+		return
+
+	match _suspicious_phase:
+		0:  # ALERT — freeze in place, play alert animation, face the threat
+			# Initialise alert duration on first frame of this phase
+			if _phase_timer < 0.05:
+				_alert_duration = 1.2
+				var anim_player_init: AnimationPlayer = get_node_or_null("AnimationPlayer")
+				if is_instance_valid(anim_player_init) and anim_player_init.has_animation(anim_alert):
+					var anim_init = anim_player_init.get_animation(anim_alert)
+					if anim_init:
+						_alert_duration = anim_init.length
+
+			velocity.x = 0.0
+			velocity.z = 0.0
+			var alert_dir := (_target_pos - global_position).normalized()
+			var alert_yaw := atan2(-alert_dir.x, -alert_dir.z)
+			rotation.y = rotate_toward(rotation.y, alert_yaw, delta * 6.0)
+			spotlight.rotation.y = 0.0
+			spotlight.rotation.x = deg_to_rad(-15.0)
+
+			if _phase_timer >= _alert_duration:
+				_suspicious_phase = 1
+				_phase_timer = 0.0
+
+		1:  # WALK_TO_SPOT — move toward the assigned look spot in both X and Z
+			var x_dist := _target_pos.x - global_position.x
+			var z_dist := _target_pos.z - global_position.z
+			var xz_dist := Vector2(x_dist, z_dist).length()
+
+			if not is_instance_valid(_assigned_look_spot):
+				# No spot assigned — stand and look in place
+				velocity.x = 0.0
+				velocity.z = 0.0
+				_suspicious_phase = 2
+				_phase_timer = 0.0
+				_current_look_anim = ""
+				_look_spot_dwell_time = search_wait_time * randf_range(1.0, 1.8)
+				_select_random_look_anim()
+				return
+
+			# Walk-to-spot is slightly faster than normal patrol so seekers arrive briskly
+			var move_speed := patrol_speed * 1.25 * speed_multiplier
+			# Walk toward spot: clamp X velocity for natural deceleration near target
+			if xz_dist > 0.6 and _phase_timer < search_wait_time * 3.0:
+				velocity.x = clamp(x_dist * 4.0, -move_speed, move_speed)
+				velocity.z = 0.0  # Z movement handled by global position mover
+				var walk_dir := (_target_pos - global_position).normalized()
+				var walk_yaw := atan2(-walk_dir.x, -walk_dir.z)
+				rotation.y = rotate_toward(rotation.y, walk_yaw, delta * 6.0)
+				spotlight.rotation.y = sin(_phase_timer * 5.0) * deg_to_rad(35.0)
+				spotlight.rotation.x = deg_to_rad(-20.0)
+			else:
+				# Arrived at spot (or phase timed out) — begin LOOKING
+				velocity.x = 0.0
+				velocity.z = 0.0
+				_suspicious_phase = 2
+				_phase_timer = 0.0
+				_current_look_anim = ""
+				_look_spot_dwell_time = search_wait_time * randf_range(1.0, 1.8)
+				_select_random_look_anim()
+
+		2:  # LOOKING — cycle look animations at the window, then decide next action
+			velocity.x = 0.0
+			velocity.z = 0.0
+
+			# Align rotation to peer through the window opening
+			if is_instance_valid(_assigned_look_spot):
+				rotation.y = rotate_toward(rotation.y, _assigned_look_spot.global_rotation.y, delta * 6.0)
+			else:
+				rotation.y = rotate_toward(rotation.y, PI, delta * 6.0)
+			spotlight.rotation.y = sin(_phase_timer * 5.0) * deg_to_rad(45.0)
+			spotlight.rotation.x = deg_to_rad(-20.0)
+
+			# Cycle look animations — each plays to completion before the next
+			if _current_look_anim.is_empty():
+				_select_random_look_anim()
+			else:
+				_look_timer += delta
+				if _look_timer >= _look_duration:
 					_select_random_look_anim()
+
+			# Once dwell time is up, decide whether to visit another spot or give up
+			if _phase_timer >= _look_spot_dwell_time:
+				var prev_spot := _assigned_look_spot
+				if randf() < _switch_spot_chance and _spots_visited_count < 2:
+					var next_spot := _find_closest_unoccupied_spot(_target_pos, prev_spot)
+					if is_instance_valid(next_spot):
+						_assigned_look_spot = next_spot
+						_target_pos = next_spot.global_position
+						_spots_visited_count += 1
+						_suspicious_phase = 1
+						_phase_timer = 0.0
+						_current_look_anim = ""
+						print("[Seeker %s] Moving to second look spot: %s" % [name, next_spot.name])
+						return
+				# Done investigating — return to normal patrol
+				spotlight.rotation.y = 0.0
+				_choose_next_wander()
 
 func _process_chase(delta: float) -> void:
 	if not is_instance_valid(_chase_target):
@@ -661,6 +789,12 @@ func _choose_next_wander() -> void:
 	_state_timer = 0.0
 	_chase_timer = 0.0
 	_faint_look_timer = 0.0
+	_assigned_look_spot = null
+	# Reset investigation sub-state
+	_suspicious_phase = 0
+	_phase_timer = 0.0
+	_total_investigate_timer = 0.0
+	_spots_visited_count = 0
 	
 	# Restore spotlight default state
 	spotlight.light_energy = 32.0
@@ -788,13 +922,24 @@ func _on_sound_heard(origin: Vector3, radius: float, is_shout: bool) -> void:
 		alert_level = min(alert_level + alert_inc, 1.0)
 		
 		if alert_level >= 0.5:
-			# High Alert: Stop what we are doing and walk slowly to investigate the sound opening
-			_target_pos = Vector3(origin.x, global_position.y, peer_z)
+			# Use consolidated helper: nearest unoccupied look spot near sound origin
+			var best_spot := _find_closest_unoccupied_spot(origin)
+			_assigned_look_spot = best_spot
+			if is_instance_valid(best_spot):
+				_target_pos = best_spot.global_position
+				print("[Seeker %s] Routing to look spot: %s near sound." % [name, best_spot.name])
+			else:
+				_target_pos = Vector3(origin.x, global_position.y, peer_z)
+				print("[Seeker %s] No free look spot. Investigating raw coordinate." % name)
+
 			current_state = State.SUSPICIOUS
 			_state_timer = 0.0
+			_suspicious_phase = 0
+			_phase_timer = 0.0
+			_total_investigate_timer = 0.0
+			_spots_visited_count = 0
 			_target_object = null
 			_faint_look_timer = 0.0
-			print("[Seeker %s] Giant heard noise at X: %0.2f on High Alert (%0.2f). Investigating opening..." % [name, origin.x, alert_level])
 		else:
 			# Low Alert: Pause in place and look towards the sound source without walking there
 			_look_target_x = origin.x
@@ -876,13 +1021,19 @@ func _process_animations(delta: float) -> void:
 		# Search site: randomly play one of the work animations
 		_play_anim(_current_work_anim)
 	elif current_state == State.SUSPICIOUS:
-		# Alert phase -> walk to wall -> random look animations at the wall
-		if _state_timer < _alert_duration:
+		# Phase 0: alert freeze, Phase 1: walking to spot, Phase 2: look anims at window
+		if _suspicious_phase == 0:
 			_play_anim(anim_alert)
-		elif _actual_velocity.length() > 0.1:
-			_play_anim(anim_walk)
+		elif _suspicious_phase == 1:
+			if _actual_velocity.length() > 0.1:
+				_play_anim(anim_walk)
+			else:
+				_play_anim(anim_idle)
 		else:
-			_play_anim(_current_look_anim)
+			if not _current_look_anim.is_empty():
+				_play_anim(_current_look_anim)
+			else:
+				_play_anim(anim_idle)
 	elif _spotted_target != null:
 		# Alert/detected but freezing
 		_play_anim(anim_alert)
@@ -915,3 +1066,48 @@ func _process_animations(delta: float) -> void:
 				anim_player.speed_scale = 1.0
 		else:
 			anim_player.speed_scale = 1.0
+
+## Returns the nearest unoccupied look spot to the given world position.
+## Excludes spots held by other Seekers and optionally one additional excluded spot (for switching).
+func _find_closest_unoccupied_spot(near: Vector3, exclude: Node3D = null) -> Node3D:
+	var all_spots := _find_all_look_spots()
+	var occupied: Array[Node3D] = []
+	for other in get_tree().get_nodes_in_group("seeker"):
+		if other != self and is_instance_valid(other):
+			var held = other.get("_assigned_look_spot")
+			if is_instance_valid(held):
+				occupied.append(held)
+	if is_instance_valid(exclude):
+		occupied.append(exclude)
+
+	var best: Node3D = null
+	var min_dist: float = 99999.0
+	for spot in all_spots:
+		if occupied.has(spot):
+			continue
+		var dist := spot.global_position.distance_to(near)
+		if dist < min_dist:
+			min_dist = dist
+			best = spot
+	return best
+
+func _find_all_look_spots() -> Array[Node3D]:
+	var list: Array[Node3D] = []
+	var nodes := get_tree().get_nodes_in_group("seeker_look_spots")
+	for node in nodes:
+		if node is Node3D:
+			list.append(node)
+			
+	var root := get_tree().root
+	if root:
+		_find_look_spots_recursive(root, list)
+	return list
+
+func _find_look_spots_recursive(node: Node, list: Array[Node3D]) -> void:
+	var name_str := String(node.name).to_lower()
+	if node is Node3D and (name_str.contains("seekerlookspot") or name_str.contains("lookspot") or node.is_in_group("seeker_look_spots")):
+		if not list.has(node):
+			node.visible = false
+			list.append(node)
+	for child in node.get_children():
+		_find_look_spots_recursive(child, list)
