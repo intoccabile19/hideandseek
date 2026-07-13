@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h08h0"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qvthm"]
+_surfaces = [{
+"aabb": AABB(-0.0010015869, -0.51860327, -0.9964407, 5.002251, 0.51925606, 4.9976907),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAADAAIAAAADAAQABQACAAEAAgAFAAQABAAGAAAABQAGAAQABwAAAAYAAAAHAAEAAQAIAAUABQAIAAYACAABAAcABgAJAAcABwAJAAgACAAJAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("PQqgQC/DBL9xPVq/MQigQLgeKzpACn+/MQigQLgeKzo9CoBAMQigQIqfBL89CoBArkeDuoafBL89CoBArkeDukghKzo9CoBArkeDuomfBL/helq/MQigQDrF3r7AFH+/rkeDukghKzq9Fn+/rkeDuhrP3r49DH+/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7rlio"]
+resource_name = "UCX_SM_Bld_Wall_06"
+_surfaces = [{
+"aabb": AABB(-0.0010015869, -0.51860327, -0.9964407, 5.002251, 0.51925606, 4.9976907),
+"format": 34359742471,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQABQAGAAcABwAIAAUACQAKAAsACwAMAAkADQAOAA8ADwAQAA0AEQASABMAEQAUABIAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoA"),
+"material": SubResource("StandardMaterial3D_h08h0"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("PQqgQC/DBL9xPVq/MQigQLgeKzpACn+/MQigQLgeKzo9CoBAMQigQDrF3r7AFH+/MQigQIqfBL89CoBAMQigQLgeKzo9CoBArkeDukghKzo9CoBArkeDuoafBL89CoBAMQigQIqfBL89CoBArkeDukghKzo9CoBAMQigQLgeKzo9CoBAMQigQLgeKzpACn+/rkeDukghKzq9Fn+/rkeDukghKzq9Fn+/MQigQLgeKzpACn+/MQigQDrF3r7AFH+/rkeDuhrP3r49DH+/rkeDukghKzo9CoBArkeDuomfBL/helq/rkeDuoafBL89CoBArkeDukghKzq9Fn+/rkeDuhrP3r49DH+/PQqgQC/DBL9xPVq/MQigQIqfBL89CoBArkeDuoafBL89CoBArkeDuomfBL/helq/MQigQDrF3r7AFH+/PQqgQC/DBL9xPVq/rkeDuomfBL/helq/rkeDuhrP3r49DH+/7v8OgP1/BsDu/w6A/X8GwO7/DoD9fwbA7v8OgP1/BsDu/w6A/X8GwP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7////3/AIAAgP///f8AgACA///9/wCAAID///3/AIAAgAAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//fwEAAAAAwP9/AQAAAADA/38BAAAAAMD/fwEAAAAAwP+uAAA5PcG0/64AADk9wbT/rgAAOT3BtP+uAAA5PcG0")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qvthm")
+
+[node name="UCX_SM_Bld_Wall_66" type="MeshInstance3D" unique_id=1749580518]
+mesh = SubResource("ArrayMesh_7rlio")

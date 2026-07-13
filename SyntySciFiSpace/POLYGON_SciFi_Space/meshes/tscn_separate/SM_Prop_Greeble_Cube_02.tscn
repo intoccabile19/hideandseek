@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_stmmj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52uay"]
+resource_name = "SciFi1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qkry3"]
+_surfaces = [{
+"aabb": AABB(-0.78381747, 0, -0.78381747, 1.5676349, 1.5676318, 1.5676349),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAQAAwAFAAIABgAEAAEAAQAAAAYABwADAAQABQADAAcABAAGAAgACQAGAAAACAAGAAkACAAKAAQABAAKAAcACQALAAgACgAIAAwACwAMAAgADQAHAAoADAANAAoADgAHAA0ABwAOAAUADwANAAwADQAPAA4AEAAMAAsADAAQAA8ACwARABAAEQALAAkADwAQABIAEQASABAADwATAA4AEgATAA8ABQAOABMAEwAUAAUAFAATABIABQAUAAIAFQASABEAEgAVABQACQAWABEAEQAWABUAFgAJAAAAFwACABQAFAAVABcAAgAXAAAAFgAXABUAAAAXABYA"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("xWI4PwAAAADFYjg/xWI4PwAAAADFYji/xWI4vwAAAADFYji/xWI4P1Msgj1DqEi/Q6hIP1Msgj3FYji/xWI4v1Msgj1DqEi/Q6hIP1Msgj3FYjg/xWI4P2WFwD9DqEi/Q6hIP2WFwD/FYjg/xWI4P1Msgj1DqEg/Q6hIP2WFwD/FYji/xWI4P2WFwD9DqEg/xWI4PymoyD/FYjg/xWI4PymoyD/FYji/xWI4v2WFwD9DqEi/xWI4vymoyD/FYji/xWI4vymoyD/FYjg/xWI4v2WFwD9DqEg/Q6hIv2WFwD/FYjg/Q6hIv2WFwD/FYji/Q6hIv1Msgj3FYji/Q6hIv1Msgj3FYjg/xWI4v1Msgj1DqEg/xWI4vwAAAADFYjg/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ywkij"]
+resource_name = "SM_Prop_Greeble_Cube_02"
+_surfaces = [{
+"aabb": AABB(-0.78381747, 0, -0.78381747, 1.5676349, 1.5676318, 1.5676349),
+"attribute_data": PackedByteArray("iGM4P0YdJj+IYzg/YnE4P2sPJj9icTg/aw8mP0YdJj9VGjg/9nA6P1UaOD8SxUw/O8YlPxLFTD87xiU/9nA6PzvGJT/KfiY/VBo4P8x+Jj9UGjg/59I4PzvGJT/n0jg/VBo4PyBjTj9VGjg/PbdgPzvGJT89t2A/O8YlPyBjTj9rDyY/nwFOP4hjOD+fAU4/iGM4P7xVYD9rDyY/vFVgP2sPJj90Dzo/iGM4P3QPOj+IYzg/jWNMP2sPJj+NY0w/Y0AlP2JxOD9jQCU/Rx0mP2sPJj9GHSY/aw8mP2JxOD8x9yQ/EsVMPzH3JD/2cDo/O8YlP/ZwOj87xiU/EsVMP1UaOD/2cDo/O8YlP/ZwOj87xiU/59I4P1QaOD/n0jg/iGM4P2JxOD+IYzg/Rh0mP48yOT9GHSY/jzI5P2JxOD9UGjg/IGNOPzvGJT8gY04/O8YlPxLFTD9VGjg/EsVMP2sPJj+fAU4/aw8mP7xVYD9jQCU/vFVgP2NAJT+fAU4/VRo4PxLFTD9VGjg/9nA6P2W4OT/2cDo/Zbg5PxLFTD+PMjk/nwFOP48yOT+8VWA/iGM4P7xVYD+IYzg/nwFOP2sPJj90Dzo/aw8mP41jTD9jQCU/jWNMP2NAJT90Dzo/iGM4P58BTj9rDyY/nwFOP2sPJj+NY0w/iGM4P41jTD+PMjk/dA86P48yOT+NY0w/iGM4P41jTD+IYzg/dA86P4hjOD90Dzo/aw8mP3QPOj9rDyY/YnE4P4hjOD9icTg/O8YlP/ZwOj8x9yQ/9nA6PzvGJT/n0jg/O8YlPxLFTD87xiU/IGNOPzH3JD8SxUw/VRo4P/ZwOj9UGjg/59I4P2W4OT/2cDo/VRo4PxLFTD9luDk/EsVMP1QaOD8gY04/aw8mP58BTj9jQCU/nwFOP2sPJj+NY0w/iGM4P58BTj+IYzg/jWNMP48yOT+fAU4/aw8mP3QPOj9jQCU/dA86P2sPJj9icTg/iGM4P3QPOj+IYzg/YnE4P48yOT90Dzo/"),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARgBHAEQASABJAEoASwBMAE0ATgBPAFAAUQBSAFMAVABVAFYAVwBYAFkAWgBbAFwAXQBeAF8A"),
+"material": SubResource("StandardMaterial3D_52uay"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("xWI4PwAAAADFYjg/xWI4PwAAAADFYji/xWI4vwAAAADFYji/xWI4vwAAAADFYjg/xWI4v2WFwD9DqEg/xWI4P2WFwD9DqEg/xWI4P1Msgj1DqEg/xWI4v1Msgj1DqEg/Q6hIv1Msgj3FYji/Q6hIv2WFwD/FYji/Q6hIv2WFwD/FYjg/Q6hIv1Msgj3FYjg/Q6hIP2WFwD/FYjg/Q6hIP2WFwD/FYji/Q6hIP1Msgj3FYji/Q6hIP1Msgj3FYjg/xWI4vymoyD/FYji/xWI4PymoyD/FYji/xWI4PymoyD/FYjg/xWI4vymoyD/FYjg/xWI4v1Msgj1DqEi/xWI4P1Msgj1DqEi/xWI4P2WFwD9DqEi/xWI4v2WFwD9DqEi/Q6hIv1Msgj3FYji/Q6hIv1Msgj3FYjg/xWI4vwAAAADFYjg/xWI4vwAAAADFYji/xWI4PwAAAADFYjg/xWI4vwAAAADFYjg/xWI4v1Msgj1DqEg/xWI4P1Msgj1DqEg/xWI4v2WFwD9DqEg/xWI4v1Msgj1DqEg/Q6hIv1Msgj3FYjg/Q6hIv2WFwD/FYjg/xWI4PwAAAADFYji/xWI4PwAAAADFYjg/Q6hIP1Msgj3FYjg/Q6hIP1Msgj3FYji/Q6hIP2WFwD/FYjg/Q6hIP1Msgj3FYjg/xWI4P1Msgj1DqEg/xWI4P2WFwD9DqEg/xWI4vymoyD/FYji/xWI4vymoyD/FYjg/Q6hIv2WFwD/FYjg/Q6hIv2WFwD/FYji/xWI4P2WFwD9DqEg/xWI4v2WFwD9DqEg/xWI4vymoyD/FYjg/xWI4PymoyD/FYjg/Q6hIP2WFwD/FYji/Q6hIP2WFwD/FYjg/xWI4PymoyD/FYjg/xWI4PymoyD/FYji/xWI4v1Msgj1DqEi/xWI4v2WFwD9DqEi/Q6hIv2WFwD/FYji/Q6hIv1Msgj3FYji/xWI4PymoyD/FYji/xWI4vymoyD/FYji/xWI4v2WFwD9DqEi/xWI4P2WFwD9DqEi/Q6hIP1Msgj3FYji/Q6hIP2WFwD/FYji/xWI4P2WFwD9DqEi/xWI4P1Msgj1DqEi/xWI4P1Msgj1DqEi/xWI4v1Msgj1DqEi/xWI4vwAAAADFYji/xWI4PwAAAADFYji/xWI4v1Msgj1DqEg/xWI4vwAAAADFYjg/Q6hIv1Msgj3FYjg/xWI4P1Msgj1DqEg/Q6hIP1Msgj3FYjg/xWI4PwAAAADFYjg/xWI4v2WFwD9DqEg/Q6hIv2WFwD/FYjg/xWI4vymoyD/FYjg/xWI4P2WFwD9DqEg/xWI4PymoyD/FYjg/Q6hIP2WFwD/FYjg/xWI4vymoyD/FYji/Q6hIv2WFwD/FYji/xWI4v2WFwD9DqEi/xWI4PymoyD/FYji/xWI4P2WFwD9DqEi/Q6hIP2WFwD/FYji/xWI4v1Msgj1DqEi/Q6hIv1Msgj3FYji/xWI4vwAAAADFYji/xWI4P1Msgj1DqEi/xWI4PwAAAADFYji/Q6hIP1Msgj3FYji//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//f/9//3////9//3//f////3//f/9/////f/9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///////f/9///////9//3///////3//f///////f/9/////f///////v/9///////+//3///////7//f///////v/////////+//////////7//////////v/////////+//z//P/+//5//P/8//7//n/8//z//v/+f/z//P/+//5//f/8//3//3/9//z//f//f/3//P/9//9//f/8//3//3/8//3//f////z//f/9/////P/9//3////8//3//f////7//P/+//9//v/8//7//3/+//z//v//f/7//P/+//9//v/9//3////+//3//f////7//f/9/////v/9//3////8//7//v//f/z//v/+//9//P/+//7//3/8//7//v//f/3//v/+/////f/+//7////9//7//v////3//v/+/////v/+//7//n/+//7//v/+f/7//v/+//5//v/+//7//nwAA/7/////fAAD/v////98AAP+/////3wAA/7/////f/7///////7//v///////v/+///////+//7///////7////+//7//v////7//v/+/////v/+//7////+//7//v/+/AAD///+//78AAP///7//vwAA////v/+/AAD///+/VFVVVf9//99UVVVV/3//31RVVVX/f//fqqpVVf9//9+qqlVV/3//36qqVVX/f//fVFWpqv8//v9UVamq/z/+/1RVqar/P/7/qqqpqv+//v+qqqmq/7/+/6qqqar/v/7/qipU1f+//9+qKlTV/7//36oqVNX/v//fVNVU1f+//59U1VTV/7//n1TVVNX/v/+fqiqqKv///5+qKqoq////n6oqqir///+fVNWqKv+//79U1aoq/7//v1TVqir/v/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qkry3")
+
+[node name="SM_Prop_Greeble_Cube_02" type="MeshInstance3D" unique_id=761803255]
+mesh = SubResource("ArrayMesh_ywkij")
+surface_material_override/0 = ExtResource("1_stmmj")

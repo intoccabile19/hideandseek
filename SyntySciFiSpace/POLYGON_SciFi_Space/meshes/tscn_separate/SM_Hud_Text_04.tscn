@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/FX_HUD_02.tres" id="1_noc4o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bx2x"]
+resource_name = "SciFi1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5isvw"]
+_surfaces = [{
+"aabb": AABB(-0.07767334, -0.007532501, -0.0038684083, 0.15534973, 0.015065002, 0.0077368165),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("zRSfPTPT9rsfhX07zRSfPTPT9jsfhX07zRSfPTPT9jsfhX27zRSfPTPT9rsfhX27MxOfvTPT9rsfhX07MxOfvTPT9jsfhX27MxOfvTPT9jsfhX07MxOfvTPT9rsfhX27")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1uho0"]
+resource_name = "SM_Hud_Text_04"
+_surfaces = [{
+"aabb": AABB(-0.07767334, -0.007532501, -0.0038684083, 0.15534973, 0.015065002, 0.0077368165),
+"attribute_data": PackedByteArray("aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_7bx2x"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zRSfPTPT9rsfhX07zRSfPTPT9jsfhX07zRSfPTPT9jsfhX27zRSfPTPT9rsfhX27MxOfvTPT9rsfhX07zRSfPTPT9rsfhX07zRSfPTPT9rsfhX27MxOfvTPT9rsfhX27MxOfvTPT9jsfhX07MxOfvTPT9rsfhX07MxOfvTPT9rsfhX27MxOfvTPT9jsfhX27zRSfPTPT9jsfhX07MxOfvTPT9jsfhX07MxOfvTPT9jsfhX27zRSfPTPT9jsfhX27MxOfvTPT9rsfhX07MxOfvTPT9jsfhX07zRSfPTPT9jsfhX07zRSfPTPT9rsfhX07zRSfPTPT9rsfhX27zRSfPTPT9jsfhX27MxOfvTPT9jsfhX27MxOfvTPT9rsfhX27////f////7////9/////v////3////+/////f////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//3///////7//f///////v/9///////+//3///////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5isvw")
+
+[node name="SM_Hud_Text_04" type="MeshInstance3D" unique_id=2043604747]
+mesh = SubResource("ArrayMesh_1uho0")
+surface_material_override/0 = ExtResource("1_noc4o")

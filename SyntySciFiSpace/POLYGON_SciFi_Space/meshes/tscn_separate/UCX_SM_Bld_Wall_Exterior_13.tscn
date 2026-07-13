@@ -1,0 +1,37 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t63h7"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1gbcm"]
+_surfaces = [{
+"aabb": AABB(1.8310546e-06, -0.46685392, -0.99544066, 5, 0.46247885, 4.9954405),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAAAABAAIAAgADAAAABAAFAAYABgAHAAQAFAAVABYAFgAXABQA"),
+"lods": [2.5106716, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("BACgQHcH774z1X6/j8L1NXcH774z1X6/j8L1NXoH7779/39ABACgQHoH7779/39ABACgQLtcj7v9/39Aj8L1Nbtcj7v9/39Aj8L1NTFdj7sz1X6/BACgQDFdj7sz1X6/BACgQHgH774AAIBAj8L1NXgH774AAIBAj8L1Nc1cj7sAAIBABACgQM1cj7sAAIBAUrj2NXgH7779/39AKVwjNngH774z1X6/KVwjNs1cj7sz1X6/Urj2Nc1cj7v9/39AAwCgQHgH774z1X6/BACgQHgH7779/39ABACgQM1cj7v9/39AAwCgQM1cj7sz1X6/j8L1NXgH774z1X6/BACgQHgH774z1X6/BACgQM1cj7sz1X6/j8L1Nc1cj7sz1X6/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5dstf"]
+resource_name = "UCX_SM_Bld_Wall_Exterior_02"
+_surfaces = [{
+"aabb": AABB(1.8310546e-06, -0.46685392, -0.99544066, 5, 0.46247885, 4.9954405),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAAAABAAIAAgADAAAABAAFAAYABgAHAAQAFAAVABYAFgAXABQA"),
+"lods": [2.5106716, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQA")],
+"material": SubResource("StandardMaterial3D_t63h7"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("BACgQHcH774z1X6/j8L1NXcH774z1X6/j8L1NXoH7779/39ABACgQHoH7779/39ABACgQLtcj7v9/39Aj8L1Nbtcj7v9/39Aj8L1NTFdj7sz1X6/BACgQDFdj7sz1X6/BACgQHgH774AAIBAj8L1NXgH774AAIBAj8L1Nc1cj7sAAIBABACgQM1cj7sAAIBAUrj2NXgH7779/39AKVwjNngH774z1X6/KVwjNs1cj7sz1X6/Urj2Nc1cj7v9/39AAwCgQHgH774z1X6/BACgQHgH7779/39ABACgQM1cj7v9/39AAwCgQM1cj7sz1X6/j8L1NXgH774z1X6/BACgQHgH774z1X6/BACgQM1cj7sz1X6/j8L1Nc1cj7sz1X6//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v///////fwCA//////9/AID//////38AgP//////fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1gbcm")
+
+[node name="UCX_SM_Bld_Wall_Exterior_13" type="MeshInstance3D" unique_id=301315494]
+mesh = SubResource("ArrayMesh_5dstf")

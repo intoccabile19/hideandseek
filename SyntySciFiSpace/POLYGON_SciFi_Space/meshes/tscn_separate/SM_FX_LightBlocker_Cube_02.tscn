@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/FX_LightBlocker_01.tres" id="1_0fs7t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5g5j6"]
+resource_name = "SciFi"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ibpdw"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 5, 5, 5),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAAAEAAUABQABAAAAAwAGAAQABQAEAAYABgADAAIABgAHAAUAAgAHAAYABQAHAAgACAAHAAIACAAJAAUAAQAFAAkAAgAKAAgACgACAAEAAQALAAoACQALAAEA"),
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AACgQAAAoEAAAKBAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAAAAAAAAoEAAAKBAAACgQAAAAAAAAKBAAACgQAAAAAAAAAAAAAAAAAAAAAAAAKBAAAAAAAAAAAAAAAAAwXKHP8Fyhz8AAAAAoEZ8QMFyhz8AAAAAwXKHP6BGfEAAAAAAoEZ8QKBGfEAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wni4w"]
+resource_name = "SM_FX_LightBlocker_Cube_02"
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 5, 5, 5),
+"attribute_data": PackedByteArray("qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/gN9YPLrSfD+A31g8utJ8P6jfWDy60nw/gN9YPLrSfD+A31g8utJ8P6jfWDy60nw/qN9YPLrSfD+A31g8utJ8P4DfWDy60nw/qN9YPLrSfD+o31g8utJ8P6jfWDy60nw/gN9YPLrSfD+A31g8utJ8P6jfWDy60nw/"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"material": SubResource("StandardMaterial3D_5g5j6"),
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AACgQAAAoEAAAKBAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAAAAAAAAoEAAAKBAAACgQAAAAAAAAKBAAACgQAAAoEAAAKBAAAAAAAAAoEAAAKBAAAAAAAAAAAAAAKBAAACgQAAAAAAAAAAAAACgQAAAAAAAAKBAAAAAAAAAAAAAAKBAAAAAAAAAAAAAAAAAAACgQAAAoEAAAKBAAACgQAAAAAAAAKBAAACgQAAAAAAAAAAAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKBAAAAAAAAAoEAAAKBAwXKHP8Fyhz8AAAAAoEZ8QMFyhz8AAAAAAACgQAAAAAAAAAAAAAAAAAAAAAAAAAAAwXKHP6BGfEAAAAAAAAAAAAAAoEAAAAAAAACgQAAAoEAAAAAAoEZ8QKBGfEAAAAAAwXKHP8Fyhz8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAoEAAAAAAwXKHP6BGfEAAAAAAoEZ8QMFyhz8AAAAAoEZ8QKBGfEAAAAAAAACgQAAAoEAAAAAAAACgQAAAAAAAAAAA/38AAP///7//fwAA////v/9/AAD///+//38AAP///7//////////v/////////+//////////7//////////v/9///////+//3///////7//f///////v/9///////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7////9/////v////3////+/////f////7////9/////v/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ibpdw")
+
+[node name="SM_FX_LightBlocker_Cube_02" type="MeshInstance3D" unique_id=13466111]
+mesh = SubResource("ArrayMesh_wni4w")
+surface_material_override/0 = ExtResource("1_0fs7t")

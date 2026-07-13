@@ -1,0 +1,37 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56dof"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hx7ll"]
+_surfaces = [{
+"aabb": AABB(1.5880654, -0.034729037, 0.03236633, 0.9989116, 0.080337495, 2.367817),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAAIAAIABwACAAgAAgAHAAYABgAAAAIACAAJAAcABgAHAAkAAAAGAAUABQAGAAkACgAJAAgABQAJAAoACAALAAoAAAALAAgABQAKAAQABAAKAAsABQADAAAAAAADAAsABQAEAAEAAQADAAUACwABAAQAAwABAAsA"),
+"lods": [0.07134069, PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAQADAAUABQADAAAABQAEAAEABgAAAAIAAAAGAAUABAAHAAIAAgAHAAYABQAHAAQABQAGAAcA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("ukXLP+/POj2PkgQ9BpAeQO/POj2anBlABpAeQO/POj2PkgQ9ukXLP+/POj2anBlAfHodQPc/Dr0fUhZAiQzOPwlADr0mUhZAiQzOPwlADr24l6s9fHodQPc/Dr24mKs9CJElQO/POj2hfhs/nS0kQPw/Dr29QyI/nS0kQPw/Dr3qO+Y/CJElQO/POj14nuk/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vqat0"]
+resource_name = "UCX_SM_Bld_Lift_Door_01"
+_surfaces = [{
+"aabb": AABB(1.5880654, -0.034729037, 0.03236633, 0.9989116, 0.080337495, 2.367817),
+"format": 34359742471,
+"index_count": 60,
+"index_data": PackedByteArray("AAAYAAIAAAAZABgAAAADABkAAwABABkABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEwAQABoAGgAbABMAHAAdAB4AHgAfABwAFAAgABYAFAAhACAAFAAXACEAFwAVACEAIgARABIAEgAjACIA"),
+"lods": [0.07134069, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFAAXABUA")],
+"material": SubResource("StandardMaterial3D_56dof"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("ukXLP+/POj2PkgQ9BpAeQO/POj2anBlABpAeQO/POj2PkgQ9ukXLP+/POj2anBlAiQzOPwlADr0mUhZAfHodQPc/Dr0fUhZABpAeQO/POj2anBlAukXLP+/POj2anBlAukXLP+/POj2PkgQ9iQzOPwlADr24l6s9iQzOPwlADr0mUhZAukXLP+/POj2anBlAiQzOPwlADr24l6s9ukXLP+/POj2PkgQ9BpAeQO/POj2PkgQ9fHodQPc/Dr24mKs9BpAeQO/POj2PkgQ9BpAeQO/POj2anBlAfHodQPc/Dr0fUhZAfHodQPc/Dr24mKs9iQzOPwlADr0mUhZAfHodQPc/Dr24mKs9fHodQPc/Dr0fUhZAiQzOPwlADr24l6s9CJElQO/POj2hfhs/CJElQO/POj14nuk/CJElQO/POj2hfhs/nS0kQPw/Dr29QyI/CJElQO/POj2hfhs/CJElQO/POj14nuk/nS0kQPw/Dr3qO+Y/nS0kQPw/Dr29QyI/nS0kQPw/Dr3qO+Y/nS0kQPw/Dr29QyI/CJElQO/POj14nuk/nS0kQPw/Dr3qO+Y//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//fwtOcj7KjP9/C05yPsqM/38LTnI+yoz/fwtOcj7KjDYbyGQMed3MNhvIZAx53cw2G8hkDHndzDYbyGQMed3MC84AAGpmxqALzgAAambGoAvOAABqZsagC84AAGpmxqAJ5AtUvYZhsArUCWQEaE2xCtQJZARoTbEJ5AtUvYZhsP9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//3///wAA/7//f///AAD/vwnkC1S9hmGwCeQLVL2GYbDI5MhkDHkgs8jkyGQMeSCzyOTIZAx5ILPI5MhkDHkgs/9/AAAAAP+//38AAAAA/78K1AlkBGhNsQrUCWQEaE2x")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hx7ll")
+
+[node name="UCX_SM_Bld_Lift_Door_2" type="MeshInstance3D" unique_id=1863751054]
+mesh = SubResource("ArrayMesh_vqat0")

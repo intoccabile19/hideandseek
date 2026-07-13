@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6dw5s1v8q5r8"]
+[gd_scene format=3 uid="uid://b6dw5s1v8q5r8"]
 
-[ext_resource type="Script" path="res://scenes/objects/pushable_box_interactable.gd" id="2_interact"]
+[ext_resource type="PackedScene" uid="uid://bgp6ptjqxb84u" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Cart_Filled_01.tscn" id="2_f1e3e"]
+[ext_resource type="Script" uid="uid://dunb0sfsno4lp" path="res://scenes/objects/pushable_box_interactable.gd" id="2_interact"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
 size = Vector3(1.2, 0.6, 1.2)
@@ -9,9 +10,9 @@ size = Vector3(1.2, 0.6, 1.2)
 size = Vector3(1.2, 0.6, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2"]
-size = Vector3(2.0, 0.8, 1.4)
+size = Vector3(2, 0.8, 1.4)
 
-[node name="PushableBox" type="RigidBody3D"]
+[node name="PushableBox" type="RigidBody3D" unique_id=1576275608]
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -19,14 +20,18 @@ axis_lock_angular_z = true
 mass = 20.0
 linear_damp = 8.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1855346736]
 shape = SubResource("BoxShape3D_1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=938011580]
+visible = false
 mesh = SubResource("BoxMesh_1")
 
-[node name="InteractableArea" type="Area3D" parent="."]
+[node name="InteractableArea" type="Area3D" parent="." unique_id=1052798268]
 script = ExtResource("2_interact")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea" unique_id=969125451]
 shape = SubResource("BoxShape3D_2")
+
+[node name="SM_Prop_Cart_Filled_01" parent="." unique_id=313834928 instance=ExtResource("2_f1e3e")]
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, 0.039748073, -0.29676044, 0.35350132)

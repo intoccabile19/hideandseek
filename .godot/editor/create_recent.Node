@@ -1,3 +1,9 @@
+Node
+SpotLight3D
+CollisionShape3D
+CSGBox3D
+OmniLight3D
+CollisionPolygon3D
 AnimationPlayer
 Skeleton3D
 MeshInstance3D

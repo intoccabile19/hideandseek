@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a06b6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3g1e0"]
+_surfaces = [{
+"aabb": AABB(0, -2.5, -0.2050124, 2.5, 2.5, 0.20661095),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAAJAA0ADQAOAAwADwAQABEAEQASAA8AEwAUABUAFQAWABMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 23,
+"vertex_data": PackedByteArray("AAAgQAAAIMBmhtE6AAAAAAAAIMBmhtE6AAAAAAAAAIBmhtE6AAAgQAAAAIBmhtE6j8J1MQAAIMDDhdE6heuhNAAAIMDF7lG+heuhNAAAAIDF7lG+j8J1MQAAAIDDhdE6//8fQAAAIMDF7lG+AAAgQAAAIMDDhdE6AAAgQAAAAIDDhdE6//8fQAAAAIDF7lG+AAAAAAAAIMDDhdE6AAAgQP//H8DF7lG+AAAAAP//H8DF7lG+AAAgQI/CdbHDhdE6AAAAAI/CdbHDhdE6AAAAAIXrobTF7lG+AAAgQIXrobTF7lG+AAAAAAAAIMDF7lG+AAAgQAAAIMDF7lG+AAAgQAAAAIDF7lG+AAAAAAAAAIDF7lG+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g32vo"]
+resource_name = "UCX_SM_Bld_Floor_Small_04"
+_surfaces = [{
+"aabb": AABB(0, -2.5, -0.2050124, 2.5, 2.5, 0.20661095),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_a06b6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAgQAAAIMBmhtE6AAAAAAAAIMBmhtE6AAAAAAAAAIBmhtE6AAAgQAAAAIBmhtE6j8J1MQAAIMDDhdE6heuhNAAAIMDF7lG+heuhNAAAAIDF7lG+j8J1MQAAAIDDhdE6//8fQAAAIMDF7lG+AAAgQAAAIMDDhdE6AAAgQAAAAIDDhdE6//8fQAAAAIDF7lG+AAAgQP//H8DF7lG+AAAAAP//H8DF7lG+AAAAAAAAIMDDhdE6AAAgQAAAIMDDhdE6AAAgQI/CdbHDhdE6AAAAAI/CdbHDhdE6AAAAAIXrobTF7lG+AAAgQIXrobTF7lG+AAAAAAAAIMDF7lG+AAAgQAAAIMDF7lG+AAAgQAAAAIDF7lG+AAAAAAAAAIDF7lG+/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIAAAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v///////fwCA//////9/AID//////38AgP//////fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3g1e0")
+
+[node name="UCX_SM_Bld_Floor_Small_80" type="MeshInstance3D" unique_id=1644563958]
+mesh = SubResource("ArrayMesh_g32vo")

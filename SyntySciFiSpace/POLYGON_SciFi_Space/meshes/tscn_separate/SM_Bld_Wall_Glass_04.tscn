@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_01_Glass.tres" id="1_xt40k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucvjc"]
+resource_name = "SciFiSpace"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sh653"]
+_surfaces = [{
+"aabb": AABB(0.79318845, 0.8045128, 0.18780348, 3.3652802, 1.717751, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("JhKFQMVsIUCOT0A+LRKFQI30TT+OT0A+Zg5LP430TT+OT0A+Zg5LP8VsIUCOT0A+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ae0yy"]
+resource_name = "SM_Bld_Wall_Glass_04"
+_surfaces = [{
+"aabb": AABB(0.79318845, 0.8045128, 0.18780348, 3.3652802, 1.717751, 1e-05),
+"attribute_data": PackedByteArray("ePDEPsCbaT948MQ+wJtpP3jwxD7Am2k/ePDEPsCbaT8="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_ucvjc"),
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("JhKFQMVsIUCOT0A+LRKFQI30TT+OT0A+Zg5LP430TT+OT0A+Zg5LP8VsIUCOT0A+/3//f////z//f/9/////P/9//3////8//3//f////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sh653")
+
+[node name="SM_Bld_Wall_Glass_04" type="MeshInstance3D" unique_id=1509379816]
+mesh = SubResource("ArrayMesh_ae0yy")
+surface_material_override/0 = ExtResource("1_xt40k")

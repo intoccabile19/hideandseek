@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1epul"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y3f5d"]
+_surfaces = [{
+"aabb": AABB(-0.20558779, -0.5900876, -1.0383574, 0.7934077, 0.79348123, 5.094388),
+"format": 34359742465,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAAAEAAEAAwAFAAQAAgAGAAMABgAFAAMAAgAHAAYABwACAAEABgAIAAUABAAFAAgACQAGAAcABgAJAAgAAQAKAAcACwAJAAcACAAJAAsACwAHAAoACAAMAAQADAAIAAsABAAMAAEADQALAAoADAALAA0ACgABAA0ADAANAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("LIgMP+jRhr4P4oS/741jPqENF79Stnq/LK2FPosaDb8P4oS/tIcMP/g7UD5s4oS/XXsWPwjXZb4utnq/XXsWP25GUD4utnq/m4VSvkUQUD4R4oS/m4VSvoQRDb/l6IS/WnsWP25GUD4By4FAm4VSvkoQUD4By4FAm4VSvvoPF7/Isnq/m4VSvvsPF78By4FAXXsWPwzXZb4By4FA+o1jPqENF78By4FA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w7vlx"]
+resource_name = "UCX_SM_Bld_Wall_Corner_Pillar_01"
+_surfaces = [{
+"aabb": AABB(-0.20558779, -0.5900876, -1.0383574, 0.7934077, 0.79348123, 5.094388),
+"format": 34359742471,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABAAFAAEABgAHAAgABgAJAAcABgAIAAoACwAMAA0ADQAOAAsADwAQABEADwASABAAEgATABAAFAAVABYAFAAXABUAFAAWABgAGQAaABsAGwAcABkAHQAeAB8AHwAgAB0AIQAiACMAIwAkACEAJQAmACcAJQAoACYAKAApACYA"),
+"material": SubResource("StandardMaterial3D_1epul"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("LIgMP+jRhr4P4oS/741jPqENF79Stnq/LK2FPosaDb8P4oS/XXsWPwjXZb4utnq/XXsWPwzXZb4By4FA+o1jPqENF78By4FAm4VSvkUQUD4R4oS/WnsWP25GUD4By4FAXXsWP25GUD4utnq/m4VSvkoQUD4By4FAtIcMP/g7UD5s4oS/WnsWP25GUD4By4FAXXsWPwzXZb4By4FAXXsWPwjXZb4utnq/XXsWP25GUD4utnq/XXsWPwzXZb4By4FAm4VSvvsPF78By4FA+o1jPqENF78By4FAWnsWP25GUD4By4FAm4VSvkoQUD4By4FALK2FPosaDb8P4oS/m4VSvkUQUD4R4oS/tIcMP/g7UD5s4oS/m4VSvoQRDb/l6IS/LIgMP+jRhr4P4oS/XXsWPwjXZb4utnq/LIgMP+jRhr4P4oS/tIcMP/g7UD5s4oS/XXsWP25GUD4utnq/+o1jPqENF78By4FAm4VSvvsPF78By4FAm4VSvvoPF7/Isnq/741jPqENF79Stnq/m4VSvoQRDb/l6IS/LK2FPosaDb8P4oS/741jPqENF79Stnq/m4VSvvoPF7/Isnq/m4VSvvsPF78By4FAm4VSvoQRDb/l6IS/m4VSvvoPF7/Isnq/m4VSvkoQUD4By4FAm4VSvkUQUD4R4oS//7//P1RVqqr/v/8/VFWqqv+//z9UVaqq/7//P1RVqqr/v/8/VFWqqv+//z9UVaqq93/2/wgA+7/3f/b/CAD7v/d/9v8IAPu/93/2/wgA+7/3f/b/CAD7v/7//3//f/+//v//f/9//7/+//9//3//v/7//3//f/+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgPX/+f8NgAKA9f/5/w2AAoD1//n/DYACgPX/+f8NgAKA9f/5/w2AAoD+/xBNU6irsv7/EE1TqKuy/v8QTVOoq7L+/xBNU6irsgKAAgACAP2/AoACAAIA/b8CgAIAAgD9vwKAAgACAP2/7rIAAPtCq7LusgAA+0Krsu6yAAD7Qquy7rIAAPtCq7IAAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y3f5d")
+
+[node name="UCX_SM_Bld_Wall_Corner_Pillar_5" type="MeshInstance3D" unique_id=2028339929]
+mesh = SubResource("ArrayMesh_w7vlx")

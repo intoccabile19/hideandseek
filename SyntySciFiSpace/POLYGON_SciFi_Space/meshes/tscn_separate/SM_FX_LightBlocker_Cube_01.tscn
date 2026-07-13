@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/FX_LightBlocker_01.tres" id="1_fdr6t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv3iv"]
+resource_name = "SciFi"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mf82o"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 5, 5, 5),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAMAAAAEAAMAAgAFAAAABAAAAAUAAwAGAAIABQAHAAQAAwAEAAcABwAFAAIABwAGAAMAAgAGAAcA"),
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACgQAAAoEAAAKBAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAACgQAAAAAAAAAAAAACgQAAAAAAAAKBAAAAAAAAAoEAAAKBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKBA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vrh7w"]
+resource_name = "SM_FX_LightBlocker_Cube_01"
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 5, 5, 5),
+"attribute_data": PackedByteArray("ACwiPOiMfT8ALCI86Ix9PyAsIjzojH0/ICwiPOiMfT8ALCI86Yx9PwAsIjzojH0/ICwiPOiMfT8gLCI86Yx9PwAsIjzqjH0/ACwiPOmMfT8gLCI86Yx9PyAsIjzqjH0/ACwiPOiMfT8ALCI86Yx9PwAsIjzpjH0/ACwiPOiMfT8gLCI86Ix9PyAsIjzpjH0/ACwiPOmMfT8ALCI86Ix9PyAsIjzojH0/ACwiPOiMfT8ALCI86Yx9PyAsIjzqjH0/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_sv3iv"),
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACgQAAAoEAAAKBAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAAAAAAAAoEAAAKBAAACgQAAAAAAAAKBAAACgQAAAoEAAAKBAAAAAAAAAoEAAAKBAAAAAAAAAAAAAAKBAAACgQAAAAAAAAAAAAACgQAAAAAAAAKBAAAAAAAAAAAAAAKBAAAAAAAAAAAAAAAAAAACgQAAAoEAAAKBAAACgQAAAAAAAAKBAAACgQAAAAAAAAAAAAACgQAAAoEAAAAAAAAAAAAAAoEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKBAAAAAAAAAoEAAAKBAAAAAAAAAoEAAAAAAAACgQAAAoEAAAAAAAACgQAAAAAAAAAAAAAAAAAAAAAAAAAAA/38AAP///7//fwAA////v/9/AAD///+//38AAP///7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7////9//////////3//////////f/////////9///////9//39yGMYz/3//fwAA/z//f/9/chjGM/9//3+qKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mf82o")
+
+[node name="SM_FX_LightBlocker_Cube_01" type="MeshInstance3D" unique_id=260678772]
+mesh = SubResource("ArrayMesh_vrh7w")
+surface_material_override/0 = ExtResource("1_fdr6t")

@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/FX_HUD_01.tres" id="1_5uhbi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48owb"]
+resource_name = "SciFi1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a8yf4"]
+_surfaces = [{
+"aabb": AABB(-0.21702576, -0.21702728, -0.004107151, 0.4340515, 0.43405455, 0.008214302),
+"format": 34359742465,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAABAAAAAwABAAQAAgAFAAAABgAAAAUABQAHAAYAAAAIAAQACAAAAAYACQAHAAUACAAKAAkABgAKAAgABgAHAAsACwAHAAkACwADAAYAAwALAAIADAAKAAYABgADAAwACQAKAAwABAAMAAMACQANAAgABAAIAA0ABQANAAkADQAFAAIADQAOAAQAAgAOAA0ADwAMAAQADAAPAAkABAAOAA8ADwAOAAIACQAPAAsAAgALAA8A"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("zczMtZolQT5IlYY7AAAAAGY8Xj5IlYY7ADxevgAAAABAlYY7AAAAAGY8Xj5IlYa7ADxePpqZGTZAlYY7ACZBvgAAAABAlYY7zczMtZolQT5IlYa7ACZBvgAAAABGlYa7ACZBPgAAAABAlYY7zczMNZolQb5IlYa7ACZBPgAAAABGlYa7ADxevgAAAABGlYa7ADxePpqZGTZGlYa7zczMNZolQb5IlYY7AAAAAGY8Xr5IlYY7AAAAAGY8Xr5IlYa7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r30u6"]
+resource_name = "SM_Hud_Reticle_02"
+_surfaces = [{
+"aabb": AABB(-0.21702576, -0.21702728, -0.004107151, 0.4340515, 0.43405455, 0.008214302),
+"attribute_data": PackedByteArray("aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT8="),
+"format": 34359742487,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwA"),
+"material": SubResource("StandardMaterial3D_48owb"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("zczMtZolQT5IlYY7AAAAAGY8Xj5IlYY7ADxevgAAAABAlYY7ACZBvgAAAABAlYY7zczMtZolQT5IlYY7ACZBPgAAAABAlYY7ADxePpqZGTZAlYY7AAAAAGY8Xj5IlYY7zczMNZolQb5IlYY7AAAAAGY8Xr5IlYY7ADxePpqZGTZAlYY7ACZBPgAAAABAlYY7zczMNZolQb5IlYY7ACZBvgAAAABAlYY7ADxevgAAAABAlYY7AAAAAGY8Xr5IlYY7zczMtZolQT5IlYa7ACZBvgAAAABGlYa7ADxevgAAAABGlYa7AAAAAGY8Xj5IlYa7ADxePpqZGTZGlYa7ACZBPgAAAABGlYa7zczMtZolQT5IlYa7AAAAAGY8Xj5IlYa7zczMNZolQb5IlYa7ACZBPgAAAABGlYa7ADxePpqZGTZGlYa7AAAAAGY8Xr5IlYa7ADxevgAAAABGlYa7ACZBvgAAAABGlYa7zczMNZolQb5IlYa7AAAAAGY8Xr5IlYa7ADxevgAAAABAlYY7AAAAAGY8Xj5IlYY7AAAAAGY8Xj5IlYa7ADxevgAAAABGlYa7ACZBvgAAAABAlYY7ACZBvgAAAABGlYa7zczMtZolQT5IlYa7zczMtZolQT5IlYY7ADxePpqZGTZAlYY7ADxePpqZGTZGlYa7AAAAAGY8Xj5IlYa7AAAAAGY8Xj5IlYY7ACZBPgAAAABAlYY7zczMtZolQT5IlYY7zczMtZolQT5IlYa7ACZBPgAAAABGlYa7ADxePpqZGTZAlYY7AAAAAGY8Xr5IlYY7AAAAAGY8Xr5IlYa7ADxePpqZGTZGlYa7ACZBPgAAAABAlYY7ACZBPgAAAABGlYa7zczMNZolQb5IlYa7zczMNZolQb5IlYY7ADxevgAAAABAlYY7ADxevgAAAABGlYa7AAAAAGY8Xr5IlYa7AAAAAGY8Xr5IlYY7ACZBvgAAAABAlYY7zczMNZolQb5IlYY7zczMNZolQb5IlYa7ACZBvgAAAABGlYa7/////////7//////////v/////////+//////////7//////////v/////////+//////////7//////////vwAAAAD///+/AAAAAP///78AAAAA////vwAAAAD///+///8AAP///7///wAA////v///AAD///+///8AAP///7//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/+//z////+//7//P////7//v/8/////v/+//z////+//z//v////7//P/+/////v/8//7////+//z//v////7//P/8/////v/8//z////+//z//P////7//P/8/////v/+//7////+//7//v////7//v/+/////v/+//7////+//z//v////7//P/+/////v/8//7////+//z//v////7//v/8/////v/+//z////+//7//P////7//v/8/////v/+//7////+//7//v////7//v/+/////v/+//7////+//z//P////7//P/8/////v/8//z////+//z//P////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a8yf4")
+
+[node name="SM_Hud_Reticle_02" type="MeshInstance3D" unique_id=866009019]
+mesh = SubResource("ArrayMesh_r30u6")
+surface_material_override/0 = ExtResource("1_5uhbi")

@@ -1,0 +1,47 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_33rh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3yqu"]
+resource_name = "SciFi"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jrmgb"]
+_surfaces = [{
+"aabb": AABB(-0.83122796, -0.90850556, -0.74359435, 1.3362206, 2.0990386, 1.4989624),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AwAMAAUADAADAAoACQAKAAMABwADAAUAAwAHAAkABQAGAAcACQAHAA0ABgANAAcADgAKAAkACgAOAAwACQAPAA4ADQAPAAkADAAOAAgADgAPAAsACwAPAA0ACwAIAA4ADQAGAAQABAAGAAUADQACAAsABAACAA0AAQAIAAsACwACAAEACAABAAwAAgAEAAAABQAAAAQAAAABAAIAAAAFAAwADAABAAAA"),
+"lods": [0.17601158, PackedByteArray("AAABAAIAAwABAAAAAgAEAAAABQAAAAQAAAAFAAMABAAGAAUABQAGAAcABwAGAAQABAACAAcABwADAAUACAABAAMAAwAHAAkAAwAKAAgACQAKAAMACwAIAAoACgAJAAsAAQAIAAsACwAJAAcACwACAAEABwACAAsA")],
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("M7zKPh+bRz/NX0E/mjmmPGRjmD+agx0+mmsEPmRjmD+ala89mjmmPNKTaL+agx0+M0cBPx+bRz+a8S8/M7zKPrSGkr7NX0E/M0cBP7SGkr6a8S8/mmsEPtKTaL+ala89Zj00v2RjmD/m9Qq/8/MfvyabR7+a3iS/Zj00vyabR7/m9Qq/8/Mfv2RjmD+a3iS/mjmmPKTtGr2agx0+mmsEPqTtGr2ala89W8tUvwDKGT2AcyS/5oFAvwDKGT0zXD6/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ibqht"]
+resource_name = "SM_Env_Debris_Shell_04"
+_surfaces = [{
+"aabb": AABB(-0.83122796, -0.90850556, -0.74359435, 1.3362206, 2.0990386, 1.4989624),
+"attribute_data": PackedByteArray("dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj90Tnk+pkg+P3ROeT6mSD4/dE55PqZIPj8="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("HAAkABsAAAABAAIAAgADAAAAEwAlABIABAAFAAYABgAHAAQAJgAiACMAIwAnACYACAAJAAoACgALAAgAKAApAB8AHwAqACgADAANAA4ADgAPAAwAFQArACwALAAtABUAEAARAC4ALgAvABAAFgAXABgAGAAZABYAGgAwADEAMQAdABoAHgAyADMAMwA0AB4AIAAhADUANQA2ACAANwA4ABQAFAA5ADcA"),
+"lods": [0.17601158, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAEgARABQAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAdABwAHAAfAB4AIAAhACIAIgAjACAA")],
+"material": SubResource("StandardMaterial3D_i3yqu"),
+"name": "SciFi",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 58,
+"vertex_data": PackedByteArray("M7zKPh+bRz/NX0E/mjmmPGRjmD+agx0+mmsEPmRjmD+ala89M0cBPx+bRz+a8S8/M7zKPrSGkr7NX0E/M0cBP7SGkr6a8S8/mmsEPtKTaL+ala89mjmmPNKTaL+agx0+8/Mfv2RjmD+a3iS/mmsEPmRjmD+ala89mjmmPGRjmD+agx0+Zj00v2RjmD/m9Qq/mjmmPNKTaL+agx0+mmsEPtKTaL+ala898/MfvyabR7+a3iS/Zj00vyabR7/m9Qq/M0cBPx+bRz+a8S8/mmsEPmRjmD+ala89mmsEPtKTaL+ala89M0cBP7SGkr6a8S8/8/Mfv2RjmD+a3iS/8/MfvyabR7+a3iS/M0cBPx+bRz+a8S8/M0cBP7SGkr6a8S8/M7zKPrSGkr7NX0E/M7zKPh+bRz/NX0E/M7zKPh+bRz/NX0E/M7zKPrSGkr7NX0E/mjmmPNKTaL+agx0+mjmmPGRjmD+agx0+Zj00v2RjmD/m9Qq/Zj00vyabR7/m9Qq/8/Mfv2RjmD+a3iS/Zj00v2RjmD/m9Qq/Zj00vyabR7/m9Qq/8/MfvyabR7+a3iS/mjmmPKTtGr2agx0+mmsEPqTtGr2ala89W8tUvwDKGT2AcyS/5oFAvwDKGT0zXD6/mjmmPKTtGr2agx0+mjmmPNKTaL+agx0+W8tUvwDKGT2AcyS/mmsEPtKTaL+ala89mmsEPqTtGr2ala895oFAvwDKGT0zXD6/mmsEPqTtGr2ala89M0cBP7SGkr6a8S8/M7zKPrSGkr7NX0E/mjmmPKTtGr2agx0+mjmmPGRjmD+agx0+mjmmPKTtGr2agx0+W8tUvwDKGT2AcyS/W8tUvwDKGT2AcyS/5oFAvwDKGT0zXD6/mmsEPqTtGr2ala89mmsEPmRjmD+ala895oFAvwDKGT0zXD6/1pUux////z/WlS7H////P9aVLsf///8/1pUux////z/tmg5G////P+2aDkb///8/7ZoORv///z/tmg5G////P/9///////+//3///////7//f///////v/9///////+/s2wiCf///7+zbCIJ////v7NsIgn///+/s2wiCf///7///zSx////v///NLH///+///80sf///7///zSx////v2f/Kj7///+/J//iwf///780sf9/////PzSx/3////8/NLH/f////z80sf9/////PzQx/3////8/NDH/f////z80Mf9/////PzQx/3////8/BUKSgP///z8SQi5/////P5wLuL7///+/nAu4vv///7/LD+0+////v8sP7T7///+/NDH/f////z///zSx////v8sP7T7///+/yw/tPv///78SQi5/////PxJCLn////8/EkIuf////z8n/+LB////vyf/4sH///+/J//iwf///7///zSx////v///NLH///+/NDH/f////z80Mf9/////PwVCkoD///8/BUKSgP///z8FQpKA////P5wLuL7///+/nAu4vv///79n/yo+////v2f/Kj7///+/Z/8qPv///78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jrmgb")
+
+[node name="SM_Env_Debris_Shell_04" type="MeshInstance3D" unique_id=1413414670]
+mesh = SubResource("ArrayMesh_ibqht")
+surface_material_override/0 = ExtResource("1_33rh6")

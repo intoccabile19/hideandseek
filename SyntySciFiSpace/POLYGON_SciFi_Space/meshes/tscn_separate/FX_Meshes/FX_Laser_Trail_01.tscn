@@ -1,0 +1,42 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41ahk"]
+resource_name = "SciFiSpace"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ow1nk"]
+_surfaces = [{
+"aabb": AABB(-0.2431031, -0.2431031, -35.76837, 0.4862062, 0.48620617, 39.313522),
+"format": 34359742465,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAQAEAAMAAgAFAAAABQAEAAAAAwAFAAIAAwAEAAUA"),
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAADQEg/CBPB4PgTweD64UYk/BPB4vgTweD64UYk/AAAAAAAAAADD42JABfB4PgXweL6FUYk/BfB4vgXweL6FUYk/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yf3yk"]
+resource_name = "FX_Laser_Trail_01"
+_surfaces = [{
+"aabb": AABB(-0.2431031, -0.2431031, -35.76837, 0.4862062, 0.48620617, 39.313522),
+"attribute_data": PackedByteArray("1ovoPsIeeT/Wi+g+wh55P9aL6D7CHnk/1ovoPsIeeT/Wi+g+wh55P9aL6D7CHnk/1ovoPsIeeT/Wi+g+wh55P9aL6D7CHnk/1ovoPsIeeT/Wi+g+wh55P9aL6D7CHnk/1ovoPsIeeT/Wi+g+wh55P9aL6D7CHnk/1ovoPsIeeT8="),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABwAFAAQACAAJAAoACgAJAAsADAANAA4ADwANAAwA"),
+"material": SubResource("StandardMaterial3D_41ahk"),
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAAAAAADQEg/CBPB4PgTweD64UYk/BPB4vgTweD64UYk/AAAAAAAAAADD42JABfB4vgXweL6FUYk/BfB4PgXweL6FUYk/AAAAAAAAAADQEg/CAAAAAAAAAADD42JAAAAAAAAAAADQEg/CBfB4PgXweL6FUYk/BPB4PgTweD64UYk/AAAAAAAAAADD42JABPB4vgTweD64UYk/BfB4vgXweL6FUYk/AAAAAAAAAADQEg/CAAAAAAAAAADD42JA1oD//////78LgP//////vwuA//////+//3+J9P///z8LgAAA////vwuAAAD///+/1oAAAP///7//f3UL////P/7/1oD///+///8LgP///7///wuA////v4n0/3////8/AAALgP///78AAAuA////vwAA1oD///+/dQv/f////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ow1nk")
+
+[node name="FX_Laser_Trail_01" type="MeshInstance3D" unique_id=364243388]
+mesh = SubResource("ArrayMesh_yf3yk")

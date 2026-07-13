@@ -1,0 +1,47 @@
+[gd_scene format=4 uid="uid://qxtb1sch5v0o"]
+
+[ext_resource type="Material" uid="uid://b1j67763v2wf7" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_01_Glass.tres" id="1_m4a6h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbv7v"]
+resource_name = "SciFi1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ch27d"]
+_surfaces = [{
+"aabb": AABB(-1.266645, 0.6390676, 7.117926, 17.533289, 2.4125473, 7.8096557),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("BAAFAAYABgAHAAQACAAJAAoACgALAAgAAAABAAIAAgADAAAADAANAA4ADgAPAAwAEAARABIAEgATABAA"),
+"lods": [2.3866682, PackedByteArray("AAABAAIAAgADAAAA")],
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("gDsxQalNQ0Bg125BABJ7QKlNQ0Bg125BABJ7QO+ZIz9g125BgDsxQe+ZIz9g125Bxi1CQdh4LUA4W2lBxi1CQY/MMj84W2lBusN6QY/MMj+sbEFBusN6Qdh4LUCsbEFBFiKCQdh4LUC6JDdBFiKCQY/MMj+6JDdBFiKCQY/MMj8NxuNAFiKCQdh4LUANxuNA5Eg3QNh4LUA7W2lBjzssv9h4LUCtbEFBjzssv4/MMj+tbEFB5Eg3QI/MMj87W2lBbCGiv9h4LUC6JDdBbCGiv9h4LUANxuNAbCGiv4/MMj8NxuNAbCGiv4/MMj+6JDdB")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mqg4v"]
+resource_name = "SM_Bld_Bridge_Walls_Glass_01"
+_surfaces = [{
+"aabb": AABB(-1.266645, 0.6390676, 7.117926, 17.533289, 2.4125473, 7.8096557),
+"attribute_data": PackedByteArray("0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloP9CNyD7UKWg/0I3IPtQpaD/Qjcg+1CloPw=="),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("BAAFAAYABgAHAAQACAAJAAoACgALAAgAAAABAAIAAgADAAAADAANAA4ADgAPAAwAEAARABIAEgATABAA"),
+"lods": [2.3866682, PackedByteArray("AAABAAIAAgADAAAA")],
+"material": SubResource("StandardMaterial3D_mbv7v"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("gDsxQalNQ0Bg125BABJ7QKlNQ0Bg125BABJ7QO+ZIz9g125BgDsxQe+ZIz9g125Bxi1CQdh4LUA4W2lBxi1CQY/MMj84W2lBusN6QY/MMj+sbEFBusN6Qdh4LUCsbEFBFiKCQdh4LUC6JDdBFiKCQY/MMj+6JDdBFiKCQY/MMj8NxuNAFiKCQdh4LUANxuNA5Eg3QNh4LUA7W2lBjzssv9h4LUCtbEFBjzssv4/MMj+tbEFB5Eg3QI/MMj87W2lBbCGiv9h4LUC6JDdBbCGiv9h4LUANxuNAbCGiv4/MMj8NxuNAbCGiv4/MMj+6JDdB/////////7//////////v/////////+//////////78AAArL////vwAACsv///+/AAAKy////78AAArL////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+///8Ky////7///wrL////v///Csv///+///8Ky////7////9/////v////3////+/////f////7////9/////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ch27d")
+
+[node name="SM_Bld_Bridge_Walls_Glass_01" type="MeshInstance3D" unique_id=1496500573]
+mesh = SubResource("ArrayMesh_mqg4v")
+surface_material_override/0 = ExtResource("1_m4a6h")

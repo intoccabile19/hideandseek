@@ -1,0 +1,46 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" path="res://POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_35c8g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ufy4"]
+resource_name = "MAT_PolygonSciFiSpace_Glass_01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_35c8g")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yu57h"]
+_surfaces = [{
+"aabb": AABB(-1.266645, -14.927582, 0.6390676, 17.533289, 7.8096557, 2.4125473),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("BAAFAAYABwAEAAYACAAJAAoACwAKAAkAAAABAAIAAQAAAAMADAANAA4ADQAMAA8AEAARABIAEwARABAA"),
+"lods": [2.3866682, PackedByteArray("AAABAAIAAQAAAAMA")],
+"name": "MAT_PolygonSciFiSpace_Glass_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("ABJ7QGDXbsHvmSM/gDsxQWDXbsGpTUNAABJ7QGDXbsGpTUNAgDsxQWDXbsHvmSM/xi1CQThbacHYeC1Axi1CQThbacGPzDI/usN6QaxsQcGPzDI/usN6QaxsQcHYeC1AFiKCQbokN8GPzDI/FiKCQQ3G48CPzDI/FiKCQbokN8HYeC1AFiKCQQ3G48DYeC1Ajzssv61sQcGPzDI/5Eg3QDtbacHYeC1Ajzssv61sQcHYeC1A5Eg3QDtbacGPzDI/bCGiv7okN8HYeC1AbCGivw3G48CPzDI/bCGiv7okN8GPzDI/bCGivw3G48DYeC1A")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_csgqc"]
+resource_name = "SM_Bld_Bridge_Walls_Glass_01"
+_surfaces = [{
+"aabb": AABB(-1.266645, -14.927582, 0.6390676, 17.533289, 7.8096557, 2.4125473),
+"attribute_data": PackedByteArray("AIDIPgAgaD8AAL8+AEDdPQCAyD4AIGg/AMBlPABAfD8AgMg+ACBoPwDAZTwAQN09AIDIPgAgaD8AAL8+AEB8PwCAyD4AIGg/AKDBPgAAZjwAgMg+ACBoPwCALT8AAGY8AIDIPgAgaD8AgC0/AEDlPgCAyD4AIGg/AKDBPgBA5T4AgMg+ACBoPwDAwT4AYHw/AIDIPgAgaD8AwME+AADpPgCAyD4AIGg/AIAtPwBgfD8AgMg+ACBoPwCALT8AAOk+AIDIPgAgaD8AYHw/AKBlPACAyD4AIGg/AKAvPwBA5T4AgMg+ACBoPwCgLz8AoGU8AIDIPgAgaD8AYHw/AEDlPgCAyD4AIGg/AGB8PwAA6T4AgMg+ACBoPwCgLz8AYHw/AIDIPgAgaD8AoC8/AADpPgCAyD4AIGg/AGB8PwBgfD8="),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray("BAAFAAYABwAEAAYACAAJAAoACwAKAAkAAAABAAIAAQAAAAMADAANAA4ADQAMAA8AEAARABIAEwARABAA"),
+"lods": [2.3866682, PackedByteArray("AAABAAIAAQAAAAMA")],
+"material": SubResource("StandardMaterial3D_8ufy4"),
+"name": "MAT_PolygonSciFiSpace_Glass_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("ABJ7QGDXbsHvmSM/gDsxQWDXbsGpTUNAABJ7QGDXbsGpTUNAgDsxQWDXbsHvmSM/xi1CQThbacHYeC1Axi1CQThbacGPzDI/usN6QaxsQcGPzDI/usN6QaxsQcHYeC1AFiKCQbokN8GPzDI/FiKCQQ3G48CPzDI/FiKCQbokN8HYeC1AFiKCQQ3G48DYeC1Ajzssv61sQcGPzDI/5Eg3QDtbacHYeC1Ajzssv61sQcHYeC1A5Eg3QDtbacGPzDI/bCGiv7okN8HYeC1AbCGivw3G48CPzDI/bCGiv7okN8GPzDI/bCGivw3G48DYeC1AAH9//3//fsAAf3//f/9+wAB/f/9//37AAH9//3//fsCESt/Kf/9+wIRK38p//37AhErfyn//fsCESt/Kf/9+wH8A/oB//37AfwD+gH//fsB/AP6Af/9+wH8A/oB//37AD7VKy3//fsAPtUrLf/9+wA+1Sst//37AD7VKy3//fsB///6Af/9+wH///oB//37Af//+gH//fsB///6Af/9+wA==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yu57h")
+
+[node name="SM_Bld_Bridge_Walls_Glass_01_348" type="MeshInstance3D" unique_id=522163914]
+mesh = SubResource("ArrayMesh_csgqc")

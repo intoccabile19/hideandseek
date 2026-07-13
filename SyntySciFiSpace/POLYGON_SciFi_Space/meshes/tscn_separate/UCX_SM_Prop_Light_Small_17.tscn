@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7w4c"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3favw"]
+_surfaces = [{
+"aabb": AABB(-0.08038841, -0.6315625, -0.0009999967, 0.16077682, 1.2628524, 0.07081508),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAgAEAAAAAAAEAAUABQAEAAIAAAAGAAMABQAGAAAABwAGAAUAAwAGAAcAAgAIAAUAAwAIAAIACQAFAAgABQAJAAcACgAIAAMACAAKAAkAAwALAAoACQAKAAsABwALAAMACwAHAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("rqKkvRSuIb8K1yO6rqKkvTicIT9SEoO6rqKkPTicIT8K1yO6rqKkvTicIT8tfSw9rqKkPRSuIb9SEoO6rqKkPRSuIb8xfSw9rqKkvRSuIb8ufSw9IMxXvXqbGr82+449rqKkPTicIT8xfSw9I8xXPXqbGr82+449IcxXPXubGj82+449H8xXvXibGj82+449")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nuu3n"]
+resource_name = "UCX_SM_Prop_Light_Small_06"
+_surfaces = [{
+"aabb": AABB(-0.08038841, -0.6315625, -0.0009999967, 0.16077682, 1.2628524, 0.07081508),
+"format": 34359742471,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQA"),
+"material": SubResource("StandardMaterial3D_t7w4c"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("rqKkvRSuIb8K1yO6rqKkvTicIT9SEoO6rqKkPTicIT8K1yO6rqKkPRSuIb9SEoO6H8xXvXibGj82+449IMxXvXqbGr82+449I8xXPXqbGr82+449IcxXPXubGj82+449rqKkPRSuIb8xfSw9I8xXPXqbGr82+449IMxXvXqbGr82+449rqKkvRSuIb8ufSw9rqKkvRSuIb8K1yO6rqKkPRSuIb9SEoO6rqKkPRSuIb8xfSw9rqKkvRSuIb8ufSw9IMxXvXqbGr82+449H8xXvXibGj82+449rqKkvTicIT8tfSw9rqKkvRSuIb8ufSw9rqKkvRSuIb8K1yO6rqKkvRSuIb8ufSw9rqKkvTicIT8tfSw9rqKkvTicIT9SEoO6I8xXPXqbGr82+449rqKkPRSuIb8xfSw9rqKkPTicIT8xfSw9IcxXPXubGj82+449rqKkvTicIT8tfSw9H8xXvXibGj82+449IcxXPXubGj82+449rqKkPTicIT8xfSw9rqKkPTicIT8K1yO6rqKkvTicIT9SEoO6rqKkvTicIT8tfSw9rqKkPTicIT8xfSw9rqKkPRSuIb8xfSw9rqKkPRSuIb9SEoO6rqKkPTicIT8K1yO6rqKkPTicIT8xfSw99f8AAP9/BID1/wAA/38EgPX/AAD/fwSA9f8AAP9/BID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9/6T+MKmOV/3/pP4wqY5X/f+k/jCpjlf9/6T+MKmOV/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//P/9/qaqqqv8//3+pqqqq/z//f6mqqqr/P/9/qaqqqgAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//7//f1RVqar/v/9/VFWpqv+//39UVamq/7//f1RVqar/f2bAylTuqv9/ZsDKVO6q/39mwMpU7qr/f2bAylTuqv9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/////f/9//7////9//3//v////3//f/+/////f/9//78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3favw")
+
+[node name="UCX_SM_Prop_Light_Small_17" type="MeshInstance3D" unique_id=314281439]
+mesh = SubResource("ArrayMesh_nuu3n")

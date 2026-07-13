@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22jts"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r8y7m"]
+_surfaces = [{
+"aabb": AABB(-0.19633168, -0.7715923, 0.0020271302, 0.40120453, 1.5424035, 0.80563354),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("McpRPhKHRb/awk4/LAtJvhKHRb/awk4/LAtJvuFTRT/awk4/McpRPuFTRT/awk4/LAtJvhKHRb/Ywk4/KQtJvhKHRb+a2QQ7KQtJvuFTRT+a2QQ7LAtJvuFTRT/Ywk4/LspRPhKHRb+a2QQ7McpRPhKHRb/Ywk4/McpRPuFTRT/Ywk4/LspRPuFTRT+a2QQ7McpRPhGHRb+a2QQ7LAtJvhGHRb+a2QQ7LAtJvhOHRb/Ywk4/McpRPhOHRb/Ywk4/McpRPuBTRT/Ywk4/LAtJvuBTRT/Ywk4/LAtJvt1TRT+a2QQ7McpRPt1TRT+a2QQ7LAtJvhKHRb+a2QQ7McpRPhKHRb+a2QQ7McpRPuFTRT+a2QQ7LAtJvuFTRT+a2QQ7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rp6gy"]
+resource_name = "UCX_SM_Prop_Plant_Vase_02"
+_surfaces = [{
+"aabb": AABB(-0.19633168, -0.7715923, 0.0020271302, 0.40120453, 1.5424035, 0.80563354),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_22jts"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("McpRPhKHRb/awk4/LAtJvhKHRb/awk4/LAtJvuFTRT/awk4/McpRPuFTRT/awk4/LAtJvhKHRb/Ywk4/KQtJvhKHRb+a2QQ7KQtJvuFTRT+a2QQ7LAtJvuFTRT/Ywk4/LspRPhKHRb+a2QQ7McpRPhKHRb/Ywk4/McpRPuFTRT/Ywk4/LspRPuFTRT+a2QQ7McpRPhGHRb+a2QQ7LAtJvhGHRb+a2QQ7LAtJvhOHRb/Ywk4/McpRPhOHRb/Ywk4/McpRPuBTRT/Ywk4/LAtJvuBTRT/Ywk4/LAtJvt1TRT+a2QQ7McpRPt1TRT+a2QQ7LAtJvhKHRb+a2QQ7McpRPhKHRb+a2QQ7McpRPuFTRT+a2QQ7LAtJvuFTRT+a2QQ7/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIAAAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v///////fwCA//////9/AID//////38AgP//////fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_r8y7m")
+
+[node name="UCX_SM_Prop_Plant_Vase_10" type="MeshInstance3D" unique_id=1495975434]
+mesh = SubResource("ArrayMesh_rp6gy")

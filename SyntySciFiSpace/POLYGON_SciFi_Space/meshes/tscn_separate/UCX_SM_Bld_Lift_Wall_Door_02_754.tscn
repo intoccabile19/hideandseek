@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21fn4"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ex7ts"]
+_surfaces = [{
+"aabb": AABB(2.4576867, -0.18511811, 0.03236633, 0.98545, 0.080332816, 2.367817),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAABAAAAAQAEAAMAAgAFAAAABAAAAAYABgAAAAUAAwAEAAcABAAGAAcACAACAAMABQACAAgACAADAAcABQAJAAYACAAJAAUABgAJAAcABwAJAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("vUodQKyZ1r2anBlAvUodQKyZ1r2PkgQ9R6oeQJqPPb6F3qs9ry1cQOVsB75mmiA9WlxcQKyZ1r2PkgQ9R6oeQJqPPb7xTxZAry1cQNr18r17LBlARkNcQE9jB76jU1A/TPtaQJePPb4A36s9TPtaQJePPb7tTxZA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n2gut"]
+resource_name = "UCX_SM_Bld_Lift_Wall_Door_02"
+_surfaces = [{
+"aabb": AABB(2.4576867, -0.18511811, 0.03236633, 0.98545, 0.080332816, 2.367817),
+"format": 34359742471,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABwAIAAkACQAKAAcACwAMAA0ADQAOAAsADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAIwAkACEAJQAmACcA"),
+"material": SubResource("StandardMaterial3D_21fn4"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("vUodQKyZ1r2anBlAvUodQKyZ1r2PkgQ9R6oeQJqPPb6F3qs9R6oeQJqPPb7xTxZAWlxcQKyZ1r2PkgQ9vUodQKyZ1r2PkgQ9vUodQKyZ1r2anBlAR6oeQJqPPb7xTxZAR6oeQJqPPb6F3qs9TPtaQJePPb4A36s9TPtaQJePPb7tTxZAR6oeQJqPPb7xTxZATPtaQJePPb7tTxZAry1cQNr18r17LBlAvUodQKyZ1r2anBlAWlxcQKyZ1r2PkgQ9vUodQKyZ1r2anBlAry1cQNr18r17LBlATPtaQJePPb4A36s9R6oeQJqPPb6F3qs9ry1cQOVsB75mmiA9vUodQKyZ1r2PkgQ9WlxcQKyZ1r2PkgQ9ry1cQOVsB75mmiA9R6oeQJqPPb6F3qs9vUodQKyZ1r2PkgQ9ry1cQOVsB75mmiA9WlxcQKyZ1r2PkgQ9ry1cQNr18r17LBlARkNcQE9jB76jU1A/ry1cQOVsB75mmiA9WlxcQKyZ1r2PkgQ9RkNcQE9jB76jU1A/TPtaQJePPb4A36s9ry1cQOVsB75mmiA9RkNcQE9jB76jU1A/TPtaQJePPb7tTxZAry1cQNr18r17LBlATPtaQJePPb7tTxZARkNcQE9jB76jU1A/+xoEZS15xMz7GgRlLXnEzPsaBGUtecTM+xoEZS15xMz/f///AAD/v/9///8AAP+//3///wAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/Tk1fPTCN/39OTV89MI3/f05NXz0wjf9/Tk1fPTCNxYF7/YgC4cDFgXv9iALhwMWBe/2IAuHAWMUAAD9cAadYxQAAP1wBp1jFAAA/XAGnd+YAAPB5MI935gAA8Hkwj3fmAADweTCP1jHaAIplN6HWMdoAimU3odYx2gCKZTehqPzKfMh/ZL6o/Mp8yH9kvqj8ynzIf2S+8fO/c/J+A7rx879z8n4DuvHzv3PyfgO6st2yXZB0YbCy3bJdkHRhsLLdsl2QdGGwst2yXZB0YbB448xjKXi3snjjzGMpeLeyeOPMYyl4t7I=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ex7ts")
+
+[node name="UCX_SM_Bld_Lift_Wall_Door_02_754" type="MeshInstance3D" unique_id=272493497]
+mesh = SubResource("ArrayMesh_n2gut")

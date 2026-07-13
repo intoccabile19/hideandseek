@@ -1,0 +1,46 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" path="res://POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_x2et8"]
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_01_Glass.tres" id="2_5hnri"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ufy4"]
+resource_name = "MAT_PolygonSciFiSpace_Glass_01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_x2et8")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_73axb"]
+_surfaces = [{
+"aabb": AABB(0.16190186, -0.21902008, 0.8045128, 4.6686535, 1e-05, 1.7177513),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwACAAEA"),
+"name": "MAT_PolygonSciFiSpace_Glass_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("msklPs1GYL7GbCFA5JOaQLhGYL7GbCFAmsklPs1GYL6N9E0/6ZOaQLhGYL6N9E0/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h7ky7"]
+resource_name = "SM_Bld_Wall_Glass_04_Alt"
+_surfaces = [{
+"aabb": AABB(0.16190186, -0.21902008, 0.8045128, 4.6686535, 1e-05, 1.7177513),
+"attribute_data": PackedByteArray("AODEPgCAaT8AYHw/AOBlPADgxD4AgGk/AGB8PwBgfD8A4MQ+AIBpPwAAZjwA4GU8AODEPgCAaT8AAGY8AGB8Pw=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwACAAEA"),
+"material": SubResource("StandardMaterial3D_8ufy4"),
+"name": "MAT_PolygonSciFiSpace_Glass_01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("msklPs1GYL7GbCFA5JOaQLhGYL7GbCFAmsklPs1GYL6N9E0/6ZOaQLhGYL6N9E0/AH9/AH//fsAAf38Af/9+wAB/fwB//37AAH9/AH//fsA=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_73axb")
+
+[node name="SM_Bld_Wall_Glass_04_Alt6" type="MeshInstance3D" unique_id=1911739044]
+mesh = SubResource("ArrayMesh_h7ky7")
+surface_material_override/0 = ExtResource("2_5hnri")

@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0j28"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x3hnx"]
+_surfaces = [{
+"aabb": AABB(-0.30114815, -1.8438711, -0.00125, 0.6022963, 3.6877427, 0.085589424),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAABAAMAAgABAAQABQADAAAAAwAFAAQAAAAGAAUABgAEAAUABwAGAAAABgAHAAQACAAAAAIAAAAIAAcACAACAAkABwAIAAkABAAKAAIABwAKAAQACQACAAoABwALAAoACgALAAkACQALAAcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("FzCaPgAA7L+PEoO6LPGIPvgD7L9/l6s9fqiIvvgD7L8muqw9FzCaPgAA7L+aN009haiIPv0D7D8fuqw9FzCaPv0B7D+cN009FzCaPv0B7D8K16O6FzCavv0B7D+PEoO6FzCavgAA7L8K16O6FzCavgAA7L+cN009LPGIvv0D7D94l6s9FzCavv0B7D+aN009")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_amtlg"]
+resource_name = "UCX_SM_Prop_Bed_Medical_01"
+_surfaces = [{
+"aabb": AABB(-0.30114815, -1.8438711, -0.00125, 0.6022963, 3.6877427, 0.085589424),
+"format": 34359742471,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAHAAgACAAJAAYACgALAAwADAANAAoADgAPABAADgARAA8AEgAOABAAEgAQABMAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"material": SubResource("StandardMaterial3D_w0j28"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("FzCaPgAA7L+PEoO6LPGIPvgD7L9/l6s9fqiIvvgD7L8muqw9FzCaPgAA7L+aN009FzCavgAA7L8K16O6FzCavgAA7L+cN009FzCaPgAA7L+PEoO6FzCavgAA7L8K16O6FzCavv0B7D+PEoO6FzCaPv0B7D8K16O6fqiIvvgD7L8muqw9LPGIPvgD7L9/l6s9haiIPv0D7D8fuqw9LPGIvv0D7D94l6s9FzCavv0B7D+PEoO6LPGIvv0D7D94l6s9haiIPv0D7D8fuqw9FzCavv0B7D+aN009FzCaPv0B7D8K16O6FzCaPv0B7D+cN009FzCavgAA7L+cN009fqiIvvgD7L8muqw9LPGIvv0D7D94l6s9FzCavv0B7D+aN009FzCavv0B7D+PEoO6FzCavgAA7L8K16O6FzCavgAA7L+cN009FzCavv0B7D+aN009haiIPv0D7D8fuqw9LPGIPvgD7L9/l6s9FzCaPgAA7L+aN009FzCaPv0B7D+cN009FzCaPgAA7L+PEoO6FzCaPv0B7D8K16O6FzCaPv0B7D+cN009FzCaPgAA7L+aN009HIAAAB0A/78cgAAAHQD/vxyAAAAdAP+/HIAAAB0A/78cgAAAHQD/vxyAAAAdAP+//P////1/AID8/////X8AgPz////9fwCA/P////1/AID/f/p/+n8AgP9/+n/6fwCA/3/6f/p/AID/f/p/+n8AgPB//v8AAPe/8H/+/wAA97/wf/7/AAD3v/B//v8AAPe/8H/+/wAA97/wf/7/AAD3v/8//3+qqqmq/z//f6qqqar/P/9/qqqpqv8//3+qqqmqAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//v/9/VVWqqv+//39VVaqq/7//f1VVqqr/v/9/VVWqqv///3//f/+/////f/9//7////9//3//v////3//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_x3hnx")
+
+[node name="UCX_SM_Prop_Bed_Medical_01_1331" type="MeshInstance3D" unique_id=822703344]
+mesh = SubResource("ArrayMesh_amtlg")

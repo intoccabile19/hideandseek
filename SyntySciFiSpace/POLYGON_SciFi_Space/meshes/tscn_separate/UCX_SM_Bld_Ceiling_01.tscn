@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbm2n"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j0ews"]
+_surfaces = [{
+"aabb": AABB(-0.0011250306, -5.0010004, 3.9989986, 5.0023746, 5.0021257, 0.4922514),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAwAEAAIAAAAFAAMABgAEAAMAAwAFAAYABQAAAAcAAgAHAAAABwAGAAUABwACAAQABAAGAAcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("PQqgQNcjgzoUro9APQqgQNcjgzqb739AmhmDuuF6kzqY739AMQigQK4HoMCY739Aw3WTujEIoMCY739ArgegQDEIoMBSuI9Aw3WTujIIoMAUro9Aw3WTutcjgzpSuI9A")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_l7473"]
+resource_name = "UCX_SM_Bld_Ceiling_01"
+_surfaces = [{
+"aabb": AABB(-0.0011250306, -5.0010004, 3.9989986, 5.0023746, 5.0021257, 0.4922514),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_cbm2n"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("PQqgQNcjgzoUro9APQqgQNcjgzqb739AmhmDuuF6kzqY739Aw3WTutcjgzpSuI9AMQigQK4HoMCY739APQqgQNcjgzqb739APQqgQNcjgzoUro9ArgegQDEIoMBSuI9Aw3WTutcjgzpSuI9Aw3WTujIIoMAUro9ArgegQDEIoMBSuI9APQqgQNcjgzoUro9AMQigQK4HoMCY739ArgegQDEIoMBSuI9Aw3WTujIIoMAUro9Aw3WTujEIoMCY739Aw3WTujEIoMCY739Aw3WTujIIoMAUro9Aw3WTutcjgzpSuI9AmhmDuuF6kzqY739AMQigQK4HoMCY739Aw3WTujEIoMCY739AmhmDuuF6kzqY739APQqgQNcjgzqb739A/n/5/wUA/r//f/r/BAD/v/5/+f8FAP6//3/6/wQA/7/4//t//X/9v/r//H/9f/2/+P/7f/1//b/6//x//X/9vwGA/3/9fwCAAID/f/5/AIABgP9//X8AgACA/3/+fwCA/H8AAAIA/7/7fwIABAAAwPx/AAACAP+/+38CAAQAAMACAAWA+3/+vwAABID7f/+/AgAFgPt//r8AAASA+3//v////f8BgACA///9/wGAAID///3/AYAAgP///f8BgACA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_j0ews")
+
+[node name="UCX_SM_Bld_Ceiling_01" type="MeshInstance3D" unique_id=1752825575]
+mesh = SubResource("ArrayMesh_l7473")

@@ -1,0 +1,37 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfous"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y82tp"]
+_surfaces = [{
+"aabb": AABB(29.728765, 6.668606, 0.023843383, 0.57771873, 13.323654, 10.95142),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACgALAAgAAAABAAIAAgADAAAABAAFAAYABgAHAAQADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"lods": [6.6680856, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("hNTtQThl1UCsmi9BhNTtQThl1UAzU8M8hNTtQSXwn0EzU8M8hNTtQSXwn0Gsmi9BrXPyQThl1UAzU8M8rXPyQThl1UCsmi9BrXPyQSXwn0Gsmi9BrXPyQSXwn0EzU8M8rnPyQThl1UCumi9Bg9TtQThl1UCumi9Bg9TtQSXwn0Gumi9BrnPyQSXwn0Gumi9BrnPyQTtl1UAzU8M8g9TtQTtl1UAzU8M8g9TtQThl1UCsmi9BrnPyQThl1UCsmi9BrnPyQSbwn0Gsmi9Bg9TtQSbwn0Gsmi9Bg9TtQSTwn0EzU8M8rnPyQSTwn0EzU8M8g9TtQThl1UAzU8M8rnPyQThl1UAzU8M8rnPyQSXwn0EzU8M8g9TtQSXwn0EzU8M8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_enfn1"]
+resource_name = "UCX_SM_Bld_HangerExteriorDoor_01"
+_surfaces = [{
+"aabb": AABB(29.728765, 6.668606, 0.023843383, 0.57771873, 13.323654, 10.95142),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACgALAAgAAAABAAIAAgADAAAABAAFAAYABgAHAAQADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"lods": [6.6680856, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQA")],
+"material": SubResource("StandardMaterial3D_xfous"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("hNTtQThl1UCsmi9BhNTtQThl1UAzU8M8hNTtQSXwn0EzU8M8hNTtQSXwn0Gsmi9BrXPyQThl1UAzU8M8rXPyQThl1UCsmi9BrXPyQSXwn0Gsmi9BrXPyQSXwn0EzU8M8rnPyQThl1UCumi9Bg9TtQThl1UCumi9Bg9TtQSXwn0Gumi9BrnPyQSXwn0Gumi9BrnPyQTtl1UAzU8M8g9TtQTtl1UAzU8M8g9TtQThl1UCsmi9BrnPyQThl1UCsmi9BrnPyQSbwn0Gsmi9Bg9TtQSbwn0Gsmi9Bg9TtQSTwn0EzU8M8rnPyQSTwn0EzU8M8g9TtQThl1UAzU8M8rnPyQThl1UAzU8M8rnPyQSXwn0EzU8M8g9TtQSXwn0EzU8M8AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v/9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v///////fwCA//////9/AID//////38AgP//////fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y82tp")
+
+[node name="UCX_SM_Bld_HangerExteriorDoor_01_1073" type="MeshInstance3D" unique_id=1034980997]
+mesh = SubResource("ArrayMesh_enfn1")

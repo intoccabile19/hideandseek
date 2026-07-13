@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6cwhk31yvjex" path="res://scenes/player/player.tscn" id="1_p"]
 [ext_resource type="PackedScene" uid="uid://c7t8r2m8ey8a2" path="res://scenes/family/toddler.tscn" id="2_t"]
 [ext_resource type="PackedScene" uid="uid://b00ye2t2s8s62" path="res://scenes/family/elder.tscn" id="3_e"]
+[ext_resource type="PackedScene" uid="uid://bbyd5k2c2c5c6" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/models/SM_Prop_Detail_Pipes_03.fbx" id="3_nbcil"]
 [ext_resource type="PackedScene" uid="uid://cx6gwh8s72q5e" path="res://scenes/family/adult.tscn" id="4_a"]
 [ext_resource type="PackedScene" uid="uid://b6dw5s1v8q5r8" path="res://scenes/objects/pushable_box.tscn" id="5_b"]
 [ext_resource type="Script" uid="uid://c008qec60ay0q" path="res://scenes/objects/bridge_gate.gd" id="6_bg"]
@@ -14,6 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://b00ye2t2s8s73" path="res://scenes/ui/hud_overlay.tscn" id="12_ho"]
 [ext_resource type="PackedScene" uid="uid://cx6gwh8s72q73" path="res://scenes/ui/game_state_menu.tscn" id="13_gm"]
 [ext_resource type="Script" uid="uid://dnhaajbjccd0h" path="res://scenes/objects/escape_zone.gd" id="14_ez"]
+[ext_resource type="PackedScene" uid="uid://ftm7nuu1bua1" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Walls_01.tscn" id="15_27y5q"]
+[ext_resource type="PackedScene" uid="uid://qxtb1sch5v0o" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Walls_Glass_01.tscn" id="16_v7yx5"]
+[ext_resource type="PackedScene" uid="uid://c2js2r4p4yw3k" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Ceiling_01.tscn" id="17_nbcil"]
+[ext_resource type="PackedScene" uid="uid://1wme4qo3fjje" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Floor_01.tscn" id="18_euohk"]
+[ext_resource type="PackedScene" uid="uid://dgtsw5g3a73wq" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Console_01.tscn" id="19_t7q6u"]
+[ext_resource type="PackedScene" uid="uid://bcj2u6bsu31np" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Wall_01.tscn" id="20_mll3a"]
+[ext_resource type="PackedScene" uid="uid://0p8doii2f7ue" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Ceiling_03.tscn" id="21_3ktru"]
+[ext_resource type="PackedScene" uid="uid://bhu1ippy0vf55" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Ceiling_02.tscn" id="22_pl25b"]
+[ext_resource type="PackedScene" uid="uid://c08gnuc17b1et" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Wall_Corner_Pillar_01.tscn" id="23_3tb0q"]
+[ext_resource type="PackedScene" uid="uid://d1ocsa6a77gxs" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Wall_Doorframe_01.tscn" id="24_2u1tl"]
+[ext_resource type="PackedScene" uid="uid://dilj7x3c5kyed" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Floor_04.tscn" id="25_68q1l"]
+[ext_resource type="PackedScene" uid="uid://ywqlm4v2sg44" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Ceiling_01.tscn" id="26_v7yx5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 
@@ -29,6 +42,9 @@ size = Vector3(20, 1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 size = Vector3(20, 1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27y5q"]
+albedo_color = Color(0.12941177, 0.18431373, 0.23137255, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_box1"]
 size = Vector3(1.5, 0.8, 4)
@@ -60,6 +76,8 @@ radius = 1.5
 [sub_resource type="BoxMesh" id="BoxMesh_terminal"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_so"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_czsmall"]
 size = Vector3(2, 2, 0.8)
 
@@ -78,10 +96,11 @@ size = Vector3(3, 2, 0.8)
 [sub_resource type="BoxMesh" id="BoxMesh_czmedium"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_so"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_escape"]
 size = Vector3(10, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ee0w"]
+size = Vector3(35.188477, 33.2854, 15.812622)
 
 [node name="LevelTest" type="Node3D" unique_id=1135564103]
 
@@ -92,16 +111,18 @@ environment = SubResource("Environment_1")
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 10, 0)
 shadow_enabled = true
 
-[node name="Floor1" type="StaticBody3D" parent="." unique_id=1574372932]
-transform = Transform3D(1.0744939, 0, 0, 0, 1, 0, 0, 0, 1.6002715, -10, -0.5, 0)
+[node name="Floor4" type="StaticBody3D" parent="." unique_id=1382048299]
+transform = Transform3D(-4.6967617e-08, -0.99999994, 0, 1.0744939, -4.371139e-08, 0, 0, 0, 1.6002715, -33.796112, -0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor1" unique_id=789981795]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4" unique_id=109927693]
 transform = Transform3D(1.5980113, 0, 0, 0, 1, 0, 0, 0, 1, -6.6138306, 0, 0)
 shape = SubResource("BoxShape3D_floor")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor1" unique_id=45599698]
-transform = Transform3D(1.5984446, 0, 0, 0, 1, 0, 0, 0, 1, -6.592411, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor4" unique_id=1376967552]
+transform = Transform3D(1.5984443, 0, 0, 0, 1, 0, 0, 0, 1, -6.592411, -0.05069405, 0)
+visible = false
 mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_27y5q")
 
 [node name="Wall1" type="StaticBody3D" parent="." unique_id=1278449672]
 transform = Transform3D(0.97689325, 0, 0, 0, 4.232001, 0, 0, 0, 0.16002709, -22.976505, 1.5, -3)
@@ -110,6 +131,7 @@ transform = Transform3D(0.97689325, 0, 0, 0, 4.232001, 0, 0, 0, 0.16002709, -22.
 shape = SubResource("BoxShape3D_floor")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1" unique_id=1881944705]
+visible = false
 mesh = SubResource("BoxMesh_floor")
 
 [node name="Wall2" type="StaticBody3D" parent="." unique_id=611190160]
@@ -137,6 +159,7 @@ transform = Transform3D(5.399759, 0, 0, 0, 1, 0, 0, 0, 15.235502, 3.1769657, -11
 shape = SubResource("BoxShape3D_floor")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3" unique_id=433739370]
+visible = false
 mesh = SubResource("BoxMesh_floor")
 
 [node name="ObstacleBox1" type="StaticBody3D" parent="." unique_id=1950113598]
@@ -178,7 +201,11 @@ inactive_y = -2.0
 shape = SubResource("BoxShape3D_ventwall")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VentWall" unique_id=1915426798]
+visible = false
 mesh = SubResource("BoxMesh_ventwall")
+
+[node name="SM_Prop_Detail_Pipes_03" parent="VentWall" unique_id=1251305693 instance=ExtResource("3_nbcil")]
+transform = Transform3D(-1.09278474e-07, 2.5, -1.09278474e-07, 0, -1.09278474e-07, -2.5, -2.5, -1.09278474e-07, 4.7767136e-15, -1.7046909, 0.6473577, -0.6020827)
 
 [node name="ObstacleConsole" type="Area3D" parent="." unique_id=2077684835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 0)
@@ -209,86 +236,6 @@ shape = SubResource("SphereShape3D_terminal")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BridgeConsole" unique_id=589294316]
 mesh = SubResource("BoxMesh_terminal")
 
-[node name="CoverZoneSmall" type="Area3D" parent="." unique_id=1322986637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Small"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneSmall" unique_id=671517238]
-shape = SubResource("BoxShape3D_czsmall")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneSmall" unique_id=1663926074]
-mesh = SubResource("BoxMesh_czsmall")
-
-[node name="CoverZoneSmall2" type="Area3D" parent="." unique_id=2066997775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.983856, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Small"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneSmall2" unique_id=1426488404]
-shape = SubResource("BoxShape3D_czsmall")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneSmall2" unique_id=1161960513]
-mesh = SubResource("BoxMesh_czsmall")
-
-[node name="CoverZoneSmall3" type="Area3D" parent="." unique_id=404833620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.941183, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Small"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneSmall3" unique_id=1203962256]
-shape = SubResource("BoxShape3D_czsmall")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneSmall3" unique_id=1846589036]
-mesh = SubResource("BoxMesh_czsmall")
-
-[node name="CoverZoneLarge" type="Area3D" parent="." unique_id=1879633858]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Large"
-capacity = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneLarge" unique_id=269043142]
-shape = SubResource("BoxShape3D_czlarge")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneLarge" unique_id=537371752]
-mesh = SubResource("BoxMesh_czlarge")
-
-[node name="CoverZoneLarge2" type="Area3D" parent="." unique_id=1061688794]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.640436, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Large"
-capacity = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneLarge2" unique_id=334245916]
-shape = SubResource("BoxShape3D_czlarge")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneLarge2" unique_id=1694661430]
-mesh = SubResource("BoxMesh_czlarge")
-
-[node name="CoverZoneLarge3" type="Area3D" parent="." unique_id=301269429]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.424389, 1, -2.6295931)
-script = ExtResource("9_cz")
-zone_size = "Large"
-capacity = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneLarge3" unique_id=1588591672]
-shape = SubResource("BoxShape3D_czlarge")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneLarge3" unique_id=298493794]
-mesh = SubResource("BoxMesh_czlarge")
-
-[node name="CoverZoneMedium" type="Area3D" parent="." unique_id=746064004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2.6295931)
-script = ExtResource("9_cz")
-capacity = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneMedium" unique_id=1960349274]
-shape = SubResource("BoxShape3D_czmedium")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneMedium" unique_id=1414874724]
-mesh = SubResource("BoxMesh_czmedium")
-
 [node name="PushableBox" parent="." unique_id=882162219 instance=ExtResource("5_b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, 0)
 
@@ -297,15 +244,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.313686, 0, 0)
 
 [node name="Toddler" parent="." unique_id=633738205 instance=ExtResource("2_t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.813686, 0, 0)
-curiosity_cooldown = 5.0
-chirp_sound_radius = 3.5
 
 [node name="Elder" parent="." unique_id=1060242429 instance=ExtResource("3_e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.424076, 0, 0)
 
 [node name="Adult" parent="." unique_id=103471209 instance=ExtResource("4_a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.813686, 0, 0)
-push_speed = 1.8
 
 [node name="SearchableBox1" type="Node3D" parent="." unique_id=720168298]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -8.5, -33)
@@ -332,12 +276,188 @@ mesh = NodePath("MeshInstance3D")
 mesh = SubResource("BoxMesh_so")
 
 [node name="Seeker" parent="." unique_id=1822781423 instance=ExtResource("10_sk")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.783384, -11, -33.94818)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -30.833567, -11, -43.912987)
 seeker_type = 3
 
 [node name="HUDOverlay" parent="." unique_id=2093858191 instance=ExtResource("12_ho")]
 
 [node name="GameStateMenu" parent="." unique_id=1815206217 instance=ExtResource("13_gm")]
+
+[node name="Labels" type="Node" parent="." unique_id=1925510961]
+
+[node name="TutorialLabel1" type="Label3D" parent="Labels" unique_id=1981202087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.00334, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Press A/D or ARROWS to Move
+Press SPACE to Jump
+Press S to hide in a safe space"
+font_size = 36
+
+[node name="TutorialLabel7" type="Label3D" parent="Labels" unique_id=1111145393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.430233, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Help your family escape. Don't be seen."
+font_size = 36
+
+[node name="TutorialLabel2" type="Label3D" parent="Labels" unique_id=1875568824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.69764, 3.8255863, -1)
+billboard = 1
+double_sided = false
+text = "Escort Commands:
+Press Q to command companions to FOLLOW
+Press E to command companions to FREEZE & HIDE"
+font_size = 36
+
+[node name="TutorialLabel3" type="Label3D" parent="Labels" unique_id=879650656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2588542, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Hmm...
+This is ancient tech
+Only our elder understands
+Press F"
+font_size = 36
+
+[node name="TutorialLabel10" type="Label3D" parent="Labels" unique_id=721587822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.669575, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Companion Selection:
+Press 1 to select ALL
+Press 2 (Toddler), 3 (Elder), or 4 (Adult) to select individually"
+font_size = 36
+
+[node name="TutorialLabel8" type="Label3D" parent="Labels" unique_id=1337472585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.630996, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Beware the giant robots"
+font_size = 36
+
+[node name="TutorialLabel9" type="Label3D" parent="Labels" unique_id=1108611680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.378124, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "This looks like a space that
+the kid could crawl under
+Press F"
+font_size = 36
+
+[node name="TutorialLabel4" type="Label3D" parent="Labels" unique_id=670574800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97422, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "This box looks heavy
+Prehaps the adult could help us push it
+Press F"
+font_size = 36
+
+[node name="TutorialLabel5" type="Label3D" parent="Labels" unique_id=1585746860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.890591, 3.4521165, -1)
+billboard = 1
+double_sided = false
+text = "Climbing & Steps:
+The Elder cannot jump!
+Push the box against the wall to let him climb over!"
+font_size = 36
+
+[node name="TutorialLabel6" type="Label3D" parent="Labels" unique_id=593516258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.169209, 2.5, -1)
+billboard = 1
+double_sided = false
+text = "Escape:
+Guide all alive family members into the Escape Zone
+to proceed to the next level!"
+font_size = 36
+
+[node name="Cover" type="Node" parent="." unique_id=1795556685]
+
+[node name="CoverZoneSmall" type="Area3D" parent="Cover" unique_id=1322986637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Small"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneSmall" unique_id=671517238]
+shape = SubResource("BoxShape3D_czsmall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneSmall" unique_id=1663926074]
+visible = false
+mesh = SubResource("BoxMesh_czsmall")
+
+[node name="CoverZoneSmall2" type="Area3D" parent="Cover" unique_id=2066997775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.983856, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Small"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneSmall2" unique_id=1426488404]
+shape = SubResource("BoxShape3D_czsmall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneSmall2" unique_id=1161960513]
+visible = false
+mesh = SubResource("BoxMesh_czsmall")
+
+[node name="CoverZoneSmall3" type="Area3D" parent="Cover" unique_id=404833620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.941183, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Small"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneSmall3" unique_id=1203962256]
+shape = SubResource("BoxShape3D_czsmall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneSmall3" unique_id=1846589036]
+visible = false
+mesh = SubResource("BoxMesh_czsmall")
+
+[node name="CoverZoneLarge" type="Area3D" parent="Cover" unique_id=1879633858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Large"
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneLarge" unique_id=269043142]
+shape = SubResource("BoxShape3D_czlarge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneLarge" unique_id=537371752]
+mesh = SubResource("BoxMesh_czlarge")
+
+[node name="CoverZoneLarge2" type="Area3D" parent="Cover" unique_id=1061688794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.727087, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Large"
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneLarge2" unique_id=334245916]
+shape = SubResource("BoxShape3D_czlarge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneLarge2" unique_id=1694661430]
+visible = false
+mesh = SubResource("BoxMesh_czlarge")
+
+[node name="CoverZoneLarge3" type="Area3D" parent="Cover" unique_id=301269429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.424389, 1, -2.6295931)
+script = ExtResource("9_cz")
+zone_size = "Large"
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneLarge3" unique_id=1588591672]
+shape = SubResource("BoxShape3D_czlarge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneLarge3" unique_id=298493794]
+visible = false
+mesh = SubResource("BoxMesh_czlarge")
+
+[node name="CoverZoneMedium" type="Area3D" parent="Cover" unique_id=746064004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2.6295931)
+script = ExtResource("9_cz")
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cover/CoverZoneMedium" unique_id=1960349274]
+shape = SubResource("BoxShape3D_czmedium")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cover/CoverZoneMedium" unique_id=1414874724]
+mesh = SubResource("BoxMesh_czmedium")
 
 [node name="EscapeZone" type="Area3D" parent="." unique_id=1572191180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
@@ -348,89 +468,186 @@ next_level_path = "res://scenes/levels/level_2_cargo_hold.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_escape")
 
-[node name="TutorialLabel1" type="Label3D" parent="." unique_id=1981202087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.282085, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Press A/D or ARROWS to Move
-Press SPACE to Jump
-Press S to hide in a safe space"
-font_size = 36
+[node name="Env" type="Node" parent="." unique_id=856550403]
 
-[node name="TutorialLabel7" type="Label3D" parent="." unique_id=1111145393]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.85376, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Help your family escape. Don't be seen."
-font_size = 36
+[node name="Floor" type="Node" parent="Env" unique_id=566432189]
 
-[node name="TutorialLabel2" type="Label3D" parent="." unique_id=1875568824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.69764, 3.8255863, -1)
-billboard = 1
-double_sided = false
-text = "Escort Commands:
-Press Q to command companions to FOLLOW
-Press E to command companions to FREEZE & HIDE"
-font_size = 36
+[node name="SM_Bld_Floor_04" parent="Env/Floor" unique_id=1086899490 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.234, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel3" type="Label3D" parent="." unique_id=879650656]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2588542, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Hmm...
-This is ancient tech
-Only our elder understands
-Press F"
-font_size = 36
+[node name="SM_Bld_Floor_05" parent="Env/Floor" unique_id=348053166 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel10" type="Label3D" parent="." unique_id=721587822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.669575, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Companion Selection:
-Press 1 to select ALL
-Press 2 (Toddler), 3 (Elder), or 4 (Adult) to select individually"
-font_size = 36
+[node name="SM_Bld_Floor_06" parent="Env/Floor" unique_id=1769822013 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel8" type="Label3D" parent="." unique_id=1337472585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.630996, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Beware the giant robots"
-font_size = 36
+[node name="SM_Bld_Floor_07" parent="Env/Floor" unique_id=1374951003 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel9" type="Label3D" parent="." unique_id=1108611680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.378124, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "This looks like a space that
-the kid could crawl under
-Press F"
-font_size = 36
+[node name="SM_Bld_Floor_08" parent="Env/Floor" unique_id=2052396357 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel4" type="Label3D" parent="." unique_id=670574800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97422, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "This box looks heavy
-Prehaps the adult could help us push it
-Press F"
-font_size = 36
+[node name="SM_Bld_Floor_09" parent="Env/Floor" unique_id=207580352 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel5" type="Label3D" parent="." unique_id=1585746860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.890591, 3.4521165, -1)
-billboard = 1
-double_sided = false
-text = "Climbing & Steps:
-The Elder cannot jump!
-Push the box against the wall to let him climb over!"
-font_size = 36
+[node name="SM_Bld_Floor_10" parent="Env/Floor" unique_id=729911514 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.234003, -0.021119446, -3.2026615)
 
-[node name="TutorialLabel6" type="Label3D" parent="." unique_id=593516258]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.169209, 2.5, -1)
-billboard = 1
-double_sided = false
-text = "Escape:
-Guide all alive family members into the Escape Zone
-to proceed to the next level!"
-font_size = 36
+[node name="SM_Bld_Floor_11" parent="Env/Floor" unique_id=2029662735 instance=ExtResource("25_68q1l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.76599693, -0.021119446, -3.2026615)
+
+[node name="Floor1" type="StaticBody3D" parent="Env/Floor" unique_id=1574372932]
+transform = Transform3D(1.5463744, 0, 0, 0, 1, 0, 0, 0, 1.6002715, -13.775348, -0.5, -0.07466698)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Floor/Floor1" unique_id=789981795]
+transform = Transform3D(1.5980113, 0, 0, 0, 1, 0, 0, 0, 1, -6.6138306, 0, 0)
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Floor/Floor1" unique_id=45599698]
+transform = Transform3D(1.5984443, 0, 0, 0, 1, 0, 0, 0, 1, -6.592411, -0.05069405, 0)
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_27y5q")
+
+[node name="Ceiling" type="Node" parent="Env" unique_id=1584783864]
+
+[node name="SM_Bld_Ceiling_03" parent="Env/Ceiling" unique_id=295146526 instance=ExtResource("21_3ktru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.03436, 0.15147567, -3.329883)
+
+[node name="SM_Bld_Ceiling_04" parent="Env/Ceiling" unique_id=396924662 instance=ExtResource("21_3ktru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.284801, 0.15147567, -3.329883)
+
+[node name="SM_Bld_Ceiling_02" parent="Env/Ceiling" unique_id=1620711310 instance=ExtResource("22_pl25b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29.17, 0.151, -3.33)
+
+[node name="SM_Bld_Ceiling_01" parent="Env/Ceiling" unique_id=1393888323 instance=ExtResource("26_v7yx5")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -24.247229, 0.151, -3.33)
+
+[node name="SM_Bld_Ceiling_05" parent="Env/Ceiling" unique_id=1162829531 instance=ExtResource("21_3ktru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.39976, 0.15147567, -3.329883)
+
+[node name="SM_Bld_Ceiling_06" parent="Env/Ceiling" unique_id=2089088117 instance=ExtResource("26_v7yx5")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -14.362187, 0.151, -3.33)
+
+[node name="SM_Bld_Ceiling_07" parent="Env/Ceiling" unique_id=1691043893 instance=ExtResource("26_v7yx5")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -4.4577055, 0.151, -3.33)
+
+[node name="background" type="Node" parent="Env" unique_id=1205886184]
+
+[node name="SM_Bld_Bridge_Walls_01" parent="Env/background" unique_id=1999689730 instance=ExtResource("15_27y5q")]
+transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, 55.801834, -10.354704, 5.274441)
+
+[node name="SM_Bld_Bridge_Walls_Glass_01" parent="Env/background" unique_id=1496500573 instance=ExtResource("16_v7yx5")]
+transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 55.798, -10.5, 5.636)
+
+[node name="SM_Bld_Bridge_Ceiling_01" parent="Env/background" unique_id=2034626029 instance=ExtResource("17_nbcil")]
+transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, 55.409813, -11.362648, 3.6647692)
+
+[node name="SM_Bld_Bridge_Floor_01" parent="Env/background" unique_id=1314585314 instance=ExtResource("18_euohk")]
+transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, 54.07332, -10.23353, 6.489153)
+
+[node name="SM_Bld_Bridge_Console_01" parent="Env/background" unique_id=1212275504 instance=ExtResource("19_t7q6u")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -52.102787, -10, -54.679176)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/background" unique_id=818984453]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.3496208, 16.383877, -16.398754)
+light_energy = 9.092
+light_indirect_energy = 5.989
+spot_range = 44.841
+spot_angle = 54.23
+spot_angle_attenuation = 0.4506253
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Env/background" unique_id=1530844619]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -34.791264, 16.383877, -16.398754)
+light_energy = 9.092
+light_indirect_energy = 5.989
+spot_range = 44.841
+spot_angle = 54.23
+spot_angle_attenuation = 0.4506253
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Env/background" unique_id=922877839]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -34.791264, 16.383877, -53.667255)
+light_energy = 9.092
+light_indirect_energy = 5.989
+spot_range = 44.841
+spot_angle = 54.23
+spot_angle_attenuation = 0.4506253
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Env/background" unique_id=382786462]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.885235, 16.383877, -16.398754)
+light_energy = 9.092
+light_indirect_energy = 5.989
+spot_range = 44.841
+spot_angle = 54.23
+spot_angle_attenuation = 0.4506253
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Env/background" unique_id=1210557054]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.885235, 16.383877, -51.32596)
+light_energy = 9.092
+light_indirect_energy = 5.989
+spot_range = 44.841
+spot_angle = 54.23
+spot_angle_attenuation = 0.4506253
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Env/background" unique_id=298568570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3643494, 2.3654747, 11.138815)
+size = Vector3(104.37634, 29.345772, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Env/background" unique_id=1729493834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.367363, 2.3654747, 3.4906425)
+size = Vector3(29.032684, 29.345772, 14.456055)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/background/CSGBox3D5" unique_id=1794781683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.017334, -1.37854, 0.61724854)
+shape = SubResource("BoxShape3D_3ee0w")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Env/background" unique_id=88160963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3643494, 15.51348, 7.414444)
+size = Vector3(104.37634, 3.0497608, 8.480225)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Env/background" unique_id=944434831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3643494, -13.0482645, 7.414444)
+size = Vector3(104.37634, 3.0497608, 8.480225)
+
+[node name="Walls" type="Node" parent="Env" unique_id=1178661275]
+
+[node name="SM_Bld_Wall_01" parent="Env/Walls" unique_id=1707897989 instance=ExtResource("20_mll3a")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -39.785988, 0.9954407, 1.690341)
+
+[node name="SM_Bld_Wall_02" parent="Env/Walls" unique_id=334059185 instance=ExtResource("20_mll3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.410416, 0.9954407, -3.5717683)
+
+[node name="SM_Bld_Wall_03" parent="Env/Walls" unique_id=2875371 instance=ExtResource("20_mll3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.922178, 0.9954407, -3.5717683)
+
+[node name="SM_Bld_Wall_Corner_Pillar_01" parent="Env/Walls" unique_id=998483496 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.346, 1.1144133, -3.251557)
+
+[node name="SM_Bld_Wall_Corner_Pillar_02" parent="Env/Walls" unique_id=465917857 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.49338, 0.997, -3.774)
+
+[node name="SM_Bld_Wall_Corner_Pillar_03" parent="Env/Walls" unique_id=1262006615 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -28.878773, 0.997, -3.774)
+
+[node name="SM_Bld_Wall_Doorframe_01" parent="Env/Walls" unique_id=332276260 instance=ExtResource("24_2u1tl")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -33.278698, 4.76044, -3.578942)
+
+[node name="SM_Bld_Wall_04" parent="Env/Walls" unique_id=825216289 instance=ExtResource("20_mll3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.061178, 1.0063069, -3.5757542)
+
+[node name="SM_Bld_Wall_05" parent="Env/Walls" unique_id=1484724253 instance=ExtResource("20_mll3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.572941, 1.0063069, -3.5757542)
+
+[node name="SM_Bld_Wall_Corner_Pillar_05" parent="Env/Walls" unique_id=2039971877 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.144144, 1.0078661, -3.7779858)
+
+[node name="SM_Bld_Wall_06" parent="Env/Walls" unique_id=771788562 instance=ExtResource("20_mll3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.108049, 1.0063069, -3.5757542)
+
+[node name="SM_Bld_Wall_Corner_Pillar_08" parent="Env/Walls" unique_id=1701941078 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.286887, 1.0078661, -3.7779858)
+
+[node name="SM_Bld_Wall_Corner_Pillar_07" parent="Env/Walls" unique_id=474474061 instance=ExtResource("23_3tb0q")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.529535, 1.0078661, -3.7779858)
+
+[node name="SM_Bld_Wall_Doorframe_02" parent="Env/Walls" unique_id=759560470 instance=ExtResource("24_2u1tl")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -17.92946, 4.771306, -3.582928)

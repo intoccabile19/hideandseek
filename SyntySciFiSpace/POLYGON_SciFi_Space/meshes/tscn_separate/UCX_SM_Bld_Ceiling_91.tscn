@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioxwc"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x26ae"]
+_surfaces = [{
+"aabb": AABB(-0.0011250306, -5.0010004, 3.9989986, 5.0023746, 5.0021257, 0.4922514),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAwAEAAIAAAAFAAMABgAEAAMAAwAFAAYABQAAAAcAAgAHAAAABwAGAAUABwACAAQABAAGAAcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("PQqgQNcjgzoUro9APQqgQNcjgzqb739AmhmDuuF6kzqY739AMQigQK4HoMCY739Aw3WTujEIoMCY739ArgegQDEIoMBSuI9Aw3WTujIIoMAUro9Aw3WTutcjgzpSuI9A")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hejal"]
+resource_name = "UCX_SM_Bld_Ceiling_01"
+_surfaces = [{
+"aabb": AABB(-0.0011250306, -5.0010004, 3.9989986, 5.0023746, 5.0021257, 0.4922514),
+"format": 34359742471,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_ioxwc"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("PQqgQNcjgzoUro9APQqgQNcjgzqb739AmhmDuuF6kzqY739Aw3WTutcjgzpSuI9AMQigQK4HoMCY739APQqgQNcjgzqb739APQqgQNcjgzoUro9ArgegQDEIoMBSuI9Aw3WTutcjgzpSuI9Aw3WTujIIoMAUro9ArgegQDEIoMBSuI9APQqgQNcjgzoUro9AMQigQK4HoMCY739ArgegQDEIoMBSuI9Aw3WTujIIoMAUro9Aw3WTujEIoMCY739Aw3WTujEIoMCY739Aw3WTujIIoMAUro9Aw3WTutcjgzpSuI9AmhmDuuF6kzqY739AMQigQK4HoMCY739Aw3WTujEIoMCY739AmhmDuuF6kzqY739APQqgQNcjgzqb739AAID6/wQA/78AgPr/BAD/vwCA+v8EAP+/AID6/wQA/7/6//1//X/+v/r//X/9f/6/+v/9f/1//r/6//1//X/+vweA/3/3fwOAB4D/f/d/A4AHgP9/938DgAeA/3/3fwOAAYAAAAIA/78BgAAAAgD/vwGAAAACAP+/AYAAAAIA/78AAAOA+3//vwAAA4D7f/+/AAADgPt//78AAAOA+3//v////v//fwCA///+//9/AID///7//38AgP///v//fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_x26ae")
+
+[node name="UCX_SM_Bld_Ceiling_91" type="MeshInstance3D" unique_id=922568148]
+mesh = SubResource("ArrayMesh_hejal")

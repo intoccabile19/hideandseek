@@ -1,0 +1,2507 @@
+{
+  "SM_Bld_Bridge_Ceiling_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Chair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Chair_Captain_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Console_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Console_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Console_Corner_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Console_Corner_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Floor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Platform_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Rear_Wall_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Walls_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Bridge_Walls_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Bld_Bridge_Wall_Details_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_Pipes_Straight_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_Pipes_Straight_Broken_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_Pipes_Turn_L_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_Pipes_Turn_R_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Ceiling_Pipe_Junction_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Corridor_Double_Arch_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Corridor_Double_Arch_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Corridor_Single_Arch_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Corridor_Single_Arch_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Corridor_Single_Arch_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Beds_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Blank_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Blank_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Desk_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Kitchen_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Shower_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Shower_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Toilet_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Crew_Toilet_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_010": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_011": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Large_Walkway_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Large_Walkway_Endcap_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Hand_Rail_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Hand_Rail_End_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Hatch_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Hatch_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Walkway_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Floor_Small_Walkway_Endcap_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_HangarExteriorShip_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Bld_HangarExteriorShip_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Bld_Hanger_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Bld_HangerDoor_01": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_HangerDoor_02": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_HangarPlatform_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hangar_01": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_Door_01": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_Door_02": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_Door_03": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_HangerCeiling_01": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_HangerFloor_01": [
+    "PolygonScifiSpace_Material_Dirt_01"
+  ],
+  "SM_Bld_HangerGlass_03": [
+    "PolygonScifiSpace_Cockpit_Glass"
+  ],
+  "SM_Bld_Hydroponics_BaseFloor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_WallPlantsLower_L_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_WallPlantsLower_R_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_Roof_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_Roof_RingLights_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_UpperFloor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_Ladder_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_UpperWalkway_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_WallPlantsUpper_L_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Hydroponics_WallPlantsUpper_R_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Landing_Platform_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_Door_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_Wall_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_Wall_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Lift_Wall_Door_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Roof_Exterior_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Roof_Exterior_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Roof_Exterior_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_01_Alt": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Glass_04": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Bld_Wall_04_Alt": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Glass_04_Alt": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Bld_Wall_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_Wide_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_Wide_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_Wide_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_Wide_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Corner_Pillar_Wide_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Door_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Door_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_Outer_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Doorframe_Outer_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Escpod_Hatch_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Esc_Hatch_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_Pillar_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_Window_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Exterior_Window_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Mechanical_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Mechanical_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pillar_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pods_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Bld_Wall_Pods_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Bld_Wall_Tube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Crew_Female_Hair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Crew_Male_Hair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Hat_Captain_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Hat_Crew_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Hunter_Female_Hair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Junker_Hair_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Junker_Headset_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Junker_Helmet_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Junker_Helmet_Glass_01": [
+    "PolygonScifiSpace_Cockpit_Glass"
+  ],
+  "SM_Chr_Attach_Male_Hair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Male_Hair_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Male_Hair_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Male_Hair_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Male_Hair_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Male_Hair_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_Mask_Medic_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Alien_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_SpaceSoldier_Armour_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_SpaceSoldier_Female_Helmet_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_SpaceSoldier_Male_Helmet_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Crew_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Crew_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_CrewCaptain_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_CrewCaptain_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Cryo_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Cryo_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Hunter_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Junker_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Junker_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Medic_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Psionic_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_RobotFemale_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_SpaceSoldier_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_SpaceSoldier_Head_Female_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_SpaceSoldier_Head_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_SpaceSoldier_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_BR_BigAlien_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_BR_BigAlien_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_BR_EVA_Suit_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_BR_SpaceSoldier_Male_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_BR_War_Robot_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_EVA_Male_Head_Scaled_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_01": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_02": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_03": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_04": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_05": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_06": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_07": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Asteroid_Field_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Field_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Field_LowDetail_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Field_LowDetail_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Holes_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Holes_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Holes_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Holes_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Holes_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Large_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Large_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Large_Holes_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Large_Holes_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Rock_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Rock_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Rock_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Rock_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Asteroid_Rock_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Pipe_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Shell_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Structure_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Structure_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Debris_Structure_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_PlanetRings_01": [
+    "PolygonScifi_PlanteRings_01"
+  ],
+  "SM_Env_Planet_01": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_010": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_011": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_02": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_03": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_04": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_05": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_06": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_07": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_08": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_09": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_12": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_13": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Planet_14": [
+    "PolygonSpace_Planet_Lines_01_A"
+  ],
+  "SM_Env_Rubble_Pebbles_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Rubble_Pebbles_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Rubble_Pile_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Env_Rubble_Pile_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "FX_Astroid_Field": [
+    "FX_Pebble_Debris"
+  ],
+  "FX_Beacon": [
+    "FX_Sphere",
+    "FX_Sphere"
+  ],
+  "FX_Blackhole_Large": [
+    "FX_Black",
+    "FX_Black"
+  ],
+  "FX_Blackhole_Edge": [
+    "FX_Warp",
+    "FX_Blackhole"
+  ],
+  "FX_Blackhole_Dots": [
+    "FX_SphereGlow"
+  ],
+  "FX_Bubbles": [
+    "FX_Bubbles"
+  ],
+  "FX_Electricity": [
+    "FX_Lighting",
+    "FX_Lighting"
+  ],
+  "FX_Exhaust_Trail": [
+    "FX_Blank",
+    "FX_Blank"
+  ],
+  "FX_Explosion": [
+    "FX_Explosion"
+  ],
+  "FX_Explosion_Smoke": [
+    "FX_SphereGlow"
+  ],
+  "FX_Explosion_Debris": [
+    "FX_Pebble_Debris",
+    "FX_Trail_Streaks"
+  ],
+  "FX_Explosion_Trail": [
+    "FX_Explosion"
+  ],
+  "FX_Fire_01": [
+    "FX_Polygon_Scifi"
+  ],
+  "FX_Fire_02": [
+    "FX_Polygon_Scifi"
+  ],
+  "FX_Flame_Booster_Round": [
+    "FX_Lines",
+    "FX_Lines"
+  ],
+  "FX_Flame_Booster_Square": [
+    "FX_Lines",
+    "FX_Lines"
+  ],
+  "FX_Laser_Bullet": [
+    "FX_Bullets_Laser",
+    "FX_Bullets_Laser"
+  ],
+  "FX_Laser_Bullet_Impact": [
+    "FX_MuzzleFlash",
+    "FX_MuzzleFlash"
+  ],
+  "FX_Laser_Shot": [
+    "FX_MuzzleFlash",
+    "FX_MuzzleFlash"
+  ],
+  "SM_LightRay_Cube": [
+    "FX_LightRay"
+  ],
+  "SM_LightRay_Round": [
+    "FX_LightRay"
+  ],
+  "FX_Missiles": [
+    "FX_MuzzleFlash",
+    "FX_Lighting"
+  ],
+  "FX_Missiles_Cloud": [
+    "FX_MissileCloud",
+    "FX_Bullets_Laser"
+  ],
+  "FX_Missiles_Explosion": [
+    "FX_Explosion"
+  ],
+  "FX_Missiles_Explosion_Sparks": [
+    "FX_SphereGlow"
+  ],
+  "FX_Pebble_Debris": [
+    "FX_Pebble_Debris"
+  ],
+  "FX_Ship_Trail": [
+    "FX_Trail_Streaks"
+  ],
+  "FX_SpaceClouds": [
+    "FX_Clouds"
+  ],
+  "FX_SpaceDust_Localspace": [
+    "FX_SphereGlow"
+  ],
+  "FX_SpaceDust_Worldspace": [
+    "FX_SphereGlow"
+  ],
+  "FX_Steam": [
+    "FX_Steam_Mat"
+  ],
+  "FX_WarpTunnel": [
+    "FX_WindTunnel"
+  ],
+  "FX_WarpTunnel_Dots": [
+    "FX_SphereGlow"
+  ],
+  "SM_FX_LightBlocker_Cube_01": [
+    "FX_LightBlocker"
+  ],
+  "SM_FX_LightBlocker_Cube_02": [
+    "FX_LightBlocker"
+  ],
+  "SM_FX_LightBlocker_Cube_03": [
+    "FX_LightBlocker"
+  ],
+  "SM_Hud_Arrows_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Barrier_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Barrier_02": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Barrier_03": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Box_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Box_02": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Box_03": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_02": [
+    "FX_HUD"
+  ],
+  "SM_Hud_Reticle_03": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_04": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_05": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_06": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_07": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_08": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Reticle_09": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Rings_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Rings_04": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Screen_Backing_01": [
+    "FX_HUD"
+  ],
+  "SM_Hud_Text_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Text_02": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Text_03": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Text_04": [
+    "FX_HUD_02"
+  ],
+  "SM_Hud_Text_Arrow_01": [
+    "FX_HUD_02"
+  ],
+  "SM_Prop_AirVent_Large_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_AirVent_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Antenna_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Barrel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Battery_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Battery_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Battery_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Bed_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Bed_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Bed_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Bed_Medical_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Bed_Medical_Slide_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_10": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_11": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_12": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_13": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Buttons_14": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Cart_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Cart_Filled_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CenterTube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CenterTube_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_CenterTube_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CenterTube_Glass_02": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_Chr_Female_Cryo_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Chr_Female_Cryo_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Chr_Male_Cryo_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Chr_Male_Cryo_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_ControlPanel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_ControlPanel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_ControlPanel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_ControlPanel_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CornerSeat_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CornerTable_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Lid_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Ammo_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Ammo_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_health_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_health_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Shield_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Shield_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Wide_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Crate_Wide_Lid_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CryoBed_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CryoBed_Lid_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_CryoBed_Lid_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_DeadZub_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Decontamination_Shower_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Desk_End_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Desk_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Airvent_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Box_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Button_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_CeilingBox_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_CeilingBox_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_CeilingBox_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Handle_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Handle_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Keypad_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Lights_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Lights_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Lights_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Machine_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Panel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Panel_Broken_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Panel_Fixed_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipes_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipes_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipes_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_Broken_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_Corner_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_Pillar_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Pipe_Straight_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Struts_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Struts_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_SynCola_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_SynCola_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Tank_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Tank_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Vent_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wirebox_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wire_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wire_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wire_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wire_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Detail_Wire_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_EnergyPort_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Engine_Construction_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_EscapePod_Hatch_Large_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_EscapePod_Door_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_EscapePod_Door_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_EscapePod_Hatch_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodPacket_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodPacket_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodPacket_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodPacket_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodTray_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodTray_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_FoodTray_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Cube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Cube_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Greeble_Panel_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Handle_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_HandScanner_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Hose_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Hose_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Hose_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Hose_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Joystick_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Keycard_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Keycard_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Keycard_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Ladder_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Ladder_Handles_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Panel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Panel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Panel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Panel_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Panel_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Light_Small_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_MapTable_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_MapTable_Top_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_MedicalArms_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Cart_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Cart_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Cart_Bare_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Isolator_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Isolator_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_Medical_Machine_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Scanner_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Tube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Medical_Tube_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_Mine_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Missile_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Oxygen_Tank": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Oxygen_Tank_Large": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Oxygen_Tank_Small": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Pad_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Panel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Pillar_Detail_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Plant_Container_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Plant_Container_Shelf_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Plant_Vase_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Plant_Vase_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Radar_Panel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Radar_Panel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Satellite_Stand_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Satellite_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Satellite_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Satellite_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Satellite_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_10": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_11": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Screen_Small_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Sink_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Solar_Hex_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_SpaceWalk_End_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_SpaceWalk_Tube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_SquareTable_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_StairsPlatform_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_StairsPlatform_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stairs_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stairs_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stairs_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stairs_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stool_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Stool_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Table_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Tank_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_TestTubes_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Test_Tube_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Test_Tube_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_Test_Tube_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Test_Tube_Glass_02": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Prop_Toilet_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_01_L": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_01_R": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_010": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_MissileLarge_Base_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_02_L": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_02_R": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_03_L": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_03_R": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_Double_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Double_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_Double_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_010": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_MissileLarge_Base_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Base_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Gattling_Barrel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Base_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Laser_Barrel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Base_Single_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Base_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Missile_Barrel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_Top_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_Barrel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_Top_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Large_Barrel_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Ceiling_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Pivot_Ceiling_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Gun_Ceiling_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Floor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Pivot_Floor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Turret_Small_Gun_Floor_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wall_Panel_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wall_Panel_Small_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wall_Panel_Small_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wires_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wires_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wires_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wires_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Prop_Wires_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_SignBorder_Ammo_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Arrow_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Arrow_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Battery_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Cog_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Communication_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Electric_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Electric_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Fire_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Fix_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Heart_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Leaf_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Medical_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Medical_03": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Nuclear_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_03": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_04": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_05": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_06": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_07": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_08": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Number_09": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Planet_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Plant_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Rocket_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Science_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Shield_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Ship_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Toxic_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Warning_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_SignBorder_Water_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_AirLock_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Bridge_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_CrewQuarters_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_EngineRoom_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_EscpapePod_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Exit_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Hangar_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Hydroponics_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Hydroponics_02": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_Kitchen_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_LoadingBay_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_LockerRoom_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_MedicalBay_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Sign_ScienceLab_01": [
+    "PolygonScifiSpace_Sign_01_A"
+  ],
+  "SM_Ship_Bomber_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Bomber_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Bomber_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Bomber_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Colossal_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Cruiser_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Cruiser_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Cruiser_03": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Fighter_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_Heavy_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_Heavy_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_Heavy_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Fighter_Heavy_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Fin_L_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Fin_L_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Fin_R_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Fin_R_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_03": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_04": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_05": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_06": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_07": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_08": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_09": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_10": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_11": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_12": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_13": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_14": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_15": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Gun_16": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_Gun_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_Gun_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_Gun_03": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_Gun_04": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Galactic_Carrier_Armor_Gun_05": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Massive_Transport_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Station_01": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Station_02": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Station_03": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Station_04": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Station_05": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Station_06": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Ship_Stealth_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Stealth_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Stealth_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Stealth_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Stealth_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Ship_Transport_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_01": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_02": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_03": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_04": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_05": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_06": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_07": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Ship_Transport_CargoPod_08": [
+    "PolygonScifiSpace_Ship_01_A"
+  ],
+  "SM_Veh_Beacon_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Drone_Attach_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Drone_Repair_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_EscapePod_Large_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_EscapePod_Small_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_MissleRack_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Wheel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Wheel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Wheel_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Wheel_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Body_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Body_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Body_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Body_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Cockpit_01": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Cockpit_02": [
+    "PolygonScifiSpace_Material_01_A",
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Cockpit_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Cockpit_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Cockpit_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Engine_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_Flat_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_Flat_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_Wheel_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_WheelPart_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_Wheel_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_LandingGear_WheelPart_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_010": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_011": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_012": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_013": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_014": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_015": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_016": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_017": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_018": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_019": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_020": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_021": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_022": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_023": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Misc_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_010": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_011": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_012": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_013": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_014": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_015": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_016": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_04": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_05": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_06": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_07": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_08": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Part_Wing_09": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Cockpit_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Joystick_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_Glass_01": [
+    "PolygonScifiSpace_Material_Glass_Cockpit_Interior"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_02": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_Glass_02": [
+    "PolygonScifiSpace_Material_Glass_Cockpit_Interior"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_03": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_POV_Cockpit_Frame_Glass_03": [
+    "PolygonScifiSpace_Material_Glass_Cockpit_Interior"
+  ],
+  "SM_Veh_Sweepo_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Sweepo_Brush_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Sweepo_Wheel_L_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_Sweepo_Wheel_R_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Veh_WarpGate_Glow_01": [
+    "FX_LightRay_02"
+  ],
+  "SM_Veh_WarpGate_Inner_01": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Veh_WarpGate_Outer_01": [
+    "PolygonScifiSpace_SpaceStation_01"
+  ],
+  "SM_Wep_Pistol_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Pistol_Trigger_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Rifle_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Rifle_Mag_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Rifle_Trigger_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shield_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shield_Extended_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shield_Extended_Energy_01": [
+    "Weapons_Energy"
+  ],
+  "SM_Wep_Shotgun_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shotgun_Pump_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shotgun_Slide_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Shotgun_Trigger_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Sword_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Sword_Energy_01": [
+    "Weapons_Energy"
+  ],
+  "SM_Wep_Sword_Double_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Wep_Sword_Double_Energy_01": [
+    "Weapons_Energy"
+  ],
+  "SM_Chr_Attach_EVA_Cover_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_EVA_Cover_Clear_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "_SM_Attach_EVA_Cover_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ],
+  "SM_Chr_Attach_SpaceHelmet_01": [
+    "PolygonScifiSpace_Material_01_A"
+  ],
+  "SM_Chr_Attach_SpaceHelmet_Glass_01": [
+    "PolygonScifiSpace_Material_Glass"
+  ]
+}

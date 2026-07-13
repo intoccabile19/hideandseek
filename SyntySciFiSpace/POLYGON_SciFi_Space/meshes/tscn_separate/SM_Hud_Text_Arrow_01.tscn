@@ -1,0 +1,45 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/FX_HUD_02.tres" id="1_60iba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmyoc"]
+resource_name = "SciFi1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5cpmm"]
+_surfaces = [{
+"aabb": AABB(-0.024331665, -0.010746002, -0.008388061, 0.04866638, 0.03330002, 0.016776122),
+"format": 34359742465,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAABAAAAAgABAAQABAAAAAMAAwACAAUABAAFAAIAAwAFAAQA"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAADPDuDwUbgm8mlnHPAAQMLwUbgm8mlnHPAAQMLxxVQk8AAAAADPDuDwUbgk8M1PHvAAQMLwUbgm8M1PHvAAQMLwUbgk8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f021b"]
+resource_name = "SM_Hud_Text_Arrow_01"
+_surfaces = [{
+"aabb": AABB(-0.024331665, -0.010746002, -0.008388061, 0.04866638, 0.03330002, 0.016776122),
+"attribute_data": PackedByteArray("aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT9rDak+22AdP2sNqT7bYB0/aw2pPttgHT8="),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABgAHAAgACQAKAAsACwAMAAkADQAOAA8A"),
+"material": SubResource("StandardMaterial3D_gmyoc"),
+"name": "SciFi1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAADPDuDwUbgm8mlnHPAAQMLwUbgm8mlnHPAAQMLxxVQk8AAAAADPDuDwUbgk8M1PHvAAQMLwUbgm8M1PHvAAQMLwUbgk8AAAAADPDuDwUbgk8mlnHPAAQMLxxVQk8M1PHvAAQMLwUbgk8mlnHPAAQMLxxVQk8mlnHPAAQMLwUbgm8M1PHvAAQMLwUbgm8M1PHvAAQMLwUbgk8M1PHvAAQMLwUbgm8mlnHPAAQMLwUbgm8AAAAADPDuDwUbgm8+3/7/////7/zyQq2////v/PJCrb///+/+X/5/////78KNgm2////vwo2Cbb///+/A4D8f////z8DgPx/////PwOA/H////8//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//////////v/////////+//////////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5cpmm")
+
+[node name="SM_Hud_Text_Arrow_01" type="MeshInstance3D" unique_id=1463105609]
+mesh = SubResource("ArrayMesh_f021b")
+surface_material_override/0 = ExtResource("1_60iba")

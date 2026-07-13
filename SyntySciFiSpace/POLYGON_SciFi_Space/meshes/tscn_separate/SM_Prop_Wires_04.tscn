@@ -1,0 +1,47 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_dd80h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_651jd"]
+resource_name = "SciFiSpace"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u4rdu"]
+_surfaces = [{
+"aabb": AABB(-0.026425172, -0.9571702, -0.026426697, 0.05284729, 1.9143403, 0.052853394),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("CQAAAAQAAgAEAAAAAAABAAIACgABAAAAAgABAAoAAAAJAAoABAACAAsACgALAAIABAAMAAkACwAMAAQADQAKAAkACwAKAA0ADgAJAAwACQAOAA0ADAALAAcADQAHAAsADAAPAA4ABwAPAAwADQAOAAMAAwAOAA8AAwAFAA0ABwANAAUADwAGAAMABgAPAAcABwAIAAYABQAIAAcA"),
+"lods": [0.007846846, PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAwAAAAQAAwAFAAEABAAGAAMABwABAAUAAQAHAAIABAACAAcABgAEAAcABQAIAAcABwAIAAYA")],
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("zWzIPBsJdb/NjAw8Zub1OxsJdb8zA6W8zcytvBsJdb8AgFC7zWzIPBrLdD/NjAw8AICLuxsJdb9mNtE8zcz1O7ibdD8zA6W8AICLuxoJdT9mNtE8mnnYvA0loj1m5t67zcytvL/ZdD8AgFC7ZmbIPI/Wpr7NjAw8Zub1O0hlqL4zA6W8zcytvE4Jp74AgFC7AICLu456pb5mNtE8ZubeO7Mkmz3NfNi8M3PYPHqTmD1m5t47Zubeu+yTnz3NfNg8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_crcfs"]
+resource_name = "SM_Prop_Wires_04"
+_surfaces = [{
+"aabb": AABB(-0.026425172, -0.9571702, -0.026426697, 0.05284729, 1.9143403, 0.052853394),
+"attribute_data": PackedByteArray("XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/XKluPguKRD9cqW4+C4pEP1ypbj4LikQ/"),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("FgAPABAAEAAXABYAGAAWABcAFwAZABgADgAYABkAGQARAA4AAAABAAIAAgADAAAAGgAUABUAFQAbABoAHAAaABsAGwAdABwAHAAdABIAEgATABwAHgAfAAQABAAFAB4AHwAeAAYABgAgAB8ABwAgAAYABgAIAAcACQAhAAsACwANAAkAIQAJACIAIgAjACEAIwAiAAwADAAKACMA"),
+"lods": [0.007846846, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABwAEAAYABgAIAAcACQAKAAsACgAJAAwACwANAAkADgAPABAAEAARAA4AEgATABQAFAAVABIA")],
+"material": SubResource("StandardMaterial3D_651jd"),
+"name": "SciFiSpace",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("zWzIPBsJdb/NjAw8Zub1OxsJdb8zA6W8zcytvBsJdb8AgFC7AICLuxsJdb9mNtE8AICLuxsJdb9mNtE8zcytvBsJdb8AgFC7mnnYvA0loj1m5t67AICLuxoJdT9mNtE8zcytvL/ZdD8AgFC7mnnYvA0loj1m5t67Zub1OxsJdb8zA6W8zcz1O7ibdD8zA6W8zcytvBsJdb8AgFC7zcytvL/ZdD8AgFC7zWzIPBrLdD/NjAw8zWzIPBsJdb/NjAw8AICLuxsJdb9mNtE8AICLuxoJdT9mNtE8zWzIPBrLdD/NjAw8zcz1O7ibdD8zA6W8Zub1OxsJdb8zA6W8zWzIPBsJdb/NjAw8ZmbIPI/Wpr7NjAw8AICLu456pb5mNtE8M3PYPHqTmD1m5t47Zubeu+yTnz3NfNg8Zub1O0hlqL4zA6W8ZmbIPI/Wpr7NjAw8ZubeO7Mkmz3NfNi8M3PYPHqTmD1m5t47zcytvE4Jp74AgFC7AICLu456pb5mNtE8Zubeu+yTnz3NfNg8ZubeO7Mkmz3NfNi8zcytvE4Jp74AgFC7Zub1O0hlqL4zA6W8/38AAP///z//fwAA////P/9/AAD///8//38AAP///z+FL/9/////P4Uv/3////8/iC8BgP///z+zL0eA////P7MvR4D///8/DAB70P///78AAHjQ////v5wAuND///+/AAB40P///7+cALjQ////v3+v8X////8/hK//f////z+Er/9/////P3+v8X////8/uP+xr////7+4/7Gv////v/7/ha////+//v+Fr////7+BrwuA////P4GvDYD///8/ha8AgP///z+Fr/5/////P8T/VlD///+/vP9RUP///7/8/4Wv////v/z/eVD///+/rC/Df////z+xL7t/////P4gv/X////8/DACFL////7+TAFgv////v4MAXi////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u4rdu")
+
+[node name="SM_Prop_Wires_04" type="MeshInstance3D" unique_id=852138123]
+mesh = SubResource("ArrayMesh_crcfs")
+surface_material_override/0 = ExtResource("1_dd80h")

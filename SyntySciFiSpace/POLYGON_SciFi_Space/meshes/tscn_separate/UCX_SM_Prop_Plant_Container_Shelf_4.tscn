@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y4si"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y1fr6"]
+_surfaces = [{
+"aabb": AABB(-0.23938501, -0.89625, 0.16633254, 0.47877002, 1.7132105, 1.5574174),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAACAAMABQACAAQABQAAAAIABgAEAAMABQAEAAYAAQAHAAMABwAIAAMABgADAAgABwAJAAgABwABAAoABwAKAAkACQALAAgACgALAAkACwAMAAgADAAGAAgADQAMAAsADAANAAYACwAOAA0ACgAOAAsADQAPAAYABgAQAAUADwAQAAYAAAAFABAAEQAPAA0AEQANAA4AEgAQAA8AEgAAABAAEQASAA8AEwAAABIAEgARABMAEQAOABQACgAUAA4AFQARABQACgAVABQAFQAWABEAFgAVAAoAFgATABEAAAATABcAEwAWABcACgAXABYAAAAXAAEAAQAXAAoA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("WCF1PqRwZb9xz3w+WCF1vqRwZb+XUdI/WCF1vqRwZb9xz3w+WCF1vmatMz9sz3w+Fvoivr1oZb8uqCo+/aQiPr1oZb8UUyo+jA8jvgBJJD+fvSo+WCF1vmatMz+YUdI/UuFqvmk9Nj9mj3I+QOFqvm49Nj+bmdM/Fqwivh8wJD9AoNw/TYv+vVIkUT8mJsY/TYv+vVIkUT93Fa8+g4v+PVIkUT94Fa8+fYv+PVIkUT8mJsY/SOFqPnE9Nj9cj3I+ig8jPv1IJD+fvSo+WCF1Pm6tMz+XUdI/WCF1PmytMz9sz3w+WCF1PqRwZb+WUdI/ReFqPnE9Nj+YmdM/F6wiPiEwJD9AoNw/Wo8iPr1oZb/Xo9w/ZI8ivr1oZb/Xo9w/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8rwjy"]
+resource_name = "UCX_SM_Prop_Plant_Container_Shelf_01"
+_surfaces = [{
+"aabb": AABB(-0.23938501, -0.89625, 0.16633254, 0.47877002, 1.7132105, 1.5574174),
+"format": 34359742471,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUAAAAGAAMABgAHAAMACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHAAfAB0AHwAgAB0AIQAiACMAIQAkACIAIQAjACUAIQAlACYAJwAoACkAJwAqACgAKgArACgALAAtAC4ALAAvAC0ALwAwAC0AMQAyADMAMQA0ADIAMQAzADUAMQA1ADYANwA4ADkANwA6ADgAOgA7ADgAPAA9AD4APAA/AD0APwBAAD0AQABBAD0AQgBDAEQAQgBFAEMARQBGAEMARgBHAEMA"),
+"material": SubResource("StandardMaterial3D_3y4si"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("WCF1PqRwZb9xz3w+WCF1vqRwZb+XUdI/WCF1vqRwZb9xz3w+ZI8ivr1oZb/Xo9w//aQiPr1oZb8UUyo+Fvoivr1oZb8uqCo+WCF1PqRwZb+WUdI/Wo8iPr1oZb/Xo9w/WCF1PqRwZb+WUdI/WCF1PqRwZb9xz3w+WCF1PmytMz9sz3w+WCF1Pm6tMz+XUdI/WCF1vqRwZb+XUdI/WCF1vmatMz+YUdI/WCF1vmatMz9sz3w+WCF1vqRwZb9xz3w+g4v+PVIkUT94Fa8+TYv+vVIkUT93Fa8+TYv+vVIkUT8mJsY/fYv+PVIkUT8mJsY/Wo8iPr1oZb/Xo9w/F6wiPiEwJD9AoNw/Fqwivh8wJD9AoNw/ZI8ivr1oZb/Xo9w//aQiPr1oZb8UUyo+Fvoivr1oZb8uqCo+jA8jvgBJJD+fvSo+ig8jPv1IJD+fvSo+WCF1vmatMz+YUdI/Fqwivh8wJD9AoNw/QOFqvm49Nj+bmdM/WCF1vqRwZb+XUdI/ZI8ivr1oZb/Xo9w/Fqwivh8wJD9AoNw/ReFqPnE9Nj+YmdM/fYv+PVIkUT8mJsY/F6wiPiEwJD9AoNw/TYv+vVIkUT8mJsY/QOFqvm49Nj+bmdM/F6wiPiEwJD9AoNw/WCF1Pm6tMz+XUdI/ReFqPnE9Nj+YmdM/Wo8iPr1oZb/Xo9w/WCF1PqRwZb+WUdI/WCF1PmytMz9sz3w+ig8jPv1IJD+fvSo+SOFqPnE9Nj9cj3I+WCF1PqRwZb9xz3w+/aQiPr1oZb8UUyo+WCF1Pm6tMz+XUdI/SOFqPnE9Nj9cj3I+g4v+PVIkUT94Fa8+WCF1PmytMz9sz3w+fYv+PVIkUT8mJsY/ReFqPnE9Nj+YmdM/jA8jvgBJJD+fvSo+WCF1vmatMz9sz3w+UuFqvmk9Nj9mj3I+Fvoivr1oZb8uqCo+WCF1vqRwZb9xz3w+TYv+vVIkUT93Fa8+jA8jvgBJJD+fvSo+UuFqvmk9Nj9mj3I+g4v+PVIkUT94Fa8+SOFqPnE9Nj9cj3I+ig8jPv1IJD+fvSo+WCF1vmatMz+YUdI/UuFqvmk9Nj9mj3I+WCF1vmatMz9sz3w+QOFqvm49Nj+bmdM/TYv+vVIkUT8mJsY/TYv+vVIkUT93Fa8+/38CAAAA/b//fwIAAAD9v/9/AgAAAP2//38CAAAA/b//fwIAAAD9v/9/AgAAAP2//38CAAAA/b//fwIAAAD9v////3//f/+/////f/9//7////9//3//v////3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AYD/fwCA/38BgP9/AID/fwGA/38AgP9/AYD/fwCAAQDu/+1/B4ABAO7/7X8HgAEA7v/tfweAAQDu/+1/B4D/P/9/qqqqqv8//3+qqqqq/z//f6qqqqr/P/9/qqqqqv8//3+qqqqq/3//v1VVqar/f/+/VVWpqv9//79VVamq/3//v1VVqar/f/+/VVWpqv9//79VVamq/7//f1VVqqr/v/9/VVWqqv+//39VVaqq/7//f1VVqqr/v/9/VVWqqv///z+qqqmq////P6qqqar///8/qqqpqv///z+qqqmq////P6qqqar/v/+/VFVU1f+//79UVVTV/7//v1RVVNX/v/+/VFVU1f+//79UVVTV/7//v1RVVNUAAP8/VFWpqgAA/z9UVamqAAD/P1RVqaoAAP8/VFWpqgAA/z9UVamq/7/+/6oqVJX/v/7/qipUlf+//v+qKlSV/7/+/6oqVJX/v/7/qipUlf+//v+qKlSV/z//v1RVqar/P/+/VFWpqv8//79UVamq/z//v1RVqar/P/+/VFWpqv8//79UVamq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y1fr6")
+
+[node name="UCX_SM_Prop_Plant_Container_Shelf_4" type="MeshInstance3D" unique_id=911948450]
+mesh = SubResource("ArrayMesh_8rwjy")

@@ -1,0 +1,35 @@
+[gd_scene format=4]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn181"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rk6ti"]
+_surfaces = [{
+"aabb": AABB(-0.54217285, -14.219252, 3.636641, 16.084736, 14.283592, 0.9007673),
+"format": 34359742465,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAEAAIABAADAAIABAABAAUABQAGAAQABgADAAQABwAFAAEABgAFAAcABgAIAAMABwAIAAYAAAADAAkACgAHAAEAAAALAAEACwAKAAEACQALAAAABwAKAAwADAAIAAcADAAKAAsACAAMAAMACwAJAAwADAAJAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("hZ12QQlEOMFzMpFAjdg4QQ6CY8FzMpFAvfM8QXRtYcFzMpFAhZ12QQlEOMG6vmhAjdg4QQ6CY8G6vmhAM6RcQA6CY8FzMpFAM6RcQA6CY8G6vmhAcX3Tvk8+OMFzMpFAcX3Tvk8+OMG6vmhAV654QR/Fgz26vmhA18sKvwDogD1zMpFAV654QR/Fgz1zMpFA18sKvwDogD26vmhA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_id16p"]
+resource_name = "UCX_SM_Bld_Bridge_Ceiling_01"
+_surfaces = [{
+"aabb": AABB(-0.54217285, -14.219252, 3.636641, 16.084736, 14.283592, 0.9007673),
+"format": 34359742471,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABAAFAAEABQAGAAEABwAIAAkACQAKAAcACwAMAA0ADQAOAAsADwAQABEAEQASAA8AEwAUABUAFQAWABMAFwAYABkAFwAaABgAGgAbABgAGwAcABgAHQAeAB8AHwAgAB0AIQAiACMAJAAlACYAJwAoACkA"),
+"material": SubResource("StandardMaterial3D_mn181"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("hZ12QQlEOMFzMpFAjdg4QQ6CY8FzMpFAvfM8QXRtYcFzMpFAV654QR/Fgz1zMpFA18sKvwDogD1zMpFAcX3Tvk8+OMFzMpFAM6RcQA6CY8FzMpFA18sKvwDogD26vmhA18sKvwDogD1zMpFAV654QR/Fgz1zMpFAV654QR/Fgz26vmhA18sKvwDogD26vmhAcX3Tvk8+OMG6vmhAcX3Tvk8+OMFzMpFA18sKvwDogD1zMpFAV654QR/Fgz26vmhAV654QR/Fgz1zMpFAhZ12QQlEOMFzMpFAhZ12QQlEOMG6vmhAcX3Tvk8+OMFzMpFAcX3Tvk8+OMG6vmhAM6RcQA6CY8G6vmhAM6RcQA6CY8FzMpFAM6RcQA6CY8G6vmhAhZ12QQlEOMG6vmhAjdg4QQ6CY8G6vmhAcX3Tvk8+OMG6vmhA18sKvwDogD26vmhAV654QR/Fgz26vmhAM6RcQA6CY8FzMpFAM6RcQA6CY8G6vmhAjdg4QQ6CY8G6vmhAjdg4QQ6CY8FzMpFAjdg4QQ6CY8G6vmhAhZ12QQlEOMG6vmhAvfM8QXRtYcFzMpFAjdg4QQ6CY8FzMpFAjdg4QQ6CY8G6vmhAvfM8QXRtYcFzMpFAhZ12QQlEOMG6vmhAhZ12QQlEOMFzMpFAvfM8QXRtYcFzMpFA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID8f/z/AgD9v/x//P8CAP2//H/8/wIA/b/8f/z/AgD9v2kBln77f7PAaQGWfvt/s8BpAZZ++3+zwGkBln77f7PAlf6Wfvt/Sr+V/pZ++39Kv5X+ln77f0q/lf6Wfvt/Sr9GS7k0lEV01EZLuTSURXTURku5NJRFdNRGS7k0lEV01P//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/EbcNM05IoqsRtw0zTkiiqxG3DTNOSKKrCqsLK2k3m60KqwsraTebrQqrCytpN5utT7VQNW1Gc6tPtVA1bUZzq0+1UDVtRnOr")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rk6ti")
+
+[node name="UCX_SM_Bld_Bridge_Ceiling_01_1058" type="MeshInstance3D" unique_id=526002808]
+mesh = SubResource("ArrayMesh_id16p")
