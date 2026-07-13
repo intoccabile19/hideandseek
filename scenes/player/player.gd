@@ -22,6 +22,9 @@ extends CharacterBody3D
 
 var _throw_timer: float = 0.0
 
+var _last_freeze_press_time: float = 0.0
+const DOUBLE_TAP_WINDOW: float = 0.35
+
 func _play_anim(anim_name: String) -> void:
 	if anim_name.is_empty():
 		return
@@ -97,7 +100,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		SoundManager.play_whistle()
 		_release_cover()
 	elif event.is_action_pressed("command_freeze"):
-		FamilyManager.broadcast_freeze(global_position)
+		var now := Time.get_ticks_msec() / 1000.0
+		if now - _last_freeze_press_time < DOUBLE_TAP_WINDOW:
+			FamilyManager.broadcast_freeze(global_position)
+			_last_freeze_press_time = 0.0
+		else:
+			FamilyManager.broadcast_stop(global_position)
+			_last_freeze_press_time = now
 		SoundManager.play_whistle()
 	elif event.is_action_pressed("hide_action"):
 		if _assigned_cover:

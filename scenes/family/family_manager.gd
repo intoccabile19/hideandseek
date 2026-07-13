@@ -89,6 +89,22 @@ func broadcast_freeze(player_pos: Vector3) -> void:
 	
 	command_broadcast.emit(1) # State.FREEZE
 
+## Broadcasts stop command (7) and registers sound circle origin.
+func broadcast_stop(player_pos: Vector3) -> void:
+	update_queue_order()
+	var sound_info: Dictionary = _calculate_sound_propagation(player_pos)
+	sound_emitted.emit(player_pos, sound_info.radius, sound_info.is_shout)
+	spawn_soundwave(player_pos, sound_info.radius)
+	
+	# Release any active cover assignments for members who are targeted
+	for member in active_members:
+		if is_instance_valid(member) and member.has_method("release_cover"):
+			if current_target_member != null and current_target_member != member:
+				continue
+			member.call("release_cover")
+			
+	command_broadcast.emit(7) # State.STOP
+
 ## Coordinated matchmaking algorithm to allocate best closest cover zones for everyone
 func assign_hiding_covers() -> void:
 	# Release existing cover assignments only for those who are NOT already hiding/frozen

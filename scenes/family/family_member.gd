@@ -20,7 +20,9 @@ func _play_anim(anim_name: String) -> void:
 				anim_player.play(anim_name)
 
 ## States mapping to Follow, Freeze, Hidden, Wandering, Pushing, and Interacting modes.
-enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING, LAUNCHED }
+enum State { FOLLOW, FREEZE, HIDING, WANDER, PUSHING, INTERACTING, LAUNCHED, STOP }
+
+const LEVEL_Y_THRESHOLD: float = 2.5
 
 @export_group("Escort Settings")
 ## The horizontal movement speed of this family member.
@@ -91,6 +93,12 @@ func _physics_process(delta: float) -> void:
 
 	# Process queue tracking if in FOLLOW state and player is valid.
 	if current_state == State.FOLLOW and FamilyManager.player:
+		# Auto-hide if player has climbed to a significantly higher floor
+		var y_diff: float = FamilyManager.player.global_position.y - global_position.y
+		if y_diff > LEVEL_Y_THRESHOLD:
+			_auto_hide_on_level_change()
+			return
+
 		var p: Node3D = FamilyManager.player
 		var follow_index: int = FamilyManager.get_follow_index(self)
 		
@@ -341,6 +349,8 @@ func _physics_process(delta: float) -> void:
 func _process_animations(delta: float) -> void:
 	if abs(velocity.x) > 0.1:
 		_play_anim(anim_move)
+	elif current_state == State.STOP:
+		_play_anim(anim_idle)
 	elif is_hidden or current_state == State.FREEZE:
 		_play_anim(anim_hide)
 	elif not is_on_floor():
@@ -352,6 +362,12 @@ func _process_animations(delta: float) -> void:
 
 func _on_command_broadcast(new_state_int: int) -> void:
 	if FamilyManager.current_target_member != null and FamilyManager.current_target_member != self:
+		return
+	if new_state_int == State.STOP:
+		current_state = State.STOP
+		print("[Family Member %s] State transitioned to: STOP" % name)
+		_interact_target = null
+		release_cover()
 		return
 	if new_state_int == State.FREEZE and (current_state == State.HIDING or current_state == State.FREEZE) and _assigned_cover != null:
 		return # Ignore redundant freeze commands when already hiding/frozen with a cover
@@ -392,6 +408,31 @@ func release_cover() -> void:
 		_assigned_cover.release_actor(self)
 		_assigned_cover = null
 	is_hidden = false
+
+func _auto_hide_on_level_change() -> void:
+	print("[Family Member %s] Player climbed to different level. Auto-hiding..." % name)
+	release_cover()
+	
+	var best_zone: CoverZone = null
+	var min_dist: float = 99999.0
+	var my_size: String = get_size_class()
+	
+	var zones: Array = get_tree().get_nodes_in_group("cover_zones")
+	for zone in zones:
+		if zone is CoverZone and zone.has_space_for(my_size):
+			var dist: float = abs(zone.global_position.x - global_position.x)
+			if dist < min_dist:
+				min_dist = dist
+				best_zone = zone
+	
+	if best_zone:
+		_assigned_cover = best_zone
+		_cover_target_x = best_zone.assign_actor(self)
+		current_state = State.HIDING
+		print("[Family Member %s] Auto-hide assigned cover: %s at X: %0.2f" % [name, best_zone.name, _cover_target_x])
+	else:
+		current_state = State.STOP
+		print("[Family Member %s] No cover zone available. Stopping in place." % name)
 
 func has_assigned_cover() -> bool:
 	return _assigned_cover != null
