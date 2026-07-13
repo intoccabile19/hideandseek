@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dphge0u30j2ue"]
 
 [ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_ogyti"]
+[ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="2_wcfb2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84dur"]
 resource_name = "SciFi"
@@ -44,6 +45,8 @@ shadow_mesh = SubResource("ArrayMesh_kt5s5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcfb2"]
 albedo_texture = ExtResource("1_ogyti")
+emission_enabled = true
+emission_texture = ExtResource("2_wcfb2")
 
 [node name="SM_Prop_Detail_Pipes_03" type="MeshInstance3D" unique_id=1541465743]
 mesh = SubResource("ArrayMesh_32dcb")

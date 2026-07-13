@@ -1,6 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://dbtq4cuhpbb6h"]
 
-[ext_resource type="Material" uid="uid://d3dvklklm5h5e" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_gx7h4"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_fauxv"]
+[ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="2_ywsbl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsjk7"]
 resource_name = "SciFi4"
@@ -42,6 +43,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q557u")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06oq4"]
+albedo_texture = ExtResource("1_fauxv")
+emission_enabled = true
+emission_texture = ExtResource("2_ywsbl")
+
 [node name="SM_Prop_Detail_Machine_01" type="MeshInstance3D" unique_id=1174577264]
 mesh = SubResource("ArrayMesh_f1waw")
-surface_material_override/0 = ExtResource("1_gx7h4")
+surface_material_override/0 = SubResource("StandardMaterial3D_06oq4")

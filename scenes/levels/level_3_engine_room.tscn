@@ -137,16 +137,6 @@ shape = SubResource("BoxShape3D_floor")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3" unique_id=433739370]
 mesh = SubResource("BoxMesh_floor")
 
-[node name="ObstacleBox1" type="StaticBody3D" parent="." unique_id=1950113598]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.4, 0)
-script = ExtResource("8_ro")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleBox1" unique_id=923126881]
-shape = SubResource("BoxShape3D_box1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleBox1" unique_id=2125590002]
-mesh = SubResource("BoxMesh_box1")
-
 [node name="ObstacleBox2" type="StaticBody3D" parent="." unique_id=1835238349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.6, 0)
 
@@ -170,7 +160,7 @@ mesh = SubResource("BoxMesh_bridge")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 0)
 script = ExtResource("8_ro")
 active_y = 2.0
-inactive_y = -2.0
+inactive_y = 6.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VentWall" unique_id=1080059252]
 shape = SubResource("BoxShape3D_ventwall")
@@ -182,7 +172,7 @@ mesh = SubResource("BoxMesh_ventwall")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 0)
 script = ExtResource("7_ti")
 target_obstacle_1 = NodePath("../VentWall")
-target_obstacle_2 = NodePath("../ObstacleBox1")
+target_obstacle_2 = NodePath("")
 required_class = "Toddler"
 prompt_message = "Crawl through Vent and Hack Button"
 interaction_offset_x = 0.6

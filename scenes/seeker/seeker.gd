@@ -12,6 +12,8 @@ enum State {
 	WORKING
 }
 
+enum SeekerType { LAZY, NORMAL, AGGRESSIVE, LAME }
+
 @export_group("Animations")
 @export var anim_idle: String = "robot_idle"
 @export var anim_walk: String = "robot_walk_1"
@@ -27,35 +29,9 @@ enum State {
 @export var anim_look_3: String = "robot_look_high"
 
 @export_group("Seeker Settings")
+@export var seeker_type: SeekerType = SeekerType.NORMAL
 @export var terminals: Array[Node3D] = []
 @export var wander_range_x: Vector2 = Vector2(-15.0, 15.0)
-
-var _target_terminal: Node3D = null
-var _current_work_anim: String = ""
-var _work_duration: float = 0.0
-var _current_look_anim: String = ""
-var _last_look_change_time: float = 0.0
-var _alert_duration: float = 1.2
-
-func _select_random_look_anim() -> void:
-	var list: Array[String] = []
-	if not anim_look_1.is_empty(): list.append(anim_look_1)
-	if not anim_look_2.is_empty(): list.append(anim_look_2)
-	if not anim_look_3.is_empty(): list.append(anim_look_3)
-	
-	if not list.is_empty():
-		_current_look_anim = list.pick_random()
-	else:
-		_current_look_anim = "robot_look_1"
-
-func _play_anim(anim_name: String) -> void:
-	if anim_name.is_empty():
-		return
-	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
-	if is_instance_valid(anim_player):
-		if anim_player.has_animation(anim_name):
-			if anim_player.current_animation != anim_name:
-				anim_player.play(anim_name)
 @export var wander_range_z: Vector2 = Vector2(-15.0, -6.0)
 @export var background_z: float = -12.0
 @export var peer_z: float = -6.0 # Safe distance from walkway walls to prevent physical collision jitter
@@ -64,10 +40,6 @@ func _play_anim(anim_name: String) -> void:
 @export var vision_range: float = 18.0
 @export var vision_angle: float = 45.0 # Spotlight degrees
 @export var capture_time_limit: float = 2.0 # Warning window seconds before grab
-
-enum SeekerType { LAZY, NORMAL, AGGRESSIVE, LAME }
-@export var seeker_type: SeekerType = SeekerType.NORMAL
-
 @export var alert_decay_rate: float = 0.06
 @export var alert_growth_multiplier: float = 1.0
 @export var search_wait_time: float = 1.8
@@ -76,6 +48,7 @@ enum SeekerType { LAZY, NORMAL, AGGRESSIVE, LAME }
 @onready var spotlight: SpotLight3D = $SpotLight3D
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var alert_label: Label3D = $AlertLabel
+@onready var vision_cone: MeshInstance3D = $SpotLight3D/VisionCone
 
 var current_state: State = State.WANDER
 var _target_pos: Vector3 = Vector3.ZERO
@@ -88,6 +61,7 @@ var _chase_timer: float = 0.0
 var _sleep_timer: float = 0.0
 var _gravity: float = 15.0
 var _has_heard_anything: bool = false
+var _vision_cone_mat: StandardMaterial3D = null
 
 # Alert system variables
 var alert_level: float = 0.0
@@ -96,8 +70,44 @@ var _look_target_x: float = 0.0
 var _footstep_accum: float = 0.0
 const FOOTSTEP_DIST: float = 3.5
 
-@onready var vision_cone: MeshInstance3D = $SpotLight3D/VisionCone
-var _vision_cone_mat: StandardMaterial3D = null
+var _target_terminal: Node3D = null
+var _current_work_anim: String = ""
+var _work_duration: float = 0.0
+var _current_look_anim: String = ""
+var _last_look_change_time: float = 0.0
+var _alert_duration: float = 1.2
+var _look_duration: float = 0.0
+var _look_timer: float = 0.0
+var _actual_velocity: Vector3 = Vector3.ZERO
+
+func _select_random_look_anim() -> void:
+	var list: Array[String] = []
+	if not anim_look_1.is_empty(): list.append(anim_look_1)
+	if not anim_look_2.is_empty(): list.append(anim_look_2)
+	if not anim_look_3.is_empty(): list.append(anim_look_3)
+	
+	if not list.is_empty():
+		_current_look_anim = list.pick_random()
+	else:
+		_current_look_anim = "robot_look_1"
+		
+	# Query look animation length
+	_look_duration = 1.8 # default fallback
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player) and anim_player.has_animation(_current_look_anim):
+		var anim = anim_player.get_animation(_current_look_anim)
+		if anim:
+			_look_duration = anim.length
+	_look_timer = 0.0
+
+func _play_anim(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		if anim_player.has_animation(anim_name):
+			if anim_player.current_animation != anim_name:
+				anim_player.play(anim_name)
 
 func _ready() -> void:
 	add_to_group("seeker")
@@ -107,30 +117,30 @@ func _ready() -> void:
 	# Apply archetype settings
 	match seeker_type:
 		SeekerType.LAZY:
-			patrol_speed = 2.2
-			investigate_speed = 1.3
-			chase_speed = 2.5
+			patrol_speed = 3.0
+			investigate_speed = 2.0
+			chase_speed = 3.5
 			alert_decay_rate = 0.15
 			search_wait_time = 3.5
 			alert_growth_multiplier = 0.5
 		SeekerType.NORMAL:
-			patrol_speed = 2.4
-			investigate_speed = 2.0
-			chase_speed = 3.4
+			patrol_speed = 3.5
+			investigate_speed = 2.8
+			chase_speed = 4.8
 			alert_decay_rate = 0.06
 			search_wait_time = 4.5
 			alert_growth_multiplier = 1.0
 		SeekerType.AGGRESSIVE:
-			patrol_speed = 2.6
-			investigate_speed = 3.0
-			chase_speed = 4.5
+			patrol_speed = 4.0
+			investigate_speed = 3.5
+			chase_speed = 5.8
 			alert_decay_rate = 0.03
 			search_wait_time = 5.5
 			alert_growth_multiplier = 1.5
 		SeekerType.LAME:
-			patrol_speed = 1.5
-			investigate_speed = 1.0
-			chase_speed = 1.0
+			patrol_speed = 2.2
+			investigate_speed = 1.8
+			chase_speed = 2.2
 			alert_decay_rate = 1.0
 			search_wait_time = 1.0
 			alert_growth_multiplier = 0.0
@@ -301,6 +311,21 @@ func _physics_process(delta: float) -> void:
 		else:
 			alert_label.text = ""
 
+	# Proximity Yielding: prevent Seekers from colliding or walking through each other
+	if current_state != State.CHASE and current_state != State.CAPTURE:
+		var too_close := false
+		for other in get_tree().get_nodes_in_group("seeker"):
+			if other != self and is_instance_valid(other):
+				if other.current_state != State.CHASE and other.current_state != State.CAPTURE:
+					var dist_to_other := global_position.distance_to(other.global_position)
+					if dist_to_other < 3.5:
+						if get_instance_id() < other.get_instance_id():
+							too_close = true
+							break
+		if too_close:
+			velocity.x = 0.0
+			velocity.z = 0.0
+
 	# Run physics movement
 	move_and_slide()
 
@@ -337,6 +362,7 @@ func _physics_process(delta: float) -> void:
 	elif current_state == State.SUSPICIOUS:
 		speed_z = investigate_speed
 		
+	var prev_z := global_position.z
 	global_position.z = move_toward(global_position.z, target_z, delta * speed_z)
 
 	# Constrain rotation pitch/roll to remain upright
@@ -346,6 +372,9 @@ func _physics_process(delta: float) -> void:
 	# Check vision to detect intruders
 	if current_state != State.CHASE and current_state != State.CAPTURE:
 		_check_vision()
+
+	# Calculate actual combined horizontal velocity for animations
+	_actual_velocity = Vector3(velocity.x, 0.0, (global_position.z - prev_z) / delta if delta > 0.0 else 0.0)
 
 	_process_animations(delta)
 
@@ -402,10 +431,15 @@ func _process_searching(delta: float) -> void:
 	velocity.z = 0.0
 	_state_timer += delta
 
-	# Face the searchable object/window
-	var dir_to_obj := (_target_object.global_position - global_position).normalized() if _target_object else Vector3.FORWARD
-	var target_yaw := atan2(-dir_to_obj.x, -dir_to_obj.z)
-	rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+	# Face the searchable object or work spot
+	if is_instance_valid(_target_object):
+		var spot: Marker3D = _target_object.get_node_or_null("SeekerWorkSpot") as Marker3D
+		if is_instance_valid(spot):
+			rotation.y = rotate_toward(rotation.y, spot.global_rotation.y, delta * 6.0)
+		else:
+			var dir_to_obj := (_target_object.global_position - global_position).normalized()
+			var target_yaw := atan2(-dir_to_obj.x, -dir_to_obj.z)
+			rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
 	spotlight.rotation.y = 0.0
 
 	var phase_1_end := search_wait_time * 0.55
@@ -501,14 +535,16 @@ func _process_suspicious(delta: float) -> void:
 		spotlight.rotation.y = sin(_state_timer * 5.0) * deg_to_rad(45.0)
 		spotlight.rotation.x = deg_to_rad(-20.0)
 		
-		# Change look animation randomly every 1.8 seconds
-		if _current_look_anim.is_empty() or _state_timer - _last_look_change_time > 1.8:
+		if _current_look_anim.is_empty():
 			_select_random_look_anim()
-			_last_look_change_time = _state_timer
-
-	if _state_timer > (search_wait_time * 2.5):
-		spotlight.rotation.y = 0.0
-		_choose_next_wander()
+		else:
+			_look_timer += delta
+			if _look_timer >= _look_duration:
+				if _state_timer > (search_wait_time * 2.5):
+					spotlight.rotation.y = 0.0
+					_choose_next_wander()
+				else:
+					_select_random_look_anim()
 
 func _process_chase(delta: float) -> void:
 	if not is_instance_valid(_chase_target):
@@ -625,25 +661,54 @@ func _choose_next_wander() -> void:
 	spotlight.light_energy = 32.0
 	spotlight.light_color = Color(1.0, 0.2, 0.2, 1.0)
 	
-	# Combine searchable objects and terminals into a unified job pool
+	# Combine searchable objects and terminals into a unified job pool, avoiding busy targets
+	var busy_targets := []
+	for other in get_tree().get_nodes_in_group("seeker"):
+		if other != self and is_instance_valid(other):
+			var other_term = other.get("_target_terminal")
+			if is_instance_valid(other_term):
+				busy_targets.append(other_term)
+			var other_obj = other.get("_target_object")
+			if is_instance_valid(other_obj):
+				busy_targets.append(other_obj)
+
 	var pool: Array = []
 	for obj in get_tree().get_nodes_in_group("searchable_objects"):
-		pool.append({"type": "searchable", "node": obj})
+		if not obj in busy_targets:
+			pool.append({"type": "searchable", "node": obj})
 	for term in terminals:
-		if is_instance_valid(term):
+		if is_instance_valid(term) and not term in busy_targets:
 			pool.append({"type": "terminal", "node": term})
 			
+	# If everything is busy, fall back to the entire pool
+	if pool.is_empty():
+		for obj in get_tree().get_nodes_in_group("searchable_objects"):
+			pool.append({"type": "searchable", "node": obj})
+		for term in terminals:
+			if is_instance_valid(term):
+				pool.append({"type": "terminal", "node": term})
+
 	if not pool.is_empty():
 		var selected = pool.pick_random()
 		if selected["type"] == "terminal":
 			_target_terminal = selected["node"]
 			_target_object = null
-			_target_pos = _target_terminal.global_position
+			var spot: Marker3D = _target_terminal.get_node_or_null("SeekerWorkSpot") as Marker3D
+			if is_instance_valid(spot):
+				spot.visible = false
+				_target_pos = spot.global_position
+			else:
+				_target_pos = _target_terminal.global_position
 			print("[Seeker %s] Heading to work at terminal: %s at 3D pos: %s" % [name, _target_terminal.name, str(_target_pos)])
 		else:
 			_target_terminal = null
 			_target_object = selected["node"]
-			_target_pos = _target_object.global_position
+			var spot: Marker3D = _target_object.get_node_or_null("SeekerWorkSpot") as Marker3D
+			if is_instance_valid(spot):
+				spot.visible = false
+				_target_pos = spot.global_position
+			else:
+				_target_pos = _target_object.global_position
 			print("[Seeker %s] Heading to search background object: %s at 3D pos: %s" % [name, _target_object.name, str(_target_pos)])
 		return
 
@@ -756,11 +821,15 @@ func _process_working(delta: float) -> void:
 	velocity.z = 0.0
 	_state_timer += delta
 
-	# Face the terminal
+	# Face the terminal or work spot
 	if is_instance_valid(_target_terminal):
-		var dir_to_term := (_target_terminal.global_position - global_position).normalized()
-		var target_yaw := atan2(-dir_to_term.x, -dir_to_term.z)
-		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
+		var spot: Marker3D = _target_terminal.get_node_or_null("SeekerWorkSpot") as Marker3D
+		if is_instance_valid(spot):
+			rotation.y = rotate_toward(rotation.y, spot.global_rotation.y, delta * 6.0)
+		else:
+			var dir_to_term := (_target_terminal.global_position - global_position).normalized()
+			var target_yaw := atan2(-dir_to_term.x, -dir_to_term.z)
+			rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
 	spotlight.rotation.y = 0.0
 	spotlight.rotation.x = lerp(spotlight.rotation.x, deg_to_rad(-25.0), delta * 4.0)
 
@@ -805,7 +874,7 @@ func _process_animations(delta: float) -> void:
 		# Alert phase -> walk to wall -> random look animations at the wall
 		if _state_timer < _alert_duration:
 			_play_anim(anim_alert)
-		elif velocity.length() > 0.1:
+		elif _actual_velocity.length() > 0.1:
 			_play_anim(anim_walk)
 		else:
 			_play_anim(_current_look_anim)
@@ -814,13 +883,30 @@ func _process_animations(delta: float) -> void:
 		_play_anim(anim_alert)
 	elif current_state == State.CHASE:
 		# Chasing: play fast walk animation
-		if velocity.length() > 0.1:
-			_play_anim("robot_walk_2")
+		if _actual_velocity.length() > 0.1:
+			var ap := get_node_or_null("AnimationPlayer") as AnimationPlayer
+			if is_instance_valid(ap) and ap.has_animation("robot_walk_2"):
+				_play_anim("robot_walk_2")
+			else:
+				_play_anim(anim_walk)
 		else:
 			_play_anim(anim_idle)
 	else:
 		# Normal patrol or wandering
-		if velocity.length() > 0.1:
+		if _actual_velocity.length() > 0.1:
 			_play_anim(anim_walk)
 		else:
 			_play_anim(anim_idle)
+
+	# Adjust playback speed for walk animations to match physical speed
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_instance_valid(anim_player):
+		var curr := anim_player.current_animation
+		if curr == anim_walk or curr == "robot_walk_2":
+			var horizontal_speed := _actual_velocity.length()
+			if horizontal_speed > 0.1:
+				anim_player.speed_scale = horizontal_speed / 2.2
+			else:
+				anim_player.speed_scale = 1.0
+		else:
+			anim_player.speed_scale = 1.0

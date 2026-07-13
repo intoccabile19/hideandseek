@@ -1,7 +1,7 @@
 [gd_scene format=4]
 
-[ext_resource type="Texture2D" path="res://POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_piru1"]
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="2_82p5n"]
+[ext_resource type="Texture2D" uid="uid://d3dvklklm5h5e" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_piru1"]
+[ext_resource type="Material" uid="uid://d3dvklklm5h5e" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="2_82p5n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mldr"]
 resource_name = "MAT_PolygonSciFiSpace_01_A"
