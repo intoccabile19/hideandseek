@@ -13,26 +13,25 @@ func _ready() -> void:
 	# Enable processing during pause so menu buttons are clickable
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	if DisplayServer.get_name() != "headless":
-		show_main_menu()
-	else:
-		hide_all()
+	hide_all()
 	
 	# Listen to game over signal
 	FamilyManager.game_over.connect(show_game_over)
 	
 	# Connect buttons
+	$MenuContainer/MainMenu/VBox/StartButton.text = "RESUME"
 	$MenuContainer/MainMenu/VBox/StartButton.pressed.connect(_on_start_pressed)
+	$MenuContainer/MainMenu/VBox/QuitButton.text = "RETURN TO MAIN MENU"
 	$MenuContainer/MainMenu/VBox/QuitButton.pressed.connect(_on_quit_pressed)
 	$MenuContainer/GameOverScreen/VBox/RetryButton.pressed.connect(_on_retry_pressed)
 	$MenuContainer/VictoryScreen/VBox/RestartButton.pressed.connect(_on_retry_pressed)
 	
 	if is_instance_valid(continue_button):
-		continue_button.pressed.connect(_on_continue_pressed)
-		continue_button.visible = SaveManager.has_save()
+		continue_button.visible = false
 	
 	# Connect volume controls
 	if is_instance_valid(volume_slider):
+		volume_slider.value = SoundManager.master_volume
 		volume_slider.value_changed.connect(_on_volume_changed)
 		_update_volume_label(volume_slider.value)
 
@@ -62,7 +61,19 @@ func _on_start_pressed() -> void:
 	get_tree().paused = false
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/ui/start_menu.tscn")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if game_over_screen.visible or victory_screen.visible:
+			return
+		
+		get_viewport().set_input_as_handled()
+		if main_menu.visible:
+			_on_start_pressed()
+		else:
+			show_main_menu()
 
 func _on_continue_pressed() -> void:
 	var level_path := SaveManager.load_level()

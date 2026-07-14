@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://4w1wfxv61k0m"]
+
+[ext_resource type="PackedScene" uid="uid://bcj2u6bsu31np" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Wall_01.tscn" id="1_grtde"]
+[ext_resource type="PackedScene" uid="uid://0p8doii2f7ue" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Ceiling_03.tscn" id="2_ld6k8"]
+[ext_resource type="PackedScene" uid="uid://dilj7x3c5kyed" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Floor_04.tscn" id="3_v6cvt"]
+[ext_resource type="PackedScene" uid="uid://c08gnuc17b1et" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Wall_Corner_Pillar_01.tscn" id="4_hafxg"]
+[ext_resource type="PackedScene" uid="uid://bhu1ippy0vf55" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Ceiling_02.tscn" id="5_e3q0l"]
+
+[node name="GameStart" type="Node3D" unique_id=1522353544]
+
+[node name="SM_Bld_Wall_01" parent="." unique_id=1707897989 instance=ExtResource("1_grtde")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -4.2820477, 0.9954407, 1.690341)
+
+[node name="SM_Bld_Wall_02" parent="." unique_id=1098066513 instance=ExtResource("1_grtde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9064755, 0.9954407, -3.5717683)
+
+[node name="SM_Bld_Ceiling_03" parent="." unique_id=295146526 instance=ExtResource("2_ld6k8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5304189, 0.15147567, -3.329883)
+
+[node name="SM_Bld_Floor_04" parent="." unique_id=1086899490 instance=ExtResource("3_v6cvt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.269937, 0.08726016, -3.1279945)
+
+[node name="SM_Bld_Wall_03" parent="." unique_id=1344710935 instance=ExtResource("1_grtde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0935245, 0.9954407, -3.5717683)
+
+[node name="SM_Bld_Floor_05" parent="." unique_id=370656482 instance=ExtResource("3_v6cvt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.269937, 0.08726016, -3.1279945)
+
+[node name="SM_Bld_Wall_Corner_Pillar_01" parent="." unique_id=998483496 instance=ExtResource("4_hafxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2069635, 1.1144133, -3.251557)
+
+[node name="SM_Bld_Ceiling_02" parent="." unique_id=1620711310 instance=ExtResource("5_e3q0l")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.139037, 0.08722249, 1.7020054)

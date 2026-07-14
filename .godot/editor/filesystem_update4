@@ -29,3 +29,9 @@ res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_CryoBed_0
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Chr_Male_Cryo_01.tscn
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_DeadZub_01.tscn
 res://scenes/seeker/seeker.gd
+res://scenes/audio/sound_manager.gd
+res://scenes/objects/escape_zone.gd
+res://scenes/ui/game_state_menu.gd
+res://scenes/levels/GameStart.tscn
+res://scenes/ui/game_state_menu.tscn
+res://scenes/levels/level_1_tutorial.tscn

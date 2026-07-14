@@ -9,11 +9,14 @@ var _heartbeat_timer: float = 0.0
 var _heartbeat_interval: float = 1.5 # seconds between beats
 var _current_alert: float = 0.0
 
+var master_volume: float = 0.5
+
 func _ready() -> void:
 	# Start master bus volume at 50% (baseline 0.0 dB)
 	set_master_volume(0.5)
 
 func set_master_volume(value: float) -> void:
+	master_volume = value
 	# value goes 0.0 to 1.0. 
 	# 0.5 maps to 0.0 dB (our baseline).
 	# 1.0 maps to +12.0 dB (extra loud!).

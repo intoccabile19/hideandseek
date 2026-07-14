@@ -55,9 +55,6 @@ func _check_victory_condition() -> void:
 		get_tree().change_scene_to_file(next_level_path)
 		print("[EscapeZone] Level complete! Transitioning to: %s" % next_level_path)
 	else:
-		var menus := get_tree().get_nodes_in_group("game_state_menus")
-		if not menus.is_empty():
-			var menu = menus[0]
-			if menu.has_method("show_victory"):
-				menu.show_victory(saved_count)
-				print("[EscapeZone] Escape complete! Victory triggered with %d survivors." % saved_count)
+		FamilyManager.last_saved_count = saved_count
+		get_tree().change_scene_to_file("res://scenes/ui/game_won.tscn")
+		print("[EscapeZone] Escape complete! Loading Game Won scene with %d survivors." % saved_count)

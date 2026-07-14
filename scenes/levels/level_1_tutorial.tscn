@@ -87,6 +87,9 @@ size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_so"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf7vo"]
+albedo_texture = ExtResource("39_kf7vo")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_czsmall"]
 size = Vector3(2, 2, 0.8)
 
@@ -315,6 +318,7 @@ mesh = SubResource("BoxMesh_so")
 
 [node name="SM_Prop_Battery_01" parent="SearchableBox2" unique_id=1976737650 instance=ExtResource("36_3ee0w")]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.18405795, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_kf7vo")
 
 [node name="SeekerWorkSpot" type="Marker3D" parent="SearchableBox2" unique_id=1344411439]
 transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, 1.9748983, 0, -0.14136052)
@@ -557,7 +561,7 @@ mesh = SubResource("BoxMesh_czmedium")
 [node name="EscapeZone" type="Area3D" parent="." unique_id=1572191180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.082363, 0, 0)
 script = ExtResource("14_ez")
-next_level_path = "res://scenes/levels/level_2_cargo_hold.tscn"
+next_level_path = "uid://byvks84b7i30v"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeZone" unique_id=180956095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -678,45 +682,50 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -52.102787, -10, -54.679176)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Env/background" unique_id=818984453]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.3496208, 16.383877, -16.398754)
-light_energy = 13.168
+light_energy = 16.0
 light_indirect_energy = 9.457
 light_volumetric_fog_energy = 4.894
+light_size = 0.175
 spot_range = 44.841
 spot_angle = 54.23
 spot_angle_attenuation = 0.4506253
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Env/background" unique_id=1530844619]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -34.791264, 16.383877, -16.398754)
-light_energy = 13.168
+light_energy = 16.0
 light_indirect_energy = 9.457
 light_volumetric_fog_energy = 4.894
+light_size = 0.175
 spot_range = 44.841
 spot_angle = 54.23
 spot_angle_attenuation = 0.4506253
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Env/background" unique_id=922877839]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -34.791264, 16.383877, -53.667255)
-light_energy = 13.168
+light_energy = 16.0
 light_indirect_energy = 9.457
 light_volumetric_fog_energy = 4.894
+light_size = 0.175
 spot_range = 44.841
 spot_angle = 54.23
 spot_angle_attenuation = 0.4506253
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Env/background" unique_id=382786462]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.885235, 16.383877, -16.398754)
-light_energy = 13.168
+light_energy = 16.0
 light_indirect_energy = 9.457
 light_volumetric_fog_energy = 4.894
+light_size = 0.175
 spot_range = 44.841
 spot_angle = 54.23
 spot_angle_attenuation = 0.4506253
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Env/background" unique_id=1210557054]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.885235, 16.383877, -51.32596)
-light_energy = 13.168
+light_energy = 16.0
 light_indirect_energy = 9.457
 light_volumetric_fog_energy = 4.894
+light_size = 0.175
 spot_range = 44.841
 spot_angle = 54.23
 spot_angle_attenuation = 0.4506253

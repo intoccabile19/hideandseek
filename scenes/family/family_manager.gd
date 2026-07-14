@@ -24,6 +24,7 @@ const SHOUT_SOUND_RADIUS: float = 15.0
 
 ## Tracks active family members currently spawned in the scene.
 var active_members: Array[Node3D] = []
+var last_saved_count: int = 0
 
 signal target_changed(new_target: FamilyMember)
 var current_target_member: FamilyMember = null

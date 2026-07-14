@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx6gwh8s72q73"]
+[gd_scene format=3 uid="uid://cx6gwh8s72q73"]
 
-[ext_resource type="Script" path="res://scenes/ui/game_state_menu.gd" id="1_m"]
+[ext_resource type="Script" uid="uid://wr35leyf1pis" path="res://scenes/ui/game_state_menu.gd" id="1_m"]
 
-[node name="GameStateMenu" type="CanvasLayer"]
+[node name="GameStateMenu" type="CanvasLayer" unique_id=2114351312]
 process_mode = 3
 script = ExtResource("1_m")
 
-[node name="MenuContainer" type="Control" parent="."]
+[node name="MenuContainer" type="Control" parent="." unique_id=24897187]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="PanelContainer" parent="MenuContainer"]
+[node name="MainMenu" type="PanelContainer" parent="MenuContainer" unique_id=39335815]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,41 +28,41 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="MenuContainer/MainMenu"]
+[node name="VBox" type="VBoxContainer" parent="MenuContainer/MainMenu" unique_id=1813691805]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="MenuContainer/MainMenu/VBox"]
+[node name="TitleLabel" type="Label" parent="MenuContainer/MainMenu/VBox" unique_id=1198410027]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "MICRO-MIGRATION"
+text = "Goblin's in the GearBox"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="MenuContainer/MainMenu/VBox"]
+[node name="StartButton" type="Button" parent="MenuContainer/MainMenu/VBox" unique_id=1962500157]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "START ESCORT"
 
-[node name="ContinueButton" type="Button" parent="MenuContainer/MainMenu/VBox"]
+[node name="ContinueButton" type="Button" parent="MenuContainer/MainMenu/VBox" unique_id=2078324161]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CONTINUE MIGRATION"
 
-[node name="QuitButton" type="Button" parent="MenuContainer/MainMenu/VBox"]
+[node name="QuitButton" type="Button" parent="MenuContainer/MainMenu/VBox" unique_id=789926393]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
 
-[node name="VolumeLabel" type="Label" parent="MenuContainer/MainMenu/VBox"]
+[node name="VolumeLabel" type="Label" parent="MenuContainer/MainMenu/VBox" unique_id=947982281]
 layout_mode = 2
 text = "VOLUME: 50%"
 horizontal_alignment = 1
 
-[node name="VolumeSlider" type="HSlider" parent="MenuContainer/MainMenu/VBox"]
+[node name="VolumeSlider" type="HSlider" parent="MenuContainer/MainMenu/VBox" unique_id=224298780]
 custom_minimum_size = Vector2(200, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,7 +70,7 @@ max_value = 1.0
 step = 0.05
 value = 0.5
 
-[node name="GameOverScreen" type="PanelContainer" parent="MenuContainer"]
+[node name="GameOverScreen" type="PanelContainer" parent="MenuContainer" unique_id=1452433903]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -85,24 +85,25 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="MenuContainer/GameOverScreen"]
+[node name="VBox" type="VBoxContainer" parent="MenuContainer/GameOverScreen" unique_id=167293895]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="MenuContainer/GameOverScreen/VBox"]
+[node name="GameOverLabel" type="Label" parent="MenuContainer/GameOverScreen/VBox" unique_id=1097404919]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "CONNECTION LOST\n(FAMILY CAPTURED)"
+text = "CONNECTION LOST
+(FAMILY CAPTURED)"
 horizontal_alignment = 1
 
-[node name="RetryButton" type="Button" parent="MenuContainer/GameOverScreen/VBox"]
+[node name="RetryButton" type="Button" parent="MenuContainer/GameOverScreen/VBox" unique_id=451078318]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "RETRY MIGRATION"
 
-[node name="VictoryScreen" type="PanelContainer" parent="MenuContainer"]
+[node name="VictoryScreen" type="PanelContainer" parent="MenuContainer" unique_id=1596079309]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -117,23 +118,23 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="MenuContainer/VictoryScreen"]
+[node name="VBox" type="VBoxContainer" parent="MenuContainer/VictoryScreen" unique_id=1849200671]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="VictoryLabel" type="Label" parent="MenuContainer/VictoryScreen/VBox"]
+[node name="VictoryLabel" type="Label" parent="MenuContainer/VictoryScreen/VBox" unique_id=113400447]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "MIGRATION SECURED!"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="MenuContainer/VictoryScreen/VBox"]
+[node name="ScoreLabel" type="Label" parent="MenuContainer/VictoryScreen/VBox" unique_id=1616231920]
 layout_mode = 2
 text = "FAMILY MEMBERS SAVED: 3 / 3"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="MenuContainer/VictoryScreen/VBox"]
+[node name="RestartButton" type="Button" parent="MenuContainer/VictoryScreen/VBox" unique_id=1440904815]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
