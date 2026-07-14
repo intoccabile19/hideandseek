@@ -85,6 +85,11 @@ radius = 1.5
 [sub_resource type="BoxMesh" id="BoxMesh_terminal"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhyvk"]
+albedo_texture = ExtResource("39_kf7vo")
+emission_enabled = true
+emission_texture = ExtResource("40_uhyvk")
+
 [sub_resource type="BoxMesh" id="BoxMesh_so"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf7vo"]
@@ -110,6 +115,9 @@ size = Vector3(3, 2, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_escape"]
 size = Vector3(10, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p54h5"]
+albedo_texture = ExtResource("39_kf7vo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u1tl"]
 albedo_color = Color(0.03137255, 0.05490196, 0.07450981, 1)
@@ -276,21 +284,22 @@ shape = SubResource("SphereShape3D_terminal")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BridgeConsole" unique_id=589294316]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5447047, 0)
 mesh = ExtResource("5_euohk")
+surface_material_override/0 = SubResource("StandardMaterial3D_uhyvk")
 
 [node name="PushableBox" parent="." unique_id=882162219 instance=ExtResource("5_b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, 0)
 
 [node name="Player" parent="." unique_id=1294226849 instance=ExtResource("1_p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.313686, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.537401, 0, 0)
 
 [node name="Toddler" parent="." unique_id=633738205 instance=ExtResource("2_t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.813686, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.037401, 0, 0)
 
 [node name="Elder" parent="." unique_id=1060242429 instance=ExtResource("3_e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.424076, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.449919, 0, 0)
 
 [node name="Adult" parent="." unique_id=103471209 instance=ExtResource("4_a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.813686, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.839529, 0, 0)
 
 [node name="SearchableBox1" type="Node3D" parent="." unique_id=720168298]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -5, -5.158048, -50.7205)
@@ -395,16 +404,17 @@ text = "Help your family escape. Don't be seen."
 font_size = 36
 
 [node name="TutorialLabel2" type="Label3D" parent="Labels" unique_id=1875568824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.69764, 3.3386874, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.981205, 2.9376059, -1)
 billboard = 1
 double_sided = false
 text = "Escort Commands:
-Press Q to command companions to FOLLOW
-Press E to command companions to FREEZE & HIDE"
+Press Q to command companions to Freeze, double tap to HIDE
+Press E to command companions to FOLLOW
+Be carefule this makes sound dependingon how far away they are"
 font_size = 36
 
 [node name="TutorialLabel3" type="Label3D" parent="Labels" unique_id=879650656]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2588542, 2.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3081548, 2.5, -1)
 billboard = 1
 double_sided = false
 text = "Hmm...
@@ -414,7 +424,7 @@ Press F"
 font_size = 36
 
 [node name="TutorialLabel8" type="Label3D" parent="Labels" unique_id=1337472585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.630996, 2.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.894961, 3.0770917, -1)
 billboard = 1
 double_sided = false
 text = "Beware the giant robots"
@@ -670,6 +680,7 @@ transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, 55
 
 [node name="SM_Bld_Bridge_Walls_Glass_01" parent="Env/background" unique_id=1496500573 instance=ExtResource("16_v7yx5")]
 transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 55.798, -10.5, 5.636)
+surface_material_override/0 = SubResource("StandardMaterial3D_p54h5")
 
 [node name="SM_Bld_Bridge_Ceiling_01" parent="Env/background" unique_id=2034626029 instance=ExtResource("17_nbcil")]
 transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, 55.409813, -11.362648, 3.6647692)

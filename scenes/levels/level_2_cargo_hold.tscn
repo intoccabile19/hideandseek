@@ -34,7 +34,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d1ywsj6wm1u5e" path="res://SyntySciFiSpace/Hatch_Door.tres" id="32_wnpto"]
 [ext_resource type="PackedScene" uid="uid://vw1bshy8pqdr" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_AirVent_Small_01.tscn" id="33_07fx1"]
 [ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="33_jr2wu"]
-[ext_resource type="PackedScene" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Detail_CeilingBox_03.tscn" id="34_07fx1"]
+[ext_resource type="PackedScene" uid="uid://jomm5x874sut" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Detail_CeilingBox_03.tscn" id="34_07fx1"]
 [ext_resource type="Script" uid="uid://c0x35gthy5cne" path="res://scenes/objects/elevator_button.gd" id="34_ek5hc"]
 [ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="34_wd476"]
 [ext_resource type="Script" uid="uid://d1hm0u8dix23" path="res://scenes/objects/elevator.gd" id="35_k34nl"]
@@ -428,6 +428,25 @@ transform = Transform3D(-0.001972258, 0, -0.9999981, 0, 1, 0, 0.9999981, 0, -0.0
 
 [node name="SM_Prop_Crate_Wide_03" parent="CoverZoneMedium2/ObstacleBox2" unique_id=836662044 instance=ExtResource("2_dgk2c")]
 transform = Transform3D(-0.47147268, -0.33951464, -0.8139064, -0.6361779, 0.7700924, 0.047281712, 0.6107302, 0.54008114, -0.57906926, -0.15597117, 0.2787881, 0.07532787)
+
+[node name="CoverZoneMedium3" type="Area3D" parent="." unique_id=567344305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.30786, 6.0717893, -2.6295931)
+script = ExtResource("9_cz")
+capacity = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoverZoneMedium3" unique_id=101410748]
+shape = SubResource("BoxShape3D_czmedium")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneMedium3" unique_id=262321493]
+visible = false
+mesh = SubResource("BoxMesh_czmedium")
+
+[node name="ObstacleBox2" type="StaticBody3D" parent="CoverZoneMedium3" unique_id=1995622694]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.02614212, -0.5999732, 0.6934949)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CoverZoneMedium3/ObstacleBox2" unique_id=243978200]
+visible = false
+mesh = SubResource("BoxMesh_0iw02")
 
 [node name="Player" parent="." unique_id=1294226849 instance=ExtResource("1_p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.501747, 0, 0)
@@ -925,7 +944,7 @@ mesh = SubResource("BoxMesh_k34nl")
 [node name="Label" type="Label3D" parent="TestVentEntrance" unique_id=551445024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 billboard = 1
-text = "VENT: Toddler crawls to upper level"
+text = "I think the kid could crawl to upper level"
 font_size = 36
 
 [node name="SM_Prop_AirVent_Small_01" parent="TestVentEntrance" unique_id=61043858 instance=ExtResource("33_07fx1")]
@@ -952,7 +971,7 @@ mesh = SubResource("BoxMesh_k34nl")
 [node name="Label" type="Label3D" parent="TestVentEntranceTop" unique_id=1702625503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 billboard = 1
-text = "VENT: Toddler crawls to ground floor"
+text = "The kid should be able to crawl back down"
 font_size = 36
 
 [node name="SM_Prop_AirVent_Small_02" parent="TestVentEntranceTop" unique_id=1529181330 instance=ExtResource("33_07fx1")]
@@ -1073,7 +1092,6 @@ mesh = SubResource("BoxMesh_dqfqm")
 
 [node name="Label" type="Label3D" parent="TestLedgeLauncher" unique_id=1876922116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-visible = false
 billboard = 1
 text = "Hmm.. Maybe our dad can throw squirt over?"
 font_size = 36

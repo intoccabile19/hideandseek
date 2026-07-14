@@ -1,5 +1,9 @@
-res://scenes/levels/level_2_cargo_hold.tscn
+res://scenes/levels/level_1_tutorial.tscn
 res://SyntySciFiSpace/shaders/polygon.gdshader
-res://SyntySciFiSpace/Detail_Pipes_03.tres
-res://SyntySciFiSpace/Medical_Cart_02.tres
 res://SyntySciFiSpace/Hatch_Door.tres
+res://SyntySciFiSpace/Medical_Cart_02.tres
+res://SyntySciFiSpace/Detail_Pipes_03.tres
+res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Crate_Wide_01.tscn
+res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Bld_Bridge_Walls_Glass_01.tscn
+res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/SM_Prop_Detail_CeilingBox_03.tscn
+res://scenes/levels/level_2_cargo_hold.tscn

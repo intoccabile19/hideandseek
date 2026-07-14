@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0g7378p62hax"
+uid="uid://c4rcqjeegfeu1"
 path="res://.godot/imported/polygonDungeon_Characters.fbx-c18eea461cc48f52f6ca48879b187bf3.scn"
 
 [deps]
@@ -37,79 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:AnimationPlayer": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Ghost_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Ghost_02": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Goblin_Female": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Goblin_Shaman": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Goblin_WarChief": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Hero_Knight_Female": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Hero_Knight_Male": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Rock_Golem": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Skeleton_Knight": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Skeleton_Slave_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Skeleton_Soldier_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Skeleton_Soldier_02": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Tormented_Soul": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Bag_Large": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Bones": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Goblin_Hair": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Goblin_WarBanner": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Mask_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Mask_02": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Shield": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Shrunken_Head": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/SM_Item_Sword": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

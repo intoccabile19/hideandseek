@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cb1je03qys2yh"
+uid="uid://dqump0j884vip"
 path="res://.godot/imported/Characters.fbx-5202209d0ab97dea55413d0026813019.scn"
 
 [deps]
@@ -37,61 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Skeleton3D/Character_Alien_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Alien_Male_02": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Augmented_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Cop_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_CyberPunk_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Cyber_Female_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Cyber_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Garbage_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Hacker_Female_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Hologram_Female_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Junky_Female_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Junky_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Medical_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Monk_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Muscle_Male_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Rich_Female_01": {
-"import/skip_import": true
-},
-"PATH:Skeleton3D/Character_Rich_Male_01": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://qxtb1sch5v0o"]
 
-[ext_resource type="Material" uid="uid://b1j67763v2wf7" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_01_Glass.tres" id="1_m4a6h"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_x800b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbv7v"]
 resource_name = "SciFi1"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+albedo_texture = ExtResource("1_x800b")
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ch27d"]
@@ -44,4 +45,3 @@ shadow_mesh = SubResource("ArrayMesh_ch27d")
 
 [node name="SM_Bld_Bridge_Walls_Glass_01" type="MeshInstance3D" unique_id=1496500573]
 mesh = SubResource("ArrayMesh_mqg4v")
-surface_material_override/0 = ExtResource("1_m4a6h")
