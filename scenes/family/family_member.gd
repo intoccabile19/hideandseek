@@ -51,6 +51,9 @@ var _interact_target: Node = null
 var _interact_dir: float = 0.0
 var _interact_align_move_dir: float = 0.0
 var _interact_anim_timer: float = 0.0
+var post_launch_interact_target: Node = null
+var post_launch_stop_after_interact: bool = false
+var _stop_after_interaction: bool = false
 
 # Cover variables
 var is_hidden: bool = false
@@ -74,13 +77,23 @@ func _exit_tree() -> void:
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.LAUNCHED:
-		if not is_on_floor():
-			velocity.y -= _gravity * delta
-		else:
-			velocity = Vector3.ZERO
-			current_state = State.FOLLOW
+		velocity.y -= _gravity * delta
 		move_and_slide()
 		global_position.z = 0.0
+		if is_on_floor() and velocity.y <= 0.0:
+			velocity = Vector3.ZERO
+			if post_launch_interact_target:
+				var target: Node = post_launch_interact_target
+				post_launch_interact_target = null
+				if is_instance_valid(target) and target.has_method("execute_interaction"):
+					target.execute_interaction(self)
+				if post_launch_stop_after_interact:
+					post_launch_stop_after_interact = false
+					current_state = State.STOP
+				else:
+					current_state = State.FOLLOW
+			else:
+				current_state = State.FOLLOW
 		return
 
 	if current_state == State.INTERACTING:
@@ -607,5 +620,9 @@ func _finish_interaction() -> void:
 		
 	# Only return to follow if executing didn't transition us to a custom state or redirect us
 	if current_state == State.INTERACTING and _interact_target == target:
-		current_state = State.FOLLOW
+		if _stop_after_interaction:
+			_stop_after_interaction = false
+			current_state = State.STOP
+		else:
+			current_state = State.FOLLOW
 		_interact_target = null

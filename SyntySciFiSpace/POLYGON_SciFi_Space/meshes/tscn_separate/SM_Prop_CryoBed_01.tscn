@@ -1,6 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://cgusehxu10inv"]
 
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_0lw1i"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_vxamy"]
+[ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="2_of5ig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t24jx"]
 resource_name = "SciFi5"
@@ -42,6 +43,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tqgt8")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvfux"]
+albedo_texture = ExtResource("1_vxamy")
+emission_enabled = true
+emission_texture = ExtResource("2_of5ig")
+
 [node name="SM_Prop_CryoBed_01" type="MeshInstance3D" unique_id=2102432764]
 mesh = SubResource("ArrayMesh_pst8i")
-surface_material_override/0 = ExtResource("1_0lw1i")
+surface_material_override/0 = SubResource("StandardMaterial3D_pvfux")

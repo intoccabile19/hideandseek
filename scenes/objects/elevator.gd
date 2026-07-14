@@ -2,7 +2,7 @@ class_name Elevator
 extends AnimatableBody3D
 
 @export var start_y: float = -0.5
-@export var target_y: float = 4.8
+@export var target_y: float = 4.699
 @export var travel_speed: float = 2.0
 
 var _target_pos_y: float = 0.0

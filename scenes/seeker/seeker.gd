@@ -262,6 +262,9 @@ func _physics_process(delta: float) -> void:
 			rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
 			spotlight.rotation.y = 0.0
 			
+			var dir_to_spotted := (_spotted_target.global_position + Vector3(0.0, 1.0, 0.0) - spotlight.global_position).normalized()
+			spotlight.rotation.x = asin(dir_to_spotted.y)
+			
 			# Freeze movement while alert accumulates
 			velocity.x = 0.0
 			velocity.z = 0.0
@@ -491,7 +494,8 @@ func _process_wander(delta: float) -> void:
 		var target_yaw := atan2(-velocity.x, -velocity.z)
 		rotation.y = rotate_toward(rotation.y, target_yaw, delta * 6.0)
 		spotlight.rotation.y = 0.0
-		spotlight.rotation.x = deg_to_rad(-10.0)
+		var sweep_pitch := deg_to_rad(-25.0 + sin(Time.get_ticks_msec() * 0.0006) * 15.0)
+		spotlight.rotation.x = lerp(spotlight.rotation.x, sweep_pitch, delta * 4.0)
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -556,7 +560,8 @@ func _process_scanning(delta: float) -> void:
 
 	# Turn forward towards the walkway opening (Z = 0.0, which is PI yaw)
 	rotation.y = rotate_toward(rotation.y, PI, delta * 6.0)
-	spotlight.rotation.x = lerp(spotlight.rotation.x, deg_to_rad(-15.0), delta * 4.0)
+	var sweep_pitch := deg_to_rad(-20.0 + sin(_state_timer * 0.8) * 15.0)
+	spotlight.rotation.x = lerp(spotlight.rotation.x, sweep_pitch, delta * 4.0)
 
 	# Sweep spotlight left and right across the opening
 	var sweep_angle := sin(_state_timer * 3.0) * deg_to_rad(35.0)
@@ -651,7 +656,8 @@ func _process_suspicious(delta: float) -> void:
 			else:
 				rotation.y = rotate_toward(rotation.y, PI, delta * 6.0)
 			spotlight.rotation.y = sin(_phase_timer * 5.0) * deg_to_rad(45.0)
-			spotlight.rotation.x = deg_to_rad(-20.0)
+			var sweep_pitch := deg_to_rad(-20.0 + sin(_phase_timer * 1.0) * 15.0)
+			spotlight.rotation.x = lerp(spotlight.rotation.x, sweep_pitch, delta * 4.0)
 
 			# Cycle look animations — each plays to completion before the next
 			if _current_look_anim.is_empty():
@@ -718,17 +724,28 @@ func _process_chase(delta: float) -> void:
 
 	var clear_los := false
 	if angle < vision_angle * 0.5 and not target_hidden:
-		# Project from Seeker's spotlight to the target's chest (Y = 1.0)
-		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
-			spotlight.global_position,
-			_chase_target.global_position + Vector3(0.0, 1.0, 0.0),
-			1
-		)
-		var exclude_list: Array[RID] = [self.get_rid(), _chase_target.get_rid()]
-		query.exclude = exclude_list
-		var result: Dictionary = space_state.intersect_ray(query)
-		if result.is_empty():
-			clear_los = true
+		var target_height := 1.6
+		if _chase_target.has_method("is_toddler_class") and _chase_target.is_toddler_class():
+			target_height = 0.7
+			
+		var offsets := [
+			Vector3(0.0, target_height * 0.15, 0.0),
+			Vector3(0.0, target_height * 0.5, 0.0),
+			Vector3(0.0, target_height * 0.85, 0.0)
+		]
+		
+		for offset in offsets:
+			var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+				spotlight.global_position,
+				_chase_target.global_position + offset,
+				1
+			)
+			var exclude_list: Array[RID] = [self.get_rid(), _chase_target.get_rid()]
+			query.exclude = exclude_list
+			var result: Dictionary = space_state.intersect_ray(query)
+			if result.is_empty():
+				clear_los = true
+				break
 
 	if clear_los:
 		_chase_timer += delta
@@ -894,16 +911,32 @@ func _check_vision() -> void:
 		var angle := rad_to_deg(spotlight_forward.angle_to(dir_to_char))
 
 		if angle < vision_angle * 0.5:
-			# Project from Seeker's spotlight to the target's chest (Y = 1.0)
-			var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
-				spotlight.global_position,
-				target.global_position + Vector3(0.0, 1.0, 0.0),
-				1
-			)
-			var exclude_list: Array[RID] = [self.get_rid(), target.get_rid()]
-			query.exclude = exclude_list
-			var result: Dictionary = space_state.intersect_ray(query)
-			if result.is_empty():
+			# Project multiple rays to different heights on the target body to handle partial occlusion (e.g. windows, crates)
+			var target_height := 1.6
+			if target.has_method("is_toddler_class") and target.is_toddler_class():
+				target_height = 0.7
+				
+			var offsets := [
+				Vector3(0.0, target_height * 0.15, 0.0),
+				Vector3(0.0, target_height * 0.5, 0.0),
+				Vector3(0.0, target_height * 0.85, 0.0)
+			]
+			
+			var is_visible := false
+			for offset in offsets:
+				var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+					spotlight.global_position,
+					target.global_position + offset,
+					1
+				)
+				var exclude_list: Array[RID] = [self.get_rid(), target.get_rid()]
+				query.exclude = exclude_list
+				var result: Dictionary = space_state.intersect_ray(query)
+				if result.is_empty():
+					is_visible = true
+					break
+					
+			if is_visible:
 				_spotted_target = target
 				return
 

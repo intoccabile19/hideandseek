@@ -1,6 +1,4 @@
-[gd_scene format=4]
-
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_01_Glass.tres" id="1_ysf2b"]
+[gd_scene format=4 uid="uid://pdqbbnfikiiu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7q2qg"]
 resource_name = "Screen2"
@@ -43,6 +41,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x13ua")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afgtn"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.74509805, 1, 1, 0.40392157)
+refraction_enabled = true
+refraction_scale = 0.11
+
 [node name="SM_Prop_Medical_Tube_Glass_01" type="MeshInstance3D" unique_id=1139118684]
 mesh = SubResource("ArrayMesh_kep4v")
-surface_material_override/0 = ExtResource("1_ysf2b")
+surface_material_override/0 = SubResource("StandardMaterial3D_afgtn")

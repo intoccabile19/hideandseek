@@ -5,7 +5,6 @@ extends Interactable
 
 func _ready() -> void:
 	super._ready()
-	required_class = "Any"
 	prompt_message = "Toggle Elevator"
 
 func execute_interaction(actor: Node3D) -> void:

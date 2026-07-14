@@ -1,6 +1,6 @@
 [gd_scene format=4]
 
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_w6no5"]
+[ext_resource type="Material" uid="uid://d3dvklklm5h5e" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_w6no5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0lej"]
 resource_name = "SciFiSpace"

@@ -1,6 +1,9 @@
 class_name LedgeLauncher
 extends Interactable
 
+@export var landing_target: Node3D
+@export var post_landing_interactable: Interactable
+
 func _ready() -> void:
 	super._ready()
 	required_class = "Adult"

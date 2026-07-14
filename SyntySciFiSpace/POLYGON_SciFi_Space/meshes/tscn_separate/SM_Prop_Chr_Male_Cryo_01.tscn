@@ -1,6 +1,6 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://cfxc5ipdoo7li"]
 
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_32oi5"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_w0y5h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kka7y"]
 resource_name = "Color30"
@@ -42,6 +42,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jacbw")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tgje"]
+albedo_texture = ExtResource("1_w0y5h")
+
 [node name="SM_Prop_Chr_Male_Cryo_01" type="MeshInstance3D" unique_id=1405307153]
 mesh = SubResource("ArrayMesh_a7jha")
-surface_material_override/0 = ExtResource("1_32oi5")
+surface_material_override/0 = SubResource("StandardMaterial3D_3tgje")

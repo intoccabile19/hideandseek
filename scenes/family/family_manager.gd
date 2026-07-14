@@ -172,10 +172,10 @@ func _calculate_sound_propagation(player_pos: Vector3) -> Dictionary:
 	var is_shout: bool = max_dist > WHISPER_LIMIT_DISTANCE
 	var radius: float = SHOUT_SOUND_RADIUS if is_shout else WHISPER_SOUND_RADIUS
 	
-	if is_shout and (current_target_member != null or not active_members.is_empty()):
-		print("[Whisper Network] SHOUT! Sound radius: %f units (Farthest member is %0.1f units away)" % [radius, max_dist])
-	else:
-		print("[Whisper Network] Whisper. Sound radius: %f units" % radius)
+	# if is_shout and (current_target_member != null or not active_members.is_empty()):
+	# 	print("[Whisper Network] SHOUT! Sound radius: %f units (Farthest member is %0.1f units away)" % [radius, max_dist])
+	# else:
+	# 	print("[Whisper Network] Whisper. Sound radius: %f units" % radius)
 		
 	return {"radius": radius, "is_shout": is_shout}
 

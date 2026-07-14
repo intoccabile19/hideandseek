@@ -1,6 +1,6 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://dodw2qwf8v5xt"]
 
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_aari4"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_2xx8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fl22l"]
 resource_name = "SciFi1"
@@ -42,6 +42,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qvp3k")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bj7x"]
+albedo_texture = ExtResource("1_2xx8w")
+
 [node name="SM_Bld_Ceiling_Pipes_Straight_01" type="MeshInstance3D" unique_id=1890532748]
 mesh = SubResource("ArrayMesh_bv54x")
-surface_material_override/0 = ExtResource("1_aari4")
+surface_material_override/0 = SubResource("StandardMaterial3D_6bj7x")

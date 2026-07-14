@@ -1,6 +1,6 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://dy1axv370db0m"]
 
-[ext_resource type="Material" uid="uid://d3dvklklm5h5e" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_5g0yd"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_nbsgc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ehy4"]
 resource_name = "SciFi"
@@ -40,6 +40,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qaxow")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch8sn"]
+albedo_texture = ExtResource("1_nbsgc")
+
 [node name="SM_Prop_AirVent_Large_01" type="MeshInstance3D" unique_id=1950327224]
 mesh = SubResource("ArrayMesh_xch1a")
-surface_material_override/0 = ExtResource("1_5g0yd")
+surface_material_override/0 = SubResource("StandardMaterial3D_ch8sn")

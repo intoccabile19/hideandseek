@@ -60,10 +60,14 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(_vent_exit_node):
 			global_position = global_position.move_toward(_vent_exit_node.global_position, _vent_speed * delta)
 			global_position.z = 0.0
-			if global_position.distance_to(_vent_exit_node.global_position) < 0.2:
+			var exit_pos_2d := Vector2(_vent_exit_node.global_position.x, _vent_exit_node.global_position.y)
+			var my_pos_2d := Vector2(global_position.x, global_position.y)
+			if my_pos_2d.distance_to(exit_pos_2d) < 0.2:
 				global_position = _vent_exit_node.global_position
+				global_position.z = 0.0
 				_is_vent_crawling = false
 				_vent_exit_node = null
+				visible = true
 				
 				if is_instance_valid(_saved_interact_target):
 					var target := _saved_interact_target
@@ -85,6 +89,7 @@ func _physics_process(delta: float) -> void:
 			_is_vent_crawling = false
 			is_hidden = true
 			current_state = State.FREEZE
+			visible = true
 		return
 
 	# Update floating tension indicator
@@ -238,4 +243,5 @@ func crawl_through_vent(entrance: Node3D, exit_node: Node3D) -> void:
 	current_state = State.FREEZE
 	is_hidden = true
 	global_position = entrance.global_position
+	visible = false
 	print("[Toddler %s] Entered vent crawlspace at X: %0.2f" % [name, global_position.x])

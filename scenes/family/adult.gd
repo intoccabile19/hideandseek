@@ -221,18 +221,45 @@ func try_launch_toddler(launcher_point: Node3D) -> void:
 		toddler.global_position.y = global_position.y + 1.2
 		toddler.global_position.z = 0.0
 		
-		# Trigger launch velocity arc in direction of target launcher point
-		var launch_dir: float = sign(launcher_point.global_position.x - global_position.x)
-		if launch_dir == 0.0:
-			launch_dir = 1.0
+		var landing_pt: Node3D = null
+		if "landing_target" in launcher_point and launcher_point.landing_target:
+			landing_pt = launcher_point.landing_target
 			
 		toddler.current_state = State.LAUNCHED
-		toddler.velocity.y = 12.5
-		toddler.velocity.x = launch_dir * 4.0
-		toddler.velocity.z = 0.0
+		
+		if "post_landing_interactable" in launcher_point and launcher_point.post_landing_interactable:
+			toddler.post_launch_interact_target = launcher_point.post_landing_interactable
+			toddler.post_launch_stop_after_interact = true
+			
+		if landing_pt:
+			# Calculate exact velocity to land at target
+			var start_pos: Vector3 = toddler.global_position
+			var target_pos: Vector3 = landing_pt.global_position
+			var dx: float = target_pos.x - start_pos.x
+			var dy: float = target_pos.y - start_pos.y
+			
+			var horizontal_speed: float = 12.0
+			var t: float = abs(dx) / horizontal_speed
+			if t < 0.1:
+				t = 0.1
+				
+			var g: float = toddler._gravity if "_gravity" in toddler else 25.0
+			
+			toddler.velocity.x = sign(dx) * horizontal_speed
+			toddler.velocity.y = (dy / t) + (0.5 * g * t)
+			toddler.velocity.z = 0.0
+			print("[Adult %s] Tossed Toddler %s to target %s (Y-vel=%f, X-vel=%f)" % [name, toddler.name, landing_pt.name, toddler.velocity.y, toddler.velocity.x])
+		else:
+			# Trigger launch velocity arc in direction of target launcher point
+			var launch_dir: float = sign(launcher_point.global_position.x - global_position.x)
+			if launch_dir == 0.0:
+				launch_dir = 1.0
+				
+			toddler.velocity.y = 12.5
+			toddler.velocity.x = launch_dir * 4.0
+			toddler.velocity.z = 0.0
+			print("[Adult %s] Tossed Toddler %s upwards (Y-vel=12.5, X-vel=%f)" % [name, toddler.name, launch_dir * 4.0])
 		
 		_launch_timer = 0.5
-		
-		print("[Adult %s] Tossed Toddler %s upwards (Y-vel=12.5, X-vel=%f)" % [name, toddler.name, launch_dir * 4.0])
 	else:
 		print("[Adult %s] Launch failed: Toddler not found within 4.0 meters" % name)

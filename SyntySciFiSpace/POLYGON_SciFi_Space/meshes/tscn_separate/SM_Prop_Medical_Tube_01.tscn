@@ -1,6 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://d14m1os5fyx6n"]
 
-[ext_resource type="Material" path="res://POLYGON_SciFi_Space/materials/PolygonScifiSpace_Material_Grey_01.tres" id="1_5b1ut"]
+[ext_resource type="Texture2D" uid="uid://60winoo5iws" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_Texture_01_A.png" id="1_g453c"]
+[ext_resource type="Texture2D" uid="uid://jfrar" path="res://SyntySciFiSpace/POLYGON_SciFi_Space/textures/PolygonSciFiSpace_01_Emissive.png" id="2_mjbsc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ilg3"]
 resource_name = "SciFi3"
@@ -42,6 +43,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ysxtu")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q61d6"]
+albedo_texture = ExtResource("1_g453c")
+emission_enabled = true
+emission_texture = ExtResource("2_mjbsc")
+
 [node name="SM_Prop_Medical_Tube_01" type="MeshInstance3D" unique_id=947280230]
 mesh = SubResource("ArrayMesh_36sde")
-surface_material_override/0 = ExtResource("1_5b1ut")
+surface_material_override/0 = SubResource("StandardMaterial3D_q61d6")

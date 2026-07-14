@@ -16,6 +16,7 @@ func execute_interaction(actor: Node3D) -> void:
 
 func _ready() -> void:
 	add_to_group("interactables")
+	collision_mask |= 1 | 4
 
 func _exit_tree() -> void:
 	remove_from_group("interactables")
