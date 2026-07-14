@@ -31,7 +31,7 @@ res://scenes/family/elder.tscn::52da0d2c8d0a53c563e51b76239e5fe5::1783853302::re
 res://scenes/family/family_member.tscn::0181f5b8b6cc59043b41f0f3a152008f::1783494464::res://.godot/exported/133200997/export-f0d6288a54d468bc47dc2df845383942-family_member.scn
 res://scenes/family/toddler.tscn::98fda83ed54c70b8a6044a15bd92e929::1783853322::res://.godot/exported/133200997/export-8586f32b0501859ce6bfc8490acd7914-toddler.scn
 res://scenes/levels/level_1_tutorial.tscn::0f96f275ff4bc66ccdcccc8c5cb97ff2::1784035898::res://.godot/exported/133200997/export-4ceb37ca25e253ba46a076e15e2f3e12-level_1_tutorial.scn
-res://scenes/levels/level_2_cargo_hold.tscn::2f35e9c6047a464e7321975365243b6f::1784035901::res://.godot/exported/133200997/export-731781e48947eff8bffe694beae6b61f-level_2_cargo_hold.scn
+res://scenes/levels/level_2_cargo_hold.tscn::fca70ba6d1d0a60ffd6caca427e179f5::1784037385::res://.godot/exported/133200997/export-731781e48947eff8bffe694beae6b61f-level_2_cargo_hold.scn
 res://scenes/levels/level_3_engine_room.tscn::7954f70e58c8168508cbe5b176bae1a5::1783906616::res://.godot/exported/133200997/export-2839b64cde34f2318c5d968b65057237-level_3_engine_room.scn
 res://scenes/levels/level_test.tscn::989f6209ffcfc8d95ac3510e47d39e69::1783906577::res://.godot/exported/133200997/export-701ea155aecb096913e9a3d7f8ee964c-level_test.scn
 res://scenes/levels/GameStart.tscn::0a207fcbf7c8b28b065ca0685ea8dbe8::1784035335::res://.godot/exported/133200997/export-976ba6d512800a4997a7908711c48d5d-GameStart.scn
@@ -4062,6 +4062,6 @@ res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/UCX_SM_Sign_Scien
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/UCX_SM_Veh_Drone_Repair_01_126.tscn::438b7cd82d3b2f24d184dde5c2bc4bfa::1783896965::res://.godot/exported/133200997/export-57fcfe6b7c14294d3e496a53f2ff6e52-UCX_SM_Veh_Drone_Repair_01_126.scn
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/UCX_SM_Veh_WarpGate_Inner_01_18.tscn::9017365ffda6df05576834d969186cd2::1783896967::res://.godot/exported/133200997/export-97491d6aff8ae476e2c829b2db123f51-UCX_SM_Veh_WarpGate_Inner_01_18.scn
 res://SyntySciFiSpace/POLYGON_SciFi_Space/meshes/tscn_separate/UCX_SM_Veh_WarpGate_Outer_01_15.tscn::18e3275aecf3cedbcc94351543a6a3bd::1783896958::res://.godot/exported/133200997/export-718ad6dd5baac93a54297c7b7bc32a08-UCX_SM_Veh_WarpGate_Outer_01_15.scn
-res://SyntySciFiSpace/Detail_Pipes_03.tres::0b3e18414241f0e9c303e10f734727b6::1783986746::res://.godot/exported/133200997/export-2c0d42695bdde095dd00482be0cfc271-Detail_Pipes_03.res
-res://SyntySciFiSpace/Hatch_Door.tres::b822046cd772745d6d7a0116d89eda1a::1783986746::res://.godot/exported/133200997/export-52b86dc5863c68b519e25837a368ce7a-Hatch_Door.res
-res://SyntySciFiSpace/Medical_Cart_02.tres::16660c6d06f5d8fc019537570da803de::1783986746::res://.godot/exported/133200997/export-47531efa72b3cc33711ecb59db2d5205-Medical_Cart_02.res
+res://SyntySciFiSpace/Detail_Pipes_03.tres::0b3e18414241f0e9c303e10f734727b6::1784037385::res://.godot/exported/133200997/export-2c0d42695bdde095dd00482be0cfc271-Detail_Pipes_03.res
+res://SyntySciFiSpace/Hatch_Door.tres::b822046cd772745d6d7a0116d89eda1a::1784037385::res://.godot/exported/133200997/export-52b86dc5863c68b519e25837a368ce7a-Hatch_Door.res
+res://SyntySciFiSpace/Medical_Cart_02.tres::16660c6d06f5d8fc019537570da803de::1784037385::res://.godot/exported/133200997/export-47531efa72b3cc33711ecb59db2d5205-Medical_Cart_02.res

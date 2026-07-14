@@ -384,7 +384,7 @@ visible = false
 mesh = SubResource("BoxMesh_czlarge")
 
 [node name="CoverZoneMedium" type="Area3D" parent="." unique_id=746064004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0952816, 6.0717893, -2.6295931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9614916, 6.0717893, -2.6295931)
 script = ExtResource("9_cz")
 capacity = 2
 
@@ -1073,6 +1073,7 @@ mesh = SubResource("BoxMesh_dqfqm")
 
 [node name="Label" type="Label3D" parent="TestLedgeLauncher" unique_id=1876922116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
 billboard = 1
 text = "Hmm.. Maybe our dad can throw squirt over?"
 font_size = 36
